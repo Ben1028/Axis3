@@ -1,0 +1,379 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Sphere_mapX.scp</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>Sphere_mapX.scp</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>Welcome to one of the easiest files in all of
+SPHERE. This is the spheremap.scp file. It's also the only file that's almost
+completely done for you. It is a very rare occasion that you need to change
+this file. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Actually, on that note, I might as well say it from the start. If you change
+this file, you must restart your server for the changes to take effect. If you
+do a resync, you'll get over 1000 &quot;Conflicting region&quot; errors. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+This section will tell you how to make new regions, like that you go with the
+.go command. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+There are currently 5 files in the default scripts pack, one for each map
+(Fellucca, Trammel, Ilshenar, Malas and Tokuno) being each one enumerated from
+0 to 4 (sphere_map0,sphere_map1,and so on). </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+I'll use the region of Fellucca as an example for this part of the tutorial,
+and now here's the script: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkgreen'>[AREADEF a_world]</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>NAME=Felucca</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>EVENTS=r_default,r_default_rock,r_default_water,r_default_tree,r_default_grass</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>GROUP=ALLMAP</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>P=1323,1624,55,0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RECT=0,0,6144,4096,0</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Let's understand those lines now: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>[AREADEF somedef]</b>: As you have probably noticed a_world is a defname
+which defines the region for the server so it can be processed. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN>Name</span></b><span lang=EN>: This line
+contains the name of the region, which is shown when you do .where inside the
+region and it also makes you go to that place when doing .go &quot;region
+name&quot; (do not make 2 regions with the same name, the last that has been
+loaded will replace the first when you do .go command (which can fuck up a lot
+of things)). </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN>Events</span></b><span lang=EN>: This
+defines what will happen in that region and what resources are gatherable here
+(remember the REGIONTYPE section? It can be used as an event here.). Besides
+the resources gatherable it'll also show sphere what triggers to call from the
+events (you've probably realized now that the REGIONTYPE section is an event
+for regions&nbsp;:P), like the @Enter trigger and the others (see <a
+href="http://wiki.sphere.torfo.org/index.php?title=Triggers&amp;action=edit&amp;redlink=1"
+title="Triggers (page does not exist)"><span style='color:#CC2200'>Triggers</span></a>).
+</span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN>Group</span></b><span lang=EN>: This is
+just an axis setting, this separates the regions in groups (duh) when you go to
+the Travel Menu. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN>P</span></b><span lang=EN>: This is the
+place you go when you do .go &quot;region name&quot;. Almost all regions will
+have a P value and it's usually a convenient location in the region to teleport
+to, or else it's the center of the region. If you are making your own new
+region, be sure to pick a place you'd like to teleport to. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN>RainChance</span></b><span lang=EN>: This
+defines the chance to rain on that region when a weather is called (RainChance=50
+means 50% chance of raining), the others 50% means it'll snow. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN>Rect</span></b><span lang=EN>: This
+describes the exact boundaries of this region, by coordinates. The first two
+numbers are the coordinate of the upper left corner of the region, and the
+second two are the coordinates of the lower right. In the case of Fellucca it
+stretches from 0,0 to 6144,4096 (RECT=0,0,6144,4096). Since 56B you also need
+to add a fith argument, the map this region uses so it's RECT=0,0,6144,4096,0
+(if the map is 0 you can leave it empty, otherwise you MUST NOT leave it empty
+or you'll have conflicting regions. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN>Flags</span></b><span lang=EN>: The region
+flags allow you to control what goes on in a particular region. They describe
+whether or not a region is to be guarded, what types of magic are allowed to be
+cast there, who can be harmed here, or whether or not it is allowed to rain
+there. Basically anything you could ever want. Here's how you use them: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Just add this line to a region script: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+FLAGS=# </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Of course you're going to want to replace that # with an actual number! Where
+do we get those numbers? They're predefined in the game, but they give us a
+nice handy list. I just showed it to you. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Say we want to make a region that is guarded and safe from harm. We would
+simply add the two numbers together: </span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>region_flag_safe
+(02000)</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>+</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>region_flag_guarded
+(04000)</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>=</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>06000</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+There you go. Your <span style='color:darkgreen'>FLAGS</span> would be set to
+06000. &quot;But.. but..&quot; you're saying. &quot;Didn't you tell me that <span
+style='color:darkgreen'>DEFNAMEs</span> were supposed to prevent me from
+working with scary numbers?&quot; (See <a
+href="http://wiki.sphere.torfo.org/index.php/Chapter_1" title="Chapter 1">Chapter
+1</a>.) Of course I did! And there's a way to do this without using any scary
+number at all. Here it is: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>FLAGS=region_flag_safe|region_flag_guarded</span><span lang=EN>
+</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+That's it. Now your region is both safe and guarded. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Which, as you may learn quickly as a new admin, is a big mistake. Making a
+region safe and guarded at the same time prevents the guards from actually
+killing anything, so they pile up and call each other, and soon you have a huge
+laggy mess of guards hacking at something that can't be killed (because it's a
+safe region). Just take my word for it and don't make a region safe and
+guarded. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Here's a quick list for the region flags (you should check you sphere_defs.scp
+for more, cause they may be changed): </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[DEFNAME region_flags]</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_antimagic_all 00001 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>all magic
+banned here.</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_antimagic_recall_in 00002 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>teleport,recall
+in to this, and mark</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_antimagic_recall_out 00004 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>can't recall
+out of here.</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_antimagic_gate 00008 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>can't open
+gates from or to this place.</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_antimagic_teleport 00010 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>can't teleport
+into here.</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_antimagic_damage 00020 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>just no bad
+magic here</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_flag_ship 00040 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>this is a ship
+region. ship commands</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_flag_nobuilding 00080 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>no building in
+this area</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_flag_globalname 00100 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>make sure the
+name is avail globally.</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_flag_announce 00200 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>announce to
+all who enter.</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_flag_insta_logout 00400 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>instant log
+out is allowed here. (hotel)</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_flag_underground 00800 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>dungeon type
+area. (no weather)</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_flag_nodecay 01000 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>things on the
+ground don't decay here.</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_flag_safe 02000 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>this region is
+safe from all harm.</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_flag_guarded 04000 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>try
+tag.guardowner</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>region_flag_no_pvp 08000 // </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'>players cannot
+directly harm each other here.</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+And that's about it for the <span style='color:darkblue'>sphere_mapX.scp</span>
+files. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

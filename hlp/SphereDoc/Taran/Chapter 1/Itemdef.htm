@@ -1,0 +1,313 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Itemdef</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+pre
+	{mso-style-link:"HTML Preformatted Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-link:"HTML Preformatted";
+	font-family:"Courier New";}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>ITEMDEF</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>Or, how to make a mountain from a molehill,
+SPHERE style </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Most people make item scripting much harder than it needs to be. For the
+purposes of this tutorial, since there is a more advanced one later, we will simply
+go over the basics of an ITEM script, line by line. We'll be using the gold
+script from the previous lesson, provided I can find it again.... </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Ah, here it is, conveniently color coded for your viewing pleasure! </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[ITEMDEF 0eed]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//gold coin</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DEFNAME=i_gold</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TYPE=T_GOLD</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>VALUE=1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CATEGORY=Provisions - Miscellaneous</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SUBSECTION=Coins</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DESCRIPTION=Gold Coin</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DUPELIST=0eee,0eef</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+This is the simplest of item scripts, since it has no additional behaviors
+beyond existing. I will go through this line by line, describing to you what
+each line does, and how it affects the end result. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 1</b>: [ITEMDEF 0eed] </span></p>
+
+<p class=MsoNormal><span lang=EN>The first lines of an item script are
+frequently the most important. Basically, this line tells the server &quot;Hey
+this is an item and I want it to be called 0eed!&quot; The server then looks
+through one of the client files (specifically art.idx), and identifies whether
+or not this item is one of the built-in items. I think all items below 04500
+are defined as built-in items, so never define a new item in that range. By
+typing this line, you tell the server that an item script is following. You
+also define 0eed as a valid item, which will definitely help later on when you
+try to give gold to players! </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 2</b>: // gold coin </span></p>
+
+<p class=MsoNormal><span lang=EN>This is the SPHERE version of comment. C
+programmers will recognize the format immediately. If you type // on any line
+of code, everything beyond that is ignored by the script reader. This can be on
+a line by itself, or at the end of a line to explain what the specific line
+does. In all cases, it won't affect your program, just make it easier to read. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 3</b>: DEFNAME=i_gold </span></p>
+
+<p class=MsoNormal><span lang=EN>You should know by now what this does! If you
+don't, go back and read the previous lesson! It tells the server that i_gold
+and 0eed mean the same thing. In item scripts, all parameters are defined in
+that format: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+variable=value </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+You will see later on, when we get into scripting, how that format will help
+you more than you would believe. Items have a good number of variables that you
+can define, including: </span></p>
+
+<p class=MsoNormal><span lang=EN>DEFNAME </span></p>
+
+<p class=MsoNormal><span lang=EN>ID </span></p>
+
+<p class=MsoNormal><span lang=EN>TYPE </span></p>
+
+<p class=MsoNormal><span lang=EN>VALUE </span></p>
+
+<p class=MsoNormal><span lang=EN>RESOURCES </span></p>
+
+<p class=MsoNormal><span lang=EN>Other variables depend on the value of the
+TYPE. Which leads us right into... </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 4</b>: TYPE=t_gold </span></p>
+
+<p class=MsoNormal><span lang=EN>The first thing you might say is &quot;What
+the heck is t_gold?&quot; Well it's a DEFNAME. Actually it's a number. And that
+number is 72. If you want to check me on this, look in spheredefs.scp, it's
+there! Writing TYPE=72 would have the exact same effect. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+There are, currently, 183 built-in item types. These are hardcoded item types
+that contain predefined actions for an item. If an item has no type, when you
+click it, you get the &quot;You cannot think of a way to use that item&quot;
+message. There is a complete list of types, and how to set them up, here . All
+you need to know for now is that setting the type of this item to t_gold has no
+effect other than to make the item act like a gold coin (i.e. you can buy stuff
+with it!) Setting another item to type t_gold would probably make the server
+think that you can buy stuff with that item too. I've never tried this. It
+might be an interesting way to have unique currencies... </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 5</b>: VALUE=1 </span></p>
+
+<p class=MsoNormal><span lang=EN>This defines how much the item costs when
+purchased, in gold. Of course, this is one gold piece, which is worth, well,
+one gold piece. So the value of the item is one. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Lines 6-8</b>: CATEGORY, SUBSECTION, DESCRIPTION </span></p>
+
+<p class=MsoNormal><span lang=EN>These are lines used only by SPHERE's GM tool,
+Axis, which actually saves you a lot of work by typing &quot;.add i_gold&quot;
+for you. More importantly, it types &quot;.add 01737&quot; and things like that
+for you, for items that were not important enough to get their own separate
+DEFNAME. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 9</b>: DUPEITEM </span></p>
+
+<p class=MsoNormal><span lang=EN>It would be a ton of work for the SPHERE team
+to define all 8000 items that came with the game, especially when many of them
+are the same. (For an example of this, use the .xflip command on a door or
+sign. It cycles through all of the DUPEITEMs for that the item being flipped.)
+The numbers listed here are item numbers, which probably have not been defined
+yet. Here is the script for item 0eee: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[ITEMDEF 0eee]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//gold coins</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DUPEITEM=0eed</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CATEGORY=Provisions - Miscellaneous</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SUBSECTION=Coins</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DESCRIPTION=Gold Coins</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+As you can see, there is only one parameter for this whole item. It reiterates
+the DUPEITEM and sends the server looking to our 0eed (or i_gold) item for more
+information, such as TYPE and VALUE. DUPEITEM only exists to save typing. You
+probably won't use it. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

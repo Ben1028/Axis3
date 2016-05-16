@@ -1,0 +1,811 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>String Functions</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+h3
+	{mso-style-link:"Heading 3 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+pre
+	{mso-style-link:"HTML Preformatted Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-link:"Heading 3";
+	font-family:"Cambria","serif";
+	color:#4F81BD;
+	font-weight:bold;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-link:"HTML Preformatted";
+	font-family:"Courier New";}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>String Functions</p>
+
+</div>
+
+<p class=MsoNormal><span class=mw-headline><span lang=EN>EXPLODE</span></span></p>
+
+<p class=MsoNormal><span lang=EN>The EXPLODE function can be used to convert a
+string into a comma-delimited list based on one or more delimiters. The
+resultant string can then be passed into a function where you can then use ARGV
+to access the individual pieces. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+The syntax for the command is: </span><tt><span lang=EN style='font-size:10.0pt'>EXPLODE
+separators, string_to_separate</span></tt><span lang=EN> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+See the following example, which separates a string by both the &quot;-&quot;
+and &quot;+&quot; characters and logs the output to the Sphere console: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_explode]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>F_EXPLODE_LOG &lt;EXPLODE -+,&lt;ARGS&gt;&gt; // separate
+string by - and +, passing result into the F_EXPLODE_LOG function</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_explode_log]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.LOG ARGV Length =
+&lt;ARGV&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //
+output number of comma-separated arguments</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>FOR 0 &lt;EVAL (&lt;ARGV&gt; -
+1)&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// loop through each argument</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;&nbsp;&nbsp; SERV.LOG ARGV[&lt;LOCAL._FOR&gt;] =
+&lt;ARGV[&lt;LOCAL._FOR&gt;]&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // output
+individual arguments</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ENDFOR</span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STRARG id=STRARG></a><span class=mw-headline><span
+lang=EN>STRARG</span></span></p>
+
+<p class=MsoNormal><span lang=EN>STRARG can be used to extract the first word
+from a string. The following example demonstrates this: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_strarg]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.LOG &lt;STRARG One Two Three&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+You will see the word &quot;One&quot; output to the console. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STREAT id=STREAT></a><span class=mw-headline><span
+lang=EN>STREAT</span></span></p>
+
+<p class=MsoNormal><span lang=EN>STREAT is the counterpart function to STRARG.
+Whereas STRARG gives you the first word in a string, STREAT will 'eat' the
+first word from a string and return the remaining text. The following code
+shows the difference: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_streat]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.LOG &lt;STREAT One Two Three&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+You will see the text &quot;Two Three&quot; output to the console. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STRCMP id=STRCMP></a><span class=mw-headline><span
+lang=EN>STRCMP</span></span></p>
+
+<p class=MsoNormal><span lang=EN>Sooner or later you may find the need to compare
+one string to another. You may start out by attempting to write the following
+line: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>IF (&quot;String1&quot; == &quot;String2&quot;)</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+If you tried to do that you would find an ugly looking error on the Sphere
+console, and your IF statement would simply not work correctly at all. This is
+because IF statements are designed to compare numerical values, and so cannot
+understand how it can compare two strings. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+So you need to find out if &quot;String1&quot; is equal to &quot;String2&quot;,
+right? Well, that's why we have STRCMP. Let's look at the basics of it. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><tt><span lang=EN style='font-size:10.0pt'>STRCMP(string1, string2)</span></tt><span
+lang=EN> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Now, before you start to use this you should be aware that this function does
+not simply compare two strings for equality. STRCMP actualls compares two
+strings to determine if they are less than, greater than, or equal to each
+other! Therefore, this function has three different return values: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>Return Value</b> </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>Meaning</b> </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>-1 </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>string1 is less than string2 </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>0 </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The two strings are equal </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>1 </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>string1 is greater than string2 </p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN><br>
+It's important to bear these return values in mind when using the function, as
+you will quickly discover, the function actually returns <i>false</i> (0) when
+the two strings are equal to each other! </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Take a look at the following at the following example: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>IF&nbsp;!(STRCMP(&lt;SRC.NAME&gt;, Tiny))</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;&nbsp;&nbsp; SRC.SAY My name is Tiny!</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ENDIF</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+You might be asking, &quot;Why didn't you have to surround the function with
+&lt; &gt; there?&quot;. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Well, STRCMP is not a 'normal' function. It is known as an <i><a
+href="http://wiki.sphere.torfo.org/index.php?title=Intrinsic_function&amp;action=edit&amp;redlink=1"
+title="Intrinsic function (page does not exist)"><span style='color:#CC2200'>intrinsic
+function</span></a></i>, a special kind of function that can only be used
+inside an &lt;EVAL ...&gt; statement and rather than being surrounded by &lt;
+&gt; it instead has its arguments surrounded by brackets ( ). </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+&quot;Wait, but that STRCMP <i>isn't</i> inside an EVAL!?&quot; you may say,
+but this is not actually the case. Inside conditional statements (such as <a
+href="http://wiki.sphere.torfo.org/index.php?title=IF&amp;action=edit&amp;redlink=1"
+title="IF (page does not exist)"><span style='color:#CC2200'>IF</span></a> and <a
+href="http://wiki.sphere.torfo.org/index.php?title=WHILE&amp;action=edit&amp;redlink=1"
+title="WHILE (page does not exist)"><span style='color:#CC2200'>WHILE</span></a>),
+Sphere automatically treats the entire line as if it were inside an EVAL
+function, and so the above script will work fine for comparing strings. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Another thing you should remember is that STRCMP is case-sensitive, and so
+&quot;STRING1&quot; will not be equal to &quot;string1&quot;. If you want to
+perform a case-insensitive comparison, use <a href="StringFunction.htm#STRCMPI">STRCMPI</a>
+instead. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STRCMPI id=STRCMPI></a><span class=mw-headline><span
+lang=EN>STRCMPI</span></span></p>
+
+<p class=MsoNormal><span lang=EN>The STRCMPI function can be used to compare two
+strings, ignoring their case. Apart from being case-insensitive this function
+is identical to <a href="StringFunction.htm#STRCMP">STRCMP</a>. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STRLEN id=STRLEN></a><span class=mw-headline><span
+lang=EN>STRLEN</span></span></p>
+
+<p class=MsoNormal><span lang=EN>This function can be used to count the number
+of characters in a string. For example: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>LOCAL.LENGTH = &lt;EVAL STRLEN(&lt;ARGS&gt;)&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Let's say the value of ARGS is &quot;This one has 26 characters&quot;. The
+value of LOCAL.LENGTH will be 26. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STRPOS id=STRPOS></a><span class=mw-headline><span
+lang=EN>STRPOS</span></span></p>
+
+<p class=MsoNormal><span lang=EN>The STRPOS function can be used to locate the
+position of a particular character within some text. The syntax of the command
+is: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><tt><span lang=EN style='font-size:10.0pt'>STRPOS pos ch string</span></tt><span
+lang=EN> </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>Parameter</b> </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>Meaning</b> </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>pos </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The position to start searching from (first character is
+  position 0) </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>ch </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The character to search for, or the ASCII code of the
+  character </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>string </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The text to search in </p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN><br>
+Here are a couple of examples: </span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>LOCAL.POS = &lt;STRPOS 0 32 Where is the first space&gt;&nbsp;
+// returns 5</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>LOCAL.POS = &lt;STRPOS 3 e Where is the first
+'e'&gt;&nbsp;&nbsp;&nbsp;&nbsp; // returns 4</span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STRREVERSE id=STRREVERSE></a><span
+class=mw-headline><span lang=EN>STRREVERSE</span></span></p>
+
+<p class=MsoNormal><span lang=EN>This function simply reverses the order of a
+string. For example: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.LOG &lt;STRREVERSE Hello&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+The above line of code will output &quot;olleH&quot; into the console. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STRSUB id=STRSUB></a><span class=mw-headline><span
+lang=EN>STRSUB</span></span></p>
+
+<p class=MsoNormal><span lang=EN>STRSUB is used to extract a series of characters
+from a string. Why is it useful? Well I can't think of a specific reason right
+now, but I'm sure you'll be able to handle that. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION TestStrSub]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.LOG &lt;STRSUB 0 1 Hello&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+As you can see, STRSUB takes three parameters. The first parameter is the start
+location (zero-based). The second parameter is the length. Finally, the third
+parameter is the string in question. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+If you were to use that function in-game, then look at your Sphere console,
+you'll see that it prints the first character from the third position. One
+thing I need to point out is the index (first parameter) is zero-based. If you
+wanted to start at the first character of the string, you'll need to use zero.
+The second parameter simply tells Sphere how many characters we need returned,
+starting from the index. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Specifying a negative value for the index will tell Sphere to begin at the end
+of the string, and count backwards from there. Here's an example: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION TestStrSub]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.LOG &lt;STRSUB -1 1 Hello&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Use the function in-game once again, then look at your Sphere console.
+Amazingly, it prints the last character of the string. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+That isn't too difficult, is it? </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STRTOLOWER id=STRTOLOWER></a><span
+class=mw-headline><span lang=EN>STRTOLOWER</span></span></p>
+
+<p class=MsoNormal><span lang=EN>This function simply converts all uppercases
+characters to lowercase. A simple example would be: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>LOCAL.LOWER = &lt;STRTOLOWER StRiNgS ArE fUn To PlAy WiTh&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+The function will return &quot;strings are fun to play with&quot;. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STRTOUPPER id=STRTOUPPER></a><span
+class=mw-headline><span lang=EN>STRTOUPPER</span></span></p>
+
+<p class=MsoNormal><span lang=EN>This function performs the opposite action to <a
+href="StringFunction.htm#STRTOLOWER">STRTOLOWER</a>. It converts all lowercase
+characters to uppercase. Following on from the previous example: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>LOCAL.UPPER = &lt;STRTOUPPER StRiNgS ArE fUn To PlAy WiTh&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+The function will return &quot;STRINGS ARE FUN TO PLAY WITH&quot;. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STRTRIM id=STRTRIM></a><span class=mw-headline><span
+lang=EN>STRTRIM</span></span></p>
+
+<p class=MsoNormal><span lang=EN>This function be used to strip all whitespace
+(spaces, tabs, newlines) from the start and end of a string. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+The following script demonstrates this: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_strtrim]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>LOCAL.TEXT = &quot;&nbsp;&nbsp;&nbsp;&nbsp;
+TEST&nbsp;&nbsp;&nbsp;&nbsp; &quot;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.LOG 1. &lt;LOCAL.TEXT&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.LOG 2. &lt;STRTRIM &lt;LOCAL.TEXT&gt;&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+When run, the following output will be seen on the Sphere console: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><tt><span lang=EN style='font-size:10.0pt'>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TEST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></tt><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<tt>2.&nbsp;TEST</tt></span><span lang=EN> </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STRMATCH id=STRMATCH></a><span class=mw-headline><span
+lang=EN>STRMATCH</span></span></p>
+
+<p class=MsoNormal><span lang=EN>The STRMATCH function enables you to check if
+a string matches a simple expression using wildcards (*), which you have more than
+likely encountered before. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+The syntax of this function is </span><tt><span lang=EN style='font-size:10.0pt'>STRMATCH(pattern,
+string)</span></tt><span lang=EN>. It will return 1 if the string matches the
+pattern, and 0 if it doesn't. Look at the following example script: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_strmatch]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>IF (STRMATCH(*ex*, &lt;ARGS&gt;))</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;&nbsp;&nbsp; SERV.LOG ARGS contains 'ex'!</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ELSE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;&nbsp;&nbsp; SERV.LOG ARGS does not match.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ENDIF</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+In the Sphere console type <span style='color:darkred'>F_STRMATCH Mexico</span>.
+You will see the message &quot;ARGS contains 'ex'!&quot;. You can try
+experimenting with different arguments and changing the pattern around until
+you get the hang of this. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Had fun? STRMATCH is actually slightly more powerful than this. * isn't
+actually the only special character that you can use inside the pattern text: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<table class=MsoNormalTable border=1 cellpadding=0>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>Pattern</b> </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>Meaning</b> </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>* </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>Matches any number of characters, including none </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>&nbsp;? </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>Matches any one single character </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>[\*] </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>Matches the '*' character </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>[abcdef] </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>Matches any of the characters in the list </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>[!abc]<br>
+  [^abc] </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>Matches any characters not in the list </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>[a-z] </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>Matches any character between A and Z. </p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN><br>
+That's everything there is that you need to know about STRMATCH. A finally note
+however, is that the pattern will be case-insensitive. (the </span><tt><span
+lang=EN style='font-size:10.0pt'>*ex*</span></tt><span lang=EN> example will
+match on &quot;TEXT&quot;) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Note:</b> Some users have also found that the STRMATCH function is a
+convenient way of determining if two strings are equal (i.e </span><tt><span
+lang=EN style='font-size:10.0pt'>IF (STRMATCH(string1, string2))</span></tt><span
+lang=EN>). This is not how the function was intended to be used and you will be
+at a disadvantage for doing so: </span></p>
+
+<p class=MsoNormal><span lang=EN>Sphere will still attempt to perform a pattern
+match, wasting CPU resources. </span></p>
+
+<p class=MsoNormal><span lang=EN>When a wildcard is used in the first string,
+you may not get the result you want (imagine something similar to </span><tt><span
+lang=EN style='font-size:10.0pt'>STRMATCH(&lt;ARGS&gt;, SOMETEXT))</span></tt><span
+lang=EN>,, and ARGS happens to contain <i>*MET*</i>) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+If you want to check the equality of two strings, use either the <a
+href="StringFunction.htm#STRCMP">STRCMP</a> or <a
+href="StringFunction.htm#STRCMPI">STRCMPI</a> function. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><a name=STRREGEX id=STRREGEX></a><span class=mw-headline><span
+lang=EN>STRREGEX</span></span></p>
+
+<p class=MsoNormal><span lang=EN>As useful as STRMATCH is, it is unfortunately
+not powerful enough to match more precise patterns. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Imagine you want to check if a string contains a floating point number (a
+number that may have one or more decimal places). Using STRMATCH we may start
+out with something like this: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_fpmatch]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>IF (STRMATCH([0-9].[0-9], &lt;ARGS&gt;))</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;&nbsp;&nbsp; SERV.LOG &lt;ARGS&gt; is a floating point
+number.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ELSE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;&nbsp;&nbsp; SERV.LOG &lt;ARGS&gt; is NOT a floating
+point number.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ENDIF</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+If we type <span style='color:darkred'>F_FPMATCH 1.0</span> in the Sphere
+console the match will be successful, however if we attempt to enter a number
+larger than 9.9 or a number that doesn't have exactly 1 decimal place then it
+will not match. We could add more &quot;[0-9]&quot;s in the STRMATCH but this
+would not solve the problem since we'd have to enter a fixed amount of numbers
+regardless. For example if we tried </span><tt><span lang=EN style='font-size:
+10.0pt'>STRMATCH([0-9][0-9][0-9].[0-9][0-9][0-9], &lt;ARGS&gt;)</span></tt><span
+lang=EN> Then we'd have to enter 001.500 for the match to work for 1.5! </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+STRREGEX solves this problem by using the regular expression language to
+perform advanced pattern matching. In fact, it is so advanced that the patterns
+are almost a language of their own, and there would be way too much to document
+here! To learn about the regular expression patterns, you want to visit one of
+the many websites that are dedicated to documenting regular expressions, such
+as <a href="http://www.regular-expressions.info/tutorial.html"
+title="http://www.regular-expressions.info/tutorial.html">regular-expressions.info</a>.
+</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+To match a floating point using regular expressions, we can use the following
+pattern: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='color:darkgreen'>^[-+]?[0-9]*\.?[0-9]+$</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+If you don't understand the regular expression language then that will probably
+look like a random set of symbols, and believe me when I say that is actually a
+simple example of a regular expression! Fortunately, you can trust for now that
+the pattern is correct, and that we can use this in STRREGEX. The function
+above can be modified to the following: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_fpmatch]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>IF (STRREGEX(^[-+]?[0-9]*\.?[0-9]+$, &lt;ARGS&gt;))</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;&nbsp;&nbsp; SERV.LOG &lt;ARGS&gt; is a floating point
+number.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ELSE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;&nbsp;&nbsp; SERV.LOG &lt;ARGS&gt; is NOT a floating
+point number.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ENDIF</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+As complicated as that looks it does the job well. For example it matches
+values such as &quot;1.5&quot;, &quot;-250.002&quot;, &quot;50&quot;, and even
+&quot;.007&quot;! </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

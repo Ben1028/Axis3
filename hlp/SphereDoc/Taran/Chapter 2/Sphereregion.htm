@@ -1,0 +1,269 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Sphere_region.scp</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>Sphere_region.scp</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>This script deals with the caracteristics of
+the places, like what you can mine or lumber, what happens when you enter that
+place and that kind of things. It also contains most of the resources sections.
+Let's start by explaining those: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>[REGIONRESOURCE
+x]</span><span lang=EN> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+This section contains the the skill needed to gather that resource, what
+resource it gives to the player and the time for it to regen. Let's take a look
+at this example (you'll see a commented text &quot;//t_tree&quot; if you have
+read the previous chapter you'll surelly know what this is, it's a defname) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkgreen'>[REGIONRESOURCE mr_tree]</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+lumberjacking default</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+t_tree</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>SKILL=1.0,80.0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>AMOUNT=9,30</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>REAP=i_log</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>REGEN=60*60*10</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Basically this section defines a resource, something that you can gather from
+the landscape. It compares skill and amount. This particular one says that you
+may gather a maximum of 9 logs at 1.0 skill and a maximum of 30 logs at 80.0
+skill. Anything after that simply increases your chances of getting 30 logs.
+See that SKILL line? The syntax is SKILL=lower,high. And the AMOUNT line sets
+the AMOUNT=min,max. How does it know what to give you? This line: <span
+style='color:darkred'>REAP=i_log</span>. This tells the server to create an
+i_log item if this resource is taken. So you can put anything you want to be
+gatherable in this REAP setting. The next line, REGEN, defines how long this
+resource will take to reappear, in seconds. As we can see here, it's 60*60*10
+seconds, or 10 hours. As a GM, if you walk around where players have been
+chopping wood or mining, you'll see little worldgem bits all over the ground.
+They look like spawnpoints, but are really resource markers. They mark where a
+specific resource has been gathered, how much has been gathered, and what type
+of resource it is. They also have a <span style='color:darkgreen'>TIMER</span>
+which counts down from this very high number (36000) and then decay when it
+reaches zero. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkgreen'>[REGIONTYPE r_default_rock t_rock]</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//Random
+rocks</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=100.0
+mr_nothing</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=500.0
+mr_iron</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//RESOURCES=6.0
+mr_rusty</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//RESOURCES=6.0
+mr_old_copper</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//RESOURCES=6.0
+mr_dull_copper</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//RESOURCES=4.5
+mr_bronze</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=5.0
+mr_copper</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=2.0
+mr_gold</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=1.0
+mr_rose</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=2.0
+mr_agapite</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=1.0
+mr_bloodrock</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=1.0
+mr_silver</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=0.5
+mr_verite</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=0.2
+mr_Valorite</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=0.1
+mr_mytheril</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=0.1
+mr_blackrock</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=0.1
+mr_diamond</span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN>Wow, you must be saying. What are all these
+things? mr_iron? mr_agapite? I don't see those anywhere in the file. Now, I bet
+you'll go to sphere_defs.scp to see if they are DEFNAMEs for something else. And
+the truth is, they are, but the definitions can be found in sphereitem_ore.scp.
+</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RESOURCES=50.0
+mr_iron</span><span lang=EN> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+This should look slightly familiar. Would it look even more familiar if the
+whole thing looked like this? </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>RESOURCES={ mr_iron 50 mr_copper 5 mr_gold 2 mr_rose 2 ...etc...
+}</span><span lang=EN> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+I bet it would, if you were paying attention during the earlier lessons in
+Chapter 1. This is a weighted list of resources, in a slightly different format
+than you're used to. But it works exactly the same way. It's also one of the
+ONLY places in SPHERE scripting that you can use fractional numbers like 0.1 or
+0.2. Actually you can't use them here either, but SPHERE successfully hides
+this as long as you use them in ALL of the <span style='color:darkgreen'>RESOURCES</span>.
+(By the way, do not try to script a <span style='color:darkgreen'>RESOURCES</span>
+identifier as a random selector. SPHERE wont like that. Use the format provided
+to you.) </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='color:darkgreen'>[REGIONTYPE
+r_default_rock t_rock]</span><span lang=EN> <i>Understanding:</i> That
+r_dafault_rock defines the defname of that <span style='color:darkgreen'>REGIONTYPE</span>,
+which is how you'll access it in other scripts (wait for next section =P). The
+t_rock is the defname (see <span style='color:darkblue'>sphere_defs.scp</span>
+for it) of the type of a rock, which shows sphere where your players can gather
+that resource (you could change it to t_water so they could mine ores on water,
+which isn't a good idea actually&nbsp;:P) </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN>Hopefully that clears up the sphere_region.scp
+file for you. We'll tell you in the next section how to use these REGIONTYPE
+settings to make resources actually available in game. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

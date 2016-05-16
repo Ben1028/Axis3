@@ -1,0 +1,474 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Making Decisions</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>Making Decisions</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>It was an amazing day when someone showed this
+script to me. This was actually the script that tested the &quot;new&quot;
+scripting system in version .37. SPHERE wasn't even SPHERE then. It was called
+&quot;Grayworld&quot; and was on menasoft.com. Actually, I believe it was in
+the Admin FAQ that they used to have on the website. Here it is, updated to 56b
+format: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[TYPEDEF T_VEND_MACHINE]</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>// Some other trigger.</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>// Vending machine.</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ON=@DCLICK </span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>IF (&lt;SRC.RESTEST 10 i_gold&gt;)</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM={ i_HAM 1 i_fruit_apple 1 i_bread_loaf 1
+i_bacon_slice 1 i_RIBS_COOKED 1 i_SAUSAGES 1}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.BOUNCE &lt;NEW.UID&gt; // put it in your pack.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CONSUME 10 i_gold</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.MESSAGE That will be 10 Gold Thank Thee.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SOUND 0F7</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ELSE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MESSAGE You lack 10 Gold to pay.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ENDIF</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN 1</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Put this script into one of your files and resync your server. I like to use
+spheretrig.scp for test triggers like this. Now, in the game, type <span
+style='color:darkred'>.set type t_vend_machine</span> and target any item (like
+a door). Then double-click it and watch what happens. If you get the &quot;not
+enough gold&quot; message, <span style='color:red'>.add</span> yourself some
+i_gold, and try again. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+See the result of this simple little script? It's got a lot that we've
+dicussed, and even more that we haven't. First, you may notice the use of this
+strange IF construction. You will use this again and again, so pay attention!
+The IF structure looks like this: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>IF (1 or 0)</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>// Execute these lines if 1</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ELIF (1 or 0)</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>// Execute these lines if the first wasn't 1, but this one is</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>// You can have as many ELIFs as you need</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ELSE</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>// Execute if none of the above are 1</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ENDIF</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Always, always, always, always pair your IF with an ENDIF. It doesn't matter
+what's in the middle. You can have eight hundred ELIFs and an ELSE. But ALWAYS
+be sure your IF is paired somewhere with an ENDIF. Actually those are the only
+two required parts of this construction. ELSE and ELIF are completely optional,
+and you should only use them if they are absolutely needed. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+So what is this &quot;1 or 0&quot; thing? How does it help me in my scripting
+if I'm just typing a 1 or a 0 in there? Actually, you will NEVER type a 1 or a
+0 in there, and this is a perfect time to introduce the equivalence test
+operators. Here they are: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>==</b> </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>equal to</b> </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>!=</b> </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>not equal to</b> </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>&gt; </b></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>greater than</b> </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>&lt; </b></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>less than</b> </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>&lt;=</b> </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>less than or equal to</b> </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>&gt;=</b> </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>greater than or equal to </b></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN>1 = true</span></b><span lang=EN><br>
+<b>0 = false</b></span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+I've put this table in bold since it's so incredibly important. And here is
+another SPHERE principle: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Do not use == and = interchangably in an IF statement. SPHERE actually
+allows this, but you will get confused and use == where you mean =, and vice
+versa.</b> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Here is an example of using a equivalence operator in an IF statement: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>IF (&lt;SRC.STR&gt; == 75)</span><span lang=EN> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Read this &quot;If src.str is equal to 75&quot;. Want to know something
+interesting? Internally, if SRC.STR is in fact equal to 75, SPHERE will replace
+the ENTIRE part inside the parentheses with a 1. If it is not equal to 75,
+SPHERE will replace that part with a 0. That's where your 1 and 0 comes from. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Now you may be wondering, what the &lt; &gt; brackets around &lt;SRC.STR&gt;
+are doing there. Actually, this is one of the most elusive concepts in SPHERE
+scripting. The &lt; &gt; brackets mean &quot;Replace whatever is inside with
+the actual value of that thing.&quot; This is done before any testing is
+executed. Say SRC.STR has been set to 71. Here are the steps SPHERE takes in
+simplifying this IF statement: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>1. IF (&lt;SRC.STR&gt; == 75)</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>2. IF (71 == 75)</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>3. IF (0)</span></p>
+
+<p class=MsoNormal><span lang=EN>Notice above in the example script that we
+have this statement: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>&lt;SRC.RESTEST 10 i_gold&gt;</span><span lang=EN> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+&quot;What the heck is <span style='color:darkred'>RESTEST</span>?&quot; <span
+style='color:darkred'>RESTEST</span> is what we call a function. It takes
+parameters (in this case an amount and an item ID) and returns a value. SPHERE
+replaces the entire function statement &lt;SRC.RESTEST 10 i_gold&gt; with that
+value. RESTEST checks to see if the player has an amount of the item specified
+greater than the amount specified: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+&quot;Does the player have an amount of i_gold equal to or greater than
+10?&quot; is what the function asks. Internally SPHERE says &quot;Yes&quot; and
+replaces it with a 1, or &quot;No&quot; and replaces it with a 0. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Say the player had 9 gold in his backpack. Here is the simplification of the IF
+statement: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>1. IF (&lt;SRC.RESTEST 10 i_gold&gt;)</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>2. IF (0)</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+We'll see in later chapters how to define our own functions, give them
+parameters and have them return a value! </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+I hope you have a general understanding of the <span style='color:darkred'>IF</span>
+statement now. Here is a more complex example for you to analyze: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>IF (&lt;SRC.STR&gt; &gt; 60)</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.SYSMESSAGE Your strength is greater than 60.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ELIF (&lt;SRC.STR&gt; &gt; 40)</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.SYSMESSAGE Your strength is greater than 40, but less than
+60.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ELIF (&lt;SRC.STR&gt; &gt; 20)</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.SYSMESSAGE You are a weakling with between 20 and 40
+strength.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ELSE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.SYSMESSAGE Start lifting weights because your strength is
+less than 20!</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ENDIF</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+What does this do? Well first, SPHERE looks at the IF statement, and says
+&quot;Is the value of SRC.STR greater than 60?&quot; If the answer is no,
+SPHERE replaces that with a 0, and jumps down to the first ELIF. &quot;Is the
+value of SRC.STR greater than 40?&quot; If not, it jumps down to the next one.
+&quot;Is the value of SRC.STR greater than 20?&quot; If not, it looks for
+further ELIFs. Unable to find them, it jumps to the ELSE statement, since
+nothing above was true. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+SYSMESSAGE prints out a message to the corner of the screen of the referenced
+object. In this case, that's SRC. Earlier, you saw an example involving the
+MESSAGE function. It prints the message above the object referenced. If the
+object is inside of a closer container, it does a SYSMESSAGE to the topmost
+container object. This means that if an item in a backpack is given a MESSAGE
+command, and the backpack is not opened, the player will see the message in the
+corner of his screen. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><b><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>SYSMESSAGE</span></b><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkred'> [text]</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'><br>
+</span><b><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>MESSAGE</span></b><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkred'> [text]</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'><br>
+</span><b><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>RESTEST</span></b><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkred'> [amount] [item]</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'><br>
+</span><b><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>NEWITEM</span></b><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkred'> [item]</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'><br>
+</span><b><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>BOUNCE</span></b><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkred'> // Put an item into the character's
+backpack</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Your first five functions. Congratuations. Actually, you saw another one in an
+earlier script! Remember what it is? </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><b><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>SAY</span></b><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkred'> [text]</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+This, of course, causes the object to SAY (so everyone can hear it) the text
+given. With MESSAGE and SYSMESSAGE, the text is private to a single client.
+MESSAGE text is only visible to the SRC. (In other words, LINK.MESSAGE or
+SRC.TARG.MESSAGE will show a message over LINK or SRC.TARG that only SRC can
+see!) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+So finally, what is this weird <span style='color:darkred'>RETURN 1</span> at
+the end of the script? </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+RETURN is used in a variety of ways. In the case of an event script, if you
+RETURN 1, it prevents the default action from happening. For example, if you
+put this on an item in the game and double-click it, it doesn't actually try to
+use the item too. It just executes the double-click script. (To a player it
+would look like he was using the item, but we know better.) If you change it to
+RETURN 0, it would try to use the item too, realize it had no idea what to do
+with this item, and say &quot;You are not sure how to use this item&quot; or
+something like that. Either way, the script ends as soon as it sees a RETURN
+statement. The distinction between RETURN 1 and RETURN 0 is even more clear in
+character events, and I shall make an effort to point that out at the time. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

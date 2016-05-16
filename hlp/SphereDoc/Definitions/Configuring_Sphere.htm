@@ -1,0 +1,1074 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta name="generator" content="MediaWiki 1.14.0" />
+		<meta name="keywords" content="Configuring Sphere.ini,De:Configuring Sphere.ini,En:Configuring Sphere.ini,Configuring Sphere.ini,Es:Configuring Sphere.ini,Fr:Configuring Sphere.ini,Ja:Configuring Sphere.ini,Tr:Configuring Sphere.ini,Wiki Translation,File" />
+		<link rel="alternate" type="application/x-wiki" title="Edit" href="http://wiki.sphere.torfo.org/index.php?title=Configuring_Sphere.ini&amp;action=edit" />
+		<link rel="edit" title="Edit" href="http://wiki.sphere.torfo.org/index.php?title=Configuring_Sphere.ini&amp;action=edit" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.php" title="SphereWiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="SphereWiki RSS Feed" href="http://wiki.sphere.torfo.org/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="SphereWiki Atom Feed" href="http://wiki.sphere.torfo.org/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Configuring Sphere.ini - SphereWiki</title>
+		<link rel="stylesheet" href="/skins/common/shared.css?195" type="text/css" media="screen" />
+		<link rel="stylesheet" href="/skins/common/commonPrint.css?195" type="text/css" media="print" />
+		<link rel="stylesheet" href="/skins/monobook/main.css?195" type="text/css" media="screen" />
+		<!--[if lt IE 5.5000]><link rel="stylesheet" href="/skins/monobook/IE50Fixes.css?195" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 5.5000]><link rel="stylesheet" href="/skins/monobook/IE55Fixes.css?195" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 6]><link rel="stylesheet" href="/skins/monobook/IE60Fixes.css?195" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 7]><link rel="stylesheet" href="/skins/monobook/IE70Fixes.css?195" type="text/css" media="screen" /><![endif]-->
+		<link rel="stylesheet" href="/index.php?title=MediaWiki:Common.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=18000&amp;action=raw&amp;maxage=18000" type="text/css" />
+		<link rel="stylesheet" href="/index.php?title=MediaWiki:Print.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=18000&amp;action=raw&amp;maxage=18000" type="text/css" media="print" />
+		<link rel="stylesheet" href="/index.php?title=MediaWiki:Monobook.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=18000&amp;action=raw&amp;maxage=18000" type="text/css" />
+		<link rel="stylesheet" href="/index.php?title=-&amp;action=raw&amp;maxage=18000&amp;smaxage=0&amp;ts=20120630142713&amp;gen=css" type="text/css" />
+		<!--[if lt IE 7]><script type="text/javascript" src="/skins/common/IEFixes.js?195"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+
+		<script type= "text/javascript">/*<![CDATA[*/
+		var skin = "monobook";
+		var stylepath = "/skins";
+		var wgArticlePath = "/index.php/$1";
+		var wgScriptPath = "";
+		var wgScript = "/index.php";
+		var wgVariantArticlePath = false;
+		var wgActionPaths = {};
+		var wgServer = "http://wiki.sphere.torfo.org";
+		var wgCanonicalNamespace = "";
+		var wgCanonicalSpecialPageName = false;
+		var wgNamespaceNumber = 0;
+		var wgPageName = "Configuring_Sphere.ini";
+		var wgTitle = "Configuring Sphere.ini";
+		var wgAction = "view";
+		var wgArticleId = "20";
+		var wgIsArticle = true;
+		var wgUserName = "Ben";
+		var wgUserGroups = ["*", "user", "autoconfirmed"];
+		var wgUserLanguage = "en";
+		var wgContentLanguage = "en";
+		var wgBreakFrames = false;
+		var wgCurRevisionId = "691";
+		var wgVersion = "1.14.0";
+		var wgEnableAPI = true;
+		var wgEnableWriteAPI = true;
+		var wgSeparatorTransformTable = ["", ""];
+		var wgDigitTransformTable = ["", ""];
+		var wgRestrictionEdit = [];
+		var wgRestrictionMove = [];
+		var wgAjaxWatch = {"watchMsg": "Watch", "unwatchMsg": "Unwatch", "watchingMsg": "Watching...", "unwatchingMsg": "Unwatching..."};
+		/*]]>*/</script>
+
+		<script type="text/javascript" src="/skins/common/wikibits.js?195"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/skins/common/ajax.js?195"></script>
+		<script type="text/javascript" src="/skins/common/ajaxwatch.js?195"></script>
+		<script type="text/javascript" src="/index.php?title=-&amp;action=raw&amp;smaxage=0&amp;gen=js&amp;useskin=monobook"><!-- site js --></script>
+	</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Configuring_Sphere_ini skin-monobook">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 id="firstHeading" class="firstHeading">Configuring Sphere.ini</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From SphereWiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<div style="margin: 0px; padding: 2px 2px 0px 2px; border: none; border-collapse:collapse; clear:both;">
+<span style="float:right; font-weight:normal; font-size: x-small;"><a href="/index.php/Wiki_Translation" title="Wiki Translation">Help</a></span><div style="background-color:#e9e9e9; border-style:solid; border-width:1px; border-color:#aaa; padding: 0pt 4pt 8pt 4pt; font-size: 95%; text-align:center;"><b>Available languages</b></div>
+<div style="border: 1px solid #aaa; background-color: #f9f9f9; border-collapse:collapse; font-size: 95%; padding: 2pt 4pt 2pt 4pt; margin: 0px;">        • <span lang="de"><a href="/index.php/De:Configuring_Sphere.ini" title="De:Configuring Sphere.ini">Deutsch</a></span>  • <span lang="en"><strong class="selflink">English</strong></span>                                         
+</div>
+</div>
+<div class="NavFrame" style="border:none; clear:none; margin: 0px; padding-top: 0px;">
+<div class="NavHead" style="background-color:#e9e9e9; border-style:solid; border-width:1px; border-color:#aaa; margin: 0px; padding: 0pt 4pt 8pt 4pt; font-size: 95%;"><b>Missing languages</b></div>
+<div class="NavContent" style="border: 1px solid #aaa; background-color: #f9f9f9; border-collapse:collapse; font-size: 95%; padding: 2pt 4pt 2pt 4pt;">            • <span lang="es"><a href="/index.php?title=Es:Configuring_Sphere.ini&amp;action=edit&amp;redlink=1" class="new" title="Es:Configuring Sphere.ini (page does not exist)">Español</a></span>    • <span lang="fr"><a href="/index.php?title=Fr:Configuring_Sphere.ini&amp;action=edit&amp;redlink=1" class="new" title="Fr:Configuring Sphere.ini (page does not exist)">Français</a></span>           • <span lang="ja"><a href="/index.php?title=Ja:Configuring_Sphere.ini&amp;action=edit&amp;redlink=1" class="new" title="Ja:Configuring Sphere.ini (page does not exist)">日本語</a></span>                  • <span lang="tr"><a href="/index.php?title=Tr:Configuring_Sphere.ini&amp;action=edit&amp;redlink=1" class="new" title="Tr:Configuring Sphere.ini (page does not exist)">Türkçe</a></span>     
+</div>
+</div><div class="NavFrame" style="border:none;display:none;"></div>
+<p><br />
+Sphere.ini contains all of the internal options for the Sphere emulator. In order to configure your shard, this is the file you will start with. The file itself is pretty self-explanatory, but in order to avoid common mistakes, we're going to add more explanatory comments throughout the file. Comments and additions/changes will be in <tt><font color="darkblue"><b>bold blue text</b></font></tt>.
+</p><p><br />
+Remember to uncomment every line you're gonna use. Example:
+</p><p><br />
+If you want to use additional map2, this:
+</p><p><br />
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">// MAP2=2304,1600,32,2
+</pre>
+<p><br />
+Should be this:
+</p><p><br />
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">MAP2=2304,1600,32,2
+</pre>
+<p><br />
+And so on, with every setting you want to use (MySQL, AutoResdisp, etc).
+</p><p><br />
+Let's check the sphere.ini file!
+</p><p><br />
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">//****************************************************************************
+// SPHERE by&nbsp;: Menasoft 1997-2003
+// www.sphereserver.com
+// All SPHERE script files and formats are copyright Menasoft &amp; Partners.
+// This file may be freely edited for personal use, but may not be distributed
+// in whole or in part, in any format without express written permission from
+// Menasoft &amp; Partners.  All donations and contributions
+// become the property of Menasoft &amp; Partners.
+//****************************************************************************
+
+///////////////////////////////////////////////////////////////
+//////// General Information
+///////////////////////////////////////////////////////////////
+
+[SPHERE]
+// Name of your Sphere shard
+ServName=MyShard
+// The IP of your server, this will be 127.0.0.1 almost always
+ServIP=127.0.0.1
+// The port of your server, this is 2593 by default
+ServPort=2593
+
+// Admin's contact email
+AdminEmail=me@my.email.com
+// Web page for this server
+URL=www.myshard.com
+// GMT offset, from -12 to +12 [London=0, EST=5, etc]
+TimeZone=0
+
+// Official staff language
+Lang=English
+// Start this as a system service on Win2000, XP, NT
+</pre>
+<p><tt><font color="darkblue"><b>// Enabling this also removes the ability to use the console</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">NTService=0
+
+// MySql configuration.
+</pre>
+<p><tt><font color="darkblue"><b>// If you want to enable MYSQL, set 1</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">//MYSQL=0
+</pre>
+<p><tt><font color="darkblue"><b>// This is where the MySQL host is located, localhost if it's on the same machine</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">//MySqlHost=
+</pre>
+<p><tt><font color="darkblue"><b>// The username for the desired database</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">//MySqlUser=
+</pre>
+<p><tt><font color="darkblue"><b>// The password for the user</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">//MySqlPassword=
+</pre>
+<p><tt><font color="darkblue"><b>// The name of the database. This is _NOT_ the host, you must set the name of the DB</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">//MySqlDatabase=
+
+///////////////////////////////////////////////////////////////
+//////// File Locations
+///////////////////////////////////////////////////////////////
+// Directory where spheretables.scp is located, from there we will
+// load any additional scripts
+</pre>
+<p><tt><font color="darkblue"><b>// This can be used to load the same script pack,</b><br />
+<b>// using a different .exe for testing.</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">ScpFiles=scripts/
+
+// Where your sphereworld.scp and spherechars.scp are located
+WorldSave=save/
+
+// Where your sphereaccu.scp and sphereacct.scp is located
+AcctFiles=accounts/
+
+// Where your UO installation is located. This need: map0.mul, statics0.mul,
+//  staidx0.mul, multi.mul, multi.idx, hues.mul, tiledata.mul.
+// Optional files: verdata.mul, mapX.mul/staticsX.mul/staidxX.mul for higher
+//  maps support (Malas, etc).
+//
+// Note that if not set, sphere will scan windows registry to auto-detect it
+//MulFiles=mul/
+
+// Where your log files will be saved by sphere
+Log=logs/
+
+// To activate ML-sized map #0 uncomment the next line (don't forget to uncomment
+// sphere_map0_ml.scp and sphere_map_points0_ml.scp in spheretables.scp if you want
+// to use the default areas)
+//Map0=7168,4096,-1,-1
+
+// To activate ML-sized map #1 uncomment the next line
+//Map1=7168,4096,-1,-1
+
+// To enable the use of MapDif*.mul and StaDif*.mul files, set this to 1.
+</pre>
+<p><tt><font color="darkblue"><b>// Some kind of map patches, used for Map0 and Map1, for example.</b><br />
+<b>// The island Occlo (Map0) is Haven in Map1. This option handles that.</b><br />
+<b>// More recent client versions no longer use map patches, since a separate MAP1.MUL file was</b><br />
+<b>// added to the UO installation.</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">UseMapDiffs=0
+
+///////////////////////////////////////////////////////////////
+//////// World Save Information
+///////////////////////////////////////////////////////////////
+// How often for Sphere to save your world (minutes)
+SavePeriod=20
+
+// How many backup levels to keep. Each level means 7 backups done for it.
+// So, 10*7 = 70 backup saves will be storied.
+BackupLevels=10
+
+// On would save in the background quietly over a longer period of time, and not interrupt the game
+// Off would notify &quot;World save has been initiated&quot; and save faster, but pause the game momentarily
+SaveBackground=0
+
+///////////////////////////////////////////////////////////////
+//////// Account Management
+///////////////////////////////////////////////////////////////
+//Code for servers account application process
+//  0=Closed,       // Closed. Not accepting more.
+//  2=Free,         // Anyone can just log in and create a full account.
+//  3=GuestAuto,    // You get to be a guest and are automatically sent email with u're new password.
+//  4=GuestTrial,   // You get to be a guest til u're accepted for full by an Admin.
+//  6=Unspecified,  // Not specified.
+// To enable auto account you must set this to 2
+AccApp=0
+
+// Store password hashed with MD5
+</pre>
+<p><tt><font color="darkblue"><b>// MD5 is a safer way to store passwords. <a href="http://en.wikipedia.org/wiki/MD5" class="external text" title="http://en.wikipedia.org/wiki/MD5" rel="nofollow">More Information</a></b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">Md5Passwords=0
+
+// local ip is assumed to be the admin
+LocalIPAdmin=1
+
+// Default number of chars allowed per account (maximum value is 7)
+MaxCharsPerAccount=5
+
+// Min time for a char to exist before delete allowed (in seconds)
+MinCharDeleteTime=3*24*60
+
+// Max number of Guest accounts allowed
+GuestsMax=0
+
+// Max login tries for account before a temporary ban (0 is disabled)
+</pre>
+<p><tt><font color="darkblue"><b>// Like on some paid forums, this is useful.</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">MaxAccountLoginTries=0
+
+///////////////////////////////////////////////////////////////
+//////// Client Management
+///////////////////////////////////////////////////////////////
+// What client protocol version used
+// Comment out the ClientVersion line to allow any client that is supported.
+//ClientVersion=2.0.3
+
+// Set this to 0 to allow login to encrypted clients
+</pre>
+<p><tt><font color="darkblue"><b>// The official clients use encryption.</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">UseCrypt=1
+
+// Set this to 1 to allow login to unencrypted clients
+</pre>
+<p><tt><font color="darkblue"><b>// You can use tools such as <a href="http://stud4.tuwien.ac.at/~e9425109/UO_RICE.htm" class="external text" title="http://stud4.tuwien.ac.at/~e9425109/UO_RICE.htm" rel="nofollow">UO Rice</a> and <a href="http://www.uogateway.com/" class="external text" title="http://www.uogateway.com/" rel="nofollow">UOGateway</a> to remove encryption on a client.</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">UseNoCrypt=0
+
+// Maximum total open connections to server
+ClientMax=256
+
+// Maximum open connections to server per IP
+ClientMaxIP=16
+
+// Maximum total (not-in-game) connections to server
+ConnectingMax=32
+
+// Maximum total simultaneous (not-in-game) connections to server per IP
+ConnectingMaxIp=8
+
+// How long logged out clients linger in seconds
+ClientLinger=15
+
+// Walk limiting code: buffer size (in tenths of second)
+WalkBuffer=75
+
+// Walk limiting code: regen speed (%)
+WalkRegen=25
+
+// Only commands issued by this plevel and higher will be logged
+</pre>
+<p><tt><font color="darkblue"><b>// With zero it will log EVERY command used.</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">CommandLog=0
+
+// Prefix for ingame commands
+CommandPrefix=.
+
+// Function to call if client is executing a command to override the default.
+//CommandTrigger=f_oncommand
+
+// Use the built in http server
+// 0 - disable http server and webpage generation
+// 1 - disable http server and enable webpage generation
+// 2 - enable http server and webpage generation (default)
+UseHttp=2
+
+// Use the OSI AuthID to avoid possible hijack to game server.
+UseAuthID=0
+
+// Default setting for all accounts specifying default resdisp.
+</pre>
+<p><tt><font color="darkblue"><b>// 0=Pre-T2A, 1=T2A, 2=LBR, 3=AoS, 4=SE, 5=ML</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">//AutoResDisp=1
+
+// Default setting for new accounts specifying default priv level
+//AutoPrivFlags=010
+
+// Max tooltip (if enabled) to send on each tick (to avoid client flooding)
+//MaxTooltipForTick=7
+
+// How often send my hits updates to visible clients (in seconds)
+//HitsUpdateRate=1
+
+///////////////////////////////////////////////////////////////
+//////// Game Mechanics
+///////////////////////////////////////////////////////////////
+
+// Maximum distance to hear char whispering
+//DistanceWhisper=3
+
+// Maximum distance to hear char talking
+//DistanceTalk=18
+
+// Maximum distance to hear char yelling
+//DistanceYell=31
+
+// Do not allow entering under roof being on horse?
+MountHeight=0
+
+// Archery does not work if too close (0 = not checked)
+ArcheryMinDist=2
+
+// Maximum Distance for Archery
+ArcheryMaxDist=15
+
+// Speed scale factor for weapons
+</pre>
+<p><tt><font color="darkblue"><b>// The formula is DELAY = SPEEDSCALEFACTOR / ((DEX + 100) * SPEED)</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">SpeedScaleFactor=15000
+
+// This is the percent of max weight at which stamina is lost half the time
+// (200 = no effect)
+StaminaLossAtWeight=150
+
+// Weight penalty for running +N% of max carry weight (0 = no effect)
+RunningPenalty=50
+
+// Show people joining/leaving the server. 0 disables, 2 enables staff only.
+ArriveDepartMsg=1
+
+// Are house and boat keys newbied automatically
+AutoNewbieKeys=1
+
+// Maximum number of items allowed in bank
+BankMaxItems=1000
+
+// Maximum weight in stones allowed in bank
+BankMaxWeight=1000
+
+// If 1 vendors will take gold only from backpack
+</pre>
+<p><tt><font color="darkblue"><b>// If 0 vendors will take gold from bank and backpack</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">PayFromPackOnly=0
+
+// Disable weather effects?
+NoWeather=1
+
+// Default light level in dungeons
+</pre>
+<p><tt><font color="darkblue"><b>// 0 = Bright; 3 = Dark.</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">DungeonLight=27
+
+// Day light level 0-30
+LightDay=0
+
+// Night light level 0-30
+LightNight=25
+
+// Allow manual sector light override?
+//AllowLightOverride=1
+
+// Wool Regen Time (in minutes)
+WoolGrowthTime=30
+
+// Suppress player speech with 75% of capital letters
+</pre>
+<p><tt><font color="darkblue"><b>// "LETZ AVOID L337 SP33CH DEWD." Will not be displayed.</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">SuppressCapitals=0
+
+// Extra combat flags to control the fight (default:0, 0.55i compatible)
+// COMBAT_NODIRCHANGE              00001 // Not rotate player when fighting (like was in 0.51a)
+// COMBAT_FACECOMBAT               00002 // Allow faced combat only (recommended)
+// COMBAT_PREHIT                   00004 // allow prehit for close combat. first hit is instant (delay 0.1sec)
+// COMBAT_USE_RESISTANCE           00008 // use character props RES* against oldfashioned damage types
+// COMBAT_SPECIALDAMAGE            00010 // use character tags TAG.*DAMAGE to apply additional damage
+// COMBAT_DCLICKSELF_UNMOUNTS      00020 // unmount horse when dclicking self while in warmode
+// COMBAT_ALLOWHITFROMSHIP         00040 // Allow attacking opponents from ships
+// COMBAT_OSIDAMAGEMOD             00080 // modify weapon damage OSI-style (taking anatomy, tactics, lumberjacking into account)
+// COMBAT_ARCHERYCANMOVE           00100 // firing bow while moving
+// COMBAT_STAYINRANGE              00200 // abort attack swing when out of range instead of waiting to come back in range
+//
+// COMBAT_STACKARMOR               01000 // If a region is covered by more than one armor part, all AR will count
+// COMBAT_TARGETTEDHIT             02000 // Allows setting of preferred hit area by TAG.HITPREFERENCE
+//CombatFlags=0
+
+// Extra magic flags to control magic/magery behaviour (default:0, 0.55i compatible)
+// MAGICF_NODIRCHANGE        = 0x0000001 // Not rotate player when casting/targeting
+// MAGICF_PRECAST            = 0x0000002 // Precasting (cast spell before target prompt)
+// MAGICF_IGNOREAR           = 0x0000004 // Magic damage ignore ar
+// MAGICF_CANHARMSELF        = 0x0000008 // Magic can do damage on self
+// MAGICF_STACKSTATS         = 0x0000010 // Different stat spells don't cancel each other out
+// MAGICF_FREEZEONCAST       = 0x0000020 // No movement whilst casting
+// MAGICF_SUMMONWALKCHECK    = 0x0000040 // Summoned creatures should be able to walk on the target location (e.g. water creatures to be summoned on water)
+// MAGICF_NOFIELDSOVERWALLS  = 0x0000080 // Field spells cannot cross over blocking objects
+//MagicFlags=0
+
+// Length of time (in seconds) for a player to choose a target when casting (0 = no timeout)
+SpellTimeout=0
+
+// Zero point for sextant coordinates counting
+//ZeroPoint=1323,1624,0
+
+// How far from land i can be to take off a ship
+//MaxShipPlankTeleport=18
+
+///////////////////////////////////////////////////////////////
+//////// NPC/Item/Player Management
+///////////////////////////////////////////////////////////////
+// Distance in tiles before an NPC that's wandered too far from it's home will teleport back
+LostNPCTeleport=50
+
+// Whether PCs get a resurrection robe when they get resurrected.
+NoResRobe=0
+
+// Time for a NPC corpse to decay mins
+CorpseNPCDecay=10
+
+// Time for a player corpse to decay mins
+CorpsePlayerDecay=15
+
+// Base decay time in minutes for items
+DecayTimer=30
+
+// Put [NPC] tags over chars
+</pre>
+<p><tt><font color="darkblue"><b>// And [TAME] if the character is tamed.</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">CharTags=0
+
+// Flip dropped items
+FlipDroppedItems=0
+
+// Set to 1 to allow players to take equipment from their pets' paperdoll
+CanUndressPets=1
+
+// Monsters run when scared of death
+MonsterFear=0
+
+// Monsters may fight each other
+MonsterFight=0
+
+// Percent setting of the all NPC move rate, default 100
+MoveRate=100
+
+// Do players receive sounds
+GenericSounds=1
+
+// Max number of items to sell to one person at once
+VendorMaxSell=255
+
+// Max level npc trainers can go
+</pre>
+<p><tt><font color="darkblue"><b>// Remember that in skills: 300 = 30.0</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">NPCTrainMax=300
+
+// Percent of own ability npcs can train to
+NPCTrainPercent=30
+
+// NPC will not be addressed as &quot;Lord&quot; or such if this is set
+</pre>
+<p><tt><font color="darkblue"><b>// To avoid double title as: Lord Lord Knight</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">// NPCNoFameTitle=0
+
+// Max level of skill trainable on dummies, archery butte ecc..
+</pre>
+<p><tt><font color="darkblue"><b>// Remember that in skills: 300 = 30.0</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">SkillPracticeMax=300
+
+// Max skill player's will start with on skills they haven't chosen during
+// character creation
+</pre>
+<p><tt><font color="darkblue"><b>// If set to 0, players will start _only_ with their selected skills.</b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">MaxBaseSkill=200
+
+// If set to 0, the MaxBaseSkill will only apply to skills that the client
+// can see in their menu (based on Feature* settings, ResDisp and Client
+// Version). If this is set to 1 then players to start with all the skills
+// that have been defined.
+InitHiddenSkills=0
+
+// Time in seconds for hitpoint regeneration
+Regen0=40
+
+// Time in seconds for mana regeneration
+Regen1=20
+
+// Time in seconds for stamina regeneration
+Regen2=10
+
+// Time in minutes for food regeneration
+// 1*60*24 = 1 day of real life time
+Regen3=1*60*24
+
+// Speech block associated to players
+SpeechSelf=spk_player
+
+// Speech block associated to pets
+SpeechPet=spk_pet
+
+//Events related to all NPCs
+//EventsPet=your_event
+
+//Events related to all players
+//EventsPlayer=your_event
+
+//Events related to all regions
+//EventsRegion=your_event
+
+// When player skills/stats goes this times more than skillclass allowed, drop
+// them to skillclass level. Setting this to 0 disables the action.
+OverSkillMultiply=2
+
+// NPC AI settings
+// NPC_AI_PATH                  0001    NPC pathfinding
+// NPC_AI_FOOD                  0002    NPC food search (objects + grass)
+// NPC_AI_EXTRA                 0004    NPC magics, etc
+// NPC_AI_ALWAYSINT             0008    Always be as smart as possible with pathfinding
+// NPC_AI_INTFOOD               0010    NPC food search (more intelligent and trusworthy)
+// NPC_AI_COMBAT                0040    Look for friends in combat
+// NPC_AI_VEND_TIME             0080    vendors closing their shops at nighttime
+// NPC_AI_LOOTING               0100    loot corpses an the way
+// NPC_AI_MOVEOBSTACLES         0200    if moveable items block my way, try to move them
+//NPCAI=0
+
+///////////////////////////////////////////////////////////////
+//////// Crime/Murder/Karma/Fame/Guard Settings
+///////////////////////////////////////////////////////////////
+// Karma when player goes from good to neutral (from -10000 to 10000)
+PlayerNeutral=-2000
+
+// How many minutes are criminals flagged for
+CriminalTimer=3
+
+// Times a player can snoop before becoming a criminal
+SnoopCriminal=20
+
+// Seconds time to decay a murder count (default 8*60*60 is 8 hours)
+MurderDecayTime=8*60*60
+
+// Amount of murders before we get title
+MurderMinCount=1
+
+// Looting or carving a blue player is a crime
+LootingIsaCrime=1
+
+// Flag players criminal for helping criminals?
+HelpingCriminalsIsaCrime=1
+
+// How long do guards linger about in minutes
+GuardLinger=3
+
+// Will guards kill instantly or follow normal combat rules
+GuardsInstantKill=1
+
+// Limits the MAXHITS/MAXMANA/MAXSTAM changes
+// STAT_FLAG_NORMAL     0x00 // MAX* status allowed (default)
+// STAT_FLAG_DENYMAX    0x01 // MAX* denied
+// STAT_FLAG_DENYMAXP   0x02 //             .. for players
+// STAT_FLAG_DENYMAXN   0x04 //             .. for npcs
+StatsFlags=0
+
+// Uses the new LoS algorithm
+// ADVANCEDLOS_DISABLED   0x00 // Disabled, use the old method
+// ADVANCEDLOS_PLAYER     0x01 // Enabled only for players
+// ADVANCEDLOS_NPC        0x02 // Enabled only for NPCs
+AdvancedLos=0
+
+// Default color settings for characters (name, speech)
+//ColorNotoGood=063       // blue
+//ColorNotoGuildSame=044  // green (ally)
+//ColorNotoCriminal=03b2  // grey (criminal)
+//ColorNotoNeutral=03b2   // grey (can be attacked)
+//ColorNotoEvil=026       // red
+//ColorNotoGuildWar=02b   // orange (enemy guild)
+//ColorNotoDefault=03b2   // grey (if not any other)
+
+// Which notoriety flags do pets inherit from their masters? (default 0)
+// Set flags to indicate which notoriety statuses a pet can inherit from its owner.
+//  NotoGood      = 0x01  // blue
+//  NotoGuildSame = 0x02  // green (ally)
+//  NotoNeutral   = 0x04  // grey (can be attacked)
+//  NotoCriminal  = 0x08  // grey (criminal)
+//  NotoGuildWar  = 0x10  // orange (enemy guild)
+//  NotoEvil      = 0x20  // red
+// e.g. &quot;03a&quot; will show pets as criminal/warring/evil/allied when their master has
+//      one of these statuses, regardless of the pet's true notoriety.
+PetsInheritNotoriety=0
+
+///////////////////////////////////////////////////////////////
+//////// Server Mechanics
+///////////////////////////////////////////////////////////////
+// Experimental flags
+// Flags for options that affect server behaviour and which might affect compatibility
+// See the revisions.txt file for more details on this
+</pre>
+<p><tt><font color="darkgreen">// EF_DiagonalWalkCheck         = 00000001<br />
+// EF_UNICODE                   = 00000002 // No on Linux. <font color="darkblue"><b>Enables UNICODE fixes</b><br /></font>
+// EF_New_Triggers              = 00000008 <font color="darkblue"><b>// Adds more triggers</b><br /></font>
+// EF_Intrinsic_Locals          = 00000020 <font color="darkblue"><b>// Locals can be reference differently. &lt;LOCAL.X&gt; can be referenced as &lt;X&gt;.<br /></font></b>
+// EF_Item_Strict_Comparison    = 00000040<br />
+// EF_NewPositionChecks         = 00000080 // Do not set while server is running&nbsp;!!!<br />
+// EF_WalkCheck                 = 00000100 <font color="darkblue"><b>// Fixes house looting bugs, and other walkchecking related problems.</b><br /></font>
+// EF_AllowTelnetPacketFilter   = 00000200 // Enables packet filtering for telnet connections as well<br />
+// EF_Script_Profiler           = 00000400<br />
+// EF_Size_Optimise             = 00000800<br />
+// EF_Minimize_Triggers         = 00001000 // Minimize trigger calls (use only 0.51 triggers)<br />
+// EF_DamageTools               = 00002000 // damage tools (and fire @damage on them) while mining or lumberjacking<br />
+// EF_PetSlots			= 00004000 // INCOMPLETE YET! DO NOT USE until this warning is removed!<br />
+// EF_UsePingServer             = 00008000 // Enable the experimental Ping Server (for showing pings on the server list, uses UDP port 12000)<br />
+// EF_NPCAct_Triggers           = 00010000 // Enable @NPCSpecialAction and @NPCAction triggers (mutual exclusive with EF_Minimize_Triggers)<br />
+// EF_UseNetworkMultiVersion    = 00400000 // Modify EF_UseNetworkMulti so clients prior to 4.0.0 are unaffected (try this if you find EF_UseNetworkMulti negatively affects older clients). - Do not set while server is running&nbsp;!!!<br />
+// EF_UseNetworkMulti           = 00800000 // Enable optimized network routines (better) - Do not set while server is running&nbsp;!!!<br />
+// EF_Specific                  = 01000000 // Specific behaviour, not completly tested<br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">Experimental=00000
+
+// Option flags
+// Flags for options that affect server behaviour but not compatibility
+// See the revisions.txt file for more details on this
+</pre>
+<p><tt><font color="darkgreen">// OF_Command_Sysmsgs           = 00000008 //Shows status of hearall, allshow, allmove... commands after toggling them<br />
+// OF_OSIMultiSight             = 00000020<br />
+// OF_Items_AutoName            = 00000040<br />
+// OF_FileCommands              = 00000080 <font color="darkblue"><b>// This enables all FILE commands, information about this command is <a href="/index.php?title=File&amp;action=edit&amp;redlink=1" class="new" title="File (page does not exist)"> here</a></b><br /></font>
+// OF_NoItemNaming              = 00000100 <font color="darkblue"><b>// If enabled, prevents Sphere from naming crafted items ("Crafted by...")</b><br /></font>
+// OF_NoHouseMuteSpeech         = 00000200<br />
+// OF_Flood_Protection          = 00001000<br />
+// OF_Buffs                     = 00002000<br />
+// OF_NoPrefix                  = 00004000 // Add prefix "A" and "An" to itemnames or not<br />
+// OF_DyeType                   = 00008000 // if set allows using i_dye on all t_dye_vat instead of only i_dye_tub<br />
+// OF_DrinkIsFood               = 00010000 // type T_DRINK will increase FOOD lvl like T_FOOD<br />
+// OF_Specific                  = 01000000 // Specific behaviour, not completly tested<br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">OptionFlags=08|0200
+
+// FeatureT2A, used to control T2A expansion features ( default 03 )
+// FEATURE_T2A_UPDATE           01 // Monster and Lost lands
+// FEATURE_T2A_CHAT             02 // In game chat
+FeatureT2A = 03
+
+// FeatureLBR, used to control LBR expansion features ( default 0 )
+// FEATURE_LBR_UPDATE           01 // Lbr Monsters
+// FEATURE_LBR_SOUND            02 // MP3 instead of MIDI
+FeatureLBR = 0
+
+// FeatureAOS, used to control AOS expansion features ( default 0 )
+// FEATURE_AOS_UPDATE_A         01 // AOS Monsters, Map
+// FEATURE_AOS_UPDATE_B         02 // Tooltip, Fightbook, Necro/paladin on creation, Single/Six char selection screen, Skills, Newer spellbook support
+// FEATURE_AOS_POPUP            04 // PopUp Menus
+// FEATURE_AOS_DAMAGE           08
+FeatureAOS = 0
+
+// FeatureSE, used to control SE expansion features ( default 0 )
+// FEATURE_SE_UPDATE            01 // Basic SE features
+// FEATURE_SE_NINJASAM          02 // Ninja and Samurai
+FeatureSE = 0
+
+// FeatureML, used to control ML expansion features ( default 0 )
+// FEATURE_ML_UPDATE            01 // Basic ML features
+// FEATURE_ML_NINTHAGE          02 // Unlocks ninth age house designer items
+FeatureML = 0
+
+// FeatureKR, used to control KR expansion features ( default 0 ) (still not complete but usable)
+// FEATURE_KR_UPDATE            01 // Basic KR features
+FeatureKR = 0
+
+// In game effects to turn on and off
+// Messages echoed to the server console while in debug mode
+// DEBUGF_NPC_EMOTE     = 00001
+// DEBUGF_ADVANCE_STATS = 00002
+// DEBUGF_WALKCODES     = 00080 // try the new walk code checking stuff
+// DEBUGF_EXP           = 00200 // experience gain/loss
+// DEBUGF_LEVEL         = 00400 // experience level changes
+// DEBUGF_SCRIPTS       = 00800 // debug flag for scripts
+// DEBUGF_LOS           = 01000 // debug flag for AdvancedLOS
+// DEBUGF_WALK          = 02000 // debug flag for new walking check stuff
+//DebugFlags=00
+
+// Allow rapid Buy/Sell through Buy/Sell agent
+AllowBuySellAgent=0
+
+// Console Hears all that is said on the server
+HearAll=1
+
+// Secure mode attempts to ignore errors, protect from accidently shutdowns
+Secure=1
+
+// Value from 1 to 32, set sectors inactive when unused to conserve resources
+SectorSleep=10
+
+// Disconnect inactive socket in x min
+DeadSocketTime=5
+
+// Always force a full garbage collection on save
+ForceGarbageCollect=1
+
+// Time before restarting when server appears hung (in seconds)
+FreezeRestartTime=60
+
+// Length of the game world minute in real world in seconds
+GameMinuteLength=60
+
+// Bit Mask of the subjects you want to log when logging is on
+// LOGM_ACCOUNTS        0x00080
+// LOGM_SAVE            0x00200 // world save status.
+// LOGM_CLIENTS_LOG     0x00400 // all clients as they log in and out.
+// LOGM_GM_PAGE         0x00800 // player gm pages.
+// LOGM_PLAYER_SPEAK    0x01000 // All that the players say.
+// LOGM_GM_CMDS         0x02000 // Log all GM commands.
+// LOGM_CHEAT           0x04000 // Probably an exploit&nbsp;!
+// LOGM_KILLS           0x08000 // Log player combat results.
+// LOGM_HTTP            0x10000
+//                      0x1ffff // log everything
+LogMask=01ec80
+
+// Amount of time to keep map data cached in sec
+MapCacheTime=120
+
+// Max NPC chars for a sector to prevent lag
+MaxComplexity=32
+
+// Amount of items in one tile so start showing &quot;too many items here&quot;
+MaxItemComplexity=25
+
+// Amount of items in one sector to start showing &quot;x items too complex&quot;
+MaxSectorComplexity=1024
+
+// Limit the number of cycles the while/for loop can proceed. Setting this to
+// zero disables the limitation
+MaxLoopTimes=0
+
+// Amount of minutes to call f_onserver_timer (0 disables this, default)
+TimerCall=0
+
+// Should sphere record the time it takes to do actions like treating npcs, scripts, clients and such?
+// Can be viewed by right clicking the mouse on sphere screen.
+Profile=0
+
+///////////////////////////////////////////////////////////////
+//////// Magic/Effects Settings
+///////////////////////////////////////////////////////////////
+
+// Allow casting while equipped
+EquippedCast=1
+
+// Words of power for player using magic
+WOPPlayer=1
+
+// Words of power for staff using magic
+WOPStaff=0
+
+// Words of power font
+//WOPFont=3
+
+// Words of power color
+//WOPColor=03B2
+
+// Reagents lost if magic fails
+ReagentLossFail=0
+
+// Magic requires reagents
+ReagentsRequired=0
+
+// What&nbsp;% of hitpoints players will resurrect with. Note, that if you set this
+// too low, people with little STR will have problems resurrecting.
+HitPointPercentOnRez=33
+
+// How many&nbsp;% of hits will the character loose when starving. 0 disables
+//HitsHungerLoss=0
+
+// Amount of skill of lock picking needed to unlock a magically locked door
+MagicUnlockDoor=900
+
+// Teleport effect for GMs and players. Setting 0 disables the effect
+TeleportEffectNPC=0372a
+TeleportEffectPlayers=0372a
+TeleportEffectStaff=03709
+TeleportSoundNPC=01fe
+TeleportSoundPlayers=01fe
+TeleportSoundStaff=01f3
+
+///////////////////////////////////////////////////////////////
+//////// Experience and Level system
+///////////////////////////////////////////////////////////////
+
+// Enable experience system
+//ExperienceSystem=0
+
+// Experience system settings:
+//  0001    gain experience in combat
+//  0002    gain experience in crafts
+//  0004    allow experience to go down
+//  0008    limit experience decrease by a range witheen a current level
+//  0010    auto-init EXP/LEVEL for NPCs if not set in @Create
+//  0020    allow trigger @ExpChange
+//  0040    allow trigger @ExpLevelChange
+//ExperienceMode=0
+
+// If combat experience gain is allowed, use these percents for gaining exp in
+// Player versus Monster and Player versus Player combats. Value 0 disables gain.
+//ExperienceKoefPVM=100
+//ExperienceKoefPVP=100
+
+// Enable levels system (as a part of experience system)
+//LevelSystem=0
+
+// Level system settings:
+//  linear = 0  (each NextLevelAt exp will give a level up)
+//  double = 1  (you need (NextLevelAt * (level+1)) to get a level up)
+//LevelMode=1
+
+// Amount of experience to raise to the next level
+//LevelNextAt=0
+
+///////////////////////////////////////////////////////////////
+//////// external program support
+///////////////////////////////////////////////////////////////
+
+// TNG
+// on Linux do sth like &quot;/srv/www/&quot;
+// on Windows do sth. like &quot;C:\foo\bar\&quot;
+StripPath=scripts\web\
+
+///////////////////////////////////////////////////////////////
+//////// Webpage Settings
+///////////////////////////////////////////////////////////////
+
+// Note, that you can catch error codes by creating sphere404.htm and so on
+// for all HTTP error codes sphere support.
+
+[WEBPAGE 1]
+// Determines what html file is used as base for the status page
+WebPageSrc=scripts/web/spherestatusbase.html
+// Determines where the status page is saved
+WebPageFile=scripts/web/status.html
+// In seconds, how often the status file is updated
+WebPageUpdate=60
+// Required PLevel to view this page (0 = anyone, 6 = admins only)
+PLevel=0
+
+///////////////////////////////////////////////////////////////
+//////// Abuse Control
+///////////////////////////////////////////////////////////////
+
+// Block these ips from the server
+// 255 is a wildcard, so 255.255.255.255 disables anyone connecting.
+[BlockIP]
+//123.34.45.56
+//123.45.56.78
+
+///////////////////////////////////////////////////////////////
+//////// Connection Information
+///////////////////////////////////////////////////////////////
+
+//First line should be the name of your shard (this is what people see when they connect)
+//Second line should be the IP of your shard (this is almost always 127.0.0.1)
+//Third line should be the port of your shard (this should be whatever ServPort is set to)
+</pre>
+<p><tt><font color="darkblue"><b>// For help configuring this section, see <a href="http://www.sphereserver.net/forums/index.php?showtopic=36161" class="external text" title="http://www.sphereserver.net/forums/index.php?showtopic=36161" rel="nofollow">Rattlehead's Single Shard Listing For Routers tutorial</a></b><br /></font></tt>
+</p>
+<pre style="color: darkgreen; font-family: monospace; border: none;">//Uncomment next 3 lines below this if you have a router
+//First line should be a name different than your shard name above this
+//Second line should be your real/external IP (www.whatismyip.com)
+//Third line should be the shard port (this should be whatever ServPort is set to)
+[SERVERS]
+MyShard
+127.0.0.1
+2593
+
+//External
+//my.ip.goes.here
+//2593
+
+[EOF]
+</pre>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 467/1000000
+Post-expand include size: 3606/2097152 bytes
+Template argument size: 1009/2097152 bytes
+Expensive parser function count: 8/100
+-->
+
+<!-- Saved in parser cache with key d00b020c:pcache:idhash:20-0!1!0!!en!2 and timestamp 20120714141721 -->
+<div class="printfooter">
+Retrieved from "<a href="http://wiki.sphere.torfo.org/index.php/Configuring_Sphere.ini">http://wiki.sphere.torfo.org/index.php/Configuring_Sphere.ini</a>"</div>
+			<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="/index.php/Special:Categories" title="Special:Categories">Category</a>:&#32;<span dir='ltr'><a href="/index.php/Category:Setting_Up_Sphere" title="Category:Setting Up Sphere">Setting Up Sphere</a></span></div></div>			<!-- end content -->
+						<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/index.php/Configuring_Sphere.ini" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/index.php?title=Talk:Configuring_Sphere.ini&amp;action=edit&amp;redlink=1" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-edit"><a href="/index.php?title=Configuring_Sphere.ini&amp;action=edit" title="You can edit this page.&#10;Please use the preview button before saving [e]" accesskey="e">Edit</a></li>
+				 <li id="ca-history"><a href="/index.php?title=Configuring_Sphere.ini&amp;action=history" title="Past versions of this page [h]" accesskey="h">History</a></li>
+				 <li id="ca-move"><a href="/index.php/Special:MovePage/Configuring_Sphere.ini" title="Move this page [m]" accesskey="m">Move</a></li>
+				 <li id="ca-watch"><a href="/index.php?title=Configuring_Sphere.ini&amp;action=watch" title="Add this page to your watchlist [w]" accesskey="w">Watch</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-userpage"><a href="/index.php/User:Ben" title="Your user page [.]" accesskey="." class="new">Ben</a></li>
+				<li id="pt-mytalk"><a href="/index.php/User_talk:Ben" title="Your talk page [n]" accesskey="n" class="new">My talk</a></li>
+				<li id="pt-preferences"><a href="/index.php/Special:Preferences" title="Your preferences">My preferences</a></li>
+				<li id="pt-watchlist"><a href="/index.php/Special:Watchlist" title="The list of pages you are monitoring for changes [l]" accesskey="l">My watchlist</a></li>
+				<li id="pt-mycontris"><a href="/index.php/Special:Contributions/Ben" title="List of your contributions [y]" accesskey="y">My contributions</a></li>
+				<li id="pt-logout"><a href="/index.php?title=Special:UserLogout&amp;returnto=Configuring_Sphere.ini" title="Log out">Log out</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(http://wiki.sphere.torfo.org/images/SphereWiki.png);" href="/index.php/Main_Page" title="Visit the main page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/index.php/Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search SphereWiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage-description"><a href="/index.php/Main_Page">Main Page</a></li>
+				<li id="n-recentchanges"><a href="/index.php/Special:RecentChanges" title="The list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+				<li id="n-randompage"><a href="/index.php/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li>
+				<li id="n-SphereServer-Forum"><a href="http://www.sphereserver.net">SphereServer Forum</a></li>
+				<li id="n-help"><a href="/index.php/Help:Contents" title="The place to find out">Help</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-Setting_Up_Sphere'>
+		<h5>Setting Up Sphere</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-Where-To-Get-Sphere"><a href="/index.php/Where_to_get_Sphere">Where To Get Sphere</a></li>
+				<li id="n-Installing-Sphere"><a href="/index.php/Installing_Sphere">Installing Sphere</a></li>
+				<li id="n-Configuring-Sphere.ini"><a href="/index.php/Configuring_Sphere.ini">Configuring Sphere.ini</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-Reference_Compendium'>
+		<h5>Reference Compendium</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-Definitions"><a href="/index.php/Category:Definitions">Definitions</a></li>
+				<li id="n-Objects"><a href="/index.php/Category:Objects">Objects</a></li>
+				<li id="n-Scripts"><a href="/index.php/Category:Scripts">Scripts</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-Tutorial_Chapters'>
+		<h5>Tutorial Chapters</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-Chapter-One"><a href="/index.php/Chapter_1">Chapter One</a></li>
+				<li id="n-Chapter-Two"><a href="/index.php/Chapter_2">Chapter Two</a></li>
+				<li id="n-Chapter-Three"><a href="/index.php/Chapter_3">Chapter Three</a></li>
+				<li id="n-Chapter-Four"><a href="/index.php/Chapter_4">Chapter Four</a></li>
+				<li id="n-Chapter-Five"><a href="/index.php/Chapter_5">Chapter Five</a></li>
+				<li id="n-Chapter-Six"><a href="/index.php/Chapter_6">Chapter Six</a></li>
+				<li id="n-Chapter-Seven"><a href="/index.php/Chapter_7">Chapter Seven</a></li>
+				<li id="n-Chapter-Eight"><a href="/index.php/Chapter_8">Chapter Eight</a></li>
+				<li id="n-Chapter-Nine"><a href="/index.php/Chapter_9">Chapter Nine</a></li>
+				<li id="n-Chapter-Ten"><a href="/index.php/Chapter_10">Chapter Ten</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/index.php/Special:WhatLinksHere/Configuring_Sphere.ini" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/index.php/Special:RecentChangesLinked/Configuring_Sphere.ini" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-specialpages"><a href="/index.php/Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/index.php?title=Configuring_Sphere.ini&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/index.php?title=Configuring_Sphere.ini&amp;oldid=691" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>
+			<ul id="f-list">
+					<li id="lastmod"> This page was last modified on 26 November 2010, at 16:26.</li>
+					<li id="viewcount">This page has been accessed 6,766 times.</li>
+					<li id="privacy"><a href="/index.php/SphereWiki:Privacy_policy" title="SphereWiki:Privacy policy">Privacy policy</a></li>
+					<li id="about"><a href="/index.php/SphereWiki:About" title="SphereWiki:About">About SphereWiki</a></li>
+					<li id="disclaimer"><a href="/index.php/SphereWiki:General_disclaimer" title="SphereWiki:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sphere.torfo.org/piwik/" : "http://sphere.torfo.org/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 4);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script>
+<!-- End Piwik Tag -->
+<!-- Served in 0.253 secs. --></body></html>

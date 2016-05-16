@@ -1,0 +1,379 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Advenced Item Scripting</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>Advanced Item Sctipting</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>The Super Duper Wand of Fire and Brimstone! </span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[ITEMDEF i_wand_sdwfb]</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NAME=Super Duper Wand of Fire and Brimstone</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ID=i_wand_1</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TYPE=t_wand</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RESOURCES=i_wand,10 i_scroll_flamestrike</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ON=@Create</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ATTR=attr_magic</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MOREX=s_flamestrike</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MOREY=50.0</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MORE2=10</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+I tricked you that time! We STARTED with the script. No funny introductions. No
+livening up the article. Just a script. And a very interesting script it is
+too. You won't find it in any of your files. (In case you're wondering, SDBFB
+stands for &quot;Super Duper Wand of Fire and Brimstone&quot;). </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Now, what does this thing do? Well it's one of those handy predefined types
+that makes it do what it's supposed to do. Actually, it's not the only thing
+here that makes it do what it's supposed to do, but we'll see that in a moment!
+</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>[ITEMDEF i_wand_sdwfb]</b> You should be able to tell me what this does by
+now. We're making a new item with DEFNAME i_wand_sdwfb. </span></p>
+
+<p class=MsoNormal><span lang=EN>Notice that we don't explicitly declare the
+DEFNAME, but put it in the ITEMDEF. It's the same thing. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>NAME=</b> </span></p>
+
+<p class=MsoNormal><span lang=EN>Duh. &nbsp;:) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>ID=i_wand_1</b> </span></p>
+
+<p class=MsoNormal><span lang=EN>Once again, we're inheriting some properties
+here, including animation, skill type (macefighting oddly enough), etc from the
+definition of i_wand_1. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>TYPE=t_wand</b> </span></p>
+
+<p class=MsoNormal><span lang=EN>Remember in our NPC script, I said that the
+different brain types caused the NPCs to act different ways in certain
+situations. Well, in items, TYPE does the same thing. Only there are more of
+them. A lot more. Here are the specifications of the &quot;t_wand&quot; type.
+As you can see, we use all of them in the @Create section. Note: this line
+wouldn't be necessary since we're getting type=t_wand from the itemdef i_wand_1
+too. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>MOREX</b> = the spell this wand will cast <b>MOREY</b> = the skill with
+which the spell will be cast <b>MORE2</b> = the number of charges this wand has
+left </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Every item does something different with the MOREs. Actually this is a good
+time to go through the variables available to you on an item. In a simple list:
+</span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN>MORE1 (or MORE) </span></p>
+
+<p class=MsoNormal><span lang=EN>MORE2 </span></p>
+
+<p class=MsoNormal><span lang=EN>MOREP </span></p>
+
+<p class=MsoNormal><span lang=EN>COLOR </span></p>
+
+<p class=MsoNormal><span lang=EN>TYPE </span></p>
+
+<p class=MsoNormal><span lang=EN>CREATE </span></p>
+
+<p class=MsoNormal><span lang=EN>LAYER </span></p>
+
+<p class=MsoNormal><span lang=EN>ATTR </span></p>
+
+<p class=MsoNormal><span lang=EN>LINK </span></p>
+
+<p class=MsoNormal><span lang=EN>CONT </span></p>
+
+<p class=MsoNormal><span lang=EN>TOPOBJ </span></p>
+
+<p class=MsoNormal><span lang=EN>LINK </span></p>
+
+<p class=MsoNormal><span lang=EN>As we'll see, a few of these have special
+functions that will allow us to do a lot more. But that doesn't come until
+advanced scripting. And there are also a lot more things which you'll know in
+future chapters. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+One of these properties (MOREP) has the weirdness that it can hold a coordinate
+of the form (x, y, z, m). Which means that it can be broken down into MOREX,
+MOREY, MOREZ, and MOREM. For example, if you write this line: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MOREP=1,2,3,4</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+It is exactly the same as writing: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MOREX=1</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MOREY=2</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MOREZ=3</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MOREM=4</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+This is what you call in C++ programming a &quot;union&quot;, basically meaning
+there are going to be restrictions on the amount of data you can store in each
+of these variables. MOREX and MOREY can both hold numbers up to 0FFFF. MOREZ
+can hold numbers from -128 to 127, and is always displayed in decimal. MOREM
+can hold numbers from 0 to 255, and is also always displayed in decimal. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Be sure that when you're writing a script, or an item, you don't use both MOREP
+and one of the other MOREP pieces (MOREX, etc). It won't work together, since
+one will overwrite the other. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MOREP=10,42,51,53</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MOREX=78</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MOREY=89</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MOREM=56</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+MOREP now is equal to 78,89,51,56. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+So you see, it doesn't work to use these together. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Another strangeness of SPHERE is that they have given us the properties MORE1L,
+MORE1H, MORE2L, and MORE2H. These are not entirely visible to you, but just
+know that they are pieces of the MORE1 and MORE2 properties. As such, you
+should not be using both MORE1 and either of the MORE1 properties, or the same
+for the MORE2 properties, on a single item. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MORE1=0FFFFFFFF</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MORE1L=01234</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MORE1H=0F0</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Now MORE1 is 000F01234. Which would totally screw up any script you were
+writing involving the MORE1 property. So don't use both in the same script. (If
+you don't understand where that number came from, don't worry about it. I've
+never used MORE1L and MORE1H in a script, and chances are neither will you.) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+We'll also see later how to use the ATTR property to give your item special
+properties (like being unmovable, or magical, or blessed). I'll put that in my
+massive chart that's going in the next section, which lists all the TYPEs and
+all of the ATTR values. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+From what I've just explained to you, the rest of the item script, after the
+@Create event, should be obvious. We're setting the pieces of MOREP to be what
+we need them to be so our wand functions properly. And if you create this item
+in the game, and double-click it, you'll get a target to cast Flamestrike.
+That's all you need to do. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+By the way, you could just as easily have written: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MOREP=s_flamestrike,50.0</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MORE2L=10</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Think about it. &nbsp;:) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+(Anyone know why the developers decided to have 10 variables named MORE?
+Standing for &quot;MORE information about an item&quot; perhaps?) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Understanding the @Create trigger</b> </span></p>
+
+<p class=MsoNormal><span lang=EN>You're probably wandering why I didn't set the
+item properties (such as the mores) directly on the itemdef, that's because not
+everything can be set there, only general properties for the items with that
+id. </span></p>
+
+<p class=MsoNormal><span lang=EN>&quot;But hey, I can set different names for
+an item with the same id&quot; </span></p>
+
+<p class=MsoNormal><span lang=EN>Yes you can, but mostly you won't, another
+thing that can be set there but you can also change are TAGs (you'll see more
+on other chapters). </span></p>
+
+<p class=MsoNormal><span lang=EN>Things that you can't change for example are
+WEIGHT, VALUE, RESOURCES and of course the DEFNAME. There are more, but just to
+make you get the idea. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

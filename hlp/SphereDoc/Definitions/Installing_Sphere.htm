@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta name="generator" content="MediaWiki 1.14.0" />
+		<meta name="keywords" content="Installing Sphere,De:Installing Sphere,En:Installing Sphere,Installing Sphere,Es:Installing Sphere,Fr:Installing Sphere,Ja:Installing Sphere,Tr:Installing Sphere,Configuring Sphere.ini,Main Page,Script Pack" />
+		<link rel="alternate" type="application/x-wiki" title="Edit" href="http://wiki.sphere.torfo.org/index.php?title=Installing_Sphere&amp;action=edit" />
+		<link rel="edit" title="Edit" href="http://wiki.sphere.torfo.org/index.php?title=Installing_Sphere&amp;action=edit" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.php" title="SphereWiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="SphereWiki RSS Feed" href="http://wiki.sphere.torfo.org/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="SphereWiki Atom Feed" href="http://wiki.sphere.torfo.org/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Installing Sphere - SphereWiki</title>
+		<link rel="stylesheet" href="/skins/common/shared.css?195" type="text/css" media="screen" />
+		<link rel="stylesheet" href="/skins/common/commonPrint.css?195" type="text/css" media="print" />
+		<link rel="stylesheet" href="/skins/monobook/main.css?195" type="text/css" media="screen" />
+		<!--[if lt IE 5.5000]><link rel="stylesheet" href="/skins/monobook/IE50Fixes.css?195" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 5.5000]><link rel="stylesheet" href="/skins/monobook/IE55Fixes.css?195" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 6]><link rel="stylesheet" href="/skins/monobook/IE60Fixes.css?195" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 7]><link rel="stylesheet" href="/skins/monobook/IE70Fixes.css?195" type="text/css" media="screen" /><![endif]-->
+		<link rel="stylesheet" href="/index.php?title=MediaWiki:Common.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=18000&amp;action=raw&amp;maxage=18000" type="text/css" />
+		<link rel="stylesheet" href="/index.php?title=MediaWiki:Print.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=18000&amp;action=raw&amp;maxage=18000" type="text/css" media="print" />
+		<link rel="stylesheet" href="/index.php?title=MediaWiki:Monobook.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=18000&amp;action=raw&amp;maxage=18000" type="text/css" />
+		<link rel="stylesheet" href="/index.php?title=-&amp;action=raw&amp;maxage=18000&amp;smaxage=0&amp;ts=20120630142713&amp;gen=css" type="text/css" />
+		<!--[if lt IE 7]><script type="text/javascript" src="/skins/common/IEFixes.js?195"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+
+		<script type= "text/javascript">/*<![CDATA[*/
+		var skin = "monobook";
+		var stylepath = "/skins";
+		var wgArticlePath = "/index.php/$1";
+		var wgScriptPath = "";
+		var wgScript = "/index.php";
+		var wgVariantArticlePath = false;
+		var wgActionPaths = {};
+		var wgServer = "http://wiki.sphere.torfo.org";
+		var wgCanonicalNamespace = "";
+		var wgCanonicalSpecialPageName = false;
+		var wgNamespaceNumber = 0;
+		var wgPageName = "Installing_Sphere";
+		var wgTitle = "Installing Sphere";
+		var wgAction = "view";
+		var wgArticleId = "21";
+		var wgIsArticle = true;
+		var wgUserName = "Ben";
+		var wgUserGroups = ["*", "user", "autoconfirmed"];
+		var wgUserLanguage = "en";
+		var wgContentLanguage = "en";
+		var wgBreakFrames = false;
+		var wgCurRevisionId = "690";
+		var wgVersion = "1.14.0";
+		var wgEnableAPI = true;
+		var wgEnableWriteAPI = true;
+		var wgSeparatorTransformTable = ["", ""];
+		var wgDigitTransformTable = ["", ""];
+		var wgRestrictionEdit = [];
+		var wgRestrictionMove = [];
+		var wgAjaxWatch = {"watchMsg": "Watch", "unwatchMsg": "Unwatch", "watchingMsg": "Watching...", "unwatchingMsg": "Unwatching..."};
+		/*]]>*/</script>
+
+		<script type="text/javascript" src="/skins/common/wikibits.js?195"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/skins/common/ajax.js?195"></script>
+		<script type="text/javascript" src="/skins/common/ajaxwatch.js?195"></script>
+		<script type="text/javascript" src="/index.php?title=-&amp;action=raw&amp;smaxage=0&amp;gen=js&amp;useskin=monobook"><!-- site js --></script>
+	</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Installing_Sphere skin-monobook">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 id="firstHeading" class="firstHeading">Installing Sphere</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From SphereWiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<div style="margin: 0px; padding: 2px 2px 0px 2px; border: none; border-collapse:collapse; clear:both;">
+<span style="float:right; font-weight:normal; font-size: x-small;"><a href="/index.php/Wiki_Translation" title="Wiki Translation">Help</a></span><div style="background-color:#e9e9e9; border-style:solid; border-width:1px; border-color:#aaa; padding: 0pt 4pt 8pt 4pt; font-size: 95%; text-align:center;"><b>Available languages</b></div>
+<div style="border: 1px solid #aaa; background-color: #f9f9f9; border-collapse:collapse; font-size: 95%; padding: 2pt 4pt 2pt 4pt; margin: 0px;">        • <span lang="de"><a href="/index.php/De:Installing_Sphere" title="De:Installing Sphere">Deutsch</a></span>  • <span lang="en"><strong class="selflink">English</strong></span>                                         
+</div>
+</div>
+<div class="NavFrame" style="border:none; clear:none; margin: 0px; padding-top: 0px;">
+<div class="NavHead" style="background-color:#e9e9e9; border-style:solid; border-width:1px; border-color:#aaa; margin: 0px; padding: 0pt 4pt 8pt 4pt; font-size: 95%;"><b>Missing languages</b></div>
+<div class="NavContent" style="border: 1px solid #aaa; background-color: #f9f9f9; border-collapse:collapse; font-size: 95%; padding: 2pt 4pt 2pt 4pt;">            • <span lang="es"><a href="/index.php?title=Es:Installing_Sphere&amp;action=edit&amp;redlink=1" class="new" title="Es:Installing Sphere (page does not exist)">Español</a></span>    • <span lang="fr"><a href="/index.php?title=Fr:Installing_Sphere&amp;action=edit&amp;redlink=1" class="new" title="Fr:Installing Sphere (page does not exist)">Français</a></span>           • <span lang="ja"><a href="/index.php?title=Ja:Installing_Sphere&amp;action=edit&amp;redlink=1" class="new" title="Ja:Installing Sphere (page does not exist)">日本語</a></span>                  • <span lang="tr"><a href="/index.php?title=Tr:Installing_Sphere&amp;action=edit&amp;redlink=1" class="new" title="Tr:Installing Sphere (page does not exist)">Türkçe</a></span>     
+</div>
+</div><div class="NavFrame" style="border:none;display:none;"></div>
+<p><br />
+</p>
+<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#Linux"><span class="tocnumber">1</span> <span class="toctext">Linux</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Preface"><span class="tocnumber">1.1</span> <span class="toctext">Preface</span></a></li>
+<li class="toclevel-2"><a href="#Preparations"><span class="tocnumber">1.2</span> <span class="toctext">Preparations</span></a></li>
+<li class="toclevel-2"><a href="#Installation_Step-By-Step"><span class="tocnumber">1.3</span> <span class="toctext">Installation Step-By-Step</span></a></li>
+<li class="toclevel-2"><a href="#Test_the_Installation"><span class="tocnumber">1.4</span> <span class="toctext">Test the Installation</span></a></li>
+<li class="toclevel-2"><a href="#Preparing_for_production"><span class="tocnumber">1.5</span> <span class="toctext">Preparing for production</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Windows"><span class="tocnumber">2</span> <span class="toctext">Windows</span></a></li>
+<li class="toclevel-1"><a href="#FreeBSD"><span class="tocnumber">3</span> <span class="toctext">FreeBSD</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<a name="Linux" id="Linux"></a><h2><span class="editsection">[<a href="/index.php?title=Installing_Sphere&amp;action=edit&amp;section=1" title="Edit section: Linux">edit</a>]</span> <span class="mw-headline">Linux</span></h2>
+<a name="Preface" id="Preface"></a><h3><span class="editsection">[<a href="/index.php?title=Installing_Sphere&amp;action=edit&amp;section=2" title="Edit section: Preface">edit</a>]</span> <span class="mw-headline">Preface</span></h3>
+<p>Installing Sphere on a Linux box is not more difficult as doing this task on a Windows PC. Either way you will have to have basic knowledge about your operation system, and you should not rely on that you simply have to doubleclick like mad to get the beast up and running. 
+</p><p><br />
+Even more, this tutorial will assume that you are using a shell on the linux box, and that you have root access. You do not trust your skills to type a command without mistakes, or no one will trust your knowledge enough to give you system administrator privileges on his Linux PC? Well, then - your busted. Go home, and play Solitaire on a neat little Windows box, ok? 
+</p><p><br />
+Finally, this tutorial will NOT cover the ways to get the necessary files onto the Linux server. If you cannot figure this out yourself - read the last sentence of the paragraph before. THIS IS NOT A LESSON "Linux for Dummies"! Do your homework, and learn. There are many books about Linux' basics, even E-Books you can download free of charge. Surfing to <a href="http://www.linux.org" class="external free" title="http://www.linux.org" rel="nofollow">http://www.linux.org</a> will be a good point to start. 
+</p><p><br />
+One last word about syntax: LINUX commands and filenames are case sensitive! So if later on a file cannot be found it usually is because you typed something like "sphere.INI" instead of "sphere.ini". 
+</p><p><br />
+And in this document lines in italics are denoting what you have to type into (or read from) the shell. 
+</p><p><br />
+</p>
+<a name="Preparations" id="Preparations"></a><h3><span class="editsection">[<a href="/index.php?title=Installing_Sphere&amp;action=edit&amp;section=3" title="Edit section: Preparations">edit</a>]</span> <span class="mw-headline">Preparations</span></h3>
+<p>On the Linux box you will need a MySQL client installation. You do not need a server if you do not plan to use the database features, but Sphere will not start without the proper MySQL client libraries. Period. 
+</p><p><br />
+You also need access to a Sphere prerelease FOR LINUX, the default script package for this version, and eventually additional libraries (libboost for recent releases). 
+</p><p><br />
+</p>
+<a name="Installation_Step-By-Step" id="Installation_Step-By-Step"></a><h3><span class="editsection">[<a href="/index.php?title=Installing_Sphere&amp;action=edit&amp;section=4" title="Edit section: Installation Step-By-Step">edit</a>]</span> <span class="mw-headline">Installation Step-By-Step</span></h3>
+<p><b>1)</b> As user root, create a user named 'sphere'. Set or create it's home directory (usually /home/sphere/), give it the correct owner and permissions: 
+</p><p><br />
+<tt>useradd -d /home/sphere sphere<br />
+mkdir /home/sphere<br />
+chown sphere /home/sphere<br />
+chmod 700 /home/sphere<br /></tt>
+</p><p><br />
+<b>2)</b> Copy the files from the Sphere LINUX package and the scriptpack into this newly created directory. Create all missing directories like "save", "logs", "accounts" as they are named in your sphere.ini and spheretables.scp. You should end up with a structure like this: 
+</p><p><br />
+<tt>/home/sphere --- spheresvr<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;sphere.ini<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;sphereCrypt.ini<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-------------------- accounts/<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-------------------- logs/<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-------------------- muls/<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-------------------- save/<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-------------------- scripts/<br /></tt>
+</p><p><br />
+<b>3)</b> After copying all related files to their respective positions, make sure that they all have the correct permissions and ownerships. Still as root do: 
+</p><p><br />
+<tt>cd ~sphere<br />
+chown -R sphere *<br />
+find . -type d | xargs chmod 0700<br />
+find . -type f | xargs chmod 0600<br />
+chmod 4700 spheresvr<br /></tt>
+</p><p><br />
+<b>4)</b> Still as root do a 
+</p><p><br />
+<tt>ldd spheresvr<br /></tt>
+</p><p><br />
+the output should be something like this: 
+</p><p><br />
+<tt>longbow:/home/sphere# ldd spheresvr<br />
+libpthread.so.0 =&gt; /lib/libpthread.so.0 (0x4001f000)<br />
+libmysqlclient.so.15 =&gt; /usr/lib/libmysqlclient.so.15 (0x40071000)<br />
+libboost_regex-gcc-1_33_1.so =&gt; /usr/lib/libboost_regex-gcc-1_33_1.so (0x40243000)<br />
+libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x402ea000)<br />
+libm.so.6 =&gt; /lib/libm.so.6 (0x403c9000)<br />
+libgcc_s.so.1 =&gt; /lib/libgcc_s.so.1 (0x403ef000)<br />
+libc.so.6 =&gt; /lib/libc.so.6 (0x403fa000)<br />
+/lib/ld-linux.so.2 (0x40000000)<br />
+libcrypt.so.1 =&gt; /lib/libcrypt.so.1 (0x4051c000)<br />
+libnsl.so.1 =&gt; /lib/libnsl.so.1 (0x4054a000)<br />
+libz.so.1 =&gt; /usr/lib/libz.so.1 (0x40561000)<br /></tt>
+</p><p><br />
+LOOK FOR MISSING LIBRARIES! If something is missing, just install it. You should know how to do. If it's just libboost what is missing, you have got this with the preparations. Copy it into /usr/lib/ and type 
+</p><p><br />
+<tt>ldconfig<br /></tt>
+</p><p><br />
+</p>
+<a name="Test_the_Installation" id="Test_the_Installation"></a><h3><span class="editsection">[<a href="/index.php?title=Installing_Sphere&amp;action=edit&amp;section=5" title="Edit section: Test the Installation">edit</a>]</span> <span class="mw-headline">Test the Installation</span></h3>
+<p>It does not matter if you start your test as user root or user sphere. Setting the permissions of the spheresvr executable to 4700 forces it to always be started as it's owner, sphere. So start it: 
+</p><p><br />
+<tt>cd ~sphere<br />
+./spheresvr<br /></tt>
+</p><p><br />
+You will get the usual startup yaddayadda, perhaps including some warnings: 
+</p><p><br />
+<tt>longbow:/home/sphere# ./spheresvr<br />
+WARNING:(sphere.ini,587)'scripts/spherestatusbase.html' not found...<br />
+ERROR:(sphere.ini,587)Can't open web page input 'spherestatusbase1.htm'<br />
+Sphere Version 0.56b [Linux] by www.sphereserver.com, compiled at Sep 15 2006 (23:23:07)<br />
+Signal handlers installed.<br />
+Expansion maps supported: T2A, LBR, AOS, SE, ML<br />
+ERROR:(spheretables.scp,59)Unable to open directory scripts/custom/<br />
+ERROR:(spheretables.scp,59)DirList=-1 for 'scripts/custom/'<br />
+Allocating map sectors: 0=7168 1=7168 2=900 3=1280 4=32761<br />
+Indexing 211 scripts...<br />
+Loading scripts/sphere_defs.scp<br />
+[...]<br /></tt>
+</p><p><br />
+You can safely ignore warnings and errors regarding missing web pages. But if the sphere issues other errors, or terminates, dont just stare at the error number like the rabbit stares at the snake: The text immediately above the error will tell you what's wrong. So fix it. 
+</p><p><br />
+Finally your Sphere will tell you something like: 
+</p><p><br />
+<tt>[...]<br />
+Loading save/spheredata...<br />
+Loading save/spherestatics...<br />
+Loading save/sphereworld...<br />
+Loading save/spherechars...<br />
+166 Objects accounted for<br />
+Option flags: CommandSysmsgs + NoHouseMuteSpeech<br />
+Experimental flags: DiagonalWalkCheck + ScriptsReturnStrings + NewTriggersEnable + NewPositionChecks + WalkCheck + ScriptProfiler + SizeOptimize<br />
+Admin=me@my.email.com, URL=www.myshard.com, Lang=English, TZ=0<br />
+Startup complete. items=0, chars=0<br />
+Creating thread.<br /></tt>
+</p><p><br />
+You are now in the sphere console and can issue the common commands (type '?' to get a list). So create an account, activate it, edit the login.cfg on your windows box with the client installation to point to the address of the Linux box, and be the first to log in. 
+</p><p><br />
+To stop the Sphere, type 'S' in the console, then 'x'. Linux will tell you something about deinstalling handlers and shutting down. But often it will just "hang" after this, not really terminating. Clear this situation by typing CTRL-c 
+</p><p><br />
+</p>
+<a name="Preparing_for_production" id="Preparing_for_production"></a><h3><span class="editsection">[<a href="/index.php?title=Installing_Sphere&amp;action=edit&amp;section=6" title="Edit section: Preparing for production">edit</a>]</span> <span class="mw-headline">Preparing for production</span></h3>
+<p>Perhaps you closed your shell during the test. Then you should have noticed that the operating system killed your Sphere at the same moment. That's not a bug but wanted behaviour: Linux is a multi user os, and when a user logs out processes started by him shall not accidentally kept running. 
+</p><p><br />
+But of course you will not be able to keep open the console all the time, at least if your Linux box can only be reached remotely, perhaps by ssh. If it's the main service running on the box, you should create a startup script what starts spheresvr in an endless loop, thus restarting it in the event it should crash. To do this, first install the 'screen' utility using the packet manager of your distribution. Then use the text editor of your choice and create a script like this: 
+</p><p><br />
+<tt>#!/bin/sh<br />
+cd ~sphere<br />
+while true; do<br />
+screen -D -m /home/sphere/spheresvr<br />
+sleep 30<br />
+done<br /></tt>
+</p><p><br />
+This way the server will be run in a virtual window to what you always can attach with 'screen -r'. Read the manpage for screen for more information.
+</p><p><br />
+</p>
+<a name="Windows" id="Windows"></a><h2><span class="editsection">[<a href="/index.php?title=Installing_Sphere&amp;action=edit&amp;section=7" title="Edit section: Windows">edit</a>]</span> <span class="mw-headline">Windows</span></h2>
+<p>Start by downloading Sphere. See the <a href="/index.php/Where_to_get_Sphere" title="Where to get Sphere">Where to get Sphere</a> page for download links. You should end up with two different zip files, one containing the Sphere executable and the other containing the <a href="/index.php/Script_Pack" title="Script Pack">Script Pack</a>.
+</p>
+<ol><li> Extract the SphereServer-0.56b-xxxxxxxxxxxx-Win32.zip file to wherever you want to run it from. I would recommend "c:\sphere"
+</li><li> Extract SphereServer-0.56b-xxxxxxxxxxxx-Scripts.zip to the directory where you previously extracted the file in the previous step. Now you should have the directory scripts in "c:\sphere".
+</li><li> Create three new folders, one named "accounts", another called "logs", and the third one called "save".
+</li><li> Now, go to your "save" folder, recently created. And create an empty text file (I recommend using the Start Menu to access Notepad instead of "Right Click =&gt; New"). Write an empty line and add "[EOF]" in the second one. Save the file as "spheredata.SCP" (not .txt).
+</li><li> Copy this file three times an rename them as: spherestatics, spherechars.scp and sphereworld.scp
+</li><li> Go to the "accounts" folder that you created alongside the "save" folder, and do the same as Step 3 and 4, but name the files: "sphereacct.scp" and "sphereaccu.scp"
+</li><li> Download the <a href="http://prerelease.sphere.torfo.org/files/libMySQL.dll" class="external text" title="http://prerelease.sphere.torfo.org/files/libMySQL.dll" rel="nofollow">MySQL Library</a> and place it into your Sphere Folder (remember: "c:\sphere").
+</li><li> Now, <a href="/index.php/Configuring_Sphere.ini" title="Configuring Sphere.ini">configure your sphere.ini</a>. This is a must before running Sphere for the first time!
+</li><li> Double Click on SphereSvr.exe to launch the Console. This black window is your server console from which you can enter commands.
+</li><li> Create an Account for yourself. In the console, type in "<font color="darkred">account add USERNAME PASSWORD</font>". With whatever username and password you want. Then, type in "<font color="darkred">account USERNAME plevel 7</font>" to grant your account Owner privileges.
+</li></ol>
+<p><br />
+Now you can go around your map and explore some parts of it. You can use the navigation bar on the left to read various tutorials to learn how to script and learn something about Sphere. After that, read the other articles and check the <a href="/index.php/Main_Page#Reference_Compendium" title="Main Page">reference compendium</a> if you need something special.
+</p>
+<a name="FreeBSD" id="FreeBSD"></a><h2><span class="editsection">[<a href="/index.php?title=Installing_Sphere&amp;action=edit&amp;section=8" title="Edit section: FreeBSD">edit</a>]</span> <span class="mw-headline">FreeBSD</span></h2>
+<p>We currently have no guide for this OS. Anyway, the developers have posted a list of required stuff. Here is the list:
+</p><p><br />
+Compiled on: 
+</p><p><br />
+<tt>FreeBSD freebsdvbox.fastwebnet.it 7.0-RELEASE FreeBSD 7.0-RELEASE #0: Sun Feb 24 19:59:52 UTC 2008     root@logan.cse.buffalo.edu:/usr/obj/usr/src/sys/GENERIC  i386<br /></tt>
+</p><p><br />
+With:
+</p><p><tt>Using built-in specs.<br />
+Target: i386-portbld-freebsd7.0<br />
+Configured with: ./..//gcc-4.1-20071105/configure --disable-nls --with-system-zlib --with-libiconv-prefix=/usr/local --program-suffix=41 --libdir=/usr/local/lib/gcc-4.1.3 --with-gxx-include-dir=/usr/local/lib/gcc-4.1.3/include/c++/ --disable-rpath --prefix=/usr/local --mandir=/usr/local/man --infodir=/usr/local/info/gcc41 i386-portbld-freebsd7.0<br />
+Thread model: posix<br />
+gcc version 4.1.3 20071105 (prerelease)<br /></tt>
+</p><p><br />
+Linked Against:
+</p><p><br />
+<tt>libthr.so.3 =&gt; /lib/libthr.so.3 (0x281f3000)<br />
+libmysqlclient.so.15 =&gt; /usr/local/lib/mysql/libmysqlclient.so.15 (0x28206000)<br />
+libstdc++.so.6 =&gt; /usr/lib/libstdc++.so.6 (0x28265000)<br />
+libm.so.5 =&gt; /lib/libm.so.5 (0x2835a000)<br />
+libgcc_s.so.1 =&gt; /lib/libgcc_s.so.1 (0x2836f000)<br />
+libc.so.7 =&gt; /lib/libc.so.7 (0x2837a000)<br />
+libcrypt.so.4 =&gt; /lib/libcrypt.so.4 (0x28476000)<br />
+libz.so.4 =&gt; /lib/libz.so.4 (0x2848f000)<br /></tt>
+</p><p><br />
+If you use this release, please check <a href="http://www.sphereserver.net/index.php?showtopic=44153" class="external text" title="http://www.sphereserver.net/index.php?showtopic=44153" rel="nofollow">this topic</a>.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 361/1000000
+Post-expand include size: 3511/2097152 bytes
+Template argument size: 849/2097152 bytes
+Expensive parser function count: 8/100
+-->
+
+<!-- Saved in parser cache with key d00b020c:pcache:idhash:21-0!1!0!!en!2 and timestamp 20120714141153 -->
+<div class="printfooter">
+Retrieved from "<a href="http://wiki.sphere.torfo.org/index.php/Installing_Sphere">http://wiki.sphere.torfo.org/index.php/Installing_Sphere</a>"</div>
+			<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="/index.php/Special:Categories" title="Special:Categories">Category</a>:&#32;<span dir='ltr'><a href="/index.php/Category:Setting_Up_Sphere" title="Category:Setting Up Sphere">Setting Up Sphere</a></span></div></div>			<!-- end content -->
+						<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/index.php/Installing_Sphere" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/index.php?title=Talk:Installing_Sphere&amp;action=edit&amp;redlink=1" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-edit"><a href="/index.php?title=Installing_Sphere&amp;action=edit" title="You can edit this page.&#10;Please use the preview button before saving [e]" accesskey="e">Edit</a></li>
+				 <li id="ca-history"><a href="/index.php?title=Installing_Sphere&amp;action=history" title="Past versions of this page [h]" accesskey="h">History</a></li>
+				 <li id="ca-move"><a href="/index.php/Special:MovePage/Installing_Sphere" title="Move this page [m]" accesskey="m">Move</a></li>
+				 <li id="ca-watch"><a href="/index.php?title=Installing_Sphere&amp;action=watch" title="Add this page to your watchlist [w]" accesskey="w">Watch</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-userpage"><a href="/index.php/User:Ben" title="Your user page [.]" accesskey="." class="new">Ben</a></li>
+				<li id="pt-mytalk"><a href="/index.php/User_talk:Ben" title="Your talk page [n]" accesskey="n" class="new">My talk</a></li>
+				<li id="pt-preferences"><a href="/index.php/Special:Preferences" title="Your preferences">My preferences</a></li>
+				<li id="pt-watchlist"><a href="/index.php/Special:Watchlist" title="The list of pages you are monitoring for changes [l]" accesskey="l">My watchlist</a></li>
+				<li id="pt-mycontris"><a href="/index.php/Special:Contributions/Ben" title="List of your contributions [y]" accesskey="y">My contributions</a></li>
+				<li id="pt-logout"><a href="/index.php?title=Special:UserLogout&amp;returnto=Installing_Sphere" title="Log out">Log out</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(http://wiki.sphere.torfo.org/images/SphereWiki.png);" href="/index.php/Main_Page" title="Visit the main page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/index.php/Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search SphereWiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage-description"><a href="/index.php/Main_Page">Main Page</a></li>
+				<li id="n-recentchanges"><a href="/index.php/Special:RecentChanges" title="The list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+				<li id="n-randompage"><a href="/index.php/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li>
+				<li id="n-SphereServer-Forum"><a href="http://www.sphereserver.net">SphereServer Forum</a></li>
+				<li id="n-help"><a href="/index.php/Help:Contents" title="The place to find out">Help</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-Setting_Up_Sphere'>
+		<h5>Setting Up Sphere</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-Where-To-Get-Sphere"><a href="/index.php/Where_to_get_Sphere">Where To Get Sphere</a></li>
+				<li id="n-Installing-Sphere"><a href="/index.php/Installing_Sphere">Installing Sphere</a></li>
+				<li id="n-Configuring-Sphere.ini"><a href="/index.php/Configuring_Sphere.ini">Configuring Sphere.ini</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-Reference_Compendium'>
+		<h5>Reference Compendium</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-Definitions"><a href="/index.php/Category:Definitions">Definitions</a></li>
+				<li id="n-Objects"><a href="/index.php/Category:Objects">Objects</a></li>
+				<li id="n-Scripts"><a href="/index.php/Category:Scripts">Scripts</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-Tutorial_Chapters'>
+		<h5>Tutorial Chapters</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-Chapter-One"><a href="/index.php/Chapter_1">Chapter One</a></li>
+				<li id="n-Chapter-Two"><a href="/index.php/Chapter_2">Chapter Two</a></li>
+				<li id="n-Chapter-Three"><a href="/index.php/Chapter_3">Chapter Three</a></li>
+				<li id="n-Chapter-Four"><a href="/index.php/Chapter_4">Chapter Four</a></li>
+				<li id="n-Chapter-Five"><a href="/index.php/Chapter_5">Chapter Five</a></li>
+				<li id="n-Chapter-Six"><a href="/index.php/Chapter_6">Chapter Six</a></li>
+				<li id="n-Chapter-Seven"><a href="/index.php/Chapter_7">Chapter Seven</a></li>
+				<li id="n-Chapter-Eight"><a href="/index.php/Chapter_8">Chapter Eight</a></li>
+				<li id="n-Chapter-Nine"><a href="/index.php/Chapter_9">Chapter Nine</a></li>
+				<li id="n-Chapter-Ten"><a href="/index.php/Chapter_10">Chapter Ten</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/index.php/Special:WhatLinksHere/Installing_Sphere" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/index.php/Special:RecentChangesLinked/Installing_Sphere" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-specialpages"><a href="/index.php/Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/index.php?title=Installing_Sphere&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/index.php?title=Installing_Sphere&amp;oldid=690" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>
+			<ul id="f-list">
+					<li id="lastmod"> This page was last modified on 26 November 2010, at 16:25.</li>
+					<li id="viewcount">This page has been accessed 7,854 times.</li>
+					<li id="privacy"><a href="/index.php/SphereWiki:Privacy_policy" title="SphereWiki:Privacy policy">Privacy policy</a></li>
+					<li id="about"><a href="/index.php/SphereWiki:About" title="SphereWiki:About">About SphereWiki</a></li>
+					<li id="disclaimer"><a href="/index.php/SphereWiki:General_disclaimer" title="SphereWiki:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sphere.torfo.org/piwik/" : "http://sphere.torfo.org/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 4);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script>
+<!-- End Piwik Tag -->
+<!-- Served in 0.276 secs. --></body></html>

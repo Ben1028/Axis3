@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2CB48670-1C39-4320-BA94-D4E1C8290E1C}</ProjectGuid>
+    <RootNamespace>Axis3</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+    <ProjectName>Axis3</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Full</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MinimalRebuild>false</MinimalRebuild>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>version.lib</AdditionalDependencies>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <PreBuildEvent>
+      <Command>copy "$(ProjectDir)Extra\*.*" "$(OutDir)"</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>version.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <CustomBuild>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
+    </CustomBuild>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PreBuildEvent>
+      <Command>copy "$(ProjectDir)Extra\*.*" "$(OutDir)"</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="Extra\changelog.txt" />
+    <None Include="Extra\command" />
+    <None Include="Extra\hoglocs.scp" />
+    <None Include="Extra\Lang" />
+    <None Include="Extra\Settings" />
+    <None Include="hlp\Account_Tab.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Add_Location.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Axis3.hhc" />
+    <None Include="hlp\Axis3.hhk" />
+    <CustomBuild Include="hlp\Axis3.hhp">
+      <FileType>Document</FileType>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)Axis3.chm;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">hlp\HTMLDefines.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">start /wait hhc "hlp\Axis3.hhp"
+if not exist "hlp\Axis3.chm" goto :HelpError
+copy "hlp\Axis3.chm" "$(OutDir)Axis3.chm"
+goto :HelpDone
+:HelpError
+echo hlp\Axis3.hhp(1) : error:Problem encountered creating help file
+echo.
+:HelpDone
+echo.
+</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Making help file...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)Axis3.chm;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">hlp\HTMLDefines.h;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">start /wait hhc "hlp\Axis3.hhp"
+if not exist "hlp\Axis3.chm" goto :HelpError
+copy "hlp\Axis3.chm" "$(OutDir)Axis3.chm"
+goto :HelpDone
+:HelpError
+echo hlp\Axis3.hhp(1) : error:Problem encountered creating help file
+echo.
+:HelpDone
+echo.
+</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Making help file...</Message>
+    </CustomBuild>
+    <None Include="hlp\Axis3_ini.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Color_Select.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Command_Tab.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\DoorWiz.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\DoorWiz_ini.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\find.PNG" />
+    <None Include="hlp\General_Tab.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\ItemTweak_Tab.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Item_Tab.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Launcher_Tab.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\LightWiz.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\LightWiz_ini.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Local_Profile.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Log_Tab.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\palette.PNG" />
+    <None Include="hlp\PlayerTweak_Tab.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Profile_Login.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Profile_Tab.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Remote_Console.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Remote_Console_Login.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Search.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Setting_FilePath.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Setting_General.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Setting_Item.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Setting_OverrideMulPath.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Setting_Spawn.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Setting_Travel.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Spawn_Tab.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Travel_Tab.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Web_Profile.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Web_Profile_Setup.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\Welcome.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="hlp\world.PNG" />
+    <None Include="hlp\zoomin.PNG" />
+    <None Include="hlp\zoomout.PNG" />
+    <None Include="res\Account.ico" />
+    <None Include="res\Apply.ico" />
+    <None Include="res\Arrow_Down.ico" />
+    <None Include="res\Arrow_Down_Left.ico" />
+    <None Include="res\Arrow_Down_Right.ico" />
+    <None Include="res\Arrow_Left.ico" />
+    <None Include="res\Arrow_Right.ico" />
+    <None Include="res\Arrow_Up.ico" />
+    <None Include="res\Arrow_Up_Left.ico" />
+    <None Include="res\Arrow_Up_Right.ico" />
+    <None Include="res\Axis3.ico" />
+    <None Include="res\Axis3.rc2" />
+    <None Include="res\Colour.ico" />
+    <None Include="res\Commands.ico" />
+    <None Include="res\Delete.ico" />
+    <None Include="res\Edit_Items.ico" />
+    <None Include="res\Edit_People.ico" />
+    <None Include="res\Find.ico" />
+    <None Include="res\General.ico" />
+    <None Include="res\Help.ico" />
+    <None Include="res\Items.ico" />
+    <None Include="res\Launcher.ico" />
+    <None Include="res\Misc.ico" />
+    <None Include="res\People.ico" />
+    <None Include="res\Reminder.ico" />
+    <None Include="res\Settings.ico" />
+    <None Include="res\World.ico" />
+    <None Include="res\Zoom_In.ico" />
+    <None Include="res\Zoom_Out.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AboutDlg.h" />
+    <ClInclude Include="AccountTab.h" />
+    <ClInclude Include="Axis3.h" />
+    <ClInclude Include="Axis3Dlg.h" />
+    <ClInclude Include="BitmapEx.h" />
+    <ClInclude Include="BtnST.h" />
+    <ClInclude Include="CharTweakTab.h" />
+    <ClInclude Include="CMulUOP.h" />
+    <ClInclude Include="CommandButton.h" />
+    <ClInclude Include="CommandPage.h" />
+    <ClInclude Include="CommandsTab.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="DialogPage.h" />
+    <ClInclude Include="GeneralTab.h" />
+    <ClInclude Include="ItemsTab.h" />
+    <ClInclude Include="ItemsTweakTab.h" />
+    <ClInclude Include="LauncherTab.h" />
+    <ClInclude Include="MiscTab.h" />
+    <ClInclude Include="ProfileDlg.h" />
+    <ClInclude Include="ReminderTab.h" />
+    <ClInclude Include="RemoteConsoleDlg.h" />
+    <ClInclude Include="RemoteConsoleLoginDlg.h" />
+    <ClInclude Include="SpawnTab.h" />
+    <ClInclude Include="SQLite.h" />
+    <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="TabCtrl\Draw.h" />
+    <ClInclude Include="TabCtrl\TabCtrl.h" />
+    <ClInclude Include="TabCtrl\Tools.h" />
+    <ClInclude Include="TravelTab.h" />
+    <CustomBuild Include="Resource.h">
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">hlp\HTMLDefines.h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">echo // Generated Help Map file.  Used by Axis3.HHP. &gt; "hlp\HTMLDefines.h"
+echo. &gt; "hlp\HTMLDefines.h"
+echo // Commands (ID_* and IDM_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h ID_,HID_,0x10000 IDM_,HIDM_,0x10000 "%(FullPath)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // Prompts (IDP_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDP_,HIDP_,0x30000 "%(FullPath)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // Resources (IDR_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDR_,HIDR_,0x20000 "%(FullPath)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // Dialogs (IDD_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDD_,HIDD_,0x20000 "%(FullPath)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // Frame Controls (IDW_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h /a afxhh.h IDW_,HIDW_,0x50000 "%(FullPath)" &gt;&gt; "hlp\HTMLDefines.h"
+</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating map file for help compiler...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">hlp\HTMLDefines.h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">echo // Generated Help Map file.  Used by Axis3.HHP. &gt; "hlp\HTMLDefines.h"
+echo. &gt; "hlp\HTMLDefines.h"
+echo // Commands (ID_* and IDM_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h ID_,HID_,0x10000 IDM_,HIDM_,0x10000 "%(FullPath)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // Prompts (IDP_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDP_,HIDP_,0x30000 "%(FullPath)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // Resources (IDR_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDR_,HIDR_,0x20000 "%(FullPath)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // Dialogs (IDD_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h IDD_,HIDD_,0x20000 "%(FullPath)" &gt;&gt; "hlp\HTMLDefines.h"
+echo. &gt;&gt; "hlp\HTMLDefines.h"
+echo // Frame Controls (IDW_*) &gt;&gt; "hlp\HTMLDefines.h"
+makehm /h /a afxhh.h IDW_,HIDW_,0x50000 "%(FullPath)" &gt;&gt; "hlp\HTMLDefines.h"
+</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating map file for help compiler...</Message>
+    </CustomBuild>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AboutDlg.cpp" />
+    <ClCompile Include="AccountTab.cpp" />
+    <ClCompile Include="Axis3.cpp" />
+    <ClCompile Include="Axis3Dlg.cpp" />
+    <ClCompile Include="BitmapEx.cpp" />
+    <ClCompile Include="BtnST.cpp" />
+    <ClCompile Include="CharTweakTab.cpp" />
+    <ClCompile Include="CMulUOP.cpp" />
+    <ClCompile Include="CommandButton.cpp" />
+    <ClCompile Include="CommandPage.cpp" />
+    <ClCompile Include="CommandsTab.cpp" />
+    <ClCompile Include="Common.cpp" />
+    <ClCompile Include="DialogPage.cpp" />
+    <ClCompile Include="GeneralTab.cpp" />
+    <ClCompile Include="ItemsTab.cpp" />
+    <ClCompile Include="ItemsTweakTab.cpp" />
+    <ClCompile Include="LauncherTab.cpp" />
+    <ClCompile Include="MiscTab.cpp" />
+    <ClCompile Include="ProfileDlg.cpp" />
+    <ClCompile Include="ReminderTab.cpp" />
+    <ClCompile Include="RemoteConsoleDlg.cpp" />
+    <ClCompile Include="RemoteConsoleLoginDlg.cpp" />
+    <ClCompile Include="SpawnTab.cpp" />
+    <ClCompile Include="SQLite.cpp" />
+    <ClCompile Include="sqlite3.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TabCtrl\TabCtrl.cpp" />
+    <ClCompile Include="TravelTab.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Axis3.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="Axis3.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

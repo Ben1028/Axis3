@@ -1,0 +1,595 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Functions</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>Functions</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>What's your [FUNCTION]? </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+The single most powerful SPHERE scripting tool to date. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+You have a wealth of built-in object functions available to you. However, there
+seems to be some limits. For example, let's take a look at the following example
+of a very poorly written script: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ON=@DClick</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM=ispell_7_water_sparkle</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;SRC.TARG.P&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;SRC.UID&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = 017a6</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE -1 -1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM = ispell_7_water_sparkle</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;SRC.TARG.P&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;SRC.UID&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = 017a3</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE -1 0</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM = ispell_7_water_sparkle</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;SRC.TARG.P&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;SRC.UID&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = 017a8</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE -1 1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM = ispell_7_water_sparkle</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;SRC.TARG.P&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;SRC.UID&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = 0179f</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE 0 -1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM = ispell_7_water_sparkle</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;SRC.TARG.P&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;SRC.UID&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = 0179b</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE 0 0</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM = ispell_7_water_sparkle</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;SRC.TARG.P&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;SRC.UID&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = 017a1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE 0 1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM = ispell_7_water_sparkle</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;SRC.TARG.P&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;SRC.UID&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = 017a5</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE 1 -1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM = ispell_7_water_sparkle</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;SRC.TARG.P&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;SRC.UID&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = 0179d</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE 1 0</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM = ispell_7_water_sparkle</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;SRC.TARG.P&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = 017a7</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;SRC.UID&gt;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE 1 1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN 1</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Do you notice anything about this script? How about the fact that it's
+repeating the same few lines over and over? Do you think we could do anything
+to fix this problem? I thought so too. We need a way to write a set of code
+once, like this: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM = ispell_7_water_sparkle</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;SRC.TARG.P&gt;</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = 017a7</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;SRC.UID&gt;</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE 1 1</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+And have a way to &quot;call&quot; this code over and over again. I give
+you.... the [FUNCTION]! </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION create_sparkle]</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM = ispell_7_water_sparkle</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;TARG.P&gt;</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = 017a7</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;UID&gt;</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE 1 1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+And in a script, we could go like this: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ON=@DClick</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN 1</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Once you have learned how to use FOR loops, you could also reduce this script
+even further to: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ON=@DClick</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>FOR 8</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ENDFOR</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN 1</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Doesn't that look slightly more pretty than the previous version? We managed to
+cut about 40 lines down into 3 or so. But do you notice a problem? Our code is
+fixed. Those items are going to be created and moved 1 square down and one
+square right, every single time. We need a way to specify some parameters to
+our function! </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+And so we have the ARG* commands. There are three types of arguments we can
+give to a function: numeric, string, or object. I recommend always using the
+string arguments and using EVAL to get whatever else you need. What variables
+are associated with these arguments? </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+ARGN, ARGS, and ARGO respectively. N for &quot;number&quot;, S for
+&quot;string&quot; and O for &quot;object&quot;. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Let's rewrite our function and event using this new information: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION create_sparkle]</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM = ispell_7_water_sparkle</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;TARG.P&gt;</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = 017a7</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;UID&gt;</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE &lt;ARGS&gt;</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[SOME ITEMDEF GOES HERE]</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ON=@DClick</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE -1 -1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE -1 0</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE -1 1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE 0 -1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE 0 1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE 1 -1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE 1 0</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE 1 1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN 1</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Get it? Every time we call the function with our new <i>create_sparkle</i> command,
+we &quot;pass&quot; it the values following the command. SPHERE automatically
+puts those values in ARGS, without any help from us. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+There is another problem with functions that many new scripters do not
+understand, and that is the concept of the default object. In a normal script,
+the default object is the object on which the script is being executed. In a
+@DClick script, it's the item being double-clicked. In an @Equip script, it's
+the item being equipped. But what are the objects available in a function. Well,
+it all depends on how you call it. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+The default object in a function is the object that called the function. In the
+case of our above example, SRC called the function, so the SRC becomes the
+default object. You'll notice that I removed any mention of SRC from the lines
+inside of the function itself. We could easily have said this instead: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CREATE_SPARKLE</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Then, the default object would have been the item and SRC would still be SRC.
+But its a lot easier to see it the other way, at least in my opinion. That way
+you don't get confused either. If you WERE to include the SRC, and accidentally
+call your function with something like this: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.ACT.CREATE_SPARKLE // Not a really likely occurrence in
+this case, but in other cases it is</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Then you would no longer have a SRC and you would get a lot of scary errors
+that would be kinda difficult to track down, since you probably wouldn't think
+to check the function call. Functions generate enough scary errors as it is
+when you screw them up. Don't make it worse. &nbsp;:) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+There is still another problem with my script. It's assigning the same MORE
+value to each of the newly created items, and as you can see from the original
+long script, this isn't what I wanted it to do. I wanted each item to have a
+specific MORE value, which is used elsewhere in the script. So what are we to
+do? Well there are a number of solutions, but the most obvious would be to
+utilize that VAR feature we discussed in the previous section. Let's take a
+look at the completed script: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION create_sparkle]</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM = ispell_7_water_sparkle</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.P = &lt;TARG.P&gt;</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MORE = &lt;EVAL &lt;VAR.MORE_VALUE&gt;&gt;</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.LINK = &lt;UID&gt;</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.MOVE &lt;ARGS&gt;</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[SOME ITEMDEF GOES HERE]</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ON=@DClick</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>VAR.MORE_VALUE = 017a6</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE -1 -1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>VAR.MORE_VALUE = 017a3</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE -1 0</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>VAR.MORE_VALUE = 017a8</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE -1 1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>VAR.MORE_VALUE = 0179f</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE 0 -1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>VAR.MORE_VALUE = 017a1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE 0 1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>VAR.MORE_VALUE = 017a5</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE 1 -1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>VAR.MORE_VALUE = 0179d</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE 1 0</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>VAR.MORE_VALUE = 017a7</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.CREATE_SPARKLE 1 1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>VAR.MORE_VALUE = </span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN 1</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+The value of the VAR is carried over, since VAR variables, as we know, are
+global. We've managed to reduce a 40 line script into a 20 line script and keep
+the original functionality. And this is only for calling a function 8 times.
+The more you use a function, the more space it saves later. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+And that is my chapter on functions. Later on, we'll see very useful purposes
+for doing this, other than eliminating a lot of lines of typing. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

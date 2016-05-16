@@ -1,0 +1,23 @@
+***Version 3.0.0***
+(Changes since AxisII)
+
+-Now compiled using VS2010 with a complete redesign.
+-No longer uses registry to store settings, they are stored in local database files using SQLite.
+-Language is fully editable using the Lang Database. It also supports multiple languages.
+-All tabs can be detached more smoothly then before.
+
+-Log Tab:
+	->Removed. It's useless and slows down Axis!
+
+-General Tab:
+-Reminder Tab:
+	->No noticable changes.
+
+-Account tab:
+	->Re-arranged the layout.
+
+-Commands Tab:
+	->Added context menu to buttons and tabs for edit and remove options.
+	->Buttons can be dragged to be repositioned on their tabs.
+	->Buttons can contain single commands or macros.
+	->Macros can use the case incensitive command "Sleep(miliseconds-here)" to make pauses in the command sequence. 

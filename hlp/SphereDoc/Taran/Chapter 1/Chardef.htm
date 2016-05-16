@@ -1,0 +1,494 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Chardef</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+pre
+	{mso-style-link:"HTML Preformatted Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Courier New";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-link:"HTML Preformatted";
+	font-family:"Courier New";}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>CHARDEF</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>Or, what it takes to make a naked man who can
+stand around and say &quot;Huh?&quot; </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+NPCs... They make the world go around. They are what makes UO a unique
+multiplayer game. The monsters and NPCs you create make your server unique from
+any other. This section of chapter one will cover how to create a simple naked
+man who walks around and says little more than &quot;Huh?&quot; (or &quot;Stop
+thief!&quot; if you tell him to!). </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+First of all, we'll look at the script for a simple naked man. I'm pulling this
+out of spherechar_human.scp. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[CHARDEF 0190]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DEFNAME=c_man</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>Name=Man</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ICON=i_pet_MAN</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CAN=MT_EQUIP|MT_WALK|MT_RUN|MT_USEHANDS</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RESOURCES=i_flesh_head, i_flesh_torso, i_flesh_right_arm,
+i_flesh_left_arm</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>FOODTYPE=15 t_food, t_fruit</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DESIRES=i_gold,e_notoriety</span></p>
+
+<p class=MsoNormal><span lang=FR-CA style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>AVERSIONS=t_TRAP,t_eerie_stuff</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SHELTER=r_house</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BLOODCOLOR=0</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TSPEECH=spk_human_prime</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TSPEECH=spk_human_default</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TEVENTS=e_Human_HearUnk</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DESCRIPTION=Man</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SUBSECTION=Miscellaneous</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CATEGORY=Civilized</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+As you can see, it doesn't look a lot different than the item scripts we
+examined in the previous section. There are a lot of variables set that are the
+same, including DEFNAME, DESCRIPTION, and the other Axis variables. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+But, there are a lot of new things here that we will again go over, one line at
+a time! And it's longer this time! Let the good times roll! (Sorry if you're
+not American.. All my American clichés are probably growing irritating!) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 1</b>: [CHARDEF 0190] </span></p>
+
+<p class=MsoNormal><span lang=EN>Surprise surprise! It's an identifier, telling
+the server that we are going to be defined a character between this and the
+next [identifier]. And we also tell it that our character, or NPC, will have
+the ID 0190. The server knows that this ID is one of the built-in IDs. In fact,
+it's the ID of a naked man. You also know that 0190 is hexadecimal is 400 in
+decimal right? &nbsp;:) Well why didn't you know that! Oh I'm just kidding, you
+don't need to know things like that. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 2</b>: DEFNAME=c_man </span></p>
+
+<p class=MsoNormal><span lang=EN>Nothing new here. c_man is now the same as
+0190. Most character DEFNAMEs will begin with C and then an underscore (c_)
+like you see above. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 3</b>: Name=Man </span></p>
+
+<p class=MsoNormal><span lang=EN>Oh oh! Something new! Items come with default
+names, built in to the server. Characters don't. So we have to assign him a
+name. We can give him any name we want, but since this isn't a specific man, we
+just give him a name telling us what he is. In this case &quot;Man&quot;. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 4</b>: ICON=i_pet_man </span></p>
+
+<p class=MsoNormal><span lang=EN>It took me a while to figure this one out.
+ICON defines what little picture you see when you're using the Tracking skill
+and all those little miniature creatures appear in the window. Those are
+actually items, all the i_pet items. To find out what the i_pet item for your
+creature should be, create him in the game using .addnpc, then use the .shrink
+command on him. The ID of the item that he becomes is your i_pet item. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 5</b>: CAN=mt_* </span></p>
+
+<p class=MsoNormal><span lang=EN>(In case you don't know, * means
+&quot;anything&quot; for those who use Linux.) </span></p>
+
+<p class=MsoNormal><span lang=EN>This is one of the most important lines of
+your character script, next to the ID we give him in the first line. First,
+because it allows us to tell the game what our NPC can do and what he can't do.
+There are only a few mt_* items, all of which are defined in spheredefs.scp.
+For the purpose of the lesson, I am going to copy them here. (The purple
+comments are mine.) </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MT_NONMOVER        0 // We can't move at all</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MT_GHOST          01 // We can walk through doors and such,
+like a ghost</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MT_SWIM           02 // I can swim! (Water elementals,
+dolphins, etc)</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MT_WALK           04 // I can move. Set this if you want your
+creature to move.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MT_FLY           010 // Moves through (supposed to be over)
+trees</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MT_FIRE_IMMUNE   020 // Immune to damage by fire. Setting this
+on a player is bad. &nbsp;:)</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MT_EQUIP       00100 // Can equip things</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MT_USEHANDS    00200 // Can use his hands to carry things (or
+open doors)</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MT_MALE            0 // Is a male</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MT_FEMALE      00800 // Is a female</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MT_NONHUM      01000 // Non-human. I'm not sure what this does.</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>MT_RUN         02000 // Can move really fast!</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+According to this chart, we can see that if we don't give a creature a CAN
+flag, it will be an MT_MALE and an MT_NONMOVER (the two zeros). You can see
+from the example that by putting a | (found by pressing shift+backslash)
+between two CAN flags, we can give him more than one. In this case, we allow
+our man to equip things, walk, run, and use his hands. (An interesting fact is,
+even creatures that don't have hands can be set to use their hands, thus
+allowing them to carry light sources. Fire elementals do this. That's how they
+glow.) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 6</b>: RESOURCES </span></p>
+
+<p class=MsoNormal><span lang=EN>Resources is a very morbid name for this
+setting. Especially for a person. These are the items that you get whenever you
+chop up this creature's corpse. Scary eh? &nbsp;:) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 7-10</b>: FOODTYPE, DESIRES, AVERSIONS </span></p>
+
+<p class=MsoNormal><b><span lang=EN>FOODTYPE</span></b><span lang=EN>: Defines
+what kind of food the npc will eat and if NPC_AI_FOOD is on it'll make the npc
+look for this food + grass when he's hunger. </span></p>
+
+<p class=MsoNormal><b><span lang=EN>DESIRES</span></b><span lang=EN>: Defines
+what kind of items will the npc be interested in, if NPC_AI_EXTRA is on it'll
+show what items the npc will loot of players corpses or walk towards when it's
+on the ground. </span></p>
+
+<p class=MsoNormal><b><span lang=EN>AVERSIONS</span></b><span lang=EN>: No
+idea, but I think it tells the npc what sort of NPCs he'll try to fight, for
+example: I have a horse with e_horse as an event, and an imp without any
+events, if the npc has AVERSIONS=e_horse it'll prefer to fight the horse. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Line 11</b>: BLOODCOLOR </span></p>
+
+<p class=MsoNormal><span lang=EN>Ever wanted to make your players have green
+blood? This is where you do it! A color number or a color defname will work
+fine. (Try to learn the numbers for common colors, it makes it so much easier.)
+</span></p>
+
+<p class=MsoNormal><span lang=EN>The rest of it: TSPEECH and TEVENTS </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+We're going to cover these in sections of their own. They are probably the most
+complex topics in scripting! (How many times do you suppose I'm going to say
+that before it's actually true?) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<i><span style='color:darkblue'>Some other things:</span></i> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+On 56B we have some other fields like MOVERATE,RESLEVEL,RESDISPDNID and
+RESDISPDNHUE. They sound some difficult and strange thing but they aren't.
+Here's the explanation for them: </span></p>
+
+<p class=MsoNormal><b><span lang=EN>MOVERATE</span></b><span lang=EN>: This
+setting (that can only be writed at the npc chardef) controls how fast the npc
+moves. The smaller the value, the faster the npc is. For example, if I have a
+horse chardef with default moverate (100) and another with moverate=60, the one
+with 60 will walk and run a lot faster than the other horse. This is great for
+making really difficult monsters to kill. </span></p>
+
+<p class=MsoNormal><b><span lang=EN>RESLEVEL</span></b><span lang=EN>: This
+tells sphere what version of uo this monster is from, for example, a Wanderer
+of the Void will have RESLEVEL=3 (3=AOS) (see sphere_defs.scp for a complete
+list), so only accounts with RESDISP 3 or bigger can see this monster as he
+really is. </span></p>
+
+<p class=MsoNormal><i><span lang=EN>NOTE</span></i><span lang=EN>: If you set a
+lower value for RESLEVEL, if the player doesn't have this npc anim he'll crash.
+</span></p>
+
+<p class=MsoNormal><b><span lang=EN>RESDISPDNID</span></b><span lang=EN>: As
+you probably have seen, I used a lot of &quot;as he really&quot; is, exactly
+because of this setting, this tells the client what monster will the player see
+instead of the correct one. For example, this Wanderer of the Void will show as
+Wanderer of the Void for those who has ACCOUNT.RESDISP=3 or bigger, but for
+those who has smaller values it'll show as a c_spectre (if you so define). </span></p>
+
+<p class=MsoNormal><b><span lang=EN>RESDISPDNHUE</span></b><span lang=EN>: This
+defines what color will the player see the monster if the RESDISPDNID id is
+shown to him (have an account.resdisp lower than the reslevel of this char) </span></p>
+
+<p class=MsoNormal><span lang=EN>Here's an example for those new settings: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[CHARDEF 310]</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DEFNAME=c_Wailing_Banshee</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NAME=Wailing Banshee</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SOUND=snd_monster_zombie1</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ICON=i_pet_wailingbanshee</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DAM=11,16</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RESDISPDNID=c_spectre</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RESLEVEL=3</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RESDISPDNHUE=01</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ARMOR=20</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CAN=MT_WALK|MT_FLY</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DESIRES=i_gold,e_notoriety,e_horses,c_man,c_woman,t_corpse</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CATEGORY=New Monsters</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SUBSECTION=AOS</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DESCRIPTION=Wailing Banshee</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ON=@Create</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>    NPC = brain_monster</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>    FAME = {100 3000}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>    KARMA = {-5000 -6999}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>    STR = {126 166}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>    INT = {86 115}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>    DEX = {41 75}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>    MAGICRESISTANCE = {75.0 95.0}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>    TACTICS = {45.0 75.0}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>    WRESTLING = {50.0 70.0}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>    </span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ON=@NpcRestock</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>    ITEM = i_gold, {50 100}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>    ITEM = i_reag_daemon_bone, {2 6}</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+And there you have it. A simple character script and some new things. Read the
+chapter that is all about making NPCs later in the tutorial. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

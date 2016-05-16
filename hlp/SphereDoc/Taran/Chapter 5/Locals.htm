@@ -1,0 +1,274 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Locals</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>Locals</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>LOCALs are like VARs except they are only
+accessible within the script block they are defined in (i.e. a function or
+trigger) and then they are immediately cleared. The advantage is that they are
+much faster than VARs and you also don't have to worry about different scripts
+interfering with each other. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+The following script demonstrates why you may want to use a LOCAL rather than a
+VAR: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_var_joe]</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>VAR.NAME = Joe</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>F_VAR_BOB</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SYSMESSAGE &lt;VAR.NAME&gt;</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_var_bob]</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>VAR.NAME = Bob</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SYSMESSAGE &lt;VAR.NAME&gt;</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+The idea with the two functions above is that F_VAR_JOE will show the message
+&quot;Joe&quot; and F_VAR_BOB will show the message &quot;Bob&quot;. However,
+if you were to go ingame and type <b>.F_VAR_JOE</b>, you would receive two
+messages saying &quot;Bob&quot;. Why is this? </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Well, if you look closely at F_VAR_JOE you will see that after setting VAR.NAME
+to Joe, it then executes the function F_VAR_BOB and inside F_VAR_BOB we then
+set VAR.NAME to Bob. Because VARs are global variables, this inadvertently
+affects the behaviour of F_VAR_JOE and we don't get the output that we were
+after. Another flaw you may have not spotted with this script is that we
+haven't cleared VAR.NAME before the script ends and so Sphere still has
+VAR.NAME stored in memory (which in this particular case is a waste of
+resources as we have no further use for VAR.NAME). </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+In this particular scenario we could modify the functions to use different VAR
+names but unless we intend to manually check every script on the server we
+could easily end up using a VAR that another script is using and prevent that
+from working instead. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+This is where the LOCAL comes in to play, see the following example: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_local_joe]</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>LOCAL.NAME = Joe</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>F_LOCAL_BOB</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SYSMESSAGE &lt;LOCAL.NAME&gt;</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_local_bob]</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>LOCAL.NAME = Bob</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SYSMESSAGE &lt;LOCAL.NAME&gt;</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+The above functions are identical to the previous ones, except they use LOCAL
+instead of VAR. This time when you type <b>.F_LOCAL_JOE</b> ingame you will
+receive &quot;Joe&quot; and &quot;Bob&quot; messages as we originally intended.
+</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+This is because the LOCALs only exist within the functions that define them.
+When F_LOCAL_BOB attempted to use LOCAL.NAME it received its own version of the
+variable that doesn't interfere with the one defined in F_LOCAL_JOE. When
+F_LOCAL_BOB returns, F_LOCAL_JOE still has its original LOCAL.NAME with
+&quot;Joe&quot; still stored inside it. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Of course there may come a time where you <i>do</i> want to share LOCALs with
+another function, and this can be accomplished by using the <b>CALL</b>
+command. When you use the CALL command to run a function instead of running the
+function directly the LOCALs are shared between both scripts, for example: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_bla]</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>LOCAL.DUDE = Bob</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[FUNCTION f_bleep]</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><b><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CALL F_BLA</span></b><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NAME = &lt;LOCAL.DUDE&gt;</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RETURN</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+When we run the <b>F_BLEEP</b> function above, the CALL line allows LOCAL.DUDE
+to be set in F_BLA and be accessible to F_BLEEP afterwards. Therefore, the </span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'>NAME =
+&lt;LOCAL.DUDE&gt;</span><span lang=EN> line will set the name of the object to
+whatever the F_BLA function set LOCAL.DUDE to (in this case &quot;Bob&quot;). </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Unlike TAGs, CTAGs and VARs, LOCALs <i>do not</i> have a LOCAL0 equivalent.
+This is because LOCALs will always return 0 when they empty (and so, they can <i>never</i>
+be blank/empty). </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

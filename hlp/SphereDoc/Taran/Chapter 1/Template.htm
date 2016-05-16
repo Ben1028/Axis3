@@ -1,0 +1,379 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Template</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>TEMPLATE</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>Or, how to put great laggy quantities of items
+into one unlaggy container. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+You've all seen it. Those shards out there that don't use TEMPLATEs. When you
+kill, say, a dragon, on those shards, and go to loot him, you find that rather
+than neatly organized containers, there are 100 potions scattered about the
+loot window. Not only that, but all your magical weapons are buried neatly
+beneath them! </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+How do we solve this problem? Well, SPHERE has given us the handy tool of
+TEMPLATEs. These allow you to define a container item, AND the items inside of
+it, AT THE SAME TIME. Isn't that neat? I thought so too, when I first figured
+out what they were. Let's do our traditional take-apart-the-script section.
+I'll place a nice TEMPLATE from the file spheretemp_loot.scp. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[TEMPLATE 101505]</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DEFNAME=backpack_poor</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CATEGORY=Item Templates</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SUBSECTION=Loot Templates</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DESCRIPTION=Poor Backpack</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CONTAINER=i_backpack</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM={ random_food 1 0 3 },{ 1 3 }</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM={ random_bottle 1 0 8 }</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM={ random_light 1 0 8 }</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM={ random_male_tops 1 0 4 }</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>COLOR=colors_all</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM={ random_male_pants 1 0 4 }</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>COLOR=colors_all</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM=POOR_GOLD_PILE</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Wow, that looks confusing. But don't worry, by the time we're done, you'll know
+exactly what it means! </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<span style='color:darkblue'>[TEMPLATE 101505]</span>: First of all, we look at
+the header for our template. An interesting thing about templates is that the
+item name cannot be a DEFNAME like all other scripts. It must be a ridiculously
+high number like 101505. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<span style='color:darkblue'>DEFNAME=backpack_poor</span>: Of course, SPHERE
+developers are not entirely evil, and have provided us with the ability to give
+these scary numbers a DEFNAME for easier access. You tell me, which would you
+rather type? &quot;.add 101505&quot; or &quot;.add backpack_poor&quot;? I
+thought so. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<span style='color:darkblue'>CATEGORY, SUBSECTION, DESCRIPTION</span>: Axis crap.
+Optional. See the previous sections for a description of what these do. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<span style='color:darkblue'>CONTAINER=i_backpack</span>: Ahh, now we're
+getting down to the meat of this thing. This specifies the holding container
+that all other items in this template will be in. When you add the item in
+game, you will see this container. In this case, it's a backpack. Simple
+enough. This can be any valid item with a TYPE of t_container or
+t_container_locked. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<span style='color:darkblue'>ITEM={ random_food 1 0 3},{1 3}</span> Well,
+that's certainly cryptic. I think we need to break this line down even further.
+</span></p>
+
+<p class=MsoNormal><span lang=EN>But first, we're going to cover RANDOM
+SELECTORS! Sounds like fun doesn't it? Nah, it doesn't sound fun to me either,
+but it's absolutely necessary to a good shard. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Basically, they are an easy way to get different numbers with one command. What
+fun would a shard be where you killed a dragon and got a Platemail of Magic
+Stuff and a Super Duper Sword of Power every single time? Everyone would be
+running around with them. What we need is some variety! </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+There are two types of random selectors: weighted random and ranged random.
+Weighted random makes a statement like this: &quot;Ok, 1 out of 10 times pick
+Number A, 3 out of 10 times pick Number B, and 6 out of 10 times pick number
+C&quot;. Ranged random makes a statement like this: &quot;Pick any number
+between the two numbers I give you&quot;. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Our example actually has an example of both ranged random and weighted random.
+We'll cover them in the order they appear: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+{ random_food 1 0 3} </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+This is a weighted random selector. The way to interpret these is to take the
+numbers that appear between the parentheses and divide them into sets of two: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+random_food 1<br>
+0 3 </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Add up the second numbers in both sets, and we get 4. This tells SPHERE,
+&quot;Ok, 1 out of four times, I want you to pick random_food, and 3 out of
+four times, I want you to pick zero.&quot; You can even have random sets within
+random sets, but then it just gets confusing. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+{ { random_food 1 0 3} 1 random_clothing 1} </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Can you figure it out? </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+random_clothing 1 { random_food 1 0 3} 1 </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN>2 is our magic number in this case. One out of
+two times, SPHERE will pick random_clothing, and one out of two times, SPHERE
+will pick our previous random selector, which will then select one of its own
+options. If you're confused at this point, don't worry. This is extremely rare,
+and we'll see in a moment how templates help us to solve this problem. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+I did mention, though, that there is another type of random selector, and you
+can probably see what it is: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+{1 3} </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+NOTE: Spacing here is important. There must be ZERO spaces between the { and
+the first number, or the } and the last number. It will behave strangely
+otherwise. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+This tells SPHERE &quot;Pick a number between 1 and 3, inclusive&quot;.
+Inclusive means that SPHERE can pick 1, 3, or any number in between. In this
+case, the range is rather limited. SPHERE will give you a 1, 2 or 3 here.
+Ranged random selectors are actually more often used inside of weighted random
+selectors. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+{ {1 3} 3 {4 9} 1} </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+&quot;One out of four times, pick a number between 4 and 9. Three out of four
+times, pick a number between 1 and 3.&quot; </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+And with that out of the way, we're going to analyze the actual line of the
+script from above. The Piece What the Line does ITEM= This tells the script
+&quot;Ok, we're going to add an item to this container. Anything after the =
+tells the script exactly what it is we're adding and in what amounts. You could
+easily say ITEM=i_platemail_chest, or something like that, without the
+mysterious { } sections, but the reason templates are interesting is because
+they can vary greatly. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<span style='color:darkblue'>{ random_food 1 0 3}</span> </span></p>
+
+<p class=MsoNormal><span lang=EN>This is the item you will be creating. As we
+can see from our weighted random selector lesson, 1 out of 4 times, it will be
+random_food, and 3 out of 4 times, it will be zero. If an ITEM is zero, nothing
+will be created this time. Basically this is saying &quot;There will be a one
+in four chance of getting random_food in this container.&quot; What is
+random_food you ask? Well, it happens to be another TEMPLATE, defined in
+spheretemplate.scp, I believe. </span></p>
+
+<p class=MsoNormal><span lang=EN>{1 3} This is the amount of the item that will
+be created. You should recognize this as a ranged random selector. This tells
+SPHERE to put between 1 and 3 of this item into the container. Of course, if
+the item is zero as selected above, this has no effect since one nothing and
+three nothings are still nothing. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+So basically, that is a template script. You then fill it with as many items as
+you want. You may also notice the following construction: </span></p>
+
+<p class=MsoNormal><span lang=EN>ITEM=i_sword_long,R11 </span></p>
+
+<p class=MsoNormal><span lang=EN>This is a shorthand way of writing this: </span></p>
+
+<p class=MsoNormal><span lang=EN>ITEM={ i_sword_long 1 0 10 } </span></p>
+
+<p class=MsoNormal><span lang=EN>R11 means &quot;one out of 11 chance of
+finding this item&quot;. And you can add an amount selector to the end of that
+as well, which makes it look long and scary: </span></p>
+
+<p class=MsoNormal><span lang=EN>ITEM=i_sword_long,R11,{4 5} </span></p>
+
+<p class=MsoNormal><span lang=EN>But why would you want 4 or 5 long swords in
+one item? That would be bizzare. &nbsp;:) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+And that's about it for templates. Congratulations, you're finished with
+chapter 1. Now you should be able to understand the examples to follow on the
+next section. You may also have some questions which are addressed in the
+common questions area. If you have a question which is not addressed there,
+perhaps it is too advanced of a topic for chapter 1. I assure you almost every
+aspect of SPHERE scripting will be covered in later chapters. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<i>(A template example by Belgar)</i> </span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[TEMPLATE tm_necromancer]</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CONTAINER=i_bag</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM=random_necro_scroll</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM=random_necro_scroll</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM=random_necro_reagent, {5 12}</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM=random_reagent, {5 12}</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM=random_necro_reagent, {5 12}</span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

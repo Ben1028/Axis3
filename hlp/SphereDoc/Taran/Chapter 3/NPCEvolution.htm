@@ -1,0 +1,644 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>NPC Evolution</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>NPC Evolution</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>Remember in Chapter 1 when we looked at that
+basic NPC script? It was a generic script to create a naked man (or a naked
+player). And it looked something like this: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[CHARDEF 0190]</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DEFNAME=c_man</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>Name=Man</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ICON=i_pet_MAN</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CAN=MT_EQUIP|MT_WALK|MT_RUN|MT_USEHANDS</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>RESOURCES=i_flesh_head, i_flesh_torso, i_flesh_right_arm,
+i_flesh_left_arm</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>FOODTYPE=15 t_food, t_fruit</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DESIRES=i_gold,e_notoriety</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>AVERSIONS=t_TRAP,t_eerie_stuff</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SHELTER=r_house</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BLOODCOLOR=0</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TSPEECH=spk_human_prime</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TSPEECH=spk_human_default</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TEVENTS=e_Human_HearUnk</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DESCRIPTION=Man</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SUBSECTION=Miscellaneous</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CATEGORY=Civilized</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+As you can see, this is a rather incomplete script. It's actually one of the
+least complete of any of the scripts available in the spherechar_*.scp files.
+Here is a more complete example of an NPC script: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[CHARDEF 0490]</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DEFNAME=C_H_ALCHEMIST</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NAME=#NAMES_HUMANMALE the Alchemist</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ID=C_MAN</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DESIRES=i_gold,e_notoriety,t_magic</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>AVERSIONS=t_TRAP,t_eerie_stuff</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TSPEECH=spk_human_prime</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TSPEECH=jobalchemist</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TSPEECH=spk_shopkeep</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TSPEECH=spk_needs</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TSPEECH=spk_rehello</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TSPEECH=spk_human_default</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TEVENTS=e_Human_HearUnk</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TEVENTS=e_Human_ConvInit</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TEVENTS=e_Human_Greet</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TEVENTS=e_Human_Space</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TEVENTS=e_Human_Needs</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TEVENTS=e_Human_Refuse</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>TEVENTS=e_Human_Environ</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CATEGORY=Civilized</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SUBSECTION=Tradesmen</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>DESCRIPTION=Alchemist (male)</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>ON=@Create</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>NPC=brain_vendor</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>COLOR=colors_skin</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>STR={36 50}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>DEX={36 50}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>INT={51 65}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>ALCHEMY={55.0 78.0}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>TASTEID={55.0 78.0}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>WRESTLING={15.0 38.0}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>MAGICRESISTANCE={25.0 48.0}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>TACTICS={15.0 38.0}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>POISONING={35.0 55.0}</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>ITEMNEWBIE=random_male_hair</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>COLOR=colors_hair</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>ITEMNEWBIE=random_facial_hair</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>COLOR=match_hair</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'><br>
+ON=@NPCRestock</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM=i_expcoin,3</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM=i_shirt_plain</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>COLOR=colors_all</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM=random_pants</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>COLOR=colors_all</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM=i_robe</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>COLOR=colors_red</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM=random_shoes</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>COLOR=colors_neutral</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ITEM=random_coin_purse</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>&nbsp;</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SELL=VENDOR_S_ALCHEMIST</span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BUY=VENDOR_B_ALCHEMIST</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>[CHARDEF 0490]</b> We've seen this before. It says &quot;Hey SPHERE! Everything
+after this line until the next header is going to define a character!&quot;
+What is this character going to be? Well, right now we have no idea, it's just
+0490 to SPHERE. The 0490 also shows the client what anim to show (except for
+monsters with the ID field, which will show the ID field anim). You can also
+use the char defname in the [CHARDEF x] field instead of a number (which is
+better for new npcs), for example: [CHARDEF c_new_monster] </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>DEFNAME=C_H_ALCHEMIST</b> This is the <b><span style='color:darkgreen'>defname</span></b>
+for this script, obviously. We've seen things like this so many times, I don't
+believe I need to go over it. But now at least we have a more memorable name
+for this script. It's obviously a character (C), a human (H), and an alchemist
+(<b><span style='color:yellow'>C_H_ALCHEMIST</span></b>). Try to make your <b><span
+style='color:darkgreen'>DEFNAMEs</span></b> make sense based on what the
+character is. Calling this c_robed_man would have absolutely no memorable
+qualities. &nbsp;:) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>NAME=#NAMES_HUMANMALE the Alchemist</b> This is where SPHERE does some funky
+stuff. First of all, if you remember from the <span style='color:darkblue'>SPHERE_NAME.SCP</span>
+lesson in <a href="http://wiki.sphere.torfo.org/index.php/Chapter_2"
+title="Chapter 2">Chapter 2</a>, it is going to replace #NAMES_HUMANMALE with
+an actual name for this NPC, such as &quot;Fritz&quot;, &quot;Bob&quot; or the
+ever popular &quot;Roderick&quot;. The second thing it is going to do is divide
+this name into a <span style='color:darkblue'>NAME</span> and a <span
+style='color:darkblue'>TITLE</span>. Where does it do this division? At the
+word &quot;the&quot;. So writing this line is equivalent to: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><i><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>NAME=#NAMES_HUMANMALE</span></i><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><i><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>TITLE=the
+Alchemist</span></i></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>ID=C_MAN</b> Here is where we actually tell SPHERE what this thing is. What
+is C_MAN? It's a <b>DEFNAME</b> obviously, but for what? Look up toward the top
+of this file, and you'll see the definition of the <i>C_MAN</i> character. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+And so on. As you can see, we're just duplicating what we've written in the
+previous section. But with the newer versions of SPHERE we don't need to do
+that. Our character 0490 automatically gets everything that comes default on a
+C_MAN, including abilities, icons, and sounds, UNLESS WE SAY OTHERWISE. In
+programming, this is called inheritance. The new, more specific character
+inherits the properties of the less specific one. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+You'll notice that we respecify <span style='color:darkgreen'>DESIRES</span>
+and <span style='color:darkgreen'>AVERSIONS</span>. Why do we do this if <b><span
+style='color:yellow'>C_MAN</span></b> has already told us what this type of
+character wants and doesn't want? Well I'm not sure in the case of AVERSIONS,
+because, well, they're the same. But the DESIRES of an alchemist are different
+than the DESIRES of a generic man, so we tell SPHERE, &quot;Hey, replace the <b><span
+style='color:yellow'>C_MAN</span></b> desires with our new ones!&quot; </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>TSPEECH=</b> What do you suppose those cryptic names are following this
+statement? Of course, they're DEFNAMEs, but for what? If you look through your
+files, chances are you won't find those defined anywhere.. But what's this? We
+have a folder called speech that comes preconstructed in the zip file. Looking
+through those files reveals a wealth of <b><span style='color:darkgreen'>[SPEECH]</span></b>
+block definitions. The default ones can be found at the SPEECH folder on your
+scripts folder. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+We'll look at a very simple speech script right now. I am not taking this from
+any file. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><i><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[SPEECH spk_human_test]</span></i><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><i><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ON=*hello*</span></i><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><i><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SAY Cheese!</span></i></p>
+
+<p class=MsoNormal><span lang=EN><br>
+In our script, if we were to write <b><span style='color:darkred'>TSPEECH=spk_human_test</span></b>,
+our NPC would respond with &quot;Cheese!&quot; any time we said
+&quot;hello&quot; to him. You might be wondering why I have surrounded this word
+with stars <b>(*)</b>. In programming lingo, a star means <i>&quot;ANYTHING&quot;</i>.
+So you could say &quot;I want to eat you hello goodbye&quot; and the NPC would
+still respond with &quot;Cheese!&quot;, because the word &quot;hello&quot; was
+present. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Of course, SPEECH is much more complicated than that and we'll look at it again
+when we reach the chapter on basic event scripting. Just know for now that you
+can have as many TSPEECH lines as you wish in a CHARDEF section. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>TEVENTS=</b> We've already covered this in a very very tiny amount of detail
+in Chapter 1. This is where events for the creature are defined. As you can
+see, this creature contains a great deal of events. They define everything from
+what he says when he hears an unknown word (&quot;Huh?&quot;), to what he does
+when he sees a new player. We'll look at an event script in Chapter 8. You
+should learn the basics of item scripting before you try NPC event scripting.
+For now just know that you can retrieve all the TEVENTS of a npc by using
+&lt;[REF].TEVENTS&gt;. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>ON=@Create</b> Actually, I lied. @Create is an event, and we're going to
+talk about it right now. But it's a special event, as is the next one we're
+going to discuss. Basically, @Create causes every line after it to be processed
+(the entire section highlighted in red) when an object is Created. Creative eh?
+(Ha, ha.) In this case, I'm not going to concentrate on most of the lines
+following, as they should all make sense to you now. All you need to know at
+this point about @Create is that things you can change IN GAME go under this
+section. This includes stats, skills, unlootable items, colors, brain types,
+and TAGs (Although tags can be defined on CHARDEF too, it's a great way to set
+a tag to all npcs with that chardef without needing to do a restock or change
+one by one) (You don't know what a TAG is? Good, I haven't taught you yet.). </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>ALCHEMY={55.0 77.0}</b> This line is very deceiving, and the reason for the
+deception is the way that SPHERE processes numbers. SPHERE cannot, ever, read a
+decimal number. 55.0 means nothing to SPHERE, and it simply strips out the
+decimal point. Now, isn't it convenient that internally, skills are stored as
+big numbers? Look at your skills menu in-game right now. Find a skill that
+isn't zero, obviously, and look at the value. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+It looks like this: 42.0 </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Now, in-game again, type this command: .set [skillname] 42 (Of course,
+replacing [skillname] with the skill of your choice. Refer to spheretables.scp
+if the name you're typing doesn't work.) What happened? Your skill suddenly
+went to 4.2!! Is this an error in the game? No, actually it's because skills
+are stored by removing the decimal point. If you have 100.0 in blacksmithing,
+your skill is actually set to 1000. If you have 75.2 in a skill, that skill is
+752. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+This may seem like a simple concept, but it also applies to the REST of
+scripting as well. Any time you type a number like 55.0, SPHERE eliminates the
+decimal. So our example line above is actually this: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ALCHEMY={550
+770}</span><span lang=EN> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Isn't that sneaky? </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+One of the times you might want to remember this is later, if you are
+multiplying numbers: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+4 * 0.5 </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Sphere translates this as &quot;4 times 5&quot; and you get 20, rather than the
+2 you were expecting. As you can see, this may cause serious problems. I'll
+show in later chapters how to get around this problem. I just wanted to point
+out here that it exists. (Look back at the resource tables in sphereregion.scp
+for another example of where sneaky decimal points are used.) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>NPC=brain_vendor</b> Ok, so I'm out of order. Deal with it. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+All NPCs in the game are controlled by specific intelligences, which direct the
+way they act in certain situations. For instance, this alchemist is a
+brain_vendor, which means he responds to commands like &quot;buy&quot; and
+&quot;sell&quot; by opening up a trade window. It also means that he is allowed
+to have extra storage space for information dealing with the items he can buy
+and sell. (Actually they are additional containers stored on the vendor, but we
+shall see that later.) Here is a list of the other intelligences available (I
+bet you can't guess which file I pulled this from): </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>[DEFNAME brains]</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_NONE 0 // Players: No brain. Convenient eh? &nbsp;:)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_ANIMAL 1 // Animals: wander, attack only if attacked</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_HUMAN 2 // Human: wander and speak</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_HEALER 3 // Healer: heal ghosts in proximity</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_GUARD 4 // Guard: attack bad guys I see</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_BANKER 5 // Banker: you can access your bank through him</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_VENDOR 6 // Vendor: buys and sells things</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_BEGGAR 7 // Beggar: follows players around asking
+irritating questions</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_ANIMAL_TRAINER 8 // Trainer: can stable animals</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_THIEF 9 // Thief: no effect right now</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_MONSTER 10 // Evil: attack all players we see</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_BESERK 11 // Crazy: attack anything we see</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_UNDEAD 12 // Undead: same as evil, just used for
+identification</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_DRAGON 13 // Dragon: breathes fire (set this on a rabbit)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_VENDOR_OFFDUTY 14 // No idea what the difference is here</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>BRAIN_TOWNCRIER 2 // Same number as brain_human, same effect</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>brain_beserk brain_berserk //Same thing as brain_berserk, just
+to avoid some errors by typos</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>ITEMNEWBIE=</b> This creates the specified item with the attr_newbie on the
+char. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>ON=@NPCRestock</b> I lied twice! This is the SECOND event you're going to
+learn in this script. This event is triggered when a &quot;restock&quot;
+happens in-game. This occurs once every few real-time hours, or if a staff
+member types &quot;<span style='color:darkred'>.sector.restock</span>&quot;.
+What you should put here is anything lootable from this NPC, along with the
+definitions of things they buy and sell. Once again, this is just a template in
+most cases, so you should know how to deal with it. I'm going to examine two
+lines though: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>SELL=VENDOR_S_ALCHEMIST</b><br>
+<b>BUY=VENDOR_B_ALCHEMIST</b> </span></p>
+
+<p class=MsoNormal><span lang=EN>This defines what the vendor buys and sells?
+But where are these mysterious lists of items coming from? Actually, they're templates,
+in the file <span style='color:darkblue'>spheretemp_vend.scp</span>. (Templates
+for vendors. Those developers are so creative.) Actually it's a good thing to
+name files after what's inside of them. &nbsp;:) </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Price is not defined anywhere on these BUY and SELL lines. Price is defined in a
+VALUE= line in an individual item script. If an item script does not have a
+VALUE= line, price is determined by multiplying the value of the resources in
+that item by the number of resources required. For example, if an item takes 8
+iron ingots to make, and each ingot has a VALUE of 8 gold pieces, the entire
+item is going to be worth 64 gold. By default, things sell for half of the
+price you can buy them for. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+I think that's all you need to know for now about scripting a new NPC. Right
+now, with your abilities, you can create new vendors, new monsters, and new
+animals that wander your world. But they don't do anything unique yet. They
+just behave like stronger or weaker versions of the same monsters. And they're
+probably pretty colors, too, judging from the recent use of my hues.mul file
+for colors 077a and 07a1. (I really should release a DEFNAME script for those.)
+</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Now that you know how to make a decent NPC, let's explore ways to make unique
+items to put on him as loot. In the next section, we're going to make a SUPER
+DUPER BOW OF FIRE AND BRIMSTONE! *trumpet fanfare* </span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

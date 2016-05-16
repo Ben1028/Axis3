@@ -1,0 +1,360 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Main">
+		<param name="Local" value="Main.htm">
+		<param name="ImageNumber" value="15">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Taran's Compendium">
+		<param name="ImageNumber" value="5">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Chapter 1">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Numbers">
+				<param name="Local" value="Taran\Chapter 1\Numbers.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Defnames">
+				<param name="Local" value="Taran\Chapter 1\Defnames.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Itemdef">
+				<param name="Local" value="Taran\Chapter 1\Itemdef.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Chardef">
+				<param name="Local" value="Taran\Chapter 1\Chardef.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Template">
+				<param name="Local" value="Taran\Chapter 1\Template.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Examples">
+				<param name="Local" value="Taran\Chapter 1\Examples.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Chapter 2">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Spheretables.scp">
+				<param name="Local" value="Taran\Chapter 2\Spheretables.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Sphere.ini">
+				<param name="Local" value="Taran\Chapter 2\Sphereini.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Sphere_region.scp">
+				<param name="Local" value="Taran\Chapter 2\Sphereregion.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Sphere_mapX.scp">
+				<param name="Local" value="Taran\Chapter 2\SpheremapX.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Sphere_book.scp">
+				<param name="Local" value="Taran\Chapter 2\Spherebook.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Sphere_name.scp">
+				<param name="Local" value="Taran\Chapter 2\Spherename.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Sphere_newb.scp">
+				<param name="Local" value="Taran\Chapter 2\Spherenewb.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Sphere_skill.scp (SKILLCLASSES)">
+				<param name="Local" value="Taran\Chapter 2\Sphereskill.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Sphere_serv_triggers.scp">
+				<param name="Local" value="Taran\Chapter 2\Sphereservtrigger.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Chapter 3">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="NPC Evolution">
+				<param name="Local" value="Taran\Chapter 3\NPCEvolution.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Advanced Item Scripting">
+				<param name="Local" value="Taran\Chapter 3\AdvancedItemScripting.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="TYPEs">
+				<param name="Local" value="Taran\Chapter 3\Types.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ATTRs">
+				<param name="Local" value="Taran\Chapter 3\ATTRs.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Cool Commands">
+				<param name="Local" value="Taran\Chapter 3\CoolCommands.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Chapter 4">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Introduction to Objects">
+				<param name="Local" value="Taran\Chapter 4\IntroObjects.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Making Decisions">
+				<param name="Local" value="Taran\Chapter 4\Makedecision.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="[SPEECH] for Dummies">
+				<param name="Local" value="Taran\Chapter 4\Speech.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="The Difference Between = And ==?">
+				<param name="Local" value="Taran\Chapter 4\Diffbetween.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Chapter 5">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Tags">
+				<param name="Local" value="Taran\Chapter 5\Tags.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="CTags">
+				<param name="Local" value="Taran\Chapter 5\CTags.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Useful TAG/CTAG Functions">
+				<param name="Local" value="Taran\Chapter 5\UsefulTAGCTAG.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Vars">
+				<param name="Local" value="Taran\Chapter 5\Vars.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Locals">
+				<param name="Local" value="Taran\Chapter 5\Locals.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Floats">
+				<param name="Local" value="Taran\Chapter 5\Floats.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Functions">
+				<param name="Local" value="Taran\Chapter 5\Functions.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Chapter 6">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Chapter 7">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Chapter 8">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Chapter 9">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Chapter 10">
+			<param name="ImageNumber" value="1">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Basic String Explanation">
+				<param name="Local" value="Taran\Chapter 10\BasicString.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="String Functions">
+				<param name="Local" value="Taran\Chapter 10\StringFunction.htm">
+				</OBJECT>
+		</UL>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Tutorials">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Reference Compendium">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Definitions">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Characters">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Dialogs">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Events">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Items">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Menus">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Region Resources">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Region Types">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Regions">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Rooms">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Skill Classes">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Skill Menus">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Skills">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Spawn Groups">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Spells">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Types">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Objects">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Accounts">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Characters">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Database">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Files">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="GM Pages">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Items">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Special Items">
+					<param name="ImageNumber" value="1">
+					</OBJECT>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Map Points">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Parties">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Regions">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Rooms">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Sectors">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Server">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Scripts">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Functions and Triggers">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="General Functions, Properties and References">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Intrinsic Functions">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Statements">
+				<param name="ImageNumber" value="1">
+				</OBJECT>
+		</UL>
+	</UL>
+</UL>
+</BODY></HTML>

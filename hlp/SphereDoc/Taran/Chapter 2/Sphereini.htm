@@ -1,0 +1,1497 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Sphere.ini</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>Sphere.ini</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>Sphere.ini contains all of the internal
+options for the Sphere emulator. In order to configure your shard, this is the
+file you will start with. In order to explain this better, I'm just going to
+add more explanatory comments throughout the file. My comments and
+additions/changes will be in <b>bold text</b>. </span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>//****************************************************************************</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkred'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>// SPHERE by&nbsp;: Menasoft 1997-2003</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkred'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>// www.sphereserver.com</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkred'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>// All SPHERE script files and formats are copyright Menasoft
+&amp; Partners.</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>// This file may be freely edited for personal use, but may not
+be distributed</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>// in whole or in part, in any format without express written
+permission from</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>// Menasoft &amp; Partners. All donations and contributions</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkred'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>// become the property of Menasoft &amp; Partners.</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkred'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkred'>//****************************************************************************</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkred'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// General Information</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>[SPHERE]</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Name
+of your Sphere shard</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ServName=<b>WarAngel's
+Test Centre</b></span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// The
+IP of your server, this will be 127.0.0.1 almost always</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ServIP=127.0.0.1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// The
+port of your server, this is 2593 by default</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ServPort=2593</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Admin's contact email</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>AdminEmail=<b>warangel999@msn.com</b></span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Web
+page for this server</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>URL=www.myshard.com
+Replace www.myshard.com with your shard's URL'</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// GMT
+offset, from -12 to +12 [London=0, EST=5, etc]</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>TimeZone=<b>-5
+Eastern Time (US &amp; Canada). Change this to fit your timezone</b></span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Official staff language</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>Lang=English</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Start this as a system service on Win2000, XP, NT</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>NTService=0
+<b>Enabling this removes the ability to use the console.</b></span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+MySql configuration.</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//MYSQL=0
+<b>Set this to =1 to enable MySQL</b></span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//MySqlHost=<b>localhost
+This will almost always be localhost if the MYSQL host is located on the same
+computer as your shard</b></span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//MySqlUser=</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//MySqlPassword=</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//MySqlDatabase=</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// File Locations</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Directory where spheretables.scp is located, from there we will</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// load
+any additional scripts</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ScpFiles=scripts/</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Where your sphereworld.scp and spherechars.scp are located</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>WorldSave=save/</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Where your sphereaccu.scp and sphereacct.scp is located</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>AcctFiles=accounts/</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Where your UO installation is located. This need: map0.mul, statics0.mul,</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+staidx0.mul, multi.mul, multi.idx, hues.mul, tiledata.mul.</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Optional files: verdata.mul, mapX.mul/staticsX.mul/staidxX.mul for higher</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// maps
+support (Malas, etc).</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Note
+that if not set, sphere will scan windows registry to auto-detect it</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//MulFiles=mul/</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Where your log files will be saved by sphere</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>Log=logs/</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// World Save Information</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// How
+often for Sphere to save your world (minutes)</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>SavePeriod=20</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// How
+many backup levels to keep. Each level means 7 backups done for it.</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// So,
+10*7 = 70 backup saves will be storied.</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>BackupLevels=10</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// On
+would save in the background quietly over a longer period of time, and not
+interrupt the game</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Off
+would notify &quot;World save has been initiated&quot; and save faster, but
+pause the game momentarily</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>SaveBackground=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// Account Management</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//Code
+for servers account application process</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+0=Closed, // Closed. Not accepting more.</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+2=Free, // Anyone can just log in and create a full account.</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+3=GuestAuto, // You get to be a guest and are automatically sent email with
+u're new password.</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+4=GuestTrial, // You get to be a guest til u're accepted for full by an Admin.</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+6=Unspecified, // Not specified.</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// To
+enable auto account you must set this to 2</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>AccApp=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Store password hashed with MD5 <b>MD5 is a safer encryption method for saving
+passwords. More information on it <a href="http://en.wikipedia.org/wiki/MD5"
+title="http://en.wikipedia.org/wiki/MD5">here</a></b></span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>Md5Passwords=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+local ip is assumed to be the admin</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>LocalIPAdmin=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Number of chars allowed per account</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MaxCharsPerAccount=5</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Min
+time for a char to exist before delete allowed (in seconds)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MinCharDeleteTime=3*24*60</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Max number
+of Guest accounts allowed</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>GuestsMax=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// Client Management</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// What
+client protocol version used</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Comment out the ClientVersion line to allow any client that is supported.</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//ClientVersion=2.0.3</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Set
+this to 0 to block login to encrypted clients <b>Default client uses encryption</b></span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>UseCrypt=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Set
+this to 1 to allow login to unencrypted clients <b>You can use tools such as <a
+href="http://stud4.tuwien.ac.at/~e9425109/UO_RICE.htm"
+title="http://stud4.tuwien.ac.at/~e9425109/UO_RICE.htm">UO Rice</a> and <a
+href="http://www.uogateway.com/" title="http://www.uogateway.com/">UOGateway</a>
+to remove encryption on a client</b></span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>UseNoCrypt=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Maximum total open connections to server</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ClientMax=256</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Maximum open connections to server per IP</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ClientMaxIP=16</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Maximum total (not-in-game) connections to server </span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ConnectingMax=32</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Maximum total simultaneous (not-in-game) connections to server per IP</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ConnectingMax=8</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// How
+long logged out clients linger in seconds</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ClientLinger=15</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Walk
+limiting code: buffer size (in tenths of second)</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>WalkBuffer=75</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Walk
+limiting code: regen speed (%)</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>WalkRegen=25</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Only
+commands issued by this plevel and higher will be logged</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>CommandLog=0
+<b>0 means that all commands will be logged</b></span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Prefix for ingame commands</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>CommandPrefix=.</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Use
+the built in http server</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>UseHttp=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Use
+the built in god port</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>UseGodPort=0
+<b>This is for use with the God client</b></span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Default setting for all accounts specifying default resdisp. Recommended</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+specifying at least 1 (T2A) here.</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//AutoResDisp=0
+<b>0=automatic detect, 1=T2A, 2=LBR, 3=AoS, 4=SE, 5=ML</b></span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Default setting for new accounts specifying default priv level</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//AutoPrivFlags=010</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// Game Mechanics</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Do
+not allow entering under roof being on horse?</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MountHeight=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Archery does not work if too close (0 = not checked)</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ArcheryMinDist=2</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Maximum Distance for Archery</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ArcheryMaxDist=15</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Speed scale factor for weapons <b>Formula is now DELAY = SPEEDSCALEFACTOR
+/((DEX + 100) * SPEED)</b></span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>SpeedScaleFactor=15000</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// This
+is the percent of max weight at which stamina is lost half the time</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// (200
+= no effect)</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>StaminaLossAtWeight=150</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Weight penalty for running +N% of max carry weight (0 = no effect)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>RunningPenalty=50</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Show
+people joining/leaving the server</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ArriveDepartMsg=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Are
+house and boat keys newbied automatically</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>AutoNewbieKeys=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Maximum number of items allowed in bank</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>BankMaxItems=1000</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Maximum weight in stones allowed in bank</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>BankMaxWeight=1000</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// If 1
+vendors will take gold only from backpack</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>PayFromPackOnly=0
+<b>If set to 0, vendors also take gold from the bank</b></span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Disable weather effects?</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>NoWeather=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Default light level in dungeons</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>DungeonLight=27
+<b>0 is brightest, 30 is darkest</b></span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Day
+light level 0-30 <b>0 is brightest, 30 is darkest</b></span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>LightDay=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Night
+light level 0-30</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>LightNight=25</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Wool
+Regen Time (in minutes)</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>WoolGrowthTime=30</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Suppress player speech with 75% of capital letters</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>SuppressCapitals=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Extra combat flags to control the fight (default:0, 0.55i compatible)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+COMBAT_NODIRCHANGE 00001 // not rotate player when fighting (like was in 0.51a)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+COMBAT_FACECOMBAT 00002 // allow faced combat only (recommended)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//CombatFlags=0
+<b>If both of these are enabled, it means the player has to keep turning to
+face his opponent in order to strike</b></span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// NPC/Item/Player Management</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Distance in tiles before an NPC that's wandered too far from it's home will
+teleport back</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>LostNPCTeleport=50</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Wether PCs get a resurrection robe when they get resurrected.</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>NoResRobe=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Time
+for a NPC corpse to decay mins</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>CorpseNPCDecay=10</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Time
+for a playercorpse to decay mins</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>CorpsePlayerDecay=15</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Base
+decay time in minutes for items</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>DecayTimer=30</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Put
+[NPC] tags over chars <b>or [TAME], if the creature is tamed</b></span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>CharTags=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Flip
+dropped items</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>FlipDroppedItems=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Monsters run when scared of death</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MonsterFear=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Monsters may fight each other</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MonsterFight=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Percent setting of the all NPC move rate, default 100</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MoveRate=100</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Do
+players receive sounds</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>GenericSounds=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Max
+number of items to sell to one person at once</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>VendorMaxSell=255</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Max
+level npc trainers can go</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>NPCTrainMax=300
+<b>300 is 30.0 skill</b></span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Percent of own ability npcs can train to</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>NPCTrainPercent=30</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Max
+level of skill trainable on dummies, archery butte ect..</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>SkillPracticeMax=300
+<b>300 is 30.0 skill</b></span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Max
+skill player's will start with on skills they haven't chosen during char create</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MaxBaseSkill=200
+<b>Set this to 0 for players to start with no skills other than the selected
+ones</b></span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Time
+in seconds for hitpoint regeneration</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>Regen0=40</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Time
+in seconds for mana regeneration</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>Regen1=20</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Time
+in seconds for stamina regeneration</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>Regen2=10</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Time
+in minutes for food regeneration</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+1*60*24 = 1 day of real life time</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>Regen3=1*60*24</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Speech block associated to players</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>SpeechSelf=spk_player</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Speech block associated to pets</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>SpeechPet=spk_pet</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// When
+player skills/stats goes this times more than skillclass allowed, drop</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// them
+to skillclass level. Setting this to 0 disables the action.</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>OverSkillMultiply=2</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// NPC
+AI settings</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+NPC_AI_PATH 0001 NPC pathfinding</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+NPC_AI_FOOD 0002 NPC food search (objects + grass) <b>This makes npcs look for
+food (specified on their FOODTYPE sections) and grass to eat</b></span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+NPC_AI_EXTRA 0004 NPC magics, combat, etc</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//NPCAI=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// Crime/Murder/Karma/Fame/Guard Settings</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Karma when player goes from good to neutral (from -10000 to 10000)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>PlayerNeutral=-2000</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// How
+many minutes are criminals flagged for</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>CriminalTimer=3</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Times a player can snoop before becoming a criminal</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>SnoopCriminal=20</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Seconds time to decay a murder count (default 8*60*60 is 8 hours)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MurderDecayTime=8*60*60</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Amount of murders before we get title</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MurderMinCount=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Looting or carving a blue player is a crime</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>LootingIsaCrime=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Flag
+players criminal for helping criminals?</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>HelpingCriminalsIsaCrime=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// How
+long do guards linger about in minutes</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>GuardLinger=3</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Will
+guards kill instantly or follow normal combat rules</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>GuardsInstantKill=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Limits the MAXHITS/MAXMANA/MAXSTAM changes</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+STAT_FLAG_NORMAL 0x00 // MAX* status allowed (default)</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+STAT_FLAG_DENYMAX 0x01 // MAX* denied</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+STAT_FLAG_DENYMAXP 0x02 // .. for players</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+STAT_FLAG_DENYMAXN 0x04 // .. for npcs</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>StatsFlags=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// Server Mechanics</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Experimental flags</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Flags for options that affect server behaviour and which might affect
+compatibility</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// See
+the revisions.txt file for more details on this</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+EF_DiagonalWalkCheck = 00000001</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+EF_UNICODE = 00000002 // No on Linux <b>Enables new Unicode fixes</b></span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+EF_Scripts_Ret_Strings = 00000004</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+EF_New_Triggers = 00000008</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+EF_Scripts_Parse_Verbs = 00000010</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+EF_Intrinsic_Locals = 00000020 //<b>Allows locals to be referenced differently.
+For example: &lt;local.X&gt; can be referenced as just &lt;X&gt;</b></span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+EF_Item_Strict_Comparison = 00000040 //<b>Disables similars items being
+compared instead of specific items, such as cloth, leather, hides, log, boards,
+arrow, bolt being compared when the server tries to find an arrow.</b></span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+EF_WalkCheck = 00000100 <b>//Fixes a lot of house looting bugs, and other
+walkchecking related problems.</b></span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+EF_Script_Profiler = 00000400</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+EF_Size_Optimise = 00000800</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+EF_Minimize_Triggers = 00001000 //Minimize trigger calls (use only 0.51
+triggers)</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>Experimental=00000</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Option flags </span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Flags for options that affect server behaviour but not compatibility</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// See
+the revisions.txt file for more details on this</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+OF_Magic_IgnoreAR = 00000001 //<b>Does magic ignore a players armor statistics?</b></span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+OF_Magic_CanHarmSelf = 00000002 //<b>Can a player harm himself with magic?
+(using Magic Arrow to unparalyze oneself, for example)</b></span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+OF_Magic_StackStats = 00000004</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+OF_Archery_CanMove = 00000010 //<b>Can a player move and shoot at the same
+time?</b></span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+OF_Magic_PreCast = 00000020 //<b>Allow pre-casting of spells, or freeze a
+player in place while they cast?</b></span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+OF_Items_AutoName = 00000040</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+OF_FileCommands = 00000080 //<b>This enables all file commands, such as
+writefile, etc.</b></span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+OF_NoItemNaming = 00000100 //<b>If enabled, prevents Sphere from naming crafted
+items such as &quot;sword craft by Player</b></span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+OF_NoHouseMuteSpeech = 00000200 //<b>Can players inside a house hear players
+outside, and vice-versa?</b></span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+OF_Multithreaded = 00000400 //<b>Do not set while server is running&nbsp;!!!
+(Make *Nix server unstable) Puts account handling in a second thread</b></span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+OF_Advanced_LOS = 00000800</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+OF_Flood_Protection = 00001000</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>OptionFlags=0200</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FeatureT2A, used to control T2A expansion features ( default 03 )</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FEATURE_T2A_UPDATE 01 // Monster and Lost lands</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FEATURE_T2A_CHAT 02 // In game chat</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>FeatureT2A
+= 03</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FeatureLBR, used to control LBR expansion features ( default 0 )</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FEATURE_LBR_UPDATE 01 // Lbr Monsters</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FEATURE_LBR_SOUND 02 // MP3 instead of MIDI</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>FeatureLBR
+= 0</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FeatureAOS, used to control AOS expansion features ( default 0 )</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Enabling one of them automagically enables AoS basic features</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FEATURE_AOS_UPDATE 01 // Basic AoS feature</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FEATURE_AOS_POPUP 02 // Popup infos</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FEATURE_AOS_DAMAGE 04 // Damage shown on hit</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FEATURE_AOS_PALNECRO 08 // Fightbook and Paladin/Necro on char creation</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FEATURE_AOS_TOOLTIP 010 // Tooltips</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>FeatureAOS
+= 0</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FeatureSE, used to control SE expansion features ( default 0 )</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FEATURE_SE_UPDATE 01 // Basic SE features</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FEATURE_SE_NINJASAM 02 // Ninja and Samurai</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>FeatureSE
+= 0</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FeatureML, used to control ML expansion features ( default 0 )</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+FEATURE_ML_UPDATE 01 // Basic ML features</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>FeatureML
+= 0</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// In
+game effects to turn on and off</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Messages
+echoed to the server console while in debug mode</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+DEBUGF_NPC_EMOTE = 0x0001</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+DEBUGF_ADVANCE_STATS = 0x0002</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+DEBUGF_WALKCODES = 0x0080 // try the new walk code checking stuff</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+DEBUGF_NPCAI = 0x0100 // some NPC AI debugging</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+DEBUGF_EXP = 0x0200 // experience gain/loss</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+DEBUGF_LEVEL = 0x0400 // experience level changes</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>DebugFlags=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Console Hears all that is said on the server</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>HearAll=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Secure mode attempts to ignore errors, protect from accidently shutdowns</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>Secure=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Value from 1 to 32, set sectors inactive when unused to conserve resources</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>SectorSleep=10</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Disconnect inactive socket in x min</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>DeadSocketTime=5</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Always force a full garbage collection on save</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ForceGarbageCollect=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Time
+before restarting when server appears hung (in seconds)</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>FreezeRestartTime=60</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Length of the game world minute in real world in seconds</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>GameMinuteLength=60</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Bit
+Mask of the subjects you want to log when logging is on</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+LOGM_ACCOUNTS 0x00080</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+LOGM_SAVE 0x00200 // world save status.</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+LOGM_CLIENTS_LOG 0x00400 // all clients as they log in and out.</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+LOGM_GM_PAGE 0x00800 // player gm pages.</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+LOGM_PLAYER_SPEAK 0x01000 // All that the players say.</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+LOGM_GM_CMDS 0x02000 // Log all GM commands.</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+LOGM_CHEAT 0x04000 // Probably an exploit&nbsp;!</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+LOGM_KILLS 0x08000 // Log player combat results.</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+LOGM_HTTP 0x10000</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+01ffff log everything</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>LogMask=01ec80</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Amount of time to keep map data cached in sec</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MapCacheTime=120</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Max
+NPC chars for a sector to prevent lag</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MaxComplexity=32</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Amount of items in one tile so start showing &quot;too many items here&quot;</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MaxItemComplexity=25</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Amount of items in one sector to start showing &quot;x items too complex&quot;</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MaxSectorComplexity=1024</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Limit the number of cycles the while/for loop can proceed. Setting this to</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// zero
+disables the limitation</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MaxLoopTimes=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// Magic/Effects Settings</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// Allow
+casting while equipped</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>EquippedCast=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Words of power for player using magic</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>WOPPlayer=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Words of power for staff using magic</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>WOPStaff=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Reagents lost if magic fails</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ReagentLossFail=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Magic requires reagents</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>ReagentsRequired=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// What&nbsp;%
+of hitpoints players will resurrect with. Note, that if you set this</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// too
+low, people with little STR will have problems resurrecting.</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>HitPointPercentOnRez=33</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// How
+many&nbsp;% of hits will the character loose when starving. 0 disables</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//HitsHungerLoss=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Amount of skill of lock picking needed to unlock a magically locked door</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>MagicUnlockDoor=900</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Teleport effect for GMs and players. Setting 0 disables the effect</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>TeleportEffectStaff=03709</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>TeleportEffectPlayers=0372a</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// Experience and Level system</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Enable experience system</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//ExperienceSystem=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Experience system settings:</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// 0001
+gain experience in combat</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// 0002
+gain experience in crafts</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// 0004
+allow experience to go down</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// 0008
+limit experience decrease by a range witheen a current level</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// 0010
+auto-init EXP/LEVEL for NPCs if not set in @Create</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// 0020
+allow trigger @ExpChange</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// 0040
+allow trigger @ExpLevelChange</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//ExperienceMode=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// If
+combat experience gain is allowed, use these percents for gaining exp in</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Player versus Monster and Player versus Player combats. Value 0 disables gain.</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//ExperienceKoefPVM=100</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//ExperienceKoefPVP=100</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Enable levels system (as a part of experience system)</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//LevelSystem=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Level system settings:</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+linear = 0 (each NextLevelAt exp will give a level up)</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+double = 1 (you need (NextLevelAt * (level+1)) to get a level up)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//LevelMode=1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Amount of experience to raise to the next level</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//LevelNextAt=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// Webpage Settings</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Note, that you can catch error codes by creating sphere404.htm and so on</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// for
+all HTTP error codes sphere support.</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>[WEBPAGE
+1]</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Determines what html file is used as base for the status page</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>WebPageSrc=scripts\web\spherestatusbase.html</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Determines where the status page is saved</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>WebPageFile=scripts\web\status.html</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// In
+seconds, how often the status file is updated</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>WebPageUpdate=60</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Required PLevel to view this page (0 = anyone, 6 = admins only)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>PLevel=0</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// Abuse Control</span><span lang=EN style='font-size:
+10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//
+Block these ips from the server</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>// 255
+is a wildcard, so 255.255.255.255 disables anyone connecting.</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>[BlockIP]</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//123.34.45.56</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//123.45.56.78</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>//////// Connection Information</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>///////////////////////////////////////////////////////////////</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//First
+line should be the name of your shard (this is what people see when they
+connect)</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//Second
+line should be the IP of your shard (this is almost always 127.0.0.1)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//Third
+line should be the port of your shard (this should be whatever ServPort is set
+to)</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//Uncomment
+next 3 lines below this if you have a router</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//First
+line should be a name different than your shard name above this</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//Second
+line should be your real/external IP (www.whatismyip.com)</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//Third
+line should be the shard port (this should be whatever ServPort is set to)</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>[SERVERS]</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><b><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>WarAngel's
+Test Centre</span></b><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>127.0.0.1</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>2593</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//External</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//my.ip.goes.here</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>//2593</span><span
+lang=EN style='font-size:10.0pt;font-family:"Courier New"'><br>
+<br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New"'>[EOF]</span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<p class=MsoNormal><b><span lang=EN>MAPx</span></b><span lang=EN> It isn't
+present in sphere.ini, but it can be used (just check REVISIONS.txt). You use
+it like that: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+MAPx=max_x,max_y,sector_size,real_map_number. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+For example: MAP1=7168,4096,512,-1 </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+will change map 1 size to 7168,4096, the sector sizes of map 1 to 512 tiles and
+the -1 means it'll call the default mul file for that map. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Another example: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+MAP50=7168,4096,64,3 </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Will activate a map number 50 that has 7168,4096 as size, 64 as sector size and
+loads map3.mul, statics3.mul and staidx3.mul as it's map file. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

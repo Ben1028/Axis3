@@ -1,0 +1,473 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Introduction to Objects</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>Introduction to Objects</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>Your first glimpse of real scripting! </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+First and foremost, you MUST understand the object structure of the SPHERE
+system. Now, because SPHERE interacts with something visible, most of these
+objects are relatively easy to understand. But first, you must understand this
+simple fact about object-oriented programming (a term I'm sure all you
+programmers havel come to know and fear): </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>OBJECT-ORIENTED SCRIPTING IS CENTERED AROUND OBJECTS.</b> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Duh. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Actually, it isn't as &quot;Duh&quot; as you may think. Here is a list of the
+objects available to you in a SPHERE script: </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+<table class=MsoNormalTable border=1 cellpadding=0>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>Who</b> </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal><b>What</b> </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>SRC </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The <b>&quot;source&quot;</b> of an event. If an item is
+  damaged, the SRC is whatever damaged it. If a player is hit, the SRC is
+  whoever hit the player. If an item is double-clicked, the SRC is the player
+  who double-clicked it. The ONLY event that does not have a SRC, as we shall
+  see later, is @Timer, for good reasons. Note that usually on functions the
+  SRC isn't always the one who called the functions, but the default object (I
+  or just an empty thing, eg: &lt;I.NAME&gt; or &lt;NAME&gt; are the same
+  thing. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>ACT </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The last object acted upon by the referenced character,
+  for example on that char trigger @ItemDclick, ACT is the item the player
+  double-clicked. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>TARG </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The object targetted by the character. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>CONT </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The container of the object. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>TOPOBJ </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>If an object is buried in several containers within
+  containers, this is always the top-level container before you get to the
+  world. If an item is buried in a player's backpack, TOPOBJ is the player. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>ACCOUNT </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The account of a player, obviously. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>REGION </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The current region/area a player is in. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>SECTOR </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The world is divided into 64 by 64 tile sectors (by
+  default but you can change it by setting the MAPx settings (look at
+  sphere.ini section for this)). This is the player's current sector. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>SERV </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>used to call server commands, like serv.save,
+  serv.allclients, etc. </p>
+  <p class=MsoNormal><b>Object references from SERV</b> </p>
+  <table class=MsoNormalTable border=1 cellpadding=0>
+   <tr>
+    <td style='padding:.75pt .75pt .75pt .75pt'>
+    <p class=MsoNormal>LASTNEWITEM </p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt'>
+    <p class=MsoNormal>The last item created from NEWITEM/NEWDUPE functions. </p>
+    </td>
+   </tr>
+   <tr>
+    <td style='padding:.75pt .75pt .75pt .75pt'>
+    <p class=MsoNormal>LASTNEWCHAR </p>
+    </td>
+    <td style='padding:.75pt .75pt .75pt .75pt'>
+    <p class=MsoNormal>The last character created by NEWNPC/NEWDUPE functions. </p>
+    </td>
+   </tr>
+  </table>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>LINK </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The object referred to in the LINK property of an <b>item</b>.
+  </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>UID.x </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The object with UID equal to X. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>FINDLAYER.X </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The object in layer X. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>FINDCONT.X </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The xth object in the container referenced. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>FINDID.x </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The first object with ID of x in the container. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>FINDTYPE.x </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The first object with TYPE of X in the container. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>NEW </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The newer object created from NEWITEM/NEWNPC/NEWDUPE
+  functions. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>OBJ </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>An empty object variable, which you need to set to use,
+  eg: </p>
+  <p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New";
+  color:darkblue'>OBJ = &lt;FINDLAYER.<b>layer_bankbox</b>&gt;</span><span
+  style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+  </span><span style='font-size:10.0pt;font-family:"Courier New";color:darkblue'>OBJ.SAY
+  HEHE</span></p>
+  <p class=MsoNormal>will make I's bank box say hehe.<br>
+  <b>NOTE</b>: OBJ is a global variable so it can possibly interfere with other
+  scripts.<br>
+  It's best to set it back to nothing when not in use in a certain script. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>REFx </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>This works in the same way as OBJ except the reference is
+  local and will not interfere with other scripts. 'x' is a number between 1
+  and 65535, allowing you to reference as many objects as you need simultaneously
+  (e.g. REF1 = &lt;FINDLAYER.layer_bankbox&gt;). </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>FILE </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>Call the file commands on the current FILE object. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>DB </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>See <a
+  href="http://wiki.sphere.torfo.org/index.php?title=MySQL&amp;action=edit&amp;redlink=1"
+  title="MySQL (page does not exist)"><span style='color:#CC2200'>MySQL</span></a>
+  </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>PARTY.MEMBER.x </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The xth party member of the referenced party. </p>
+  </td>
+ </tr>
+ <tr>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>GUILD.MEMBER.x </p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal>The xth guild member of the referenced guild. </p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN><br>
+As you can see, we're rather limited in what we can do! Actually, not really.
+With the current scripting system, you can do almost anything imaginable with
+SPHERE. It might run slow or be laggy, but it can be done. Those last five
+events (the ones with the x in them) are complex and I don't expect you to know
+how to use them yet. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Now that we know the objects, we need to know how to access the properties of
+those objects, and above all, do things to those objects. We use the dot
+operator (.) to access properties of objects. For example: </span></p>
+
+<p class=MsoNormal><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.STR</span><span lang=EN style='font-size:10.0pt;font-family:
+"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ACT.MOREP</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.ACT.MOREP</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.TARG.HITS</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.DAMAGE {1 5} 01 &lt;ACT&gt;</span><span lang=EN
+style='font-size:10.0pt;font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SERV.NEWITEM i_gold</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>NEW.AMOUNT 10000</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>SRC.TARG.KILL</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>CONT.KILL</span><span lang=EN style='font-size:10.0pt;
+font-family:"Courier New";color:darkblue'><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>FINDLAYER.layer_backpack.FINDID.i_gold.AMOUNT</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+I don't expect you to understand what all of these things do yet, but you will
+by the end of this chapter. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>Some notes</b>: You must also understand that OBJECTS aren't ITEMS, when
+someone say OBJECT they probably mean a character/item/some of those in the
+table. The objects can also be called REFERENCE, for example, ACT.STR 100 the
+reference is ACT. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Here is the next principle of SPHERE scripting: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>ALL ACTIONS ARE TRIGGERED BY EVENTS OR FUNCTIONS, WHICH DEFINE THE OBJECTS</b>
+</span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Nothing happens in a SPHERE script that just sits there. A player, or something
+else in the game, must do something to an item or a character for a script to
+execute. For example, being hit executes the @GetHit script on the person being
+hit, and @Hit on the hitter. Stepping on an item executes the @Step script on
+the item and the @ItemStep script on the player. When an item is
+double-clicked, @DClick is executed on the item and @ItemDClick is executed on
+the player. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+If the player is the one who double-clicks the ITEM, he becomes SRC. If he
+targets an item, in the @Targon_Item script, the player is SRC, and the item he
+targeted is SRC.TARG. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+We refer to an event like this: </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+</span><span lang=EN style='font-size:10.0pt;font-family:"Courier New";
+color:darkblue'>ON=@DClick </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+Following that line would be everything that we want to happen when the player
+clicks the item. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+We'll see examples in the next section of the use of both events and objects. </span></p>
+
+<p class=MsoNormal><span lang=EN>&nbsp;</span></p>
+
+</div>
+
+</body>
+
+</html>

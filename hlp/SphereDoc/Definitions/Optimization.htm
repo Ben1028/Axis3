@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta name="generator" content="MediaWiki 1.14.0" />
+		<meta name="keywords" content="Optimization,Occam&#039;s Razor,WHILE" />
+		<link rel="alternate" type="application/x-wiki" title="Edit" href="http://wiki.sphere.torfo.org/index.php?title=Optimization&amp;action=edit" />
+		<link rel="edit" title="Edit" href="http://wiki.sphere.torfo.org/index.php?title=Optimization&amp;action=edit" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.php" title="SphereWiki (en)" />
+		<link rel="alternate" type="application/rss+xml" title="SphereWiki RSS Feed" href="http://wiki.sphere.torfo.org/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="SphereWiki Atom Feed" href="http://wiki.sphere.torfo.org/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Optimization - SphereWiki</title>
+		<link rel="stylesheet" href="/skins/common/shared.css?195" type="text/css" media="screen" />
+		<link rel="stylesheet" href="/skins/common/commonPrint.css?195" type="text/css" media="print" />
+		<link rel="stylesheet" href="/skins/monobook/main.css?195" type="text/css" media="screen" />
+		<!--[if lt IE 5.5000]><link rel="stylesheet" href="/skins/monobook/IE50Fixes.css?195" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 5.5000]><link rel="stylesheet" href="/skins/monobook/IE55Fixes.css?195" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 6]><link rel="stylesheet" href="/skins/monobook/IE60Fixes.css?195" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 7]><link rel="stylesheet" href="/skins/monobook/IE70Fixes.css?195" type="text/css" media="screen" /><![endif]-->
+		<link rel="stylesheet" href="/index.php?title=MediaWiki:Common.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=18000&amp;action=raw&amp;maxage=18000" type="text/css" />
+		<link rel="stylesheet" href="/index.php?title=MediaWiki:Print.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=18000&amp;action=raw&amp;maxage=18000" type="text/css" media="print" />
+		<link rel="stylesheet" href="/index.php?title=MediaWiki:Monobook.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=18000&amp;action=raw&amp;maxage=18000" type="text/css" />
+		<link rel="stylesheet" href="/index.php?title=-&amp;action=raw&amp;maxage=18000&amp;smaxage=0&amp;ts=20120630142713&amp;gen=css" type="text/css" />
+		<!--[if lt IE 7]><script type="text/javascript" src="/skins/common/IEFixes.js?195"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+
+		<script type= "text/javascript">/*<![CDATA[*/
+		var skin = "monobook";
+		var stylepath = "/skins";
+		var wgArticlePath = "/index.php/$1";
+		var wgScriptPath = "";
+		var wgScript = "/index.php";
+		var wgVariantArticlePath = false;
+		var wgActionPaths = {};
+		var wgServer = "http://wiki.sphere.torfo.org";
+		var wgCanonicalNamespace = "";
+		var wgCanonicalSpecialPageName = false;
+		var wgNamespaceNumber = 0;
+		var wgPageName = "Optimization";
+		var wgTitle = "Optimization";
+		var wgAction = "view";
+		var wgArticleId = "26";
+		var wgIsArticle = true;
+		var wgUserName = "Ben";
+		var wgUserGroups = ["*", "user", "autoconfirmed"];
+		var wgUserLanguage = "en";
+		var wgContentLanguage = "en";
+		var wgBreakFrames = false;
+		var wgCurRevisionId = "116";
+		var wgVersion = "1.14.0";
+		var wgEnableAPI = true;
+		var wgEnableWriteAPI = true;
+		var wgSeparatorTransformTable = ["", ""];
+		var wgDigitTransformTable = ["", ""];
+		var wgRestrictionEdit = [];
+		var wgRestrictionMove = [];
+		var wgAjaxWatch = {"watchMsg": "Watch", "unwatchMsg": "Unwatch", "watchingMsg": "Watching...", "unwatchingMsg": "Unwatching..."};
+		/*]]>*/</script>
+
+		<script type="text/javascript" src="/skins/common/wikibits.js?195"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/skins/common/ajax.js?195"></script>
+		<script type="text/javascript" src="/skins/common/ajaxwatch.js?195"></script>
+		<script type="text/javascript" src="/index.php?title=-&amp;action=raw&amp;smaxage=0&amp;gen=js&amp;useskin=monobook"><!-- site js --></script>
+	</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Optimization skin-monobook">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 id="firstHeading" class="firstHeading">Optimization</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From SphereWiki</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<a name="Making_Sphere_Faster" id="Making_Sphere_Faster"></a><h2><span class="editsection">[<a href="/index.php?title=Optimization&amp;action=edit&amp;section=1" title="Edit section: Making Sphere Faster">edit</a>]</span> <span class="mw-headline">Making Sphere Faster</span></h2>
+<p><i>Optimization in Sphere<br />By Taran</i>
+</p><p><br />
+This will be an article about time. Incredibly small amounts of time, on the order of thousandths of a second. 
+</p><p><br />
+I have noticed over the years that people complain often that a Sphere server cannot handle a significant number of players without suffering severe lag. Most people speculate that this is because something is inherently wrong with Sphere. After all, they've played on other shards which didn't have lag. Never mind that those other shards also use Sphere. No administrator cares about other shards. 
+</p><p><br />
+So, an oft-asked question in the Sphere community is, "How can I make my shard run faster?" 
+</p><p><br />
+By faster, most people mean to reduce lag. Most people assume that the lag in SPHERE is the result of a slow connection. People will play on a server run on a T1 before they will play on a Cable server. This is because people are under the misconception that UO game play requires a fast connection. Granted, a faster connection will accelerate your running speed slightly. However, to get to the root of this problem, we need to use a profiler. Profiling is generally an option on a compiler, which builds the program so that it will measure how long its various aspects will take. It is an important skill in real programming, because the slow parts a program are almost never in the location the programmer would first assume. 
+</p><p><br />
+In UO, everything takes place in the form of packets. Packets are clumps of data which I describe in detail in the SENDPACKET tutorial. The size and amount of packets you receive in a second determines how much lag you experience. The packet which describes an object (item on the ground) to your client is between 15 and 21 bytes. You read that correctly. This means that even sending the description of 100 items to your character will only require 1500 or 2100 bytes. This is not a significant amount and can be transferred nearly instantly over a decent cable or DSL connection. Once your client knows about the items, it will store them in a cache, so that it doesn't need to receive them again. Sphere sends your client information about the items in an area equal to the size visible on the small radar. This is how you can see multis on your radar before you can see them on your screen. 
+</p><p><br />
+Lag occurs when your client is not receiving data fast enough to update its display. Since it doesn't know what's happening, it will sit there and wait until it does receive enough data. This can be the result of insufficient bandwidth on the server end, or it could be the result of insufficient bandwidth on the client end. If there are 100 items at Britain bank, and 50 players arrive there, your server will try to send 2100 bytes to 50 players, for a total of 105000 bytes. If your server can handle sending this amount of data out in a second (105 KB/s), none of those players will experience lag. 
+</p><p><br />
+Now, it goes without saying that under no circumstances should you have 100 items and 50 players at Britain bank. That's just asking for lag. 105 KB/s is the equivalent of a full second's bandwidth on a very fast DSL or cable connection (~850 kbit) or a slow LAN connection. Those bytes are only a small portion of the data sent out your line every second, depending on what the players are doing. So, we have determined already that a major cause of server lag is decoration. You should not excessively decorate highly-traveled locations. Instead of placing 100 dynamic items, you should either make a multi which coincides with the bank, or you should patch them into a statics file which you then distribute to your players. 
+</p><p><br />
+Connection issues, however, are not the primary cause of lag. Excessive decoration is certainly a cause, but it is not the only cause. After all, your server is required to do other things aside from send data to players. For instance, it must keep track of all NPCs and all items at every instant. Wandering NPCs must be moved in a way that they don't collide with trees and landmasses. Fighting NPCs must fight in a way that is sensible based on their current situation. Items with @Timer scripts may execute their scripts on a regular basis. And any other scripts on players and items must execute before any data can be sent in reply. 
+</p><p><br />
+Unfortunately, SPHERE does not utilize a very good threading model. A threading model allows a program to essentially do more than one thing at any given time. A thread, which is generally helpfully defined as "a thread of execution," is basically an individual program within a program. Threads are independent but can communicate with one another. As they are part of the same larger process, they can also alter data that other threads can use. If you have multiple processors, your computer is capable of running each thread on a different processor, which allows them to actually run at the same time, instead of taking turns as they'd do on a single processor. 
+</p><p><br />
+The major advantage to threads involves input and output. Programs spend a lot of time waiting for the computer to respond. For instance, if they try to read data from the disk, they must wait until that data is actually transferred into memory and presented to the program successfully. No execution can continue until the data is received. Windows provides a method of automatically reading data in a separate thread, called overlapped I/O. This method allows you to ask for data, and then do other things while you wait for it. When it arrives, you are notified in one of many ways, and you can then do whatever you needed to do with the data. Since data can be retrieved at the same time that your processor is doing other tasks, your program runs faster. 
+</p><p><br />
+Sphere does use a few threads. You may notice that exiting the program causes the console to print "closing background threads." While your server runs, it is also keeping track of the modification dates of every script file. It does this in a separate low-priority thread, so that it doesn't get in the way of other main tasks. Sphere also uses a separate thread to perform a background save. When you force a foreground save, it transfers that save process from the background thread to the main thread. While it's saving, then, clients will not receive data because the main thread, which sends the data, is doing something else. 
+</p><p><br />
+This brings us to a very important point in our discussion. Sphere uses a single main thread to perform all of its tasks. This means that while one task is taking place, no other tasks occur (except that file-checking and background saving, like I said). Sphere runs in a loop model, much like the <a href="/index.php?title=WHILE&amp;action=edit&amp;redlink=1" class="new" title="WHILE (page does not exist)">WHILE</a> loops that you can have in scripts. Here is a rather simplistic description of the innards of SPHERE: 
+</p><p><br />
+While the server is running, Sphere does the following things, over and over: 
+</p>
+<ul><li> Execute a "tick" on each item and each character.  This decrements TIMERD on all objects.
+<ul><li> o If TIMERD = 0 on any item, run its timer-based action, which could be a default action, like decaying or walking or fighting, or an @Timer trigger, or both.  Deal damage and call other triggers as appropriate.
+</li></ul>
+</li><li> Read data from all sockets.
+</li><li> Determine what actions are required on any objects as a result of that data (initiate attacks, perform default actions, run scripts, etc).
+</li><li> Both of the previous steps involve output to clients, so send it.
+</li></ul>
+<p>(In about the time it takes you to blink your eyes twice, Sphere should have executed all of these things up to ten times.) 
+</p><p><br />
+As you can see, Sphere only really cares about player input for a reasonably short period of time. Much of the server's execution time involves scripts and other actions. It turns out that internal actions are incredibly fast, which is why the Sphere team opted to hard-code them. This leaves us with scripts as a major cause of lag. Does that surprise you? It won't in a minute.
+</p><p><br />
+To execute a script, Sphere must first read through each line. So, the first task is to find the beginning of the necessary script. If this is a function, that's simple. It's the beginning of the function. If it's an item or an [EVENTS] block, it isn't so simple, because the script could exist in one of many different places.
+</p><p><br />
+Next, after it identifies the location of the script in the file, Sphere will read that file one line at a time and interpret the script. Interpreting the script involves a lot of binary searches (a reasonably fast algorithm for searching sorted lists) and parsing expressions. Parsing expressions also takes time, especially when variables and defnames are involved. When you say i_gold, for instance, Sphere needs to look that name up in a table and find out that i_gold is actually equivalent to the item 0EED. Each command is executed individually and Sphere updates its state based on the result. If the execution of the script takes it elsewhere, by calling a function, for instance, Sphere must go find the beginning of that script. If you create new items or characters, Sphere must first figure out exactly what the object is and how it will appear in-game, and then execute the @Create trigger on that objects, which takes additional processing. If you create a list like { 5 6 10 15 18 }, Sphere must execute an algorithm that randomly selects a member of this list for you. Of course, this list is interpreted on the fly, and can also contain other lists, such as { {7 9} {10 17} }. Numerical expressions, which are not stored in the file as numbers, but rather as sequences of characters, must be transformed into numbers and then carried out.
+</p><p><br />
+And Sphere does all of this remarkably quickly. However, there are a number of things you can do to help it. Since it is the interpretation process that takes such a long time, the sooner that process ends, the faster your server will run. The process of making a script (or any other program) run faster is called optimization. Unfortunately, optimizing a script often makes it nearly unreadable. So, you should always make your script work correctly before you try to optimize it. If you cannot make your script work correctly and quickly at the same time, sacrifice speed for quality. 
+</p><p><br />
+There are many things you can do which might cause your scripts to execute more quickly. I shall detail a few of them. 
+</p><p><br />
+<b>1.</b> Check exit cases first, and return as soon as possible. This is an important feature of any function in which a particular state may cause the function to stop executing properly. A good scripter who paid attention in my <a href="/index.php/Occam%27s_Razor" title="Occam&#39;s Razor">Occam's Razor</a> tutorial might write the following:
+</p><p><br />
+</p>
+<pre style="color: darkblue; font-family: monospace; border: none;">[FUNCTION do_something]
+IF (&lt;SRC.STR&gt; &lt; 70)
+    // do something here
+    // do something here
+    // do something here
+    // do something here
+    // do something here
+    // do something here
+    // do something here
+ENDIF
+RETURN 1
+</pre>
+<p><br />
+When Sphere begins to execute this script, it will check to see if SRC.STR is less than 70. If so, it will execute the body of the IF block. Otherwise, it will search down through each line, reading every line in as it goes, until it finds an ELSEIF, ELIF, ELSE, or ENDIF. This takes time, as I mentioned, to read through the lines. It does not take the same amount of time as actually executing the code within the IF block, but it will still take time. In our example script, we return from the script after the ENDIF, and nothing else. In this case, it isn't really worthwhile to scan down through all of those lines. A faster script might look like the following:
+</p><p><br />
+</p>
+<pre style="color: darkblue; font-family: monospace; border: none;">[FUNCTION do_something]
+IF (&lt;SRC.STR&gt; &gt;= 70)
+    RETURN 1
+ENDIF
+// do something here
+// do something here
+// do something here
+// do something here
+// do something here
+// do something here
+// do something here
+RETURN 1
+</pre>
+<p><br />
+This prevents the script from reading unnecessary code. When it determines that the strength of the SRC is not appropriate for this function's actions, it will immediately return from the function. Thus, no time is wasted looking for an ENDIF. If you have a long script with many IF/ELSEIF sections, you might consider placing a RETURN 1 within each of those sections.
+</p><p><br />
+You would not want to follow this rule if you want to actually do things after your IF statement. For instance, if our original script looked like this:
+</p><p><br />
+</p>
+<pre style="color: darkblue; font-family: monospace; border: none;">[FUNCTION do_something]
+IF (&lt;SRC.STR&gt; &lt; 70)
+    // do something here
+    // do something here
+    // do something here
+    // do something here
+    // do something here
+    // do something here
+    // do something here
+ENDIF
+SYSMESSAGE This is the end!
+RETURN 1
+</pre>
+<p><br />
+You might want the player to receive that message regardless of his strength. In that case, it would probably be best to leave the function in its original state, instead of unnecessarily duplicating code. Duplicating code leads to messes when you try to modify that code and forget that you'd duplicated it. Another alternative would be to use a second function. 
+</p><p><br />
+</p>
+<pre style="color: darkblue; font-family: monospace; border: none;">[FUNCTION do_something]
+IF (&lt;SRC.STR&gt; &gt;= 70)
+    DO_IT
+    RETURN 1
+ENDIF
+// do something here
+// do something here
+// do something here
+// do something here
+// do something here
+// do something here
+// do something here
+DO_IT
+RETURN 1
+
+[FUNCTION do_it]
+SYSMESSAGE This is the end!
+</pre>
+<p><br />
+<b>2.</b> Avoid using ALLCLIENTS statements if at all possible. If they are vital for your script, use them, but use them sparingly. If you use ALLCLIENTS, you are inflicting not only one player but all of the players currently online to the lag associated with a slow script. If your script is not inherently slow, you probably have nothing to worry about, but every little bit counts. A script which uses ALLCLIENTS to transport players into a game or to send text messages in the form of a chat system probably has very little to worry about as these scripts, if written correctly, are not inherently slow.
+</p><p><br />
+<b>3.</b> Avoid excessive recursion. While a recursive function may seem the easiest way to perform a task, you are using both time and memory when you call that function. Calling a function is not nearly as expensive as the commands you might execute within the function, but like I said in the previous point, every little bit counts. If you look at some of Swindler's scripts, you will find that they are prohibitively long, but that they run extremely fast. His "contents" script, which executes a function on every object in a container, is spread out and fast. A simple way to run this script might be the following: 
+</p><p><br />
+</p>
+<pre style="color: darkblue; font-family: monospace; border: none;">[FUNCTION contents]
+// The argument is the action to execute on the contents of the
+// container. For instance to make every item in the container say
+// &quot;hello,&quot; we would use the following command on the container:
+//
+// CONTENTS SAY Hello
+
+// The last item is actually index RESCOUNT - 1, because
+// the first item is index 0. The second item is index 1, etc.
+// Therefore, the last item's index is one less than the number
+// of items left in the container.
+VAR.HOWMANY = &lt;EVAL &lt;RESCOUNT&gt; - 1&gt;
+CONTENTS_AUX &lt;ARGS&gt;
+
+
+[FUNCTION contents_aux]
+// Our recursive function. Notice that I'm checking the
+// exit condition first, like I said.
+IF (&lt;VAR0.HOWMANY&gt; &lt; 0)
+    RETURN 1
+ENDIF
+// This line might resolve to something like the following:
+// FINDCONT.50.SAY Hello
+TRY FINDCONT.&lt;VAR.HOWMANY&gt;.&lt;ARGS&gt;
+VAR.HOWMANY -= 1
+// Don't forget to pass the argument to the next iteration!&nbsp;:)
+CONTENTS_AUX &lt;ARGS&gt;
+</pre>
+<p><br />
+Believe it or not, there is a faster way to execute this script. Swindler and I realized, while scripting for Ithyca, that calling a function is slightly slower than not calling that function. Remember, for each function call, Sphere must go find that function in a file, which requires time. 
+</p><p><br />
+<b>4.</b> Turn on SECTORSLEEP in sphere.ini. Sector Sleep is a function added somewhere around TUS 0.45, which causes, well, sectors to sleep. In sphere.ini, you can specify an integer value for SECTORSLEEP. We'll call that value X for now. Every X minutes, Sphere checks to see if any players are in a particular sector. I believe this takes place in one of the background threads, but I'm not certain. If no players occupy a sector, Sphere will suspend all handling of timers in that sector. When a timer reaches 0, it will simply stop there, without executing @Timer scripts or doing any default timer actions. As soon as a player enters the sector, it will awaken and everything in that sector will come to life again.
+</p><p><br />
+Since NPC movement and fighting is based on timers, this will effectively suspend all NPC movement until a player re-enters the region. Unfortunately, since it also suppresses timers on items, Sector Sleep has a number of unfortunate side effects. For instance, spawn points depend explicitly on a timer. Therefore, if you have just spawned your world or have just reset the spawns in your world, nothing will spawn unless a player is actually within the same sector as the spawn point. This could be an advantage, I suppose, but I would recommend that you remove SECTORSLEEP (set it to 0) while you are spawning your world and for a short time after you reset all spawn points.
+</p><p><br />
+If you have a scripted item using @Timer in a sleeping sector, that item will not function correctly anymore. Unfortunately, this can affect a number of systems. When I ran my automated capture the flag script on Ithyca, my players experienced this difficulty first-hand. The sector containing the game control stone would go to sleep, thus suspending @Timer handling on that stone. Thus, when the game ended, their game memories would detect the end of the game and remove their clothing, but the stone would not appropriately return them to the ready room. All of the players would be stuck, naked, in the CTF arena until someone happened to pass through the ready room and awaken the sector. 
+</p><p><br />
+Thus, while SECTORSLEEP can cause some scripts to behave strangely, it reduces lag enough that it makes timer workarounds worthwhile. 
+</p><p><br />
+<b>5.</b> Avoid excessive use of TAG and VAR values. These values are stored in a special type of sorted list called a linked list. A linked list allows you to add and remove things from the middle quickly, which makes it ideal for this sort of application. Linked lists do not allow you to find a particular item in the list very quickly. You must search through each element from the beginning, counting as you go, until you find the item with the index you require. Sphere uses sorted linked lists, which allows them to very quickly find the index of the element they need. Despite this speed, they must still search through each individual item until they find the one they need.
+</p><p><br />
+Of course, the lag you will experience from TAGs and VARs is minimal, and probably not worth worrying about. Giving each player 350 tags might lag your server a bit, but if you do that, your scripting dilemma is larger than your lag dilemma.
+</p><p><br />
+By the way, this is why I said you should always delete a TAG or a VAR when you are finished using it. 
+</p><p><i>(And don't worry about how linked lists work. If you are a programmer and are curious, you can find plenty of information about them by searching Google.)</i>
+</p><p><br />
+<b>6.</b> Do not spawn cities excessively, especially Britain. Since sectors only go to sleep when there are no players, you can safely assume that the 7 or 8 sectors in Britain will never sleep. This means that any animals or NPCs you place in the biggest city in the game will continue to wander about aimlessly, using your precious server time.
+</p><p><br />
+<b>7.</b> Avoid excessive multiplication and division in a script. This will cause minor delays, probably unnoticable next to other types of delays. Multiplication and, especially, division are much slower than addition. Unfortunately, there are few workarounds for this lag issue. I can't think of any reason you would need excessive multiplication and division, except perhaps to calculate a square root, so these operators do not pose a threat to your server.
+</p><p><br />
+<b>8.</b> If a function returns a value, calculate that value in the RETURN statement, instead of using temporary variables to hold the value. One long string is faster than a number of short strings put together later. The perfect example of such a mistake is our SPLIT4BYTES function from the SENDPACKET tutorial. I wrote this function so that it looked something like this:
+</p><p><br />
+</p>
+<pre style="color: darkblue; font-family: monospace; border: none;">[FUNCTION split4bytes]
+LOCAL.PART1 = &lt;HVAL &lt;ARGV[0]&gt; &amp; 0FF&gt;
+LOCAL.PART2 = &lt;HVAL (&lt;ARGV[0]&gt; / 0100) &amp; 0FF&gt;
+LOCAL.PART3 = &lt;HVAL (&lt;ARGV[0]&gt; / 010000) &amp; 0FF&gt;
+LOCAL.PART4 = &lt;HVAL (&lt;ARGV[0]&gt; / 01000000) &amp; 0FF&gt;
+RETURN &quot;&lt;LOCAL.PART4&gt; &lt;LOCAL.PART3&gt; &lt;LOCAL.PART2&gt; &lt;LOCAL.PART1&gt;&quot;
+</pre>
+<p><br />
+This function will run fast. However, it will not run as fast as possible. To accomplish that, we must put all of those calculations into the return statement, and avoid the creation of unnecessary temporary variables:
+</p><p><br />
+</p>
+<pre style="color: darkblue; font-family: monospace; border: none;">[FUNCTION split4bytes]
+RETURN &quot;&lt;HVAL (&lt;ARGV[0]&gt; / 01000000) &amp; 0FF&gt; &lt;HVAL (&lt;ARGV[0]&gt; / 010000) &amp; 0FF&gt; &lt;HVAL (&lt;ARGV[0]&gt; / 0100) &amp; 0FF&gt; &lt;HVAL &lt;ARGV[0]&gt; &amp; 0FF&gt;&quot;
+</pre>
+<p><br />
+Acratia wrote an even faster version of this function, which you will find on the Functions &amp; Events board, and probably on Script Sharing. His function uses binary shifts, a topic I will probably write another tutorial about someday. 
+</p><p><br />
+<b>9.</b> Avoid calling EVAL or HVAL unless necessary. That's just simply another unnecessary function call SPHERE could use doing something else. You only need to use EVAL if you are dealing with: 
+</p>
+<ul><li> Strings
+</li><li> TAGs
+</li><li> VARs
+</li><li> Displaying numbers that normally display in hexadecimal format
+</li></ul>
+<p><br />
+<b>10.</b> Avoid creating excessive new objects. Creating 100 items in a recursive script requires 2.8 seconds. Creating 100 NPCs takes slightly longer than that. Clearly, then, creating new objects is a slow process. This is mostly because Sphere must first create the new object, then fill its properties according to its TYPEDEF, then read and execute its @Create event.
+</p><p><br />
+<b>11.</b> Set the CONT of an item instead of using EQUIP or BOUNCE. Unless, of course, you want the @Equip event to execute. EQUIP and BOUNCE perform extra processing which is usually unnecessary or already completed in your script. BOUNCE also displays that unsightly "You put the something in your backpack" message to whoever is putting the item in his or her backpack.
+</p><p><br />
+</p>
+<pre style="color: darkblue; font-family: monospace; border: none;">[FUNCTION equip_a_sword]
+// To demonstrate equipping an item
+SERV.NEWITEM i_sword_viking
+NEW.CONT &lt;UID&gt;
+
+[FUNCTION bounce_a_sword]
+// To demonstrate bouncing an item
+SERV.NEWITEM i_sword_viking
+NEW.CONT &lt;FINDLAYER.layer_backpack.UID&gt;
+</pre>
+<p><br />
+See? Easy and fast. Of course, Sphere will still perform some extra processing, to verify that the item can actually go where you're telling it to go, but otherwise, it's generally faster to do it this way.
+</p><p><br />
+</p><p>Remember, if you want Sphere to do extra equip processing ("You can't equip that"), you will need to call EQUIP explicitly. You must also call EQUIP if you are expecting the @Equip event on the item to execute (or the @ItemEquip event on the player).
+</p><p><br />
+Overall, optimization saves Sphere time on the order of a few tens or hundreds of milliseconds. But, if you have 50 players executing a thousand optimized functions and scripts, you will save time that Sphere can spend doing other things, such as sending data to your clients, thus reducing lag. Remember, for every internal function Sphere can avoid by not executing something in a script, it has extra time to do other internal things.
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 27/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key d00b020c:pcache:idhash:26-0!1!0!!en!2 and timestamp 20120714140511 -->
+<div class="printfooter">
+Retrieved from "<a href="http://wiki.sphere.torfo.org/index.php/Optimization">http://wiki.sphere.torfo.org/index.php/Optimization</a>"</div>
+			<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="/index.php/Special:Categories" title="Special:Categories">Category</a>:&#32;<span dir='ltr'><a href="/index.php/Category:Articles" title="Category:Articles">Articles</a></span></div></div>			<!-- end content -->
+						<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/index.php/Optimization" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/index.php?title=Talk:Optimization&amp;action=edit&amp;redlink=1" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-edit"><a href="/index.php?title=Optimization&amp;action=edit" title="You can edit this page.&#10;Please use the preview button before saving [e]" accesskey="e">Edit</a></li>
+				 <li id="ca-history"><a href="/index.php?title=Optimization&amp;action=history" title="Past versions of this page [h]" accesskey="h">History</a></li>
+				 <li id="ca-move"><a href="/index.php/Special:MovePage/Optimization" title="Move this page [m]" accesskey="m">Move</a></li>
+				 <li id="ca-watch"><a href="/index.php?title=Optimization&amp;action=watch" title="Add this page to your watchlist [w]" accesskey="w">Watch</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-userpage"><a href="/index.php/User:Ben" title="Your user page [.]" accesskey="." class="new">Ben</a></li>
+				<li id="pt-mytalk"><a href="/index.php/User_talk:Ben" title="Your talk page [n]" accesskey="n" class="new">My talk</a></li>
+				<li id="pt-preferences"><a href="/index.php/Special:Preferences" title="Your preferences">My preferences</a></li>
+				<li id="pt-watchlist"><a href="/index.php/Special:Watchlist" title="The list of pages you are monitoring for changes [l]" accesskey="l">My watchlist</a></li>
+				<li id="pt-mycontris"><a href="/index.php/Special:Contributions/Ben" title="List of your contributions [y]" accesskey="y">My contributions</a></li>
+				<li id="pt-logout"><a href="/index.php?title=Special:UserLogout&amp;returnto=Optimization" title="Log out">Log out</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(http://wiki.sphere.torfo.org/images/SphereWiki.png);" href="/index.php/Main_Page" title="Visit the main page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/index.php/Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search SphereWiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage-description"><a href="/index.php/Main_Page">Main Page</a></li>
+				<li id="n-recentchanges"><a href="/index.php/Special:RecentChanges" title="The list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+				<li id="n-randompage"><a href="/index.php/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li>
+				<li id="n-SphereServer-Forum"><a href="http://www.sphereserver.net">SphereServer Forum</a></li>
+				<li id="n-help"><a href="/index.php/Help:Contents" title="The place to find out">Help</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-Setting_Up_Sphere'>
+		<h5>Setting Up Sphere</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-Where-To-Get-Sphere"><a href="/index.php/Where_to_get_Sphere">Where To Get Sphere</a></li>
+				<li id="n-Installing-Sphere"><a href="/index.php/Installing_Sphere">Installing Sphere</a></li>
+				<li id="n-Configuring-Sphere.ini"><a href="/index.php/Configuring_Sphere.ini">Configuring Sphere.ini</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-Reference_Compendium'>
+		<h5>Reference Compendium</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-Definitions"><a href="/index.php/Category:Definitions">Definitions</a></li>
+				<li id="n-Objects"><a href="/index.php/Category:Objects">Objects</a></li>
+				<li id="n-Scripts"><a href="/index.php/Category:Scripts">Scripts</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-Tutorial_Chapters'>
+		<h5>Tutorial Chapters</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-Chapter-One"><a href="/index.php/Chapter_1">Chapter One</a></li>
+				<li id="n-Chapter-Two"><a href="/index.php/Chapter_2">Chapter Two</a></li>
+				<li id="n-Chapter-Three"><a href="/index.php/Chapter_3">Chapter Three</a></li>
+				<li id="n-Chapter-Four"><a href="/index.php/Chapter_4">Chapter Four</a></li>
+				<li id="n-Chapter-Five"><a href="/index.php/Chapter_5">Chapter Five</a></li>
+				<li id="n-Chapter-Six"><a href="/index.php/Chapter_6">Chapter Six</a></li>
+				<li id="n-Chapter-Seven"><a href="/index.php/Chapter_7">Chapter Seven</a></li>
+				<li id="n-Chapter-Eight"><a href="/index.php/Chapter_8">Chapter Eight</a></li>
+				<li id="n-Chapter-Nine"><a href="/index.php/Chapter_9">Chapter Nine</a></li>
+				<li id="n-Chapter-Ten"><a href="/index.php/Chapter_10">Chapter Ten</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/index.php/Special:WhatLinksHere/Optimization" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/index.php/Special:RecentChangesLinked/Optimization" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-specialpages"><a href="/index.php/Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/index.php?title=Optimization&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/index.php?title=Optimization&amp;oldid=116" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>
+			<ul id="f-list">
+					<li id="lastmod"> This page was last modified on 3 June 2009, at 17:11.</li>
+					<li id="viewcount">This page has been accessed 1,923 times.</li>
+					<li id="privacy"><a href="/index.php/SphereWiki:Privacy_policy" title="SphereWiki:Privacy policy">Privacy policy</a></li>
+					<li id="about"><a href="/index.php/SphereWiki:About" title="SphereWiki:About">About SphereWiki</a></li>
+					<li id="disclaimer"><a href="/index.php/SphereWiki:General_disclaimer" title="SphereWiki:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sphere.torfo.org/piwik/" : "http://sphere.torfo.org/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 4);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script>
+<!-- End Piwik Tag -->
+<!-- Served in 0.285 secs. --></body></html>

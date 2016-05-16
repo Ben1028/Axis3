@@ -1,0 +1,192 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>Sphere_serv_triggers.scp</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+h2
+	{mso-style-link:"Heading 2 Char";
+	margin-right:0in;
+	margin-left:0in;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p
+	{margin-right:0in;
+	margin-left:0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";}
+tt
+	{font-family:"Courier New";}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-link:"Heading 2";
+	font-weight:bold;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-link:Title;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspfirst, li.msotitlecxspfirst, div.msotitlecxspfirst
+	{mso-style-name:msotitlecxspfirst;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxspmiddle, li.msotitlecxspmiddle, div.msotitlecxspmiddle
+	{mso-style-name:msotitlecxspmiddle;
+	mso-style-link:"Title Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msotitlecxsplast, li.msotitlecxsplast, div.msotitlecxsplast
+	{mso-style-name:msotitlecxsplast;
+	mso-style-link:"Title Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:15.0pt;
+	margin-left:0in;
+	font-size:26.0pt;
+	font-family:"Cambria","serif";
+	color:#17365D;
+	letter-spacing:.25pt;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	margin-right:0in;
+	margin-left:0in;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+span.mw-headline
+	{mso-style-name:mw-headline;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link=blue vlink=purple>
+
+<div class=WordSection1>
+
+<div style='border:none;border-bottom:solid #4F81BD 1.0pt;padding:0in 0in 4.0pt 0in'>
+
+<p class=MsoTitle>Sphere_serv_triggers.scp</p>
+
+</div>
+
+<p class=MsoNormal><span lang=EN>This file hold special trigger
+&quot;functions&quot; that are fired by the server its self at certain times
+depending on the function, below are a list of the functions found in this file
+and a breif explain of what the function will do for you. </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>f_onaccount_login</b> </span></p>
+
+<p class=MsoNormal><span lang=EN>This function is called after the client has
+entered the password. </span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span lang=EN>ARGS --&gt; username
+of the client logging in </span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span lang=EN>ARGO --&gt; the
+client logging in </span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span lang=EN>RETURN 0 --&gt;
+normal action (login) </span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span lang=EN>RETURN 1 --&gt;
+disconnect the client </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>f_onaccount_delete</b> </span></p>
+
+<p class=MsoNormal><span lang=EN>This function is called before an account is
+being deleted. </span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span lang=EN>ARGS --&gt; username
+of the account being deleted. </span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span lang=EN>RETURN 0 --&gt;
+normal action (delete) </span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span lang=EN>RETURN 1 --&gt;
+account not deleted </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>f_onchar_create</b> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>f_onchar_delete</b> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>f_onserver_start</b> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>f_onserver_save</b> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>f_onserver_save_ok</b> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>f_onserver_save_fail</b> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>f_onserver_save_finished</b> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>f_onserver_exit</b> </span></p>
+
+<p class=MsoNormal><span lang=EN><br>
+<b>f_onserver_blockip</b> </span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

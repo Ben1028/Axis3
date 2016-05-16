@@ -1,0 +1,58 @@
+[OPTIONS]
+Auto Index=Yes
+Binary TOC=Yes
+Compatibility=1.1 or later
+Compiled file=SphereDoc.chm
+Contents file=TOC.hhc
+Default Font=Arial,10,0
+Default Window=Main
+Default topic=Main.htm
+Display compile notes=No
+Display compile progress=No
+Full-text search=Yes
+Index file=Index.hhk
+Language=0x409 English (United States)
+Title=Sphere Docs
+
+[WINDOWS]
+Main="Sphere Docs","TOC.hhc","Index.hhk",,,,,,,0x43520,,0x3006,[147,150,878,600],,,,,,,0
+
+
+[FILES]
+Main.htm
+Taran\Chapter 1\Numbers.htm
+Taran\Chapter 1\Defnames.htm
+Taran\Chapter 1\Template.htm
+Taran\Chapter 1\Chardef.htm
+Taran\Chapter 1\Examples.htm
+Taran\Chapter 1\Itemdef.htm
+Taran\Chapter 2\Spheretables.htm
+Taran\Chapter 2\Spherebook.htm
+Taran\Chapter 2\Sphereini.htm
+Taran\Chapter 2\SpheremapX.htm
+Taran\Chapter 2\Spherename.htm
+Taran\Chapter 2\Spherenewb.htm
+Taran\Chapter 2\Sphereregion.htm
+Taran\Chapter 2\Sphereservtrigger.htm
+Taran\Chapter 2\Sphereskill.htm
+Taran\Chapter 3\Types.htm
+Taran\Chapter 3\AdvancedItemScripting.htm
+Taran\Chapter 3\ATTRs.htm
+Taran\Chapter 3\NPCEvolution.htm
+Taran\Chapter 3\CoolCommands.htm
+Taran\Chapter 10\StringFunction.htm
+Taran\Chapter 10\BasicString.htm
+Taran\Chapter 4\Speech.htm
+Taran\Chapter 4\Diffbetween.htm
+Taran\Chapter 4\IntroObjects.htm
+Taran\Chapter 4\Makedecision.htm
+Taran\Chapter 5\Vars.htm
+Taran\Chapter 5\CTags.htm
+Taran\Chapter 5\Floats.htm
+Taran\Chapter 5\Functions.htm
+Taran\Chapter 5\Locals.htm
+Taran\Chapter 5\Tags.htm
+Taran\Chapter 5\UsefulTAGCTAG.htm
+
+[INFOTYPES]
+
