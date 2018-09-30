@@ -20,7 +20,6 @@ CAxis3Dlg::CAxis3Dlg(CWnd* pParent /*=NULL*/)
 	crBlueBkg = RGB(242,252,255);
 
 	m_iReceiveTimeout = 60000;
-	m_nIDTimer = 4000;
 }
 
 void CAxis3Dlg::DoDataExchange(CDataExchange* pDX)
@@ -191,7 +190,6 @@ void CAxis3Dlg::OnProfile()
 		m_csAccount = dlg.csAccount;
 		m_csPassword = dlg.csPassword;
 
-		SetTimer(m_nIDTimer, 1000, NULL);	
 		AfxBeginThread(&ProfileThread, this);
 }
 
@@ -277,7 +275,8 @@ void CAxis3Dlg::OnSize(UINT nType, int cx, int cy)
 	int dx = crNew.Width()-MinSize.Width();
 	int dy = crNew.Height()-MinSize.Height();
 
-	m_TabCtrl.MoveWindow(TabSize.left,TabSize.top,TabSize.Width()+dx,TabSize.Height()+dy);
+	if (m_TabCtrl)
+		m_TabCtrl.MoveWindow(TabSize.left,TabSize.top,TabSize.Width()+dx,TabSize.Height()+dy);
 
 	CDialogEx::OnSize(nType, cx, cy);
 }
@@ -325,8 +324,8 @@ UINT ProfileThread(LPVOID lpData)
 	CAxis3Dlg * pMain = (CAxis3Dlg *) lpData;
 	CSocket sock;
 	BYTE szBuffer[8*MAX_BUFFER];
-	int dwSize;
-	sock.m_hSocket = socket(AF_INET, SOCK_STREAM, 0);
+	int iSize;
+	sock.m_hSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (sock.m_hSocket == INVALID_SOCKET)
 	{
 		AfxMessageBox(CMsg(_T("IDS_ERROR_NOSOCKET"),true, WSAGetLastError()));
@@ -365,9 +364,9 @@ UINT ProfileThread(LPVOID lpData)
 		int rc = select(0, &fd, 0, 0, &timeout);
 		if ( rc < 0 )
 		{
-			char szBuffer[MAX_BUFFER];
-			strerror_s(szBuffer,MAX_BUFFER,WSAGetLastError());
-			AfxMessageBox(CMsg(_T("IDS_ERROR_SOCKETSELECT"),true, WSAGetLastError(), szBuffer));
+			char szErrBuffer[MAX_BUFFER];
+			strerror_s(szErrBuffer,MAX_BUFFER,WSAGetLastError());
+			AfxMessageBox(CMsg(_T("IDS_ERROR_SOCKETSELECT"),true, WSAGetLastError(), szErrBuffer));
 			closesocket(sock.m_hSocket);
 			sock.m_hSocket = INVALID_SOCKET;
 			return 4;
@@ -383,10 +382,11 @@ UINT ProfileThread(LPVOID lpData)
 		{
 			sock.Receive(&szBuffer, sizeof(szBuffer));
 			//This is the size of the file to receive
-			dwSize = atoi((const char*)szBuffer);
+			iSize = atoi((const char*)szBuffer);
 			break;
 		}
 	}
+
 	// Send the username?
 	if ( pMain->m_csAccount != "" )
 	{
@@ -417,12 +417,13 @@ UINT ProfileThread(LPVOID lpData)
 	CFile fData;
 	if ( !fData.Open(pFileName, CFile::modeCreate | CFile::modeWrite | CFile::typeBinary | CFile::shareDenyNone) )
 		return 8;
+
 	// Here's the main loop
 	while (true)
 	{
+		memset(&szBuffer[0], 0x00, sizeof(szBuffer));
 		FD_SET fd;
 		struct timeval timeout;
-		memset(&szBuffer[0], 0x00, sizeof(szBuffer));
 		FD_ZERO(&fd);
 		FD_SET(sock.m_hSocket, &fd);
 		timeout.tv_sec = 0;
@@ -431,6 +432,7 @@ UINT ProfileThread(LPVOID lpData)
 		if (rc > 0)
 		{
 			int nBytes = sock.Receive(&szBuffer, sizeof(szBuffer));
+
 			if (nBytes <= 0)
 				break;
 
@@ -439,7 +441,7 @@ UINT ProfileThread(LPVOID lpData)
 				CString csBuf(szBuffer);
 
 				//check if it's really a message
-				if (csBuf.Find(_T("MSG:")) != 1)
+				if (csBuf.Find(_T("MSG:")) != -1)
 					break;
 
 				csBuf = csBuf.Mid(5);
@@ -451,12 +453,12 @@ UINT ProfileThread(LPVOID lpData)
 					if (szBuffer[pos] == 0x22)
 					{
 						pos++;
-						for (int i = 0; i < nBytes; i++)
+						for (int j = 0; j < nBytes; j++)
 						{
-							if (i >= (nBytes-pos))
-								szBuffer[i] = 0x00;
+							if (j >= (nBytes-pos))
+								szBuffer[j] = 0x00;
 							else
-								szBuffer[i] = szBuffer[pos+i];
+								szBuffer[j] = szBuffer[pos+j];
 						}
 						nBytes -= pos;
 						break;
@@ -466,10 +468,18 @@ UINT ProfileThread(LPVOID lpData)
 				AfxMessageBox(csBuf);
 			}
 
+			//Find File position
+			/*DWORD dwPos;
+			memcpy(&dwPos, szBuffer, sizeof(DWORD));
+			fData.Seek(dwPos, CFile::begin);
+			nBytes -= sizeof(DWORD);
+			fData.Write(&szBuffer[sizeof(DWORD)],nBytes);*/
+				
 			//write to file
-			fData.Write(szBuffer,nBytes);
-			dwSize -= nBytes;
-			if (dwSize <= 0)
+			fData.Write(szBuffer, nBytes);
+			iSize -= nBytes;
+
+			if (iSize <= 0)
 			{
 				//close and rename database
 				Axis->DBData.Close();

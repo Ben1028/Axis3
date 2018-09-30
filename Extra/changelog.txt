@@ -1,7 +1,7 @@
 ***Version 3.0.0***
 (Changes since AxisII)
 
--Now compiled using VS2010 with a complete redesign.
+-Now compiled using VS2015 with a complete redesign.
 -No longer uses registry to store settings, they are stored in local database files using SQLite.
 -Language is fully editable using the Lang Database. It also supports multiple languages.
 -All tabs can be detached more smoothly then before.

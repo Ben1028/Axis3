@@ -90,7 +90,7 @@ void CProfileDlg::OnOK()
 
 	SetDefaultValue(_T("Profile"), csAccountName);
 	Axis->csProfile = csAccountName;
-	Axis->DBSettings.QuerySQL(CSQL(_T("CREATE TABLE IF NOT EXISTS 'Settings_%1' (ID TEXT, Value TEXT)"),csAccountName));
+	Axis->DBSettings.ExecuteSQL(CSQL(_T("CREATE TABLE IF NOT EXISTS 'Settings_%1' (ID TEXT, Value TEXT)"),csAccountName));
 
 	CDialogEx::OnOK();
 }

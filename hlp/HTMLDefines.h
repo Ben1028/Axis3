@@ -1,11 +1,44 @@
  
 // Commands (ID_* and IDM_*) 
+#define HIDM_ABOUTBOX                           0x10010
+#define HID_SETTINGS_GENERAL                    0x18003
+#define HID_SETTINGS_TRAVEL                     0x18004
+#define HID_PROFILE_OPTOINS                     0x18005
+#define HID_EXIT                                0x18006
+#define HID_HELP32775                           0x18007
+#define HID_EXIT_CLOSEAXIS                      0x18008
+#define HID_HELP_ABOUTAxis3                     0x18009
+#define HID_HELP_DOCUMENTATION                  0x1800A
+#define HID_SETTINGS_PROFILE                    0x1800B
+#define HID_SETTINGS_CREATEDATABASE             0x1800C
  
 // Prompts (IDP_*) 
+#define HIDP_SOCKETS_INIT_FAILED                0x30067
  
 // Resources (IDR_*) 
+#define HIDR_MAINFRAME                          0x20080
+#define HIDR_MENU                               0x20083
  
 // Dialogs (IDD_*) 
+#define HIDD_ABOUTBOX                           0x20064
+#define HIDD_Axis3_DIALOG                       0x20066
+#define HIDD_DIALOG1                            0x20081
+#define HIDD_GENERAL                            0x20081
+#define HIDD_SPAWN                              0x20082
+#define HIDD_CHARTWEAK                          0x20083
+#define HIDD_ITEMS                              0x20084
+#define HIDD_ITEMTWEAK                          0x20085
+#define HIDD_ACCOUNT                            0x20086
+#define HIDD_MISC                               0x20087
+#define HIDD_LAUNCHER                           0x20088
+#define HIDD_REMINDER                           0x20089
+#define HIDD_TRAVEL                             0x2008A
+#define HIDD_COMMANDS                           0x2008B
+#define HIDD_COMPAGE                            0x2009F
+#define HIDD_REMOTECONSOLEDLG                   0x200A3
+#define HIDD_REMOTE_CONSOLE_LOGIN_DLG           0x200A4
+#define HIDD_PROFILE_LOGIN_DLG                  0x200A5
+#define HIDD_CREATE_DB                          0x200A6
  
 // Frame Controls (IDW_*) 
 // This is a part of the Microsoft Foundation Classes C++ library.

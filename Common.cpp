@@ -145,6 +145,33 @@ CMsg::CMsg(LPCTSTR lpszFormat, bool bFormat,...)
 }
 
 //******************
+//Format from language CMD file or plain text
+CCmd::CCmd(LPCTSTR lpszFormat, bool bFormat, ...)
+{
+	CString sCMDString = LoadCMD(lpszFormat);
+	if (bFormat)
+	{
+		va_list argList;
+		va_start(argList, bFormat);
+		LPTSTR lpszTemp;
+
+		if (::FormatMessage(FORMAT_MESSAGE_FROM_STRING | FORMAT_MESSAGE_ALLOCATE_BUFFER,
+			sCMDString, 0, 0, (LPTSTR)&lpszTemp, 0, &argList) == 0 ||
+			lpszTemp == NULL)
+		{
+			AfxThrowMemoryException();
+		}
+
+		CString::operator=(lpszTemp);
+
+		LocalFree(lpszTemp);
+		va_end(argList);
+	}
+	else
+		CString::operator=(sCMDString);
+}
+
+//******************
 //SQL Formated Strings
 CSQL::CSQL(LPCTSTR lpszFormat,...)
 {
@@ -195,6 +222,16 @@ CString LoadLang(LPCTSTR sLangID)
 		return TBLang.GetValue(_T("String"));
 	//String not found!
 	return sLangID;
+}
+
+CString LoadCMD(LPCTSTR sCMDID)
+{
+	//Check Chosen Language
+	Table TBCMD = Axis->DBLng.QuerySQL(CSQL(_T("SELECT * FROM CMD WHERE ID = '%1'"), sCMDID));
+	if (TBCMD.GetRowCount() != 0)
+		return TBCMD.GetValue(_T("String"));
+	//String not found!
+	return sCMDID;
 }
 
 //******************
@@ -769,4 +806,27 @@ __int64 HashFileName(CString csFile)
 	}
 
 	return ( (__int64) esi << 32 ) | eax;
+}
+
+long ahextoi(CString csHex)
+{
+	return _tcstol(csHex, NULL, 16);
+}
+
+UINT isStrType(CString csString)
+{
+	if (csString.Left(1) == _T("0"))
+	{
+		if (ahextoi(csString) != 0)
+			return 1;
+		else
+			return 2;
+	}
+	else 
+	{
+		if (csString.SpanIncluding(_T("0123456789")) == csString)
+			return 0;
+		else
+			return 2;
+	}
 }

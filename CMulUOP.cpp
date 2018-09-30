@@ -379,12 +379,12 @@ void CMulUOP::DrawAnim(DWORD dwAnimIndex, WORD wAppliedColor, int iFrame)
 				if ( ( previousLine != 0xFF ) && ( wLineNum != previousLine ) )
 					Y++;
 				previousLine = wLineNum;
-				for ( int j = 0; j < wRunLength; j++ )
+				for ( int i = 0; i < wRunLength; i++ )
 				{
 					BYTE bIndex = 0;
 					memcpy(&bIndex, &bData[dwOffset], 1);
 					dwOffset++;
-					X = (iFrame > 0) ? ((Objbmp.GetWidth()-imageCenterX) - (offset+j)) : (imageCenterX + (offset+j));
+					X = (iFrame > 0) ? ((Objbmp.GetWidth()-imageCenterX) - (offset+i)) : (imageCenterX + (offset+i));
 					if ( X >= 0 && X < Objbmp.GetWidth() && Y >= 0 && Y < Objbmp.GetHeight() )
 					{
 						DWORD dwColor = BlendColors(wPalette[bIndex], wAppliedColor, false);

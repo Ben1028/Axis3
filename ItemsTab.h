@@ -15,11 +15,15 @@ class CItemsTab : public CDialogPage
 public:
 	CItemsTab(CWnd* pParent = NULL);
 	virtual ~CItemsTab();
-	void FillCategoryTree();
+	void FillCategory();
+	static int iIDSort;
+	static int iNameSort;
 
 // Dialog Data
 	enum { IDD = IDD_ITEMS };
-	CTreeCtrl	m_ctcCategories;
+	CComboBox	m_ccbCategories;
+	CComboBox	m_ccbSubsections;
+	CListCtrl	m_clcItems;
 	CMulUOP cMulDisplay;
 
 	protected:
@@ -29,6 +33,8 @@ public:
 protected:
 
 	virtual BOOL OnInitDialog();
-
+	afx_msg void OnSelchangeCat();
+	afx_msg void OnSelchangeSub();
+	afx_msg void OnItemchangedItems(NMHDR* pNMHDR, LRESULT* pResult);
 	DECLARE_MESSAGE_MAP()
 };

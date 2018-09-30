@@ -49,7 +49,6 @@ public:
 	CString m_csPort;
 	CString m_csAccount;
 	CString m_csPassword;
-	int m_nIDTimer;
 	int m_iReceiveTimeout;
 
 private:

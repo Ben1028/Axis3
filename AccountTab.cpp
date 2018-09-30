@@ -119,7 +119,7 @@ void CAccountTab::SetLanguage()
 
 void CAccountTab::OnSetPLV() 
 {
-	CommandToUO(CMsg(_T("privset %1!d!"),true, iPrivLevel));
+	CommandToUO(CCmd(_T("privset %1!d!"),true, iPrivLevel));
 }
 
 void CAccountTab::OnOwnerprivs() 
@@ -204,7 +204,7 @@ void CAccountTab::OnResdisp7()
 
 void CAccountTab::OnSetresdisp() 
 {
-	CommandToUO(CMsg(_T("set account.resdisp %1!d!"),true, iResdisp));
+	CommandToUO(CCmd(_T("set account.resdisp %1!d!"),true, iResdisp));
 }
 
 void CAccountTab::OnPriv02()
@@ -308,7 +308,7 @@ void CAccountTab::OnPriv04000()
 
 void CAccountTab::OnSetprivs()
 {
-	CommandToUO(CMsg(_T("set account.priv %1!05x!"),true, dwPrivs));
+	CommandToUO(CCmd(_T("set account.priv %1!05x!"),true, dwPrivs));
 }
 
 void CAccountTab::OnResetPrivs()
