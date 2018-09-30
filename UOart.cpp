@@ -1,6 +1,6 @@
 
 
-include "stdafx.h"
+#include "stdafx.h"
 #include "Axis2.h"
 #include "UOart.h"
 #include <comcat.h>
