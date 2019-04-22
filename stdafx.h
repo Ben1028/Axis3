@@ -66,5 +66,15 @@ using namespace SQLite;
 /*
 	AfxMessageBox(CMsg(_T("IDS_DECIMAL"),true,iCount));
 	AfxMessageBox(CMsg(_T("%1!d! - %2!d!"),true,,));
+	AfxMessageBox(_T("true"));
+
+	CFileException ex;
+	, &ex
+	TCHAR   szCause[255];
+	CString strFormatted;
+	ex.GetErrorMessage(szCause, 255);
+	strFormatted = _T("The data file could not be opened because of this error: ");
+	strFormatted += szCause;
+	AfxMessageBox(strFormatted);
 
 */

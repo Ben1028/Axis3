@@ -15,7 +15,7 @@ CRemoteConsoleLoginDlg::CRemoteConsoleLoginDlg(CWnd* pParent /*=NULL*/)
 
 void CRemoteConsoleLoginDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
+	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_ACCTNAME, m_ccbName);
 	DDX_Control(pDX, IDC_ACCT, m_ceAccount);
 	DDX_Control(pDX, IDC_IPADDRESS, m_ceAddress);
@@ -24,7 +24,7 @@ void CRemoteConsoleLoginDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 
-BEGIN_MESSAGE_MAP(CRemoteConsoleLoginDlg, CDialog)
+BEGIN_MESSAGE_MAP(CRemoteConsoleLoginDlg, CDialogEx)
 	ON_CBN_SELCHANGE(IDC_ACCTNAME, OnSelchangeAcctname)
 	ON_CBN_EDITCHANGE(IDC_ACCTNAME, OnEditchangeAcctname)
 	ON_BN_CLICKED(IDC_CANCEL, OnCloseDlg)
@@ -35,7 +35,7 @@ END_MESSAGE_MAP()
 
 BOOL CRemoteConsoleLoginDlg::OnInitDialog() 
 {
-	CDialog::OnInitDialog();
+	CDialogEx::OnInitDialog();
 
 	Axis->DBLng.BeginTransaction();
 	SetWindowText(CMsg(_T("IDS_REMOTE_CONSOLE_LOGIN")));
@@ -73,11 +73,12 @@ void CRemoteConsoleLoginDlg::OnOK()
 	UpdateData(TRUE);
 	DWORD dwAddress;
 	m_ceAddress.GetAddress(dwAddress);
-	m_ceAddress.GetWindowText(csAddress);
-	m_cePort.GetWindowText(csPort);
-	m_ceAccount.GetWindowText(csAccount);
-	m_cePassword.GetWindowText(csPassword);
-	m_ccbName.GetWindowText(csAccountName);
+
+	csAddress = GetEditString(m_ceAddress);
+	csPort = GetEditString(m_cePort);
+	csAccount = GetEditString(m_ceAccount);
+	csPassword = GetEditString(m_cePassword);
+	csAccountName = GetEditString(m_ccbName);
 
 	Table TBRCAccount = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM RemoteConsole WHERE Name = '%1'"),csAccountName));
 	if(TBRCAccount.GetRowCount() != 0)
@@ -85,7 +86,7 @@ void CRemoteConsoleLoginDlg::OnOK()
 	else
 		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO RemoteConsole VALUES('%1','%2!d!','%3','%4','%5')"),csAccountName,dwAddress,csPort,csAccount,Encrypt(csPassword)));
 
-	SetSettingValue(_T("LastRemoteLoginAccount"), csAccountName);
+	SetSettingString(_T("LastRemoteLoginAccount"), csAccountName);
 
 	CDialogEx::OnOK();
 }
@@ -117,7 +118,7 @@ void CRemoteConsoleLoginDlg::OnSelchangeAcctname()
 	m_ceAccount.SetWindowText(TBRCAccount.GetValue(_T("Account")));
 	m_cePassword.SetWindowText(Encrypt(TBRCAccount.GetValue(_T("Password"))));
 
-	SetSettingValue(_T("LastRemoteLoginAccount"), csAccountName);
+	SetSettingString(_T("LastRemoteLoginAccount"), csAccountName);
 	UpdateData(FALSE);
 }
 

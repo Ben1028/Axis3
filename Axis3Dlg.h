@@ -11,6 +11,10 @@
 #include "SpawnTab.h"
 #include "TravelTab.h"
 #include "ProfileDlg.h"
+#include "SettingEdit.h"
+#include "LangEdit.h"
+#include "Settings_Viewer.h"
+#include "Settings_General.h"
 
 #pragma once
 
@@ -49,6 +53,7 @@ public:
 	CString m_csPort;
 	CString m_csAccount;
 	CString m_csPassword;
+	CString m_csPath;
 	int m_iReceiveTimeout;
 
 private:
@@ -82,6 +87,10 @@ protected:
 	afx_msg void OnExitCloseaxis();
 	afx_msg void OnHelpAboutAxis3();
 	afx_msg void OnHelpDocumentation();
+	afx_msg void OnSettingDefault();
+	afx_msg void OnDataDefaultSettings();
+	afx_msg void OnDataLanguage();
+	afx_msg void OnSettingViewer();
 
 	DECLARE_MESSAGE_MAP()
 };
@@ -89,3 +98,4 @@ protected:
 extern CAxis3Dlg * Main;
 
 UINT ProfileThread(LPVOID lpParam);
+UINT ProfileLocalThread(LPVOID lpParam);

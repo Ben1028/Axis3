@@ -32,6 +32,7 @@ CAxis3App::CAxis3App()
 	Axis = this;
 
 	IsArtUOP = false;
+	IsArtPostHS = false;
 	IsMapUOP = false;
 	IsMapML = false;
 	m_dwColorMap = new DWORD[65536];
@@ -54,6 +55,13 @@ BOOL CAxis3App::InitInstance()
 		return FALSE;
 	}
 
+	//Open Log file
+	if (logFile.Open(CMsg(_T("AxisLogs/Axislog-%1.txt"), true, CTime::GetCurrentTime().Format("%Y%m%d")), CFile::modeWrite | CFile::modeCreate | CFile::modeNoTruncate | CFile::shareDenyNone))
+	{
+		logFile.SeekToEnd();
+	}
+	Log(CMsg(_T("Axis3 Launched: %1"), true, CTime::GetCurrentTime().Format("%H:%M:%S")));
+
 	// Set Application Root Path
 	TCHAR str[MAX_PATH];
 	GetModuleFileName(NULL, str, MAX_PATH);
@@ -61,21 +69,45 @@ BOOL CAxis3App::InitInstance()
 	m_csRootDirectory = strDir.Left(strDir.ReverseFind(_T('\\'))+1);
 
 	//Load Default Settings File
-	DBSettings.Open(CMsg(_T("%1Settings"), true, m_csRootDirectory));
+	CString csPath = CMsg(_T("%1Settings"), true, m_csRootDirectory);
+	Log(CMsg(_T("Return %2!d! - Opening Default Settings: %1"), true, csPath, DBSettings.Open(csPath)));
 
 	//Load Profile
 	csProfile = GetDefaultString(_T("Profile"));
-	DBData.Open(CMsg(_T("Data_%1.db"),true,csProfile));
+	csPath = CMsg(_T("%1/Data.db"), true, csProfile);
+	Log(CMsg(_T("Return %2!d! - Opening Profile Data: %1"), true, csPath, DBData.Open(csPath)));
 
 	//Load Language File
 	csLangCode = GetSettingString(_T("LangCode"));
-	DBLng.Open(CMsg(_T("%1Lang"), true, m_csRootDirectory));
+	csPath = CMsg(_T("%1Lang"), true, m_csRootDirectory);
+	Log(CMsg(_T("Return %2!d! - Opening Lang File: %1"), true, csPath, DBLng.Open(csPath)));
 
-	LoadUOPArtData();
-	LoadHues();
-	LoadBodyDef();
-	LoadBodyConvert();
-	LoadRadarcol();
+	//Check if first time running
+	if ((GetSettingString(_T("MulPath")) == _T("")) || (GetSettingString(_T("UOClient")) == _T("")))
+	{
+		CSettingsGeneral dlg;
+		dlg.DoModal();
+		//Not allowed to run without a mulpath set
+		if (GetSettingString(_T("MulPath")) == _T(""))
+		{
+			AfxMessageBox(CMsg(_T("IDS_ERROR_MULPATH")), MB_ICONERROR);
+			return FALSE;
+		}
+		if (GetSettingString(_T("UOClient")) == _T(""))
+		{
+			AfxMessageBox(CMsg(_T("IDS_ERROR_CLIENT")), MB_ICONERROR);
+			return FALSE;
+		}
+		SetDefaultString(_T("MulPath"), GetSettingString(_T("MulPath")));
+		SetDefaultString(_T("UOClient"), GetSettingString(_T("UOClient")));
+	}
+
+	AfxBeginThread(LoadUOPArtData, nullptr);
+	AfxBeginThread(LoadHues, nullptr);
+	AfxBeginThread(LoadBodyDef, nullptr);
+	AfxBeginThread(LoadBodyConvert, nullptr);
+	AfxBeginThread(LoadRadarcol, nullptr);
+	AfxBeginThread(LoadTiledata, nullptr);
 	DetectMapFormat();
 
 	CAxis3Dlg dlg;
@@ -83,6 +115,7 @@ BOOL CAxis3App::InitInstance()
 	dlg.DoModal();
 	DBLng.Close();
 	DBSettings.Close();
+	DBData.Close();
 	return TRUE;
 }
 
@@ -131,4 +164,7 @@ CAxis3App::~CAxis3App()
 	UnLoadBodyDef();
 	UnLoadBodyConvert();
 	delete m_dwColorMap;
+	m_staticdata.RemoveAll();
+	Log(_T("\r\n"));
+	logFile.Close();
 }

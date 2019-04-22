@@ -44,7 +44,7 @@ void CRemoteConsoleDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 
-BEGIN_MESSAGE_MAP(CRemoteConsoleDlg, CDialog)
+BEGIN_MESSAGE_MAP(CRemoteConsoleDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_RECONNECT, OnReconnect)
 	ON_BN_CLICKED(IDC_BROADCAST, OnBroadcast)
 	ON_WM_TIMER()
@@ -121,7 +121,7 @@ void CRemoteConsoleDlg::OnTimer(UINT nIDEvent)
 	}
 	SetWindowText(CMsg(_T("IDS_REMOTE_CONSOLE_TITLE"),true, m_csAccount, m_bIsConnected ? CMsg(_T("IDS_CONNECTED")) : CMsg(_T("IDS_NOT_CONNECTED"))));
 
-	CDialog::OnTimer(nIDEvent);
+	CDialogEx::OnTimer(nIDEvent);
 }
 
 void CRemoteConsoleDlg::OnConMessage(CString csText)
@@ -171,7 +171,7 @@ void CRemoteConsoleDlg::OnSize(UINT nType, int cx, int cy)
 	m_ceConsoleSend.MoveWindow(m_crCommandText.left, m_crCommandText.top + dy, m_crCommandText.Width() + dx, m_crCommandText.Height());
 	m_cbBroadcast.MoveWindow(m_crBroadcast.left, m_crBroadcast.top + dy, m_crBroadcast.Width(), m_crBroadcast.Height());
 
-	CDialog::OnSize(nType, cx, cy);
+	CDialogEx::OnSize(nType, cx, cy);
 }
 
 void CRemoteConsoleDlg::OnBroadcast()
@@ -181,8 +181,7 @@ void CRemoteConsoleDlg::OnBroadcast()
 
 void CRemoteConsoleDlg::OnSendcommand() 
 {
-	CString csMessage;
-	m_ceConsoleSend.GetWindowText(csMessage);
+	CString csMessage = GetEditString(m_ceConsoleSend);
 
 	if ( m_bBroadcast )
 		m_csCommand.Format(_T("%s %s%c"), _T("B"), csMessage, 0x0d);

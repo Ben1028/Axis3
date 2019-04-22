@@ -16,7 +16,6 @@ public:
 };
 
 BOOL CALLBACK FindUOClient(HWND hWnd, LPARAM lParam);
-BOOL CALLBACK FindAxis(HWND hWnd, LPARAM lParam);
 
 //*****************
 //String Table Class
@@ -40,16 +39,6 @@ public :
 };
 
 //*****************
-//Advanced String Array
-class CAdvStringArray : public CStringArray
-{
-public:
-	int Insert(CString csName);
-	int Find(CString csName);
-	CString GetValue(CString csKey);
-};
-
-//*****************
 // Misc functions
 CString ErrorString(DWORD err);
 CString Encrypt(CString csValue);
@@ -57,9 +46,14 @@ void CenterWindowEx(HWND h_wind);
 CString LoadLang(LPCTSTR sLangID);
 CString LoadCMD(LPCTSTR sCMDID);
 CString GetSettingString(LPCTSTR sKey);
+int GetSettingNum(LPCTSTR sKey);
 CString GetDefaultString(LPCTSTR sKey);
-void SetSettingValue(LPCTSTR sKey, LPCTSTR sValue);
-void SetDefaultValue(LPCTSTR sKey, LPCTSTR sValue);
+int GetDefaultNum(LPCTSTR sKey);
+void SetSettingString(LPCTSTR sKey, LPCTSTR sValue);
+void SetSettingNum(LPCTSTR sKey, int iValue);
+void SetDefaultString(LPCTSTR sKey, LPCTSTR sValue);
+void SetDefaultNum(LPCTSTR sKey, int iValue);
+void ClearSetting(LPCTSTR sKey);
 CString GetMulPath(LPCTSTR sKey);
 //void SetMulPath(LPCTSTR sKey, LPCTSTR sValue);
 void ClearPtrArray(CPtrArray *pArray);
@@ -68,17 +62,27 @@ bool CommandToUO(LPCTSTR Cmd);
 bool SendToUO(LPCTSTR Cmd);
 
 DWORD ScaleColor(WORD wColor);
-void LoadUOPArtData();
-void LoadHues();
+UINT LoadUOPArtData(LPVOID pParam);
+UINT LoadHues(LPVOID pParam);
 void UnLoadUOPArtData();
 void UnLoadHues();
-void LoadBodyDef();
+UINT LoadBodyDef(LPVOID pParam);
 void UnLoadBodyDef();
-void LoadBodyConvert();
+UINT LoadBodyConvert(LPVOID pParam);
 void UnLoadBodyConvert();
-void LoadRadarcol();
+UINT LoadRadarcol(LPVOID pParam);
+UINT LoadTiledata(LPVOID pParam);
 void DetectMapFormat();
 __int64 HashFileName(CString csFile);
 
 long ahextoi(CString csHex);
 UINT isStrType(CString csString);
+void Log(CString csData);
+CString SQLStrip(CString csString);
+
+CString GetEditString(CWnd &ceText);
+int GetEditNum(CWnd &ceText);
+void ClearDirectory(CString csPath);
+DWORD GetColorRef(DWORD dwColRef);
+void CreateDirectoryTree(CString csPath);
+void DeleteDirectoryTree(CString csPath);

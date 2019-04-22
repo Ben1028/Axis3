@@ -94,6 +94,9 @@ BOOL CGeneralTab::OnInitDialog()
 
 	m_cscSlider.SetRange(0, 30);
 	m_rcDlg.Create(IDD_REMOTECONSOLEDLG, this);
+
+	initialized = TRUE;
+
 	return TRUE;
 }
 
@@ -322,8 +325,7 @@ void CGeneralTab::OnBnClickedDry()
 
 void CGeneralTab::OnBnClickedLightlevel()
 {
-	CString csVal;
-	m_csSliderValue.GetWindowText(csVal);
+	CString csVal = GetEditString(m_csSliderValue);
 	CommandToUO(CCmd(_T("sector.light %1"),true, csVal));
 }
 

@@ -59,6 +59,10 @@ BEGIN_MESSAGE_MAP(CAxis3Dlg, CDialogEx)
 	ON_COMMAND(ID_EXIT_CLOSEAXIS, OnExitCloseaxis)
 	ON_COMMAND(ID_HELP_ABOUTAxis3, OnHelpAboutAxis3)
 	ON_COMMAND(ID_HELP_DOCUMENTATION, OnHelpDocumentation)
+	ON_COMMAND(ID_SETTINGS_GENERAL, OnSettingDefault)
+	ON_COMMAND(ID_DATAEDIT_DEFAULTSETTINGS, OnDataDefaultSettings)
+	ON_COMMAND(ID_DATAEDIT_LANGUAGE, OnDataLanguage)
+	ON_COMMAND(ID_SETTINGS_VIEWER, OnSettingViewer)
 END_MESSAGE_MAP()
 
 BOOL CAxis3Dlg::OnInitDialog()
@@ -136,6 +140,15 @@ BOOL CAxis3Dlg::OnInitDialog()
     ScreenToClient(&TabSize);
     initialized = TRUE;
 
+	if (GetDefaultNum(_T("DevMode")) != 1)
+	{
+		CMenu *pMenu = AfxGetMainWnd()->GetMenu();
+		pMenu->EnableMenuItem(1, MF_BYPOSITION | MF_GRAYED);
+		AfxGetMainWnd()->DrawMenuBar();
+	}
+	
+	SetWindowPos(GetSettingNum(_T("AlwaysOnTop")) ? &CWnd::wndTopMost : &CWnd::wndNoTopMost, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+
 	return TRUE;
 }
 
@@ -180,17 +193,30 @@ void CAxis3Dlg::OnProfile()
 	CProfileDlg dlg;
 		if ( dlg.DoModal() != IDOK )
 			return;
-		m_csAddress = dlg.csAddress;
-		m_csPort = dlg.csPort;
-		if ((m_csAddress == "")||(m_csPort == ""))
+		if (dlg.m_bLocal)
 		{
-			AfxMessageBox(CMsg(_T("IDS_ERROR_NOIP")), MB_OK | MB_ICONEXCLAMATION);
-			return;
+			m_csPath = dlg.csPath;
+			if (m_csPath == "")
+			{
+				AfxMessageBox(CMsg(_T("IDS_NO_SPHERETABLE")), MB_OK | MB_ICONEXCLAMATION);
+				return;
+			}
+			AfxBeginThread(&ProfileLocalThread, this);
 		}
-		m_csAccount = dlg.csAccount;
-		m_csPassword = dlg.csPassword;
+		else
+		{
+			m_csAddress = dlg.csAddress;
+			m_csPort = dlg.csPort;
+			if ((m_csAddress == "") || (m_csPort == ""))
+			{
+				AfxMessageBox(CMsg(_T("IDS_ERROR_NOIP")), MB_OK | MB_ICONEXCLAMATION);
+				return;
+			}
+			m_csAccount = dlg.csAccount;
+			m_csPassword = dlg.csPassword;
 
-		AfxBeginThread(&ProfileThread, this);
+			AfxBeginThread(&ProfileThread, this);
+		}
 }
 
 
@@ -204,6 +230,34 @@ void CAxis3Dlg::OnHelpAboutAxis3()
 void CAxis3Dlg::OnHelpDocumentation()
 {
 	HtmlHelp((DWORD_PTR)_T("Axis3.chm::/Welcome.htm"), HH_DISPLAY_TOPIC);
+}
+
+void CAxis3Dlg::OnSettingDefault()
+{
+	CSettingsGeneral dlg;
+	if (dlg.DoModal() != IDOK)
+		return;
+}
+
+void CAxis3Dlg::OnDataDefaultSettings()
+{
+	CSettingEditDlg dlg;
+	if (dlg.DoModal() != IDOK)
+		return;
+}
+
+void CAxis3Dlg::OnDataLanguage()
+{
+	CLangEditDlg dlg;
+	if (dlg.DoModal() != IDOK)
+		return;
+}
+
+void CAxis3Dlg::OnSettingViewer()
+{
+	CSettingViewer dlg;
+	if (dlg.DoModal() != IDOK)
+		return;
 }
 
 
@@ -221,26 +275,11 @@ HBRUSH CAxis3Dlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 
 LRESULT CAxis3Dlg::DefWindowProc(UINT message, WPARAM wParam, LPARAM lParam) 
 {
-	if (message == WM_USER)
-	{
-		if (lParam == WM_LBUTTONDOWN)
-		{
-			ShowWindow(SW_SHOWNORMAL);
-			//Main->m_dlgToolBar->ShowWindow(SW_HIDE);
-			return TRUE;
-		}
-	}
 	if (message == WM_SYSCOMMAND)
 	{
 		if (wParam == SC_MINIMIZE)
 		{
-			if (!_ttoi(GetSettingString(_T("ToolBar"))))
-			{
-				ShowWindow(SW_HIDE);
-				//Main->m_dlgToolBar->ShowWindow(SW_SHOWNORMAL);
-			}
-			else
-				ShowWindow(SW_SHOWMINIMIZED);
+			ShowWindow(SW_SHOWMINIMIZED);
 			return TRUE;
 		}
 	}
@@ -258,7 +297,7 @@ void CAxis3Dlg::OnSysCommand(UINT nID, LPARAM lParam)
 	{
 		if (nID == SC_CLOSE)
 		{
-			if (!_ttoi(GetSettingString(_T("SysClose"))))
+			if (!GetSettingNum(_T("SysClose")))
 			{
 				ShowWindow(SW_HIDE);
 				return;
@@ -317,10 +356,33 @@ HCURSOR CAxis3Dlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+UINT ProfileLocalThread(LPVOID lpData)
+{
+	Axis->DBData.Close();
+	CAxis3Dlg * pMain = (CAxis3Dlg *)lpData;
+	LPTSTR szCmdline = _tcsdup(TEXT("AxisDBCreator.exe " + pMain->m_csPath + " " + Axis->csProfile + "\\Data.db"));
 
+	STARTUPINFO si;
+	PROCESS_INFORMATION pi;
+	ZeroMemory(&si, sizeof(si));
+	si.cb = sizeof(si);
+	ZeroMemory(&pi, sizeof(pi));
+
+	if (!CreateProcess(NULL, szCmdline, NULL, NULL, FALSE, CREATE_NEW_PROCESS_GROUP|CREATE_NO_WINDOW, NULL, Axis->m_csRootDirectory, &si, &pi))
+	{
+		AfxMessageBox(CMsg(_T("IDS_ERROR_STARTAPP"), true, GetLastError(), szCmdline));
+	}
+	WaitForSingleObject(pi.hProcess, INFINITE);
+	CloseHandle(pi.hProcess);
+	CloseHandle(pi.hThread);
+	Axis->DBData.Open(CMsg(_T("%1/Data.db"), true, Axis->csProfile));
+	pMain->m_DlgITems->FillCategory();
+	return 0;
+}
 
 UINT ProfileThread(LPVOID lpData)
 {
+	Axis->DBData.Close();
 	CAxis3Dlg * pMain = (CAxis3Dlg *) lpData;
 	CSocket sock;
 	BYTE szBuffer[8*MAX_BUFFER];
@@ -412,7 +474,7 @@ UINT ProfileThread(LPVOID lpData)
 	}
 
 	LPCTSTR pFileName = _T("temp.db");
-	LPCTSTR pDBName = CMsg(_T("Data_%1.db"),true,Axis->csProfile);
+	LPCTSTR pDBName = CMsg(_T("%1/Data.db"),true,Axis->csProfile);
 
 	CFile fData;
 	if ( !fData.Open(pFileName, CFile::modeCreate | CFile::modeWrite | CFile::typeBinary | CFile::shareDenyNone) )
@@ -467,13 +529,6 @@ UINT ProfileThread(LPVOID lpData)
 
 				AfxMessageBox(csBuf);
 			}
-
-			//Find File position
-			/*DWORD dwPos;
-			memcpy(&dwPos, szBuffer, sizeof(DWORD));
-			fData.Seek(dwPos, CFile::begin);
-			nBytes -= sizeof(DWORD);
-			fData.Write(&szBuffer[sizeof(DWORD)],nBytes);*/
 				
 			//write to file
 			fData.Write(szBuffer, nBytes);
@@ -509,5 +564,6 @@ UINT ProfileThread(LPVOID lpData)
 
 	closesocket(sock.m_hSocket);
 	sock.m_hSocket = INVALID_SOCKET;
+	pMain->m_DlgITems->FillCategory();
 	return 0;
 }

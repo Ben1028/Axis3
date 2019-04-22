@@ -74,6 +74,8 @@ BOOL CAccountTab::OnInitDialog()
 	SetLanguage();
 	Axis->DBLng.CommitTransaction();
 
+	initialized = TRUE;
+
 	return TRUE;
 }
 

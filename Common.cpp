@@ -57,7 +57,7 @@ BOOL CALLBACK FindUOClient(HWND hWnd, LPARAM lParam)
 	CString csTitle;
 	pClient->pWnd->GetWindowText(csTitle);
 
-	CString csClient = GetSettingString(_T("CustomClientName"));
+	CString csClient = GetSettingString(_T("UOTitle"));
 	if ((csTitle.Find(_T("Ultima Online")) != -1) || (csTitle.Find(_T("UOSA")) != -1) || (!csClient.IsEmpty() && (csTitle.Find(csClient) != -1)))
 	{
 		pClient->hwndProcess = hWnd;
@@ -65,24 +65,6 @@ BOOL CALLBACK FindUOClient(HWND hWnd, LPARAM lParam)
 	}
 
 	pClient->hwndProcess = NULL;
-	return TRUE;
-}
-
-//******************
-//Find Axis
-BOOL CALLBACK FindAxis(HWND hWnd, LPARAM lParam)
-{
-	CHWNDProcess * pAxis = (CHWNDProcess *) lParam;
-	pAxis->pWnd = CWnd::FromHandle(hWnd);
-	CString csTitle;
-	pAxis->pWnd->GetWindowText(csTitle);
-	if (csTitle.Find(Axis->GetVersionTitle()) != -1)
-	{
-		pAxis->hwndProcess = hWnd;
-		return FALSE;
-	}
-
-	pAxis->hwndProcess = NULL;
 	return TRUE;
 }
 
@@ -173,6 +155,12 @@ CCmd::CCmd(LPCTSTR lpszFormat, bool bFormat, ...)
 
 //******************
 //SQL Formated Strings
+CString SQLStrip(CString csString)
+{
+	csString.Replace(_T("'"), _T("''"));
+	return csString;
+}
+
 CSQL::CSQL(LPCTSTR lpszFormat,...)
 {
 		va_list argList;
@@ -235,53 +223,97 @@ CString LoadCMD(LPCTSTR sCMDID)
 }
 
 //******************
-//Get Setting String
+//Get Setting String/Num
 CString GetSettingString(LPCTSTR sKey)
 {
 	//Check Profile's Saved Settings
-	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings_%2 WHERE ID = '%1'"),sKey,Axis->csProfile));
-	if(TBSettings.GetRowCount() != 0)
+	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings_Profile_%2 WHERE ID = '%1'"),sKey,Axis->csProfile));
+	if (TBSettings.GetRowCount() != 0)
+	{
 		return TBSettings.GetValue(_T("Value"));
+	}
 	//Get Default setting if not found
-	TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings WHERE ID = '%1'"),sKey));
-	if(TBSettings.GetRowCount() != 0)
-		return TBSettings.GetValue(_T("Value"));
-	//Setting not found!
-	return _T("Settings Error");
+	return GetDefaultString(sKey);
 }
 
-//******************
-//Set Setting String
-void SetSettingValue(LPCTSTR sKey, LPCTSTR sValue)
+int GetSettingNum(LPCTSTR sKey)
 {
-	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings_%2 WHERE ID = '%1'"),sKey,Axis->csProfile));
-	if(TBSettings.GetRowCount() != 0)
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE Settings_%3 SET Value = '%1' WHERE ID = '%2'"),sValue,sKey,Axis->csProfile));
-	else
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Settings_%3 VALUES('%1','%2')"),sKey,sValue,Axis->csProfile));
+	return _ttoi(GetSettingString(sKey));
 }
 
 //******************
-//Get Default Setting
+//Set Setting String/Num
+void SetSettingString(LPCTSTR sKey, LPCTSTR sValue)
+{
+	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings_Profile_%2 WHERE ID = '%1'"),sKey,Axis->csProfile));
+	if (TBSettings.GetRowCount() != 0)
+	{
+		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE Settings_Profile_%3 SET Value = '%1' WHERE ID = '%2'"), sValue, sKey, Axis->csProfile));
+	}
+	else
+	{
+		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Settings_Profile_%3 VALUES('%1','%2')"), sKey, sValue, Axis->csProfile));
+	}
+}
+
+void SetSettingNum(LPCTSTR sKey, int iValue)
+{
+	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings_Profile_%2 WHERE ID = '%1'"), sKey, Axis->csProfile));
+	if (TBSettings.GetRowCount() != 0)
+	{
+		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE Settings_Profile_%3 SET Value = '%1!d!' WHERE ID = '%2'"), iValue, sKey, Axis->csProfile));
+	}
+	else
+	{
+		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Settings_Profile_%3 VALUES('%1','%2!d!')"), sKey, iValue, Axis->csProfile));
+	}
+}
+
+//******************
+//Get Default Setting/Num
 CString GetDefaultString(LPCTSTR sKey)
 {
 	//Get Default setting
 	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings WHERE ID = '%1'"),sKey));
-	if(TBSettings.GetRowCount() != 0)
+	if (TBSettings.GetRowCount() != 0)
+	{
 		return TBSettings.GetValue(_T("Value"));
+	}
 	//Setting not found!
 	return _T("Settings Error");
 }
 
+int GetDefaultNum(LPCTSTR sKey)
+{
+	return _ttoi(GetDefaultString(sKey));
+}
+
 //******************
-//Set Default Setting String
-void SetDefaultValue(LPCTSTR sKey, LPCTSTR sValue)
+//Set Default Setting String/Num
+void SetDefaultString(LPCTSTR sKey, LPCTSTR sValue)
 {
 	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings WHERE ID = '%1'"),sKey));
-	if(TBSettings.GetRowCount() != 0)
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE Settings SET Value = '%1' WHERE ID = '%2'"),sValue,sKey));
+	if (TBSettings.GetRowCount() != 0)
+	{
+		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE Settings SET Value = '%1' WHERE ID = '%2'"), sValue, sKey));
+	}
 	else
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Settings VALUES('%1','%2')"),sKey,sValue));
+	{
+		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Settings VALUES('%1','%2')"), sKey, sValue));
+	}
+}
+
+void SetDefaultNum(LPCTSTR sKey, int iValue)
+{
+	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings WHERE ID = '%1'"), sKey));
+	if (TBSettings.GetRowCount() != 0)
+	{
+		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE Settings SET Value = '%1!d!' WHERE ID = '%2'"), iValue, sKey));
+	}
+	else
+	{
+		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Settings VALUES('%1','%2!d!')"), sKey, iValue));
+	}
 }
 
 //******************
@@ -289,7 +321,7 @@ void SetDefaultValue(LPCTSTR sKey, LPCTSTR sValue)
 CString GetMulPath(LPCTSTR sKey)
 {
 	//Check Saved Settings
-	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings_%2 WHERE ID = '%1'"),sKey,Axis->csProfile));
+	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings_Profile_%2 WHERE ID = '%1'"),sKey,Axis->csProfile));
 	if(TBSettings.GetRowCount() != 0)
 		return TBSettings.GetValue(_T("Value"));
 	//Get Default setting if not found
@@ -298,6 +330,14 @@ CString GetMulPath(LPCTSTR sKey)
 		return CMsg(_T("%1%2"),true,GetSettingString(_T("MulPath")),TBSettings.GetValue(_T("File")));
 	//Setting not found!
 	return _T("GetPath Error");
+}
+
+//******************
+//Clear Saved Setting
+void ClearSetting(LPCTSTR sKey)
+{
+	//Removing saved setting will reset it to default
+	Axis->DBSettings.QuerySQL(CSQL(_T("DELETE FROM Settings_Profile_%2 WHERE ID = '%1'"), sKey, Axis->csProfile));
 }
 
 //******************
@@ -340,130 +380,50 @@ UINT SendToClient(LPVOID pParam)
 {
 	CString* Cmd = static_cast<CString*>(pParam);
 
-#ifdef _DEBUG
-	AfxMessageBox(*Cmd);
-#else
-	CHWNDProcess * pClient = new CHWNDProcess;
-	pClient->hwndProcess = NULL;
-	EnumWindows(FindUOClient,(LPARAM)pClient);
-	if (pClient->hwndProcess)
+	if (GetDefaultNum(_T("DevMode")) == 1)
 	{
-		// Found the client window
-		CString sToken;
-		int curPos = 0;
-
-		sToken= Cmd->Tokenize(_T("\r\n"),curPos);
-		while (sToken != _T(""))
-		{
-			const std::tr1::regex pattern ("[sS][lL][eE][eE][pP]\\(\\d{1,}\\)");
-			CT2CA pszString (sToken);
-			std::string text (pszString);
-			if (std::tr1::regex_match(text, pattern))
-			{
-				sToken = sToken.SpanExcluding(_T(")"));
-				sToken = sToken.Mid(sToken.Find(_T("("))+1);
-				DWORD dwMilsec = _ttoi(sToken);
-				Sleep(dwMilsec);
-			}
-			else
-			{
-				for (int i = 0; i < sToken.GetLength(); i++)
-				{
-					pClient->pWnd->SendMessage(WM_CHAR, sToken[i], 0);
-				}
-				pClient->pWnd->SendMessage(WM_CHAR, VK_RETURN, 0);
-				pClient->pWnd->SetForegroundWindow();
-			}
-			sToken = Cmd->Tokenize(_T("\r\n"), curPos);
-		}
+		AfxMessageBox(*Cmd);
 	}
-	delete pClient;
-#endif
+	else
+	{
+		CHWNDProcess * pClient = new CHWNDProcess;
+			pClient->hwndProcess = NULL;
+			EnumWindows(FindUOClient, (LPARAM)pClient);
+			if (pClient->hwndProcess)
+			{
+				// Found the client window
+				CString sToken;
+				int curPos = 0;
 
+				sToken = Cmd->Tokenize(_T("\r\n"), curPos);
+				while (sToken != _T(""))
+				{
+					const std::regex pattern("[sS][lL][eE][eE][pP]\\(\\d{1,}\\)");
+					CT2CA pszString(sToken);
+					std::string text(pszString);
+					if (std::regex_match(text, pattern))
+					{
+						sToken = sToken.SpanExcluding(_T(")"));
+						sToken = sToken.Mid(sToken.Find(_T("(")) + 1);
+						DWORD dwMilsec = _ttoi(sToken);
+						Sleep(dwMilsec);
+					}
+					else
+					{
+						for (int i = 0; i < sToken.GetLength(); i++)
+						{
+							pClient->pWnd->SendMessage(WM_CHAR, sToken[i], 0);
+						}
+						pClient->pWnd->SendMessage(WM_CHAR, VK_RETURN, 0);
+						pClient->pWnd->SetForegroundWindow();
+					}
+					sToken = Cmd->Tokenize(_T("\r\n"), curPos);
+				}
+			}
+		delete pClient;
+	}
 	delete Cmd;
 	return 0;
-}
-
-//******************
-//Advanced String Array
-int CAdvStringArray::Find(CString csName)
-{
-	if ( this->GetSize() == 0 )
-		return -1;
-	INT_PTR iLower = 0;
-	INT_PTR iUpper = this->GetUpperBound();
-	INT_PTR iIndex = 0;
-	while ( iLower <= iUpper )
-	{
-		iIndex = (iUpper + iLower ) / 2;
-		CString csExisting = this->GetAt(iIndex);
-		if ( csExisting.CompareNoCase(csName) == 0 )
-			return (int)iIndex;
-		if ( csExisting.CompareNoCase(csName) > 0 )
-			iUpper = iIndex - 1;
-		else
-			iLower = iIndex + 1;
-	}
-	return -1;
-}
-
-int CAdvStringArray::Insert(CString csName)
-{
-	if ( csName == "" )
-		return -1;
-	INT_PTR iLower = 0;
-	INT_PTR iUpper = this->GetUpperBound();
-	if ( iUpper == -1 )
-	{
-		this->InsertAt(0, csName);
-		return 0;
-	}
-	INT_PTR iIndex = 0;
-	INT_PTR iCompare = 0;
-	while ( iLower <= iUpper )
-	{
-		iIndex = (iUpper + iLower ) / 2;
-		CString csTest = this->GetAt(iIndex);
-		if ( csTest.CompareNoCase(csName) > 0 )
-		{
-			iCompare = 0;
-			iUpper = iIndex - 1;
-		}
-		else
-		{
-			iCompare = 1;
-			iLower = iIndex + 1;
-		}
-	}
-	iIndex += iCompare;
-	this->InsertAt(iIndex, csName);
-	return (int)iIndex;
-}
-
-CString CAdvStringArray::GetValue(CString csKey)
-{
-	if ( this->GetSize() == 0 )
-		return _T("Error!");
-	INT_PTR iLower = 0;
-	INT_PTR iUpper = this->GetUpperBound();
-	INT_PTR iIndex = 0;
-	while ( iLower <= iUpper )
-	{
-		iIndex = (iUpper + iLower ) / 2;
-		CString csEntry = this->GetAt(iIndex);
-		csEntry = csEntry.SpanExcluding(_T("="));
-		if ( csEntry.CompareNoCase(csKey) == 0 )
-		{
-			csKey = this->GetAt(iIndex);
-			CString csValue = csKey.Mid(csKey.Find(_T("=")) + 1);
-			return csValue;
-		}
-		if ( csEntry.CompareNoCase(csKey) > 0 )
-			iUpper = iIndex - 1;
-		else
-			iLower = iIndex + 1;
-	}
-	return csKey;
 }
 
 //******************
@@ -477,12 +437,14 @@ DWORD ScaleColor(WORD wColor)
 	return (dwNewColor);
 }
 
-void LoadUOPArtData()
+UINT LoadUOPArtData(LPVOID pParam)
 {
 	CString csMulFile = GetMulPath(_T("ArtUOP"));
 	CFile cfArtMul;
 	if ( cfArtMul.Open(csMulFile, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone) )
 	{
+		Log(CMsg(_T("IDS_ART_UOP_DETECTED")));
+		Log(CMsg(_T("IDS_LOAD_FILE"), true, csMulFile));
 		Axis->IsArtUOP = true;
 		DWORD dwUOPHashLo, dwUOPHashHi, dwCompressedSize, dwHeaderLenght;
 		DWORD dwFilesInBlock, dwTotalFiles;
@@ -529,6 +491,7 @@ void LoadUOPArtData()
 			cfArtMul.Seek(dwUOPPtr, CFile::begin);
 		}
 	}
+	return 0;
 }
 
 void UnLoadUOPArtData()
@@ -542,12 +505,13 @@ void UnLoadUOPArtData()
 	Axis->m_aUopAddress.RemoveAll();
 }
 
-void LoadHues()
+UINT LoadHues(LPVOID pParam)
 {
 	CFile cfHues;
 	CString csHueFile = GetMulPath(_T("Hues"));
 	if ( cfHues.Open( csHueFile, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone ) )
 	{
+		Log(CMsg(_T("IDS_LOAD_FILE"), true, csHueFile));
 		int iBytesRead = 1;
 		while ( iBytesRead )
 		{
@@ -563,6 +527,12 @@ void LoadHues()
 		}
 		cfHues.Close();
 	}
+	else
+	{
+		Log(CMsg(_T("IDS_ERROR_LOAD_FILE"), true, csHueFile));
+		return 1;
+	}
+	return 0;
 }
 
 void UnLoadHues()
@@ -576,38 +546,44 @@ void UnLoadHues()
 	Axis->m_aHueGroups.RemoveAll();
 }
 
-void LoadBodyDef()
+UINT LoadBodyDef(LPVOID pParam)
 {
 	CString csPath = GetMulPath(_T("BodyDef"));
 	CStdioFile csfInput;
 
-		if ( !csfInput.Open(csPath, CFile::modeRead | CFile::shareDenyNone) )
-			return;
-
-	BOOL bStatus = TRUE;
-	while ( bStatus )
+	if (csfInput.Open(csPath, CFile::modeRead | CFile::shareDenyNone))
 	{
-		CString csLine;
-		bStatus = csfInput.ReadString(csLine);
-		if ( !bStatus )
-			break;
-		csLine = csLine.SpanExcluding(_T("#"));
-		csLine.Trim();
-		if ( csLine != "" )
+		Log(CMsg(_T("IDS_LOAD_FILE"), true, csPath));
+		BOOL bStatus = TRUE;
+		while (bStatus)
 		{
-			CDefObj * pDef = new CDefObj;
-			CString csTemp;
-			csTemp = csLine.SpanExcluding(_T(" \t"));
-			pDef->wValue = (WORD)_ttoi(csTemp);
+			CString csLine;
+			bStatus = csfInput.ReadString(csLine);
+			if (!bStatus)
+				break;
+			csLine = csLine.SpanExcluding(_T("#"));
+			csLine.Trim();
+			if (csLine != "")
+			{
+				CDefObj * pDef = new CDefObj;
+				CString csTemp;
+				csTemp = csLine.SpanExcluding(_T(" \t"));
+				pDef->wValue = (WORD)_ttoi(csTemp);
 
-			csTemp = csLine.Mid(csLine.Find('{') + 1);
-			csTemp = csTemp.SpanExcluding(_T("}"));
-			pDef->wID = (WORD)_ttoi(csTemp);
+				csTemp = csLine.Mid(csLine.Find('{') + 1);
+				csTemp = csTemp.SpanExcluding(_T("}"));
+				pDef->wID = (WORD)_ttoi(csTemp);
 
-			Axis->m_daBodydef.Insert(pDef);
+				Axis->m_daBodydef.Insert(pDef);
+			}
 		}
 	}
-				
+	else
+	{
+		Log(CMsg(_T("IDS_ERROR_LOAD_FILE"), true, csPath));
+		return 1;
+	}
+	return 0;
 }
 
 void UnLoadBodyDef()
@@ -620,60 +596,66 @@ void UnLoadBodyDef()
 	Axis->m_daBodydef.RemoveAll();
 }
 
-void LoadBodyConvert()
+UINT LoadBodyConvert(LPVOID pParam)
 {
 	CString csPath = GetMulPath(_T("BodyConv"));
 	CStdioFile csfInput;
 
-		if ( !csfInput.Open(csPath, CFile::modeRead | CFile::shareDenyNone) )
-			return;
-
-	BOOL bStatus = TRUE;
-	while ( bStatus )
+	if (csfInput.Open(csPath, CFile::modeRead | CFile::shareDenyNone))
 	{
-		CString csLine;
-		bStatus = csfInput.ReadString(csLine);
-		if ( !bStatus )
-			break;
-		csLine = csLine.SpanExcluding(_T("#"));
-		csLine.Trim();
-		if ( csLine != "" )
+		Log(CMsg(_T("IDS_LOAD_FILE"), true, csPath));
+		BOOL bStatus = TRUE;
+		while (bStatus)
 		{
-			CDefObj * pDef = new CDefObj;
-			CString csTemp;
-			int iLength, iMul = 2;
-			csTemp = csLine.SpanExcluding(_T(" \t"));
-			iLength = csTemp.GetLength()+1;
-			if (_ttoi(csTemp)==0)
+			CString csLine;
+			bStatus = csfInput.ReadString(csLine);
+			if (!bStatus)
+				break;
+			csLine = csLine.SpanExcluding(_T("#"));
+			csLine.Trim();
+			if (csLine != "")
 			{
-				delete pDef;
-				continue;
-			}
-			pDef->wValue = (WORD)_ttoi(csTemp);
-			
-			while(1)
-			{
-				csTemp = csLine.Mid(iLength);
-				csTemp = csTemp.SpanExcluding(_T(" \t"));
-				iLength += csTemp.GetLength()+1;
-				if (csTemp == "")
+				CDefObj * pDef = new CDefObj;
+				CString csTemp;
+				int iLength, iMul = 2;
+				csTemp = csLine.SpanExcluding(_T(" \t"));
+				iLength = csTemp.GetLength() + 1;
+				if (_ttoi(csTemp) == 0)
 				{
-					pDef->wID = pDef->wValue;
-					pDef->iMul = 1;
-					break;
+					delete pDef;
+					continue;
 				}
-				if (csTemp != "-1")
+				pDef->wValue = (WORD)_ttoi(csTemp);
+
+				while (1)
 				{
-					pDef->wID = (WORD)_ttoi(csTemp);
-					pDef->iMul = iMul;
-					break;
+					csTemp = csLine.Mid(iLength);
+					csTemp = csTemp.SpanExcluding(_T(" \t"));
+					iLength += csTemp.GetLength() + 1;
+					if (csTemp == "")
+					{
+						pDef->wID = pDef->wValue;
+						pDef->iMul = 1;
+						break;
+					}
+					if (csTemp != "-1")
+					{
+						pDef->wID = (WORD)_ttoi(csTemp);
+						pDef->iMul = iMul;
+						break;
+					}
+					iMul++;
 				}
-				iMul++;
+				Axis->m_daBodyConv.Insert(pDef);
 			}
-			Axis->m_daBodyConv.Insert(pDef);
 		}
 	}
-				
+	else
+	{
+		Log(CMsg(_T("IDS_ERROR_LOAD_FILE"), true, csPath));
+		return 1;
+	}
+	return 0;
 }
 
 void UnLoadBodyConvert()
@@ -686,13 +668,14 @@ void UnLoadBodyConvert()
 	Axis->m_daBodyConv.RemoveAll();
 }
 
-void LoadRadarcol()
+UINT LoadRadarcol(LPVOID pParam)
 {
 	CFile cfRadarFile;
 	CString csRadarFileName = GetMulPath(_T("Radarcol"));
 	memset(&Axis->m_dwColorMap[0], 0, sizeof(Axis->m_dwColorMap));
 	if (cfRadarFile.Open(csRadarFileName, CFile::modeRead | CFile::shareDenyNone))
 	{
+		Log(CMsg(_T("IDS_LOAD_FILE"), true, csRadarFileName));
 		WORD wColorArray[65536];
 		memset(&wColorArray, 0x00, sizeof(wColorArray));
 		cfRadarFile.Read(&wColorArray[0], sizeof(wColorArray));
@@ -700,14 +683,51 @@ void LoadRadarcol()
 		for (long i = 0; i < 65536; i++)
 			Axis->m_dwColorMap[i] = ScaleColor(wColorArray[i]);
 	}
+	else
+	{
+		Log(CMsg(_T("IDS_ERROR_LOAD_FILE"), true, csRadarFileName));
+		return 1;
+	}
+	return 0;
+}
+
+UINT LoadTiledata(LPVOID pParam)
+{
+	CFile cfTiledata;
+	CString csFile = GetMulPath(_T("Tiledata"));
+	if (cfTiledata.Open(csFile, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone))
+	{
+		Log(CMsg(_T("IDS_LOAD_FILE"), true, csFile));
+		//Land data not needed at the moment
+		//Axis->m_landdata.SetSize(0x78800);
+		//cfTiledata.Read(Axis->m_landdata.GetData(), Axis->m_landdata.GetSize());
+		Axis->m_staticdata.SetSize(static_cast<INT_PTR>(cfTiledata.GetLength()- 0x78800));
+		cfTiledata.Seek(0x78800, CFile::begin);
+		cfTiledata.Read(Axis->m_staticdata.GetData(), Axis->m_staticdata.GetSize());
+		cfTiledata.Close();
+		if (Axis->m_staticdata.GetSize() == 0x292000)
+		{
+			Axis->IsArtPostHS = true;
+			Log(CMsg(_T("IDS_ART_HS_DETECTED")));
+		}
+	}
+	else
+	{
+		Log(CMsg(_T("IDS_ERROR_LOAD_FILE"),true,csFile));
+	}
+	return 0;
 }
 
 void DetectMapFormat()
 {
 	CFile fData;
 	CString csMapFileName = GetMulPath(_T("Map0UOP"));
-	if ( fData.Open(csMapFileName, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone) )
+	CFileException ex;
+
+	if (fData.Open(csMapFileName, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone))
 	{
+		Log(CMsg(_T("IDS_MAP_UOP_DETECTED")));
+		Log(CMsg(_T("IDS_MAP_ML_DETECTED")));
 		Axis->IsMapUOP = true;
 		Axis->IsMapML = true;
 		fData.Close();
@@ -717,8 +737,11 @@ void DetectMapFormat()
 	csMapFileName = GetMulPath(_T("Map0Mul"));
 	if ( fData.Open(csMapFileName, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone) )
 	{
-		if ( fData.GetLength() > 89915000 )
+		if (fData.GetLength() > 89915000)
+		{
+			Log(CMsg(_T("IDS_MAP_ML_DETECTED")));
 			Axis->IsMapML = true;
+		}
 		fData.Close();
 	}
 }
@@ -829,4 +852,70 @@ UINT isStrType(CString csString)
 		else
 			return 2;
 	}
+}
+
+void Log(CString csData)
+{
+	if (Axis->logFile.m_hFile != CFile::hFileNull)
+	{
+		Axis->logFile.WriteString(CMsg(_T("%1 \r\n"),true,csData));
+	}
+}
+
+CString GetEditString(CWnd &ceText)
+{
+	CString csData;
+	ceText.GetWindowText(csData);
+	return csData;
+}
+
+int GetEditNum(CWnd &ceText)
+{
+	CString csData;
+	ceText.GetWindowText(csData);
+	return _ttoi(csData);
+}
+
+DWORD GetColorRef(DWORD dwColRef)
+{
+	return _RGB(GetRValue(dwColRef), GetGValue(dwColRef), GetBValue(dwColRef));
+}
+
+void ClearDirectory(CString csPath)
+{
+	WIN32_FIND_DATA info;
+	HANDLE hp;
+	hp = FindFirstFile(CMsg(_T("%1/*.*"),true, csPath), &info);
+	do
+	{
+		DeleteFile(CMsg(_T("%1/%2"), true, csPath, info.cFileName));
+
+	} while (FindNextFile(hp, &info));
+	FindClose(hp);
+}
+
+void CreateDirectoryTree(CString csPath)
+{
+	CreateDirectory(csPath, NULL);
+	csPath += _T("/Art");
+	CreateDirectory(csPath, NULL);
+
+	CreateDirectory(csPath + _T("/Static"), NULL);
+	CreateDirectory(csPath + _T("/Multi"), NULL);
+	CreateDirectory(csPath + _T("/Map"), NULL);
+}
+
+void DeleteDirectoryTree(CString csPath)
+{
+	CString csArtPath = csPath += _T("/Art");
+	ClearDirectory(csArtPath + _T("/Static"));
+	RemoveDirectory(csArtPath + _T("/Static"));
+	ClearDirectory(csArtPath + _T("/Multi"));
+	RemoveDirectory(csArtPath + _T("/Multi"));
+	ClearDirectory(csArtPath + _T("/Map"));
+	RemoveDirectory(csArtPath + _T("/Map"));
+	RemoveDirectory(csArtPath);
+
+	ClearDirectory(csPath);
+	RemoveDirectory(csPath);
 }

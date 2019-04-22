@@ -39,6 +39,18 @@ public:
 };
 
 //*****************
+class CMultiRec
+{
+public:
+	WORD wIndex;
+	short x;
+	short y;
+	short z;
+	DWORD dwFlags;
+	DWORD dwHue;
+};
+
+//*****************
 class CHueEntry
 {
 public:
@@ -115,26 +127,31 @@ public :
 	CMulUOP();
 	~CMulUOP();
 	CBitmapEx Drawbmp;
-	CBitmapEx Bkgbmp;
 	CBitmapEx Objbmp;
+	CBitmapEx DrawError();
+	CBitmapEx GetArtBMP(CFile &fData, ArtIdx indexRec, DWORD dwArtIndex, WORD wAppliedColor);
+	COLORREF crBKG;
 	void DrawArt(DWORD dwArtIndex, WORD wAppliedColor = 0);
+	void DrawMulti(DWORD dwArtIndex);
 	void DrawAnim(DWORD dwAnimIndex, WORD wAppliedColor = 0, int wFrame = -1);
 	void DrawMap(int iMap = 0);
-	void DisplayObj(int x = 0, int y = 0, bool bAlfa = true, bool bReset = true);
+	//void DisplayObj(int x = 0, int y = 0, bool bAlfa = true, bool bReset = true);
+	void DisplayObj();
 	void InitDisplay();
 
-	void SetScale(int iScale = 1);
-	int GetScale();
+	//void SetScale(float flScale = 1);
+	void SetAutoScale(bool bScale = true);
+	float GetScale();
 	void SetCenterX(int x);
 	int GetCenterX();
 	void SetCenterY(int y);
 	int GetCenterY();
 
 protected:
+	bool bAutoScale;
 	int iCenterX;
 	int iCenterY;
-	int iArtScale;
-	COLORREF crBkg;
+	float flArtScale;
 	CRect m_rcSize;
 	void SetInvalid();
 	DWORD BlendColors(WORD wBaseColor, WORD wAppliedColor, bool bBlendMode);
@@ -153,5 +170,6 @@ protected:
 	DWORD FindPatch(CPtrArray &array, DWORD lookup);
 
 	afx_msg void OnPaint();
+	afx_msg void OnSize(UINT nType, int cx, int cy);
 	DECLARE_MESSAGE_MAP()
 };

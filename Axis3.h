@@ -26,17 +26,21 @@ public:
 	Database DBLng;				//Language DB
 	Database DBSettings;		//Settings DB
 	Database DBData;			//Data DB
+	CStdioFile logFile;			//Logfile
 
 	CString GetVersionTitle();
 	CString GetBuildTimestamp();
 
 	//Mul/UOP
+	//CByteArray m_landdata;
+	CByteArray m_staticdata;
 	DWORD * m_dwColorMap;
 	CDefArray m_daBodydef;
 	CDefArray m_daBodyConv;
 	CPtrArray m_aUopAddress;
 	CPtrArray m_aHueGroups;
 	bool IsArtUOP;
+	bool IsArtPostHS;
 	bool IsMapUOP;
 	bool IsMapML;
 

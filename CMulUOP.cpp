@@ -10,12 +10,13 @@
 
 BEGIN_MESSAGE_MAP(CMulUOP, CWnd)
 	ON_WM_PAINT()
+	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 CMulUOP::CMulUOP()
 {
-	crBkg = _RGB(242,252,255);
-	SetScale();
+	//SetScale();
+	bAutoScale = false;
 }
 
 CMulUOP::~CMulUOP()
@@ -29,7 +30,17 @@ void CMulUOP::InitDisplay()
 	CRect rcBounds;
 	GetClientRect(&rcBounds);
 	Drawbmp.Create(rcBounds.Width(), rcBounds.Height());
-	Drawbmp.Clear(crBkg);
+	Drawbmp.Clear(GetColorRef(GetSettingNum(_T("ViewerBGColor"))));
+}
+
+void CMulUOP::OnSize(UINT nType, int cx, int cy)
+{
+	CRect rcBounds;
+	GetClientRect(&rcBounds);
+	Drawbmp.Create(rcBounds.Width(), rcBounds.Height());
+	DisplayObj();
+
+	CWnd::OnSize(nType, cx, cy);
 }
 
 void CMulUOP::SetInvalid()
@@ -51,39 +62,73 @@ void CMulUOP::OnPaint()
 	Drawbmp.Draw(pdc);
 }
 
-void CMulUOP::DisplayObj(int x, int y, bool bAlfa, bool bReset)
+void CMulUOP::DisplayObj()
 {
-	x = max(x,(Drawbmp.GetWidth()/2)*iArtScale);
-	x = min(x,((Objbmp.GetWidth()/iArtScale) - (Drawbmp.GetWidth()/2))*iArtScale);
-	x = max(x - ((Drawbmp.GetWidth()/2)*iArtScale),0);
-	y = max(y,(Drawbmp.GetHeight()/2)*iArtScale);
-	y = min(y,((Objbmp.GetHeight()/iArtScale) - (Drawbmp.GetHeight()/2))*iArtScale);
-	y = max(y - ((Drawbmp.GetHeight()/2)*iArtScale),0);
+	Drawbmp.Clear(GetColorRef(GetSettingNum(_T("ViewerBGColor"))));
+	int diWidth, diHeight, siWidth, siHeight;
+	int sx = 0;
+	int sy = 0;
 
-	int iWidth = min((Objbmp.GetWidth()/iArtScale),Drawbmp.GetWidth());
-	int iHeight = min((Objbmp.GetHeight()/iArtScale),Drawbmp.GetHeight());
-
-	int x1 = (Drawbmp.GetWidth()-iWidth)/2;
-	int y1 = (Drawbmp.GetHeight()-iHeight)/2;
-
-	if (bReset)
-		Drawbmp.Clear(crBkg);
-
-	if (bAlfa)
-		Drawbmp.DrawTransparent(x1, y1, iWidth, iHeight, Objbmp, x, y, iWidth*iArtScale, iHeight*iArtScale, RGB(0,0,0));
+	if (bAutoScale)
+	{
+		diWidth = Drawbmp.GetWidth();
+		diHeight = Drawbmp.GetHeight();
+		siWidth = Objbmp.GetWidth();
+		siHeight = Objbmp.GetHeight();
+	}
 	else
-		Drawbmp.Draw(x1, y1, iWidth, iHeight, Objbmp, x, y, iWidth*iArtScale, iHeight*iArtScale);
+	{
+		sx = max(sx, (Objbmp.GetWidth() - Drawbmp.GetWidth()) / 2);
+		sy = max(sy, (Objbmp.GetHeight() - Drawbmp.GetHeight()) / 2);
+		siWidth = diWidth = min(Objbmp.GetWidth(), Drawbmp.GetWidth());
+		siHeight = diHeight = min(Objbmp.GetHeight(), Drawbmp.GetHeight());
+	}
+
+	int dx = (Drawbmp.GetWidth() - diWidth) / 2;
+	int dy = (Drawbmp.GetHeight() - diHeight) / 2;
+
+	Drawbmp.DrawTransparent(dx, dy, diWidth, diHeight, Objbmp, sx, sy, siWidth, siHeight, RGB(0, 0, 0));
+
 	SetInvalid();
 }
+//void CMulUOP::DisplayObj(int sx, int sy, bool bAlfa, bool bReset)
+//{
+//	sx = max(sx,(Drawbmp.GetWidth()/2)*flArtScale);
+//	sx = min(sx,((Objbmp.GetWidth()/flArtScale) - (Drawbmp.GetWidth()/2))*flArtScale);
+//	sx = max(sx - ((Drawbmp.GetWidth()/2)*flArtScale),0);
+//	sy = max(sx,(Drawbmp.GetHeight()/2)*flArtScale);
+//	sy = min(sy,((Objbmp.GetHeight()/flArtScale) - (Drawbmp.GetHeight()/2))*flArtScale);
+//	sy = max(sy - ((Drawbmp.GetHeight()/2)*flArtScale),0);
+//
+//	int iWidth = min((Objbmp.GetWidth()/flArtScale),Drawbmp.GetWidth());
+//	int iHeight = min((Objbmp.GetHeight()/flArtScale),Drawbmp.GetHeight());
+//
+//	int dx = (Drawbmp.GetWidth()-iWidth)/2;
+//	int dy = (Drawbmp.GetHeight()-iHeight)/2;
+//
+//	if (bReset)
+//		Drawbmp.Clear(GetColorRef(GetSettingNum(_T("ViewerBGColor"))));
+//
+//	if (bAlfa)
+//		Drawbmp.DrawTransparent(dx, dy, iWidth, iHeight, Objbmp, sx, sy, iWidth, iHeight, RGB(0,0,0));
+//	else
+//		Drawbmp.Draw(dx, dy, iWidth, iHeight, Objbmp, sx, sy, iWidth, iHeight);
+//	SetInvalid();
+//}
 
-void CMulUOP::SetScale(int iScale)
+//void CMulUOP::SetScale(float flScale)
+//{
+//	flArtScale = max(flScale,0.01);
+//}
+
+void CMulUOP::SetAutoScale(bool bScale)
 {
-	iArtScale = max(iScale,1);
+	bAutoScale = bScale;
 }
 
-int CMulUOP::GetScale()
+float CMulUOP::GetScale()
 {
-	return iArtScale;
+	return flArtScale;
 }
 
 void CMulUOP::SetCenterX(int x)
@@ -108,14 +153,109 @@ int CMulUOP::GetCenterY()
 	return iCenterY;
 }
 
+CBitmapEx CMulUOP::DrawError()
+{
+	CBitmapEx ErrorPic;
+	ErrorPic.Create(70, 30);
+	ErrorPic.Clear(GetColorRef(GetSettingNum(_T("ViewerBGColor"))));
+	ErrorPic.DrawTextW(0, 0, _T("ERROR!"), _RGB(235, 0, 0), 100, _T("Times New Roman"), 12, 1);
+	return ErrorPic;
+}
+
+CBitmapEx CMulUOP::GetArtBMP(CFile &fData, ArtIdx indexRec, DWORD dwArtIndex, WORD wAppliedColor)
+{
+	CBitmapEx ArtBMP;
+	try
+	{
+		BYTE * bData = NULL;
+		DWORD dwOffset = 4;
+		fData.Seek(indexRec.dwLookup, CFile::begin);
+		bData = new BYTE[indexRec.dwSize];
+		fData.Read(&bData[0], indexRec.dwSize);
+
+		WORD wArtWidth, wArtHeight;
+		memcpy(&wArtWidth, &bData[dwOffset], 2);
+		dwOffset += 2;
+		memcpy(&wArtHeight, &bData[dwOffset], 2);
+		dwOffset += 2;
+		if (wArtWidth == 0 || wArtWidth > 1024 || wArtHeight == 0 || wArtHeight > 1024)
+			throw 1;
+
+		ArtBMP.Create(wArtWidth, wArtHeight);
+		ArtBMP.Clear(_RGB(0, 0, 0));
+
+		WORD * lineStart = new WORD[wArtHeight];
+		for (int i = 0; i < wArtHeight; i++)
+		{
+			memcpy(&lineStart[i], &bData[dwOffset], 2);
+			dwOffset += 2;
+		}
+		DWORD dataStart = dwOffset;
+		int x, y;
+		x = y = 0;
+		while (y < wArtHeight)
+		{
+			WORD xOffset, xRun;
+			memcpy(&xOffset, &bData[dwOffset], 2);
+			dwOffset += 2;
+			memcpy(&xRun, &bData[dwOffset], 2);
+			dwOffset += 2;
+			if ((xRun + xOffset) > 2048)
+				break;
+			else
+			{
+				if ((xRun + xOffset) != 0)
+				{
+					x += xOffset;
+					WORD * wColor = new WORD[xRun];
+					memcpy(&wColor[0], &bData[dwOffset], 2 * xRun);
+					dwOffset += 2 * xRun;
+					for (int iCount = 0; iCount < xRun; iCount++)
+					{
+						int X, Y;
+						X = x + iCount;
+						Y = y;
+						if (X >= 0 && X < ArtBMP.GetWidth() && Y >= 0 && Y < ArtBMP.GetHeight())
+						{
+							DWORD dwColor = BlendColors(wColor[iCount], wAppliedColor, false);
+							BYTE r, g, b;
+							b = (BYTE)((dwColor >> 16) & 0xFF);
+							g = (BYTE)((dwColor >> 8) & 0xFF);
+							r = (BYTE)((dwColor) & 0xFF);
+							ArtBMP.SetPixel(X, Y, _RGB(r, g, b));
+						}
+					}
+					delete[] wColor;
+					x += xRun;
+				}
+				else
+				{
+					x = 0;
+					y++;
+					dwOffset = lineStart[y] * 2 + dataStart;
+				}
+			}
+		}
+		delete[] lineStart;
+		delete[] bData;
+	}
+	catch (...)
+	{
+	}
+	return ArtBMP;
+}
+
 void CMulUOP::DrawArt(DWORD dwArtIndex, WORD wAppliedColor)
 {
-	if ( dwArtIndex >= 0x8000 )
+	//Check if we have a cache that matches
+	if (Objbmp.Load(CMsg(_T("IDS_ART_FILENAME"), true, Axis->csProfile, dwArtIndex, wAppliedColor)))
 		return;
+
 	dwArtIndex += 0x4000;
 	CString csDataFile, csIndexFile;
 	CFile fData, fIndex;
 	ArtIdx indexRec;
+
 	if (Axis->IsArtUOP)
 	{
 		csDataFile = GetMulPath(_T("ArtUOP"));
@@ -148,83 +288,241 @@ void CMulUOP::DrawArt(DWORD dwArtIndex, WORD wAppliedColor)
 
 	if (( indexRec.dwLookup != 0xFFFFFFFF )&&( indexRec.dwSize > 0 ))
 	{
+		Objbmp.Create(GetArtBMP(fData, indexRec, dwArtIndex, wAppliedColor));
+		//Cache Image for later use
+		Objbmp.Save(CMsg(_T("IDS_ART_FILENAME"), true, Axis->csProfile, dwArtIndex, wAppliedColor));
+	}
+	else
+	{
+		Objbmp.Create(DrawError());
+	}
+}
+
+void CMulUOP::DrawMulti(DWORD dwArtIndex)
+{
+	//Check if we have a cache that matches
+	if (Objbmp.Load(CMsg(_T("IDS_MULTI_FILENAME"), true, Axis->csProfile, dwArtIndex)))
+		return;
+
+	CString csDataFile, csIndexFile;
+	CFile fData, fIndex;
+	ArtIdx indexRec;
+
+	csDataFile = GetMulPath(_T("MultiMul"));
+	csIndexFile = GetMulPath(_T("MultiIDX"));
+	if (!fData.Open(csDataFile, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone))
+		return;
+
+	if (!fIndex.Open(csIndexFile, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone))
+	{
+		fData.Close();
+		return;
+	}
+	if (fIndex.Seek(dwArtIndex * sizeof(ArtIdx), CFile::begin) > fIndex.GetLength())
+	{
+		fIndex.Close();
+		fData.Close();
+		return;
+	}
+	fIndex.Read(&indexRec, sizeof(ArtIdx));
+
+	CString csArtDataFile, csArtIndexFile;
+	CFile fArtData, fArtIndex;
+	ArtIdx ArtindexRec;
+	if (Axis->IsArtUOP)
+	{
+		csArtDataFile = GetMulPath(_T("ArtUOP"));
+		if (!fArtData.Open(csArtDataFile, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone))
+			return;
+	}
+	else
+	{
+		csArtDataFile = GetMulPath(_T("ArtMul"));
+		csArtIndexFile = GetMulPath(_T("ArtIDX"));
+		if (!fArtData.Open(csArtDataFile, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone))
+			return;
+
+		if (!fArtIndex.Open(csArtIndexFile, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone))
+		{
+			fArtData.Close();
+			return;
+		}
+	}
+
+	if ((indexRec.dwLookup != 0xFFFFFFFF) && (indexRec.dwSize > 0))
+	{
 		try
 		{
-			BYTE * bData = NULL;
-			DWORD dwOffset = 4;
+			WORD wItemCount = 0;
+			CMultiRec ** items = NULL;
+			UINT uMultiRecSize = sizeof(CMultiRec);
+
 			fData.Seek(indexRec.dwLookup, CFile::begin);
-			bData = new BYTE [indexRec.dwSize];
-			fData.Read(&bData[0], indexRec.dwSize);
-
-			WORD wArtWidth, wArtHeight;
-			memcpy(&wArtWidth, &bData[dwOffset], 2);
-			dwOffset += 2;
-			memcpy(&wArtHeight, &bData[dwOffset], 2);
-			dwOffset += 2;
-			if ( wArtWidth == 0 || wArtWidth > 1024 || wArtHeight == 0 || wArtHeight > 1024 )
-				throw 1;
-
-			Objbmp.Create(wArtWidth, wArtHeight);
-			Objbmp.Clear(RGB(0,0,0));
-
-			WORD * lineStart = new WORD [wArtHeight];
-			for ( int i = 0; i < wArtHeight; i++ )
+			if (!Axis->IsArtPostHS)
 			{
-				memcpy(&lineStart[i], &bData[dwOffset], 2);
-				dwOffset += 2;
+				uMultiRecSize = (sizeof(CMultiRec) - sizeof(DWORD));
 			}
-			DWORD dataStart = dwOffset;
-			int x, y;
-			x = y = 0;
-			while ( y < wArtHeight )
+
+			wItemCount = (WORD)(indexRec.dwSize / uMultiRecSize);
+			items = new CMultiRec *[wItemCount];
+			for (WORD i = 0; i < wItemCount; i++)
 			{
-				WORD xOffset, xRun;
-				memcpy(&xOffset, &bData[dwOffset], 2);
-				dwOffset += 2;
-				memcpy(&xRun, &bData[dwOffset], 2);
-				dwOffset += 2;
-				if ( (xRun + xOffset) > 2048 )
-					break;
+				CMultiRec * pItem = new CMultiRec;
+				fData.Read(pItem, uMultiRecSize);
+				items[i] = pItem;
+			}
+
+			//Sort Items
+			int x1, x2, y1, y2;
+			x1 = x2 = y1 = y2 = 0;
+			for (WORD i = 0; i < wItemCount; i++)
+			{
+				if (items[i]->x < x1)
+					x1 = items[i]->x;
+				else if (items[i]->x > x2)
+					x2 = items[i]->x;
+				if (items[i]->y < y1)
+					y1 = items[i]->y;
+				else if (items[i]->y > y2)
+					y2 = items[i]->y;
+			}
+			int X, Y;
+			X = x2 - x1 + 1;
+			Y = y2 - y1 + 1;
+			CPtrList * grid = new CPtrList[X * Y];
+			for (int i = 0; i < wItemCount; i++)
+			{
+				int x, y;
+				// We need to get the item height from the tiledata.
+				BYTE bItemHeight;
+				if (Axis->IsArtPostHS)
+				{
+					bItemHeight = Axis->m_staticdata[(items[i]->wIndex / 32) * 1316 + 4 + ((items[i]->wIndex % 32) * 41) + 20];
+				}
 				else
 				{
-					if ( ( xRun + xOffset ) != 0 )
+					bItemHeight = Axis->m_staticdata[(items[i]->wIndex / 32) * 1188 + 4 + ((items[i]->wIndex % 32) * 37) + 16];
+				}
+				items[i]->dwFlags = bItemHeight;
+				x = items[i]->x - x1;
+				y = items[i]->y - y1;
+				int index = (y * X) + x;
+				//First item in the list.
+				if (grid[index].IsEmpty())
+					grid[index].AddHead((void *)items[i]);
+				else
+				{
+					//Compare the heights of the items....
+					bool bInserted = false;
+					POSITION pos = grid[index].GetHeadPosition();
+					while (pos)
 					{
-						x+= xOffset;
-						WORD * wColor = new WORD [xRun];
-						memcpy(&wColor[0], &bData[dwOffset], 2 * xRun);
-						dwOffset += 2 * xRun;
-						for (int iCount = 0; iCount < xRun; iCount++)
+						POSITION oldPos = pos;
+						CMultiRec * pTest = (CMultiRec *)grid[index].GetNext(pos);
+						if ((items[i]->x > pTest->x) || (items[i]->y < pTest->y))
+							continue;
+						else if ((items[i]->x == pTest->x) && (items[i]->y == pTest->y) && ((items[i]->dwFlags + items[i]->z) >= (pTest->dwFlags + pTest->z)))
+							continue;
+						else
 						{
-							int X, Y;
-							X = x + iCount;
-							Y = y;
-							if ( X >= 0 && X < Objbmp.GetWidth() && Y >= 0 && Y < Objbmp.GetHeight() )
+							// Insert it here.
+							grid[index].InsertBefore(oldPos, (void *)items[i]);
+							bInserted = true;
+							break;
+						}
+					}
+					if (!bInserted)
+						grid[index].AddTail((void *)items[i]);
+				}
+			}
+			// Create Temp bitmap
+			int MaxX, MaxY, MinX, MinY;
+			MaxX = MaxY = 0;
+			MinX = MinY = 1600;
+			Objbmp.Create(2000, 2000);
+			Objbmp.Clear(_RGB(0, 0, 0));
+
+			for (int y = y1; y <= y2; y++)
+			{
+				for (int x = x1; x <= x2; x++)
+				{
+					X = x - x1;
+					Y = y - y1;
+					int index = ((y - y1) * (x2 - x1 + 1)) + (x - x1);
+					if (!grid[index].IsEmpty())
+					{
+						POSITION pos = grid[index].GetHeadPosition();
+						while (pos)
+						{
+							CMultiRec * pItem = (CMultiRec *)grid[index].GetNext(pos);
+							if (!pItem)
+								continue;
+							if (Axis->IsArtUOP)
 							{
-								DWORD dwColor = BlendColors(wColor[iCount], wAppliedColor, false);
-								BYTE r, g, b;
-								b = (BYTE) ((dwColor >> 16) & 0xFF);
-								g = (BYTE) ((dwColor >> 8) & 0xFF);
-								r = (BYTE) ((dwColor) & 0xFF);
-								Objbmp.SetPixel( X, Y, _RGB(r,g,b));
+								ArtAddress pArt = FindArtEntry(pItem->wIndex + 0x4000);
+								ArtindexRec.dwLookup = (DWORD)pArt.qwAdress;
+								ArtindexRec.dwSize = pArt.dwCompressedSize;
+							}
+							else
+							{
+								if (fArtIndex.Seek((pItem->wIndex + 0x4000) * sizeof(ArtIdx), CFile::begin) > fArtIndex.GetLength())
+								{
+									continue;
+								}
+								fArtIndex.Read(&ArtindexRec, sizeof(ArtIdx));
+							}
+
+							if ((ArtindexRec.dwLookup != 0xFFFFFFFF) && (ArtindexRec.dwSize > 0))
+							{
+								WORD wAppliedColor = 0;
+								if (Axis->IsArtPostHS)
+								{
+									wAppliedColor = (WORD)pItem->dwHue;
+								}
+								CBitmapEx BmpTemp = GetArtBMP(fArtData, ArtindexRec, pItem->wIndex + 0x4000, wAppliedColor);
+								int DX = (Objbmp.GetWidth() / 2) + ((pItem->x - pItem->y) * 22);
+								int DY = (Objbmp.GetHeight() / 2) + ((pItem->x + pItem->y) * 22) - BmpTemp.GetHeight() - (pItem->z * 4);
+
+								Objbmp.DrawTransparent(DX, DY, BmpTemp.GetWidth(), BmpTemp.GetHeight(), BmpTemp, 0, 0, BmpTemp.GetWidth(), BmpTemp.GetHeight(), RGB(0, 0, 0));
+								if ((DX+BmpTemp.GetWidth()) > MaxX)
+								{
+									MaxX = (DX + BmpTemp.GetWidth());
+								}
+								else if (DX < MinX)
+								{
+									MinX = DX;
+								}
+								else if ((DY + BmpTemp.GetHeight()) > MaxY)
+								{
+									MaxY = (DY + BmpTemp.GetHeight());
+								}
+								else if (DY < MinY)
+								{
+									MinY = DY;
+								}	
 							}
 						}
-						delete [] wColor;
-						x += xRun;
-					}
-					else
-					{
-						x = 0;
-						y++;
-						dwOffset = lineStart[y] * 2 + dataStart;
 					}
 				}
 			}
-			delete [] lineStart;
-			delete [] bData;
+			for (int i = 0; i < wItemCount; i++)
+			{
+				CMultiRec * pItem = items[i];
+				delete pItem;
+			}
+			delete[] items;
+			delete[] grid;
+			Objbmp.Crop(MinX, MinY, MaxX - MinX, MaxY - MinY);
+			//Cache Image for later use
+			Objbmp.Save(CMsg(_T("IDS_MULTI_FILENAME"), true, Axis->csProfile, dwArtIndex));
 		}
-		catch(...)
+		catch (...)
 		{
 		}
+	}
+	else
+	{
+		Objbmp.Create(DrawError());
 	}
 }
 
@@ -359,7 +657,7 @@ void CMulUOP::DrawAnim(DWORD dwAnimIndex, WORD wAppliedColor, int iFrame)
 			height += 4;
 			imageCenterX += 2;
 			Objbmp.Create(width, height);
-			Objbmp.Clear(RGB(0,0,0));
+			Objbmp.Clear(_RGB(0,0,0));
 
 			int Y = 2;
 			while ( true )
@@ -410,33 +708,15 @@ void CMulUOP::DrawAnim(DWORD dwAnimIndex, WORD wAppliedColor, int iFrame)
 //Map
 void CMulUOP::DrawMap(int iMap)
 {
-	int width = 6144;
-	int height = 4096;
+	bool bDrawStatics = (GetSettingNum(_T("DrawMapStatics")) != 0);
+	bool bDrawMapDifs = ((GetSettingNum(_T("DrawMapDif")) != 0) && (!Axis->IsMapUOP));
+	bool bDrawStaticDifs = (bDrawMapDifs && bDrawStatics);
 
-	switch ( iMap )
-	{
-	case 0:
-	case 1:
-		if (Axis->IsMapML)
-			width = 7168;
-		break;
-	case 2:
-		width = 2304;
-		height = 1600;
-		break;
-	case 3:
-		width = 2560;
-		height = 2048;
-		break;
-	case 4:
-		width = 1448;
-		height = 1448;
-		break;
-	case 5:
-		width = 1280;
-		break;
-	}
+	//Check if we have a cache that matches the settings
+	if (Objbmp.Load(CMsg(_T("IDS_MAP_FILENAME"), true, Axis->csProfile, iMap, bDrawStatics, bDrawMapDifs, bDrawStaticDifs)))
+		return;
 
+	//Check if we can draw the Map
 	CFile fData, fStatic, fStaidx;
 	CFile fMapDifl, fMapDif, fStaDifl, fStaDifi, fStaDif;
 	CString csMapFileName;
@@ -455,7 +735,7 @@ void CMulUOP::DrawMap(int iMap)
 			return;
 	}
 
-	bool bDrawStatics = (_ttoi(GetSettingString(_T("DrawMapStatics"))) != 0);
+	//Check if we want and can draw map statics
 	if (bDrawStatics)
 	{
 		CString csStaticIdxName = GetMulPath(CMsg(_T("Staidx%1!d!"),true,iMap));
@@ -472,8 +752,7 @@ void CMulUOP::DrawMap(int iMap)
 		}
 	}
 
-	bool bDrawMapDifs = ((_ttoi(GetSettingString(_T("DrawMapDif"))) != 0) && (!Axis->IsMapUOP));
-	bool bDrawStaticDifs = bDrawMapDifs;
+	//Check if we want and can draw Map Difs
 	if (bDrawMapDifs)
 	{
 		CString csMapDifFileName = GetMulPath(CMsg(_T("MapDif%1!d!"),true,iMap));
@@ -495,6 +774,7 @@ void CMulUOP::DrawMap(int iMap)
 		}
 	}
 
+	//Check if we want and can draw Statics Difs
 	if (bDrawStaticDifs)
 	{
 		CString csStaDifName = GetMulPath(CMsg(_T("Stadif%1!d!"),true,iMap));
@@ -526,9 +806,39 @@ void CMulUOP::DrawMap(int iMap)
 		}
 	}
 
-	if (Objbmp.Load(CMsg(_T("IDS_MAP_FILENAME"),true,iMap,bDrawStatics,bDrawMapDifs,bDrawStaticDifs)))
+	//Check if we have a cache that matches the new info
+	if (Objbmp.Load(CMsg(_T("IDS_MAP_FILENAME"), true, Axis->csProfile, iMap, bDrawStatics, bDrawMapDifs, bDrawStaticDifs)))
 		return;
 
+	//Get Map Size
+	int width = 6144;
+	int height = 4096;
+
+	switch (iMap)
+	{
+	case 0:
+	case 1:
+		if (Axis->IsMapML)
+			width = 7168;
+		break;
+	case 2:
+		width = 2304;
+		height = 1600;
+		break;
+	case 3:
+		width = 2560;
+		height = 2048;
+		break;
+	case 4:
+		width = 1448;
+		height = 1448;
+		break;
+	case 5:
+		width = 1280;
+		break;
+	}
+
+	//Get UOP Map Data
 	if (Axis->IsMapUOP)
 	{
 		CString csMapPattern = csMapFileName.Mid(csMapFileName.ReverseFind('\\')+1);
@@ -593,11 +903,11 @@ void CMulUOP::DrawMap(int iMap)
 		}
 	}
 
-
+	//Draw Map
 	int xBlocks = width/8;
 	int yBlocks = height/8;
 	Objbmp.Create(width, height);
-	Objbmp.Clear(RGB(0,0,0));
+	Objbmp.Clear(_RGB(0,0,0));
 	MapBlock bData;
 	StaticIdx indexRec;
 	try
@@ -714,15 +1024,25 @@ void CMulUOP::DrawMap(int iMap)
 	{
 	}
 	fData.Close();
-	fStaidx.Close();
-	fStatic.Close();
-	fMapDifl.Close();
-	fMapDif.Close();
-	fStaDifl.Close();
-	fStaDifi.Close();
-	fStaDif.Close();
+	if (bDrawStatics)
+	{
+		fStaidx.Close();
+		fStatic.Close();
+	}
+	if (bDrawMapDifs)
+	{
+		fMapDifl.Close();
+		fMapDif.Close();
+	}
+	if (bDrawStaticDifs)
+	{
+		fStaDifl.Close();
+		fStaDifi.Close();
+		fStaDif.Close();
+	}
 
-	Objbmp.Save(CMsg(_T("IDS_MAP_FILENAME"),true,iMap,bDrawStatics,bDrawMapDifs,bDrawStaticDifs));
+	//Save Map for future uses
+	Objbmp.Save(CMsg(_T("IDS_MAP_FILENAME"),true,Axis->csProfile,iMap,bDrawStatics,bDrawMapDifs,bDrawStaticDifs));
 }
 
 //*************

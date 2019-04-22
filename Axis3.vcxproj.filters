@@ -38,6 +38,9 @@
     <Filter Include="HTML Help Files\Images">
       <UniqueIdentifier>{57f34ec9-3dd9-45ce-ab82-1bc60027a03f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Settings">
+      <UniqueIdentifier>{926f33bb-c23e-48d8-9f2e-cb003bb561b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\Zoom_Out.ico">
@@ -121,7 +124,6 @@
     <None Include="Extra\command">
       <Filter>DB Files</Filter>
     </None>
-    <None Include="Extra\hoglocs.scp" />
     <None Include="Extra\changelog.txt" />
     <None Include="Extra\Settings">
       <Filter>DB Files</Filter>
@@ -150,94 +152,7 @@
     <None Include="hlp\Welcome.htm">
       <Filter>HTML Help Files\Topics</Filter>
     </None>
-    <None Include="hlp\Account_Tab.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Add_Location.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Color_Select.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Command_Tab.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\DoorWiz.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\DoorWiz_ini.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\General_Tab.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Item_Tab.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\ItemTweak_Tab.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Launcher_Tab.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\LightWiz.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\LightWiz_ini.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Local_Profile.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Log_Tab.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\PlayerTweak_Tab.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Profile_Login.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Profile_Tab.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Remote_Console.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Remote_Console_Login.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Search.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Setting_FilePath.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
     <None Include="hlp\Setting_General.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Setting_Item.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Setting_OverrideMulPath.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Setting_Spawn.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Setting_Travel.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Spawn_Tab.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Travel_Tab.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Web_Profile.htm">
-      <Filter>HTML Help Files\Topics</Filter>
-    </None>
-    <None Include="hlp\Web_Profile_Setup.htm">
       <Filter>HTML Help Files\Topics</Filter>
     </None>
     <None Include="res\Axis3.ico">
@@ -252,8 +167,14 @@
     <None Include="hlp\Axis3.hhk">
       <Filter>HTML Help Files</Filter>
     </None>
-    <None Include="hlp\Axis3_ini.htm">
+    <None Include="hlp\Setting_Viewer.htm">
       <Filter>HTML Help Files\Topics</Filter>
+    </None>
+    <None Include="hlp\Setting_Profiles.htm">
+      <Filter>HTML Help Files\Topics</Filter>
+    </None>
+    <None Include="hlp\Axis3.chw">
+      <Filter>HTML Help Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -350,6 +271,24 @@
     <ClInclude Include="ProfileDlg.h">
       <Filter>Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="SearchCritDlg.h">
+      <Filter>Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingEdit.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings_Viewer.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="LangEdit.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings_General.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="hlp\HTMLDefines.h">
+      <Filter>HTML Help Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TabCtrl\TabCtrl.cpp">
@@ -435,6 +374,21 @@
     </ClCompile>
     <ClCompile Include="ProfileDlg.cpp">
       <Filter>Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchCritDlg.cpp">
+      <Filter>Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingEdit.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings_Viewer.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="LangEdit.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings_General.cpp">
+      <Filter>Settings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -44,11 +44,6 @@ protected:
 	CTime tNow;
 	void LoadReminders();
 
-	CRect crText;
-	CRect crTitle;
-	CRect crList;
-	CRect crDatePicker;
-	//CRect crGrRemind;
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
 public:
@@ -65,7 +60,6 @@ public:
 	afx_msg void OnDelete();
 	afx_msg void OnSave();
 	afx_msg void OnCancelReminder();
-	afx_msg void OnSize(UINT nType, int cx, int cy);
 
 	DECLARE_MESSAGE_MAP()
 };

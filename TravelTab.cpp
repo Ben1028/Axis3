@@ -40,7 +40,7 @@ BOOL CTravelTab::OnInitDialog()
 
 	cMapDisplay.InitDisplay();
 	cMapDisplay.DrawMap(4);
-	cMapDisplay.SetScale(0);
+	//cMapDisplay.SetScale(0);
 	cMapDisplay.DisplayObj();
 	SetFocus();
 
@@ -54,10 +54,10 @@ BOOL CTravelTab::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 	cMapDisplay.GetWindowRect(&rect);
 	if ( rect.PtInRect(pt) )
 	{
-		if(zDelta > 0)
+		/*if(zDelta > 0)
 			cMapDisplay.SetScale(cMapDisplay.GetScale()+1);
 		else
-			cMapDisplay.SetScale(cMapDisplay.GetScale()-1);
+			cMapDisplay.SetScale(cMapDisplay.GetScale()-1);*/
 		cMapDisplay.DisplayObj();
 	}
 	return true;

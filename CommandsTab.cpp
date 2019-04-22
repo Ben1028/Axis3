@@ -120,9 +120,9 @@ void CCommandsTab::OnBnClickedAddbutton()
 {
 	OnBnClickedtabCancel();
 	OnBnClickedbuttonCancel();
-	CString csLabel, csCommand;
-	ceButtonName.GetWindowText(csLabel);
-	creButtonCommand.GetWindowText(csCommand);
+	CString csLabel = GetEditString(ceButtonName);
+	CString csCommand = GetEditString(creButtonCommand);
+
 	if (csLabel == "")
 	{
 		AfxMessageBox(CMsg(_T("IDS_MISSINGLABEL")), MB_ICONSTOP);
@@ -154,8 +154,8 @@ void CCommandsTab::OnBnClickedAddtab()
 {
 	OnBnClickedtabCancel();
 	OnBnClickedbuttonCancel();
-	CString csLabel;
-	ceTabName.GetWindowText(csLabel);
+	CString csLabel = GetEditString(ceTabName);
+
 	if (csLabel == "")
 	{
 		AfxMessageBox(CMsg(_T("IDS_MISSINGLABEL")), MB_ICONSTOP);
@@ -230,8 +230,8 @@ void CCommandsTab::OnBnClickedtabOK()
 {
 	INT_PTR pID = m_ComTabCtrl.GetIndex(m_ComTabCtrl.GetSel());
 	CCommandPage * pComPage = p_DlgTabs.GetAt(pID);
-	CString csLabel;
-	ceTabName.GetWindowText(csLabel);
+	CString csLabel = GetEditString(ceTabName);
+
 	if (csLabel == "")
 	{
 		AfxMessageBox(CMsg(_T("IDS_MISSINGLABEL")), MB_ICONSTOP);
@@ -288,10 +288,10 @@ void CCommandsTab::OnBnClickedbuttonCancel()
 
 void CCommandsTab::OnBnClickedbuttonOK()
 {
-	CString csLabel, csCommand, csTitle;
+	CString csTitle;
 	pEditButton->GetWindowText(csTitle);
-	ceButtonName.GetWindowText(csLabel);
-	creButtonCommand.GetWindowText(csCommand);
+	CString csLabel = GetEditString(ceButtonName);
+	CString csCommand = GetEditString(creButtonCommand);
 	if (csLabel == "")
 	{
 		AfxMessageBox(CMsg(_T("IDS_MISSINGLABEL")), MB_ICONSTOP);

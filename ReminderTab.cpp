@@ -60,7 +60,6 @@ BEGIN_MESSAGE_MAP(CReminderTab, CDialogPage)
 	ON_BN_CLICKED(IDC_DELETE, OnDelete)
 	ON_BN_CLICKED(IDC_SAVE, OnSave)
 	ON_BN_CLICKED(IDC_CANCEL, OnCancelReminder)
-	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 BOOL CReminderTab::OnInitDialog() 
@@ -84,16 +83,6 @@ BOOL CReminderTab::OnInitDialog()
 	m_clcList.InsertColumn(1,CMsg( _T("IDS_TYPE")), LVCFMT_LEFT, 66, -1);
 	LoadReminders();
 
-	m_ceText.GetWindowRect(crText);
-	ScreenToClient(crText);
-	m_ceTitle.GetWindowRect(crTitle);
-	ScreenToClient(crTitle);
-	m_clcList.GetWindowRect(crList);
-	ScreenToClient(crList);
-	m_cdtpDatePicker.GetWindowRect(crDatePicker);
-	ScreenToClient(crDatePicker);
-	//GetDlgItem(IDC_GR_REMIND)->GetWindowRect(crGrRemind);
-	//ScreenToClient(crGrRemind);
 	initialized = TRUE;
 
 	return TRUE;
@@ -279,9 +268,9 @@ void CReminderTab::OnDelete()
 
 void CReminderTab::OnSave()
 {
-	CString csTitle, csText;
-	m_ceTitle.GetWindowText(csTitle);
-	m_ceText.GetWindowText(csText);
+	CString csTitle = GetEditString(m_ceTitle);
+	CString csText = GetEditString(m_ceText);
+
 	int iStartup = 0;
 	int iHour = 0;
 	int iMin = 0;
@@ -562,29 +551,4 @@ void CReminderTab::OnListChange(NMHDR* pNMHDR, LRESULT* pResult)
 		return;
 	}
 	*pResult = 0;
-}
-
-void CReminderTab::OnSize(UINT nType, int cx, int cy) 
-{
-	CRect crNew;
-	GetWindowRect(crNew);
-	int dx = crNew.Width()-MinSize.Width();
-	int dy = crNew.Height()-MinSize.Height();
-	DWORD dwCurStyle = ::GetWindowLong(GetSafeHwnd(), GWL_STYLE);
-	if (dwCurStyle & WS_CHILD)
-	{
-		dx = crNew.Width()-MinDock.Width();
-		dy = crNew.Height()-MinDock.Height();
-	}
-
-	if(initialized)
-	{
-		m_ceText.MoveWindow(crText.left,crText.top,crText.Width()+dx,crText.Height()+dy);
-		m_ceTitle.MoveWindow(crTitle.left,crTitle.top,crTitle.Width()+dx,crTitle.Height());
-		m_clcList.MoveWindow(crList.left,crList.top,crList.Width(),crList.Height()+dy);
-		m_cdtpDatePicker.MoveWindow(crDatePicker.left,crDatePicker.top+dy,crDatePicker.Width(),crDatePicker.Height());
-		//GetDlgItem(IDC_GR_REMIND)->MoveWindow(crGrRemind.left,crGrRemind.top+(dy/2),crGrRemind.Width(),crGrRemind.Height());
-	}
-	
-	CDialogEx::OnSize(nType, cx, cy);
 }

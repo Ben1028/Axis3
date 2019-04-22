@@ -12,12 +12,19 @@ public:
 	CEdit	m_cePort;
 	CEdit	m_ceAccount;
 	CEdit	m_cePassword;
+	CButton m_cbDelete;
+	CButton m_cbSelect;
 
 	CString csAccountName;
 	CString csPassword;
 	CString csAccount;
 	CString csPort;
 	CString csAddress;
+	CString csPath;
+
+	BOOL	m_bLocal;
+	CStatic	m_csSphereTables;
+	CButton m_cbBrowse;
 
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
@@ -31,6 +38,8 @@ protected:
 	afx_msg void OnSelchangeAcctname();
 	afx_msg void OnEditchangeAcctname();
 	afx_msg void OnSelectProfile();
+	afx_msg void OnLocal();
+	afx_msg void OnBrowse();
 
 	DECLARE_MESSAGE_MAP()
 };

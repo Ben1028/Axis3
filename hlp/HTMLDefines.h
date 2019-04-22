@@ -11,6 +11,9 @@
 #define HID_HELP_DOCUMENTATION                  0x1800A
 #define HID_SETTINGS_PROFILE                    0x1800B
 #define HID_SETTINGS_CREATEDATABASE             0x1800C
+#define HID_DATAEDIT_DEFAULTSETTINGS            0x1800D
+#define HID_DATAEDIT_LANGUAGE                   0x1800E
+#define HID_SETTINGS_VIEWER                     0x1800F
  
 // Prompts (IDP_*) 
 #define HIDP_SOCKETS_INIT_FAILED                0x30067
@@ -39,6 +42,11 @@
 #define HIDD_REMOTE_CONSOLE_LOGIN_DLG           0x200A4
 #define HIDD_PROFILE_LOGIN_DLG                  0x200A5
 #define HIDD_CREATE_DB                          0x200A6
+#define HIDD_SEARCHCRITDLG                      0x200BA
+#define HIDD_SETTING_GENERAL                    0x200ED
+#define HIDD_SETTING_VIEWER                     0x200EF
+#define HIDD_SETTINGEDIT                        0x200F5
+#define HIDD_LANGEDIT                           0x200F6
  
 // Frame Controls (IDW_*) 
 // This is a part of the Microsoft Foundation Classes C++ library.

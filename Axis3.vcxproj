@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -15,7 +15,7 @@
     <RootNamespace>Axis3</RootNamespace>
     <Keyword>MFCProj</Keyword>
     <ProjectName>Axis3</ProjectName>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -24,7 +24,7 @@
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -32,7 +32,7 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -47,17 +47,18 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <OutDir>C:\Users\bcrou\OutputProjects\Axis3\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <OutDir>..\..\..\Desktop\</OutDir>
+    <OutDir>C:\Users\bcrou\OutputProjects\Axis3\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Full</Optimization>
+      <Optimization>MaxSpeed</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <StringPooling>true</StringPooling>
@@ -74,6 +75,7 @@
       <AdditionalDependencies>version.lib</AdditionalDependencies>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <LinkTimeCodeGeneration>UseFastLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -86,14 +88,15 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PreBuildEvent>
-      <Command>copy "$(ProjectDir)Extra\*.*" "$(OutDir)"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <Optimization>Full</Optimization>
+      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -109,6 +112,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>version.lib</AdditionalDependencies>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -142,15 +146,9 @@
   <ItemGroup>
     <None Include="Extra\changelog.txt" />
     <None Include="Extra\command" />
-    <None Include="Extra\hoglocs.scp" />
     <None Include="Extra\Lang" />
     <None Include="Extra\Settings" />
-    <None Include="hlp\Account_Tab.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Add_Location.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
+    <None Include="hlp\Axis3.chw" />
     <None Include="hlp\Axis3.hhc" />
     <None Include="hlp\Axis3.hhk" />
     <CustomBuild Include="hlp\Axis3.hhp">
@@ -182,93 +180,15 @@ echo.
 </Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Making help file...</Message>
     </CustomBuild>
-    <None Include="hlp\Axis3_ini.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Color_Select.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Command_Tab.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\DoorWiz.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\DoorWiz_ini.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
     <None Include="hlp\find.PNG" />
-    <None Include="hlp\General_Tab.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\ItemTweak_Tab.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Item_Tab.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Launcher_Tab.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\LightWiz.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\LightWiz_ini.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Local_Profile.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Log_Tab.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
     <None Include="hlp\palette.PNG" />
-    <None Include="hlp\PlayerTweak_Tab.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Profile_Login.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Profile_Tab.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Remote_Console.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Remote_Console_Login.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Search.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Setting_FilePath.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
     <None Include="hlp\Setting_General.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="hlp\Setting_Item.htm">
+    <None Include="hlp\Setting_Profiles.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="hlp\Setting_OverrideMulPath.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Setting_Spawn.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Setting_Travel.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Spawn_Tab.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Travel_Tab.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Web_Profile.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
-    <None Include="hlp\Web_Profile_Setup.htm">
+    <None Include="hlp\Setting_Viewer.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="hlp\Welcome.htm">
@@ -320,6 +240,10 @@ echo.
     <ClInclude Include="CommandPage.h" />
     <ClInclude Include="CommandsTab.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="hlp\HTMLDefines.h" />
+    <ClInclude Include="LangEdit.h" />
+    <ClInclude Include="SearchCritDlg.h" />
+    <ClInclude Include="SettingEdit.h" />
     <ClInclude Include="DialogPage.h" />
     <ClInclude Include="GeneralTab.h" />
     <ClInclude Include="ItemsTab.h" />
@@ -330,6 +254,8 @@ echo.
     <ClInclude Include="ReminderTab.h" />
     <ClInclude Include="RemoteConsoleDlg.h" />
     <ClInclude Include="RemoteConsoleLoginDlg.h" />
+    <ClInclude Include="Settings_General.h" />
+    <ClInclude Include="Settings_Viewer.h" />
     <ClInclude Include="SpawnTab.h" />
     <ClInclude Include="SQLite.h" />
     <ClInclude Include="sqlite3.h" />
@@ -393,6 +319,9 @@ makehm /h /a afxhh.h IDW_,HIDW_,0x50000 "%(FullPath)" &gt;&gt; "hlp\HTMLDefines.
     <ClCompile Include="CommandPage.cpp" />
     <ClCompile Include="CommandsTab.cpp" />
     <ClCompile Include="Common.cpp" />
+    <ClCompile Include="LangEdit.cpp" />
+    <ClCompile Include="SearchCritDlg.cpp" />
+    <ClCompile Include="SettingEdit.cpp" />
     <ClCompile Include="DialogPage.cpp" />
     <ClCompile Include="GeneralTab.cpp" />
     <ClCompile Include="ItemsTab.cpp" />
@@ -403,6 +332,8 @@ makehm /h /a afxhh.h IDW_,HIDW_,0x50000 "%(FullPath)" &gt;&gt; "hlp\HTMLDefines.
     <ClCompile Include="ReminderTab.cpp" />
     <ClCompile Include="RemoteConsoleDlg.cpp" />
     <ClCompile Include="RemoteConsoleLoginDlg.cpp" />
+    <ClCompile Include="Settings_General.cpp" />
+    <ClCompile Include="Settings_Viewer.cpp" />
     <ClCompile Include="SpawnTab.cpp" />
     <ClCompile Include="SQLite.cpp" />
     <ClCompile Include="sqlite3.c">
