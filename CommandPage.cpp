@@ -91,7 +91,7 @@ HBRUSH CCommandPage::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	//Set Color of Tab's Background
 	CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
 	::SetBkMode(pDC->m_hDC,TRANSPARENT);
-	return ::CreateSolidBrush(Main->crBlueBkg);
+	return Main->hbBlue;
 }
 
 bool CCommandPage::CreateButton(CString sCaption, CString sCommand)

@@ -156,6 +156,7 @@ void CItemsTab::FillCategory()
 {
 	//Fill Combobox
 
+	m_ccbCategories.ResetContent();
 	Table TBCats = Axis->DBData.QuerySQL(_T("SELECT Cat FROM Item GROUP BY Cat ORDER BY Cat"));
 	TBCats.ResetRow();
 	while (TBCats.GoNext())
@@ -285,11 +286,11 @@ void CItemsTab::OnCreate()
 	CString csCmd;
 	if (m_bLockDown)
 	{
-		CommandToUO(CCmd(_T("static %1"),true, csValue));
+		SendToUO(CCmd(_T("static %1"),true, csValue));
 	}
 	else
 	{
-		CommandToUO(CCmd(_T("add %1"), true, csValue));
+		SendToUO(CCmd(_T("add %1"), true, csValue));
 	}
 }
 
@@ -301,7 +302,7 @@ void CItemsTab::OnLockitem()
 
 void CItemsTab::OnRemove()
 {
-	CommandToUO(CCmd(_T("remove")));
+	SendToUO(CCmd(_T("remove")));
 }
 
 void CItemsTab::OnTile()
@@ -320,22 +321,22 @@ void CItemsTab::OnTile()
 	}
 	if (csValue == "")
 		csValue = "0";
-	CommandToUO(CCmd(_T("tile %1 %2"),true, csValue, csID));
+	SendToUO(CCmd(_T("tile %1 %2"),true, csValue, csID));
 }
 
 void CItemsTab::OnFlip()
 {
-	CommandToUO(CCmd(_T("xflip")));
+	SendToUO(CCmd(_T("xflip")));
 }
 
 void CItemsTab::OnPlacespawn()
 {
-	CommandToUO(CCmd(_T("add 01ea7")));
+	SendToUO(CCmd(_T("add 01ea7")));
 }
 
 void CItemsTab::OnNuke()
 {
-	CommandToUO(CCmd(_T("nuke %1"),true, GetEditString(m_ceNukearg)));
+	SendToUO(CCmd(_T("nuke %1"),true, GetEditString(m_ceNukearg)));
 }
 
 void CItemsTab::OnInitspawn()
@@ -357,13 +358,19 @@ void CItemsTab::OnInitspawn()
 	if (iMaxTime <= iMinTime)
 		iMaxTime = iMinTime + 1;
 
-	CommandToUO(CCmd(_T("act.type t_spawn_item")));
-	CommandToUO(CCmd(_T("act.amount %1!d!"),true, iAmount));
-	Sleep(700);
-	CommandToUO(CCmd(_T("act.more %1"), true, csID));
-	CommandToUO(CCmd(_T("act.morep %1!d! %2!d! %3!d!"), true, iMinTime, iMaxTime, iMaxDist));
-	CommandToUO(CCmd(_T("act.attr 00b0")));
-	CommandToUO(CCmd(_T("act.timer 1")));
+	CString csCommand = CCmd(_T("act.type t_spawn_item\r\n"));
+		csCommand += _T("sleep(500)\r\n");
+		csCommand += CCmd(_T("act.amount %1!d!\r\n"), true, iAmount);
+		csCommand += _T("sleep(500)\r\n");
+		csCommand += CCmd(_T("act.more %1\r\n"), true, csID);
+		csCommand += _T("sleep(500)\r\n");
+		csCommand += CCmd(_T("act.morep %1!d! %2!d! %3!d!\r\n"), true, iMinTime, iMaxTime, iMaxDist);
+		csCommand += _T("sleep(500)\r\n");
+		csCommand += CCmd(_T("act.attr 00b0\r\n"));
+		csCommand += _T("sleep(500)\r\n");
+		csCommand += CCmd(_T("act.timer 1"));
+	SendToUO(csCommand);
+
 }
 
 void CItemsTab::OnChangeAmount()
@@ -419,52 +426,52 @@ void CItemsTab::OnChangeNuke()
 
 void CItemsTab::OnNudgeup()
 {
-	CommandToUO(CCmd(_T("nudgeup %1!d!"), true, GetEditNum(m_ceNudge)));
+	SendToUO(CCmd(_T("nudgeup %1!d!"), true, GetEditNum(m_ceNudge)));
 }
 
 void CItemsTab::OnNudgedown()
 {
-	CommandToUO(CCmd(_T("nudgedown %1!d!"), true, GetEditNum(m_ceNudge)));
+	SendToUO(CCmd(_T("nudgedown %1!d!"), true, GetEditNum(m_ceNudge)));
 }
 
 void CItemsTab::OnMove1()
 {
-	CommandToUO(CCmd(_T("xmove 0 -%1!d!"), true, GetEditNum(m_ceNudge)));
+	SendToUO(CCmd(_T("xmove 0 -%1!d!"), true, GetEditNum(m_ceNudge)));
 }
 
 void CItemsTab::OnMove2()
 {
-	CommandToUO(CCmd(_T("xmove %1!d! -%1!d!"), true, GetEditNum(m_ceNudge)));
+	SendToUO(CCmd(_T("xmove %1!d! -%1!d!"), true, GetEditNum(m_ceNudge)));
 }
 
 void CItemsTab::OnMove3()
 {
-	CommandToUO(CCmd(_T("xmove %1!d! 0"), true, GetEditNum(m_ceNudge)));
+	SendToUO(CCmd(_T("xmove %1!d! 0"), true, GetEditNum(m_ceNudge)));
 }
 
 void CItemsTab::OnMove4()
 {
-	CommandToUO(CCmd(_T("xmove %1!d! %1!d!"), true, GetEditNum(m_ceNudge)));
+	SendToUO(CCmd(_T("xmove %1!d! %1!d!"), true, GetEditNum(m_ceNudge)));
 }
 
 void CItemsTab::OnMove5()
 {
-	CommandToUO(CCmd(_T("xmove 0 %1!d!"), true, GetEditNum(m_ceNudge)));
+	SendToUO(CCmd(_T("xmove 0 %1!d!"), true, GetEditNum(m_ceNudge)));
 }
 
 void CItemsTab::OnMove6()
 {
-	CommandToUO(CCmd(_T("xmove -%1!d! %1!d!"), true, GetEditNum(m_ceNudge)));
+	SendToUO(CCmd(_T("xmove -%1!d! %1!d!"), true, GetEditNum(m_ceNudge)));
 }
 
 void CItemsTab::OnMove7()
 {
-	CommandToUO(CCmd(_T("xmove -%1!d! 0"), true, GetEditNum(m_ceNudge)));
+	SendToUO(CCmd(_T("xmove -%1!d! 0"), true, GetEditNum(m_ceNudge)));
 }
 
 void CItemsTab::OnMove8()
 {
-	CommandToUO(CCmd(_T("xmove -%1!d! -%1!d!"), true, GetEditNum(m_ceNudge)));
+	SendToUO(CCmd(_T("xmove -%1!d! -%1!d!"), true, GetEditNum(m_ceNudge)));
 }
 
 void CItemsTab::OnFinditem()

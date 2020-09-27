@@ -493,78 +493,79 @@ BOOL CButtonST::OnClicked()
 void CButtonST::DrawItem(LPDRAWITEMSTRUCT lpDIS)
 {
 	CDC*	pDC = CDC::FromHandle(lpDIS->hDC);
-
-	// Checkbox?
-	if (m_bIsCheckBox)
-	{
-		m_bIsPressed  =  (lpDIS->itemState & ODS_SELECTED) || (m_nCheck != 0);
-	} // if
-	else	// Normal button OR other button style ...
-	{
-		m_bIsPressed = (lpDIS->itemState & ODS_SELECTED);
-
-		// If there is a menu and it's displayed, draw the button as pressed
-		if (
-#ifdef	BTNST_USE_BCMENU
-			m_menuPopup.m_hMenu 
-#else
-			m_hMenu 
-#endif
-			&& m_bMenuDisplayed)	m_bIsPressed = TRUE;
-	} // else
-
-	m_bIsFocused  = (lpDIS->itemState & ODS_FOCUS);
-	m_bIsDisabled = (lpDIS->itemState & ODS_DISABLED);
-
-	CRect itemRect = lpDIS->rcItem;
-
-	pDC->SetBkMode(TRANSPARENT);
-
-	// Prepare draw... paint button background
-
-	// Draw transparent?
-	if (m_bDrawTransparent)
-		PaintBk(pDC);
-	else
-		OnDrawBackground(pDC, &itemRect);
-
-	// Draw button border
-	OnDrawBorder(pDC, &itemRect);
-
-	// Read the button's title
-	CString sTitle;
-	GetWindowText(sTitle);
-
-	CRect captionRect = lpDIS->rcItem;
-
-	// Draw the icon
-	if (m_csIcons[0].hIcon)
-	{
-		DrawTheIcon(pDC, !sTitle.IsEmpty(), &lpDIS->rcItem, &captionRect, m_bIsPressed, m_bIsDisabled);
-	} // if
-
-	if (m_csBitmaps[0].hBitmap)
-	{
-		pDC->SetBkColor(RGB(255,255,255));
-		DrawTheBitmap(pDC, !sTitle.IsEmpty(), &lpDIS->rcItem, &captionRect, m_bIsPressed, m_bIsDisabled);
-	} // if
-
-	// Write the button title (if any)
-	if (sTitle.IsEmpty() == FALSE)
-	{
-		DrawTheText(pDC, (LPCTSTR)sTitle, &lpDIS->rcItem, &captionRect, m_bIsPressed, m_bIsDisabled);
-	} // if
-
-	if (m_bIsFlat == FALSE || (m_bIsFlat && m_bDrawFlatFocus))
-	{
-		// Draw the focus rect
-		if (m_bIsFocused)
+	if (pDC) {
+		// Checkbox?
+		if (m_bIsCheckBox)
 		{
-			CRect focusRect = itemRect;
-			focusRect.DeflateRect(3, 3);
-			pDC->DrawFocusRect(&focusRect);
+			m_bIsPressed = (lpDIS->itemState & ODS_SELECTED) || (m_nCheck != 0);
 		} // if
-	} // if
+		else	// Normal button OR other button style ...
+		{
+			m_bIsPressed = (lpDIS->itemState & ODS_SELECTED);
+
+			// If there is a menu and it's displayed, draw the button as pressed
+			if (
+#ifdef	BTNST_USE_BCMENU
+				m_menuPopup.m_hMenu
+#else
+				m_hMenu
+#endif
+				&& m_bMenuDisplayed)	m_bIsPressed = TRUE;
+		} // else
+
+		m_bIsFocused = (lpDIS->itemState & ODS_FOCUS);
+		m_bIsDisabled = (lpDIS->itemState & ODS_DISABLED);
+
+		CRect itemRect = lpDIS->rcItem;
+
+		pDC->SetBkMode(TRANSPARENT);
+
+		// Prepare draw... paint button background
+
+		// Draw transparent?
+		if (m_bDrawTransparent)
+			PaintBk(pDC);
+		else
+			OnDrawBackground(pDC, &itemRect);
+
+		// Draw button border
+		OnDrawBorder(pDC, &itemRect);
+
+		// Read the button's title
+		CString sTitle;
+		GetWindowText(sTitle);
+
+		CRect captionRect = lpDIS->rcItem;
+
+		// Draw the icon
+		if (m_csIcons[0].hIcon)
+		{
+			DrawTheIcon(pDC, !sTitle.IsEmpty(), &lpDIS->rcItem, &captionRect, m_bIsPressed, m_bIsDisabled);
+		} // if
+
+		if (m_csBitmaps[0].hBitmap)
+		{
+			pDC->SetBkColor(RGB(255, 255, 255));
+			DrawTheBitmap(pDC, !sTitle.IsEmpty(), &lpDIS->rcItem, &captionRect, m_bIsPressed, m_bIsDisabled);
+		} // if
+
+		// Write the button title (if any)
+		if (sTitle.IsEmpty() == FALSE)
+		{
+			DrawTheText(pDC, (LPCTSTR)sTitle, &lpDIS->rcItem, &captionRect, m_bIsPressed, m_bIsDisabled);
+		} // if
+
+		if (m_bIsFlat == FALSE || (m_bIsFlat && m_bDrawFlatFocus))
+		{
+			// Draw the focus rect
+			if (m_bIsFocused)
+			{
+				CRect focusRect = itemRect;
+				focusRect.DeflateRect(3, 3);
+				pDC->DrawFocusRect(&focusRect);
+			} // if
+		} // if
+	}
 } // End of DrawItem
 
 void CButtonST::PaintBk(CDC* pDC)

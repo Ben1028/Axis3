@@ -27,8 +27,8 @@ public:
 	virtual ~CAxis3Dlg();
 	TabCtrlEx<TabCtrlStyle_VS2008_client_blue> m_TabCtrl;
 	int iDlgCtrlID;
-	COLORREF crWhiteBkg;
-	COLORREF crBlueBkg;
+	HBRUSH hbWhite;
+	HBRUSH hbBlue;
 
 	CRect MinSize;
 	CRect TabSize;

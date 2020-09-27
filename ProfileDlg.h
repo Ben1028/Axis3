@@ -23,6 +23,7 @@ public:
 	CString csPath;
 
 	BOOL	m_bLocal;
+	BOOL	m_bSelect;
 	CStatic	m_csSphereTables;
 	CButton m_cbBrowse;
 

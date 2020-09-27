@@ -116,6 +116,16 @@ void CSettingsGeneral::OnDevMode()
 {
 	UpdateData();
 	SetSettingNum(_T("DevMode"), m_bDevMode);
+	CMenu* pMenu = AfxGetMainWnd()->GetMenu();
+	if (m_bDevMode != 1)
+	{
+		pMenu->EnableMenuItem(1, MF_BYPOSITION | MF_GRAYED);
+	}
+	else
+	{
+		pMenu->EnableMenuItem(1, MF_BYPOSITION | MF_ENABLED);
+	}
+	AfxGetMainWnd()->DrawMenuBar();
 }
 
 void CSettingsGeneral::OnSameAsClient()

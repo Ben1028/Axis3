@@ -60,6 +60,7 @@
 #define IDD_SETTINGEDIT                 245
 #define IDD_LANGEDIT                    246
 #define IDC_TAB                         1000
+#define IDC_FINDAREA                    1000
 #define IDC_COPYRIGHT                   1001
 #define IDC_CLIENTBROWSE                1001
 #define IDC_LICENSE                     1002
@@ -70,6 +71,7 @@
 #define IDC_CLIENTS                     1004
 #define IDC_EDIT                        1005
 #define IDC_INFO                        1006
+#define IDC_TRACK                       1006
 #define IDC_ADMIN                       1007
 #define IDC_NUKE                        1008
 #define IDC_DEFAULTCLIENT               1008
@@ -81,7 +83,9 @@
 #define IDC_LINK                        1013
 #define IDC_RESTOCK                     1014
 #define IDC_SAMPLES                     1015
+#define IDC_XSCROLL                     1015
 #define IDC_PURCHASES                   1016
+#define IDC_YSCROLL                     1016
 #define IDC_INVENTORY                   1017
 #define IDC_SELL                        1018
 #define IDC_BUY                         1019
@@ -144,6 +148,7 @@
 #define IDC_RESET_BGCOL                 1057
 #define IDC_RECONNECT                   1058
 #define IDC_IPADDRESS                   1059
+#define IDC_MAPPLANE                    1059
 #define IDC_ACCT                        1060
 #define IDC_PORT                        1061
 #define IDC_SEARCH_VALUE                1061
@@ -194,8 +199,10 @@
 #define IDC_SAVESTATICS                 1093
 #define IDC_PRIVVALUE                   1093
 #define IDC_RESYNC                      1094
+#define IDC_RDSP_8                      1094
 #define IDC_RESTOCKALL                  1095
 #define IDC_LIST                        1095
+#define IDC_RDSP_9                      1095
 #define IDC_REMCONSOLE                  1096
 #define IDC_FRAMETEXT                   1096
 #define IDC_ADD                         1097
@@ -246,7 +253,10 @@
 #define IDC_SELECT                      1125
 #define IDC_SHERETABLE                  1125
 #define IDC_STATIC1                     1126
+#define IDC_GO                          1126
 #define IDC_PROFILE_NAME                1127
+#define IDC_SEND                        1127
+#define IDC_WHERE                       1128
 #define IDC_CHECK1                      1129
 #define IDC_LOCKITEM                    1129
 #define IDC_BUTTON2                     1130
@@ -258,6 +268,7 @@
 #define IDC_BUTTON4                     1133
 #define IDC_BUTTON5                     1134
 #define IDC_FINDITEM                    1134
+#define IDC_LOCATE                      1134
 #define IDC_EDIT2                       1135
 #define IDC_AMOUNT                      1135
 #define IDC_ID                          1135
@@ -331,6 +342,10 @@
 #define IDC_STATICINFO                  1182
 #define IDC_LOCAL                       1184
 #define IDC_SPHERETABLE                 1185
+#define IDC_COORDS                      1227
+#define IDC_ZOOMOUT                     1379
+#define IDC_ZOOMIN                      1380
+#define IDC_WORLD                       1383
 #define ID_SETTINGS_GENERAL             32771
 #define ID_SETTINGS_TRAVEL              32772
 #define ID_PROFILE_OPTOINS              32773
@@ -354,7 +369,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        178
+#define _APS_NEXT_RESOURCE_VALUE        179
 #define _APS_NEXT_COMMAND_VALUE         32784
 #define _APS_NEXT_CONTROL_VALUE         1186
 #define _APS_NEXT_SYMED_VALUE           105

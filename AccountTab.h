@@ -49,6 +49,8 @@ protected:
 	afx_msg void OnResdisp5();
 	afx_msg void OnResdisp6();
 	afx_msg void OnResdisp7();
+	afx_msg void OnResdisp8();
+	afx_msg void OnResdisp9();
 	afx_msg void OnSetresdisp();
 
 	afx_msg void OnPriv02();

@@ -199,309 +199,309 @@ void CGeneralTab::OnRconsole()
 
 void CGeneralTab::OnBnClickedAdmin()
 {
-	CommandToUO(CCmd(_T("admin")));
+	SendToUO(CCmd(_T("admin")));
 }
 
 
 void CGeneralTab::OnBnClickedInfo()
 {
-	CommandToUO(CCmd(_T("info")));
+	SendToUO(CCmd(_T("info")));
 }
 
 
 void CGeneralTab::OnBnClickedEdit()
 {
-	CommandToUO(CCmd(_T("xedit")));
+	SendToUO(CCmd(_T("xedit")));
 }
 
 
 void CGeneralTab::OnBnClickedClients()
 {
-	CommandToUO(CCmd(_T("show serv.clients")));
+	SendToUO(CCmd(_T("show serv.clients")));
 }
 
 
 void CGeneralTab::OnBnClickedServinfo()
 {
-	CommandToUO(CCmd(_T("information")));
+	SendToUO(CCmd(_T("information")));
 }
 
 
 void CGeneralTab::OnBnClickedVersion()
 {
-	CommandToUO(CCmd(_T("version")));
+	SendToUO(CCmd(_T("version")));
 }
 
 
 void CGeneralTab::OnBnClickedLink()
 {
-	CommandToUO(CCmd(_T("link")));
+	SendToUO(CCmd(_T("link")));
 }
 
 
 void CGeneralTab::OnBnClickedFlip()
 {
-	CommandToUO(CCmd(_T("xflip")));
+	SendToUO(CCmd(_T("xflip")));
 }
 
 
 void CGeneralTab::OnBnClickedShrink()
 {
-	CommandToUO(CCmd(_T("shrink")));
+	SendToUO(CCmd(_T("shrink")));
 }
 
 
 void CGeneralTab::OnBnClickedDupe()
 {
-	CommandToUO(CCmd(_T("dupe")));
+	SendToUO(CCmd(_T("dupe")));
 }
 
 
 void CGeneralTab::OnBnClickedRemove()
 {
-	CommandToUO(CCmd(_T("remove")));
+	SendToUO(CCmd(_T("remove")));
 }
 
 
 void CGeneralTab::OnBnClickedNuke()
 {
-	CommandToUO(CCmd(_T("nuke")));
+	SendToUO(CCmd(_T("nuke")));
 }
 
 
 void CGeneralTab::OnBnClickedBuy()
 {
-	SendToUO(CCmd(_T("buy")));
+	SendToUO(CSpk(_T("buy")));
 }
 
 
 void CGeneralTab::OnBnClickedSell()
 {
-	SendToUO(CCmd(_T("sell")));
+	SendToUO(CSpk(_T("sell")));
 }
 
 
 void CGeneralTab::OnBnClickedInventory()
 {
-	CommandToUO(CCmd(_T("bank 1a")));
+	SendToUO(CCmd(_T("bank 1a")));
 }
 
 
 void CGeneralTab::OnBnClickedPurchases()
 {
-	CommandToUO(CCmd(_T("bank 1b")));
+	SendToUO(CCmd(_T("bank 1b")));
 }
 
 
 void CGeneralTab::OnBnClickedSamples()
 {
-	CommandToUO(CCmd(_T("bank 1c")));
+	SendToUO(CCmd(_T("bank 1c")));
 }
 
 
 void CGeneralTab::OnBnClickedRestock()
 {
-	CommandToUO(CCmd(_T("xrestock")));
+	SendToUO(CCmd(_T("xrestock")));
 }
 
 
 void CGeneralTab::OnBnClickedSnow()
 {
-	CommandToUO(CCmd(_T("sector.snow")));
+	SendToUO(CCmd(_T("sector.snow")));
 }
 
 
 void CGeneralTab::OnBnClickedRain()
 {
-	CommandToUO(CCmd(_T("sector.rain")));
+	SendToUO(CCmd(_T("sector.rain")));
 }
 
 
 void CGeneralTab::OnBnClickedDry()
 {
-	CommandToUO(CCmd(_T("sector.dry")));
+	SendToUO(CCmd(_T("sector.dry")));
 }
 
 
 void CGeneralTab::OnBnClickedLightlevel()
 {
 	CString csVal = GetEditString(m_csSliderValue);
-	CommandToUO(CCmd(_T("sector.light %1"),true, csVal));
+	SendToUO(CCmd(_T("sector.light %1"),true, csVal));
 }
 
 
 void CGeneralTab::OnBnClickedInvul()
 {
-	CommandToUO(CCmd(_T("invulnerable")));
+	SendToUO(CCmd(_T("invulnerable")));
 }
 
 
 void CGeneralTab::OnBnClickedAllmove()
 {
-	CommandToUO(CCmd(_T("allmove")));
+	SendToUO(CCmd(_T("allmove")));
 }
 
 
 void CGeneralTab::OnBnClickedInvisible()
 {
-	CommandToUO(CCmd(_T("invisible")));
+	SendToUO(CCmd(_T("invisible")));
 }
 
 
 void CGeneralTab::OnBnClickedFix()
 {
-	CommandToUO(CCmd(_T("fix")));
+	SendToUO(CCmd(_T("fix")));
 }
 
 
 void CGeneralTab::OnBnClickedTele()
 {
-	CommandToUO(CCmd(_T("tele")));
+	SendToUO(CCmd(_T("tele")));
 }
 
 
 void CGeneralTab::OnBnClickedHearall()
 {
-	CommandToUO(CCmd(_T("hearall")));
+	SendToUO(CCmd(_T("hearall")));
 }
 
 
 void CGeneralTab::OnBnClickedGmtoggle()
 {
-	CommandToUO(CCmd(_T("gm")));
+	SendToUO(CCmd(_T("gm")));
 }
 
 
 void CGeneralTab::OnBnClickedDetail()
 {
-	CommandToUO(CCmd(_T("detail")));
+	SendToUO(CCmd(_T("detail")));
 }
 
 
 void CGeneralTab::OnBnClickedNightsight()
 {
-	CommandToUO(CCmd(_T("nightsight")));
+	SendToUO(CCmd(_T("nightsight")));
 }
 
 
 void CGeneralTab::OnBnClickedDebug()
 {
-	CommandToUO(CCmd(_T("debug")));
+	SendToUO(CCmd(_T("debug")));
 }
 
 
 void CGeneralTab::OnBnClickedJail()
 {
-	CommandToUO(CCmd(_T("jail")));
+	SendToUO(CCmd(_T("jail")));
 }
 
 
 void CGeneralTab::OnBnClickedForgive()
 {
-	CommandToUO(CCmd(_T("forgive")));
+	SendToUO(CCmd(_T("forgive")));
 }
 
 
 void CGeneralTab::OnBnClickedKill()
 {
-	CommandToUO(CCmd(_T("kill")));
+	SendToUO(CCmd(_T("kill")));
 }
 
 
 void CGeneralTab::OnBnClickedDisconnect()
 {
-	CommandToUO(CCmd(_T("xdisconnect")));
+	SendToUO(CCmd(_T("xdisconnect")));
 }
 
 
 void CGeneralTab::OnBnClickedResurrect()
 {
-	CommandToUO(CCmd(_T("xresurrect")));
+	SendToUO(CCmd(_T("xresurrect")));
 }
 
 
 void CGeneralTab::OnBnClickedPageon()
 {
-	CommandToUO(CCmd(_T("page on")));
+	SendToUO(CCmd(_T("page on")));
 }
 
 
 void CGeneralTab::OnBnClickedPagelist()
 {
-	CommandToUO(CCmd(_T("page list")));
+	SendToUO(CCmd(_T("page list")));
 }
 
 
 void CGeneralTab::OnBnClickedPagegoplayer()
 {
-	CommandToUO(CCmd(_T("page player")));
+	SendToUO(CCmd(_T("page player")));
 }
 
 
 void CGeneralTab::OnBnClickedPagedisconnect()
 {
 	if(AfxMessageBox(CMsg(_T("IDS_WARNING_DISCONNECT")), MB_OKCANCEL | MB_ICONQUESTION) == IDOK)
-		CommandToUO(CCmd(_T("page disconnect")));
+		SendToUO(CCmd(_T("page disconnect")));
 }
 
 
 void CGeneralTab::OnBnClickedPageban()
 {
 	if(AfxMessageBox(CMsg(_T("IDS_WARNING_BAN")), MB_OKCANCEL | MB_ICONQUESTION) == IDOK)
-		CommandToUO(CCmd(_T("page ban")));
+		SendToUO(CCmd(_T("page ban")));
 }
 
 
 void CGeneralTab::OnBnClickedPageoff()
 {
-	CommandToUO(CCmd(_T("page off")));
+	SendToUO(CCmd(_T("page off")));
 }
 
 
 void CGeneralTab::OnBnClickedPagequeue()
 {
-	CommandToUO(CCmd(_T("page queue")));
+	SendToUO(CCmd(_T("page queue")));
 }
 
 
 void CGeneralTab::OnBnClickedPagegoorigin()
 {
-	CommandToUO(CCmd(_T("page origin")));
+	SendToUO(CCmd(_T("page origin")));
 }
 
 
 void CGeneralTab::OnBnClickedPagejail()
 {
 	if(AfxMessageBox(CMsg(_T("IDS_WARNING_JAIL")), MB_OKCANCEL | MB_ICONQUESTION) == IDOK)
-		CommandToUO(CCmd(_T("page jail")));
+		SendToUO(CCmd(_T("page jail")));
 }
 
 
 void CGeneralTab::OnBnClickedPagedelete()
 {
-	CommandToUO(CCmd(_T("page delete")));
+	SendToUO(CCmd(_T("page delete")));
 }
 
 
 void CGeneralTab::OnBnClickedWorldsave()
 {
-	CommandToUO(CCmd(_T("serv.save")));
+	SendToUO(CCmd(_T("serv.save")));
 }
 
 
 void CGeneralTab::OnBnClickedSavestatics()
 {
-	CommandToUO(CCmd(_T("serv.savestatics")));
+	SendToUO(CCmd(_T("serv.savestatics")));
 }
 
 
 void CGeneralTab::OnBnClickedResync()
 {
-	CommandToUO(CCmd(_T("serv.resync")));
+	SendToUO(CCmd(_T("serv.resync")));
 }
 
 
 void CGeneralTab::OnBnClickedRestockall()
 {
-	CommandToUO(CCmd(_T("serv.restock")));
+	SendToUO(CCmd(_T("serv.restock")));
 }

@@ -127,10 +127,11 @@ CMsg::CMsg(LPCTSTR lpszFormat, bool bFormat,...)
 }
 
 //******************
-//Format from language CMD file or plain text
+//Format from language CMD file or plain text with CommandPrefix
 CCmd::CCmd(LPCTSTR lpszFormat, bool bFormat, ...)
 {
-	CString sCMDString = LoadCMD(lpszFormat);
+	CString sCMDString = GetSettingString(_T("CommandPrefix")) + LoadCMD(lpszFormat);
+
 	if (bFormat)
 	{
 		va_list argList;
@@ -151,6 +152,42 @@ CCmd::CCmd(LPCTSTR lpszFormat, bool bFormat, ...)
 	}
 	else
 		CString::operator=(sCMDString);
+}
+
+//******************
+//Format from language CMD file or plain text without CommandPrefix
+CSpk::CSpk(LPCTSTR lpszFormat, bool bFormat, ...)
+{
+	CString sCMDString = LoadCMD(lpszFormat);
+
+	if (bFormat)
+	{
+		va_list argList;
+		va_start(argList, bFormat);
+		LPTSTR lpszTemp;
+
+		if (::FormatMessage(FORMAT_MESSAGE_FROM_STRING | FORMAT_MESSAGE_ALLOCATE_BUFFER,
+			sCMDString, 0, 0, (LPTSTR)&lpszTemp, 0, &argList) == 0 ||
+			lpszTemp == NULL)
+		{
+			AfxThrowMemoryException();
+		}
+
+		CString::operator=(lpszTemp);
+
+		LocalFree(lpszTemp);
+		va_end(argList);
+	}
+	else
+		CString::operator=(sCMDString);
+}
+
+//******************
+//Send a command to UO Client
+bool CommandToUO(LPCTSTR Cmd)
+{
+	SendToUO(CMsg(_T("%1%2"), true, GetSettingString(_T("CommandPrefix")), Cmd));
+	return true;
 }
 
 //******************
@@ -358,14 +395,6 @@ void ClearPtrArray(CPtrArray *pArray)
 }
 
 //******************
-//Send a command to UO Client
-bool CommandToUO(LPCTSTR Cmd)
-{
-	SendToUO(CMsg(_T("%1%2"),true,GetSettingString(_T("CommandPrefix")),Cmd));
-	return true;
-}
-
-//******************
 //Start Command thread (Used for Macros with delays)
 bool SendToUO(LPCTSTR Cmd)
 {
@@ -380,7 +409,7 @@ UINT SendToClient(LPVOID pParam)
 {
 	CString* Cmd = static_cast<CString*>(pParam);
 
-	if (GetDefaultNum(_T("DevMode")) == 1)
+	if (GetSettingNum(_T("DevMode")) == 1)
 	{
 		AfxMessageBox(*Cmd);
 	}
@@ -414,7 +443,9 @@ UINT SendToClient(LPVOID pParam)
 						{
 							pClient->pWnd->SendMessage(WM_CHAR, sToken[i], 0);
 						}
-						pClient->pWnd->SendMessage(WM_CHAR, VK_RETURN, 0);
+						pClient->pWnd->SendMessage(WM_KEYDOWN, VK_RETURN, 0x001C0001);
+						pClient->pWnd->SendMessage(WM_CHAR, VK_RETURN, 0x001C0001);
+						pClient->pWnd->SendMessage(WM_KEYUP, VK_RETURN, 0x001C0001);
 						pClient->pWnd->SetForegroundWindow();
 					}
 					sToken = Cmd->Tokenize(_T("\r\n"), curPos);

@@ -1,7 +1,7 @@
 ***Version 3.0.0***
 (Changes since AxisII)
 
--Now compiled using VS2015 with a complete redesign.
+-Now compiled using VS2019 with a complete redesign.
 -No longer uses registry to store settings, they are stored in local database files using SQLite.
 -Language is fully editable using the Lang Database. It also supports multiple languages.
 -All tabs can be detached more smoothly then before.
@@ -15,9 +15,18 @@
 
 -Account tab:
 	->Re-arranged the layout.
+	->Added HS and TOL resdisp
 
 -Commands Tab:
 	->Added context menu to buttons and tabs for edit and remove options.
 	->Buttons can be dragged to be repositioned on their tabs.
 	->Buttons can contain single commands or macros.
 	->Macros can use the case incensitive command "Sleep(miliseconds-here)" to make pauses in the command sequence. 
+
+-Items Tab:
+	->New Layout.
+	->Removed Quicklists
+
+-Profiles:
+	->Local profiles loaded from spheretables only.
+	->Remote profiles connect directly to sphereserver.

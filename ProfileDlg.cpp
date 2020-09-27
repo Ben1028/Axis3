@@ -11,6 +11,7 @@ CProfileDlg::CProfileDlg(CWnd* pParent /*=NULL*/)
 {
 	m_iSel = 0;
 	m_bLocal = false;
+	m_bSelect = false;
 }
 
 
@@ -97,7 +98,7 @@ void CProfileDlg::OnOK()
 	if(TBRCAccount.GetRowCount() != 0)
 		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE Profiles SET IPAddress = '%1!d!', Port = '%2', Account = '%3', Password = '%4', Path = '%5', Type = '%6!d!' WHERE Name = '%7'"),dwAddress,csPort,csAccount,csPassword,csPath,m_bLocal,csAccountName));
 	else
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Profiles VALUES('%1','%2!d!','%3','%4','%5','%6','%7')"), csAccountName,dwAddress,csPort,csAccount,csPassword, csPath, m_bLocal));
+		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Profiles VALUES('%1','%2!d!','%3','%4','%5','%6','%7!d!')"), csAccountName,dwAddress,csPort,csAccount,csPassword, csPath, m_bLocal));
 
 	SetDefaultString(_T("Profile"), csAccountName);
 	Axis->csProfile = csAccountName;
@@ -115,6 +116,7 @@ void CProfileDlg::OnSelectProfile()
 	Axis->csProfile = csAccountName;
 	Axis->DBData.Close();
 	Axis->DBData.Open(CMsg(_T("%1/Data.db"),true,csAccountName));
+	m_bSelect = true;
 	CDialogEx::OnCancel();
 }
 
@@ -200,6 +202,12 @@ void CProfileDlg::OnEditchangeAcctname()
 	m_cePort.SetWindowText(_T(""));
 	m_csSphereTables.SetWindowText(_T(""));
 	m_bLocal = false;
+	m_csSphereTables.EnableWindow(false);
+	m_cbBrowse.EnableWindow(false);
+	m_cePort.EnableWindow(true);
+	m_ceAccount.EnableWindow(true);
+	m_cePassword.EnableWindow(true);
+	m_ceAddress.EnableWindow(true);
 	UpdateData(FALSE);
 	m_iSel = -1;
 	csAccountName = " ";

@@ -48,6 +48,8 @@ BEGIN_MESSAGE_MAP(CAccountTab, CDialogPage)
 	ON_BN_CLICKED(IDC_RDSP_5, OnResdisp5)
 	ON_BN_CLICKED(IDC_RDSP_6, OnResdisp6)
 	ON_BN_CLICKED(IDC_RDSP_7, OnResdisp7)
+	ON_BN_CLICKED(IDC_RDSP_8, OnResdisp8)
+	ON_BN_CLICKED(IDC_RDSP_9, OnResdisp9)
 	ON_BN_CLICKED(IDC_SET_RESDISP, OnSetresdisp)
 
 	ON_BN_CLICKED(IDC_PRIV02, OnPriv02)
@@ -101,6 +103,8 @@ void CAccountTab::SetLanguage()
 	GetDlgItem(IDC_RDSP_5)->SetWindowText(CMsg(_T("IDS_ML")));
 	GetDlgItem(IDC_RDSP_6)->SetWindowText(CMsg(_T("IDS_KR")));
 	GetDlgItem(IDC_RDSP_7)->SetWindowText(CMsg(_T("IDS_SA")));
+	GetDlgItem(IDC_RDSP_8)->SetWindowText(CMsg(_T("IDS_HS")));
+	GetDlgItem(IDC_RDSP_9)->SetWindowText(CMsg(_T("IDS_TOL")));
 	GetDlgItem(IDC_SET_RESDISP)->SetWindowText(CMsg(_T("IDS_SET_RESDISP")));
 
 	GetDlgItem(IDC_GR_PRIVS)->SetWindowText(CMsg(_T("IDS_PRIVFLAGS")));
@@ -121,7 +125,7 @@ void CAccountTab::SetLanguage()
 
 void CAccountTab::OnSetPLV() 
 {
-	CommandToUO(CCmd(_T("privset %1!d!"),true, iPrivLevel));
+	SendToUO(CCmd(_T("privset %1!d!"),true, iPrivLevel));
 }
 
 void CAccountTab::OnOwnerprivs() 
@@ -204,9 +208,19 @@ void CAccountTab::OnResdisp7()
 	iResdisp = 7;
 }
 
+void CAccountTab::OnResdisp8()
+{
+	iResdisp = 8;
+}
+
+void CAccountTab::OnResdisp9()
+{
+	iResdisp = 9;
+}
+
 void CAccountTab::OnSetresdisp() 
 {
-	CommandToUO(CCmd(_T("set account.resdisp %1!d!"),true, iResdisp));
+	SendToUO(CCmd(_T("set account.resdisp %1!d!"),true, iResdisp));
 }
 
 void CAccountTab::OnPriv02()
@@ -310,7 +324,7 @@ void CAccountTab::OnPriv04000()
 
 void CAccountTab::OnSetprivs()
 {
-	CommandToUO(CCmd(_T("set account.priv %1!05x!"),true, dwPrivs));
+	SendToUO(CCmd(_T("set account.priv %1!05x!"),true, dwPrivs));
 }
 
 void CAccountTab::OnResetPrivs()

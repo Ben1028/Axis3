@@ -16,8 +16,8 @@ CAxis3Dlg::CAxis3Dlg(CWnd* pParent /*=NULL*/)
 	Main = this;
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	iDlgCtrlID = 3002;
-	crWhiteBkg = RGB(249,249,251);
-	crBlueBkg = RGB(242,252,255);
+	hbWhite = ::CreateSolidBrush(RGB(249, 249, 251));
+	hbBlue = ::CreateSolidBrush(RGB(242, 252, 255));
 
 	m_iReceiveTimeout = 60000;
 }
@@ -140,7 +140,7 @@ BOOL CAxis3Dlg::OnInitDialog()
     ScreenToClient(&TabSize);
     initialized = TRUE;
 
-	if (GetDefaultNum(_T("DevMode")) != 1)
+	if (GetSettingNum(_T("DevMode")) != 1)
 	{
 		CMenu *pMenu = AfxGetMainWnd()->GetMenu();
 		pMenu->EnableMenuItem(1, MF_BYPOSITION | MF_GRAYED);
@@ -191,8 +191,12 @@ void CAxis3Dlg::OnExitCloseaxis()
 void CAxis3Dlg::OnProfile()
 {
 	CProfileDlg dlg;
-		if ( dlg.DoModal() != IDOK )
+		if (dlg.DoModal() != IDOK)
+		{
+			if (dlg.m_bSelect)
+				m_DlgITems->FillCategory();
 			return;
+		}
 		if (dlg.m_bLocal)
 		{
 			m_csPath = dlg.csPath;
@@ -270,7 +274,7 @@ HBRUSH CAxis3Dlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	//Set Color of Tab's Background
 	CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
 	::SetBkMode(pDC->m_hDC,TRANSPARENT);
-	return ::CreateSolidBrush(crWhiteBkg);
+	return Main->hbWhite;
 }
 
 LRESULT CAxis3Dlg::DefWindowProc(UINT message, WPARAM wParam, LPARAM lParam) 

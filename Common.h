@@ -32,6 +32,12 @@ public:
 	CCmd(LPCTSTR pszFormatstr, bool bFormat = false, ...);
 };
 
+class CSpk : public CString
+{
+public:
+	CSpk(LPCTSTR pszFormatstr, bool bFormat = false, ...);
+};
+
 class CSQL : public CString  
 {
 public :
@@ -58,7 +64,6 @@ CString GetMulPath(LPCTSTR sKey);
 //void SetMulPath(LPCTSTR sKey, LPCTSTR sValue);
 void ClearPtrArray(CPtrArray *pArray);
 UINT SendToClient(LPVOID pParam);
-bool CommandToUO(LPCTSTR Cmd);
 bool SendToUO(LPCTSTR Cmd);
 
 DWORD ScaleColor(WORD wColor);

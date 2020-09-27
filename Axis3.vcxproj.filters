@@ -9,24 +9,9 @@
       <UniqueIdentifier>{cb4f1bf8-b6ed-4f2e-82dc-61b9faa22dd2}</UniqueIdentifier>
       <Extensions>hhp;hhc;hhk;gif;jpg</Extensions>
     </Filter>
-    <Filter Include="TabCtrl">
-      <UniqueIdentifier>{ca51dc4a-8c90-447d-ab98-8dcb78b1022b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TabPages">
-      <UniqueIdentifier>{819ebd80-bd32-45e6-819a-792a58a216ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Dialogs">
-      <UniqueIdentifier>{d677ed08-45e7-4eb7-b1c7-9648e81f9c84}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Misc Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Database">
-      <UniqueIdentifier>{eba7348c-c39b-4ce4-817e-1eb6dc29f374}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="DB Files">
-      <UniqueIdentifier>{a8a73d5a-07c8-4da9-bf52-3598a0e38ccc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Remote Console">
       <UniqueIdentifier>{db7f79a9-176f-465a-810a-e78209a0fff3}</UniqueIdentifier>
@@ -38,8 +23,35 @@
     <Filter Include="HTML Help Files\Images">
       <UniqueIdentifier>{57f34ec9-3dd9-45ce-ab82-1bc60027a03f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Settings">
+    <Filter Include="SQLite Database">
+      <UniqueIdentifier>{eba7348c-c39b-4ce4-817e-1eb6dc29f374}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Default DB Files">
+      <UniqueIdentifier>{a8a73d5a-07c8-4da9-bf52-3598a0e38ccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Settings Dialogs">
       <UniqueIdentifier>{926f33bb-c23e-48d8-9f2e-cb003bb561b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tab Pages">
+      <UniqueIdentifier>{819ebd80-bd32-45e6-819a-792a58a216ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc Files\TabCtrl">
+      <UniqueIdentifier>{ca51dc4a-8c90-447d-ab98-8dcb78b1022b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc Files\BitmapCtrl">
+      <UniqueIdentifier>{83db4911-9d48-4b2a-a213-d9f7de706d77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main Dialog">
+      <UniqueIdentifier>{223c1742-ec42-4b36-8f35-196be8074a17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc Dialogs">
+      <UniqueIdentifier>{d677ed08-45e7-4eb7-b1c7-9648e81f9c84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc Files\ButtonCtrl">
+      <UniqueIdentifier>{799f5c28-10dd-4fa3-90e1-008f1d38db29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc Files\Mul UOP">
+      <UniqueIdentifier>{e0e0b048-7125-4017-96f6-1315f73d44dc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -119,14 +131,14 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Extra\Lang">
-      <Filter>DB Files</Filter>
+      <Filter>Default DB Files</Filter>
     </None>
     <None Include="Extra\command">
-      <Filter>DB Files</Filter>
+      <Filter>Default DB Files</Filter>
     </None>
     <None Include="Extra\changelog.txt" />
     <None Include="Extra\Settings">
-      <Filter>DB Files</Filter>
+      <Filter>Default DB Files</Filter>
     </None>
     <None Include="res\Apply.ico">
       <Filter>Resource Files</Filter>
@@ -185,70 +197,67 @@
       <Filter>Misc Files</Filter>
     </ClInclude>
     <ClInclude Include="TabCtrl\Tools.h">
-      <Filter>TabCtrl</Filter>
+      <Filter>Misc Files\TabCtrl</Filter>
     </ClInclude>
     <ClInclude Include="TabCtrl\TabCtrl.h">
-      <Filter>TabCtrl</Filter>
+      <Filter>Misc Files\TabCtrl</Filter>
     </ClInclude>
     <ClInclude Include="TabCtrl\Draw.h">
-      <Filter>TabCtrl</Filter>
+      <Filter>Misc Files\TabCtrl</Filter>
     </ClInclude>
     <ClInclude Include="DialogPage.h">
-      <Filter>TabCtrl</Filter>
+      <Filter>Misc Files\TabCtrl</Filter>
     </ClInclude>
     <ClInclude Include="AccountTab.h">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClInclude>
     <ClInclude Include="TravelTab.h">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClInclude>
     <ClInclude Include="CharTweakTab.h">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClInclude>
     <ClInclude Include="GeneralTab.h">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClInclude>
     <ClInclude Include="ItemsTab.h">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClInclude>
     <ClInclude Include="ItemsTweakTab.h">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClInclude>
     <ClInclude Include="LauncherTab.h">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClInclude>
     <ClInclude Include="MiscTab.h">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClInclude>
     <ClInclude Include="ReminderTab.h">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClInclude>
     <ClInclude Include="SpawnTab.h">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClInclude>
     <ClInclude Include="CommandsTab.h">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClInclude>
     <ClInclude Include="AboutDlg.h">
-      <Filter>Dialogs</Filter>
+      <Filter>Misc Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="Common.h">
       <Filter>Misc Files</Filter>
     </ClInclude>
     <ClInclude Include="CommandPage.h">
-      <Filter>TabCtrl</Filter>
+      <Filter>Misc Files\TabCtrl</Filter>
     </ClInclude>
     <ClInclude Include="sqlite3.h">
-      <Filter>Database</Filter>
+      <Filter>SQLite Database</Filter>
     </ClInclude>
     <ClInclude Include="SQLite.h">
-      <Filter>Database</Filter>
-    </ClInclude>
-    <ClInclude Include="BtnST.h">
-      <Filter>Misc Files</Filter>
+      <Filter>SQLite Database</Filter>
     </ClInclude>
     <ClInclude Include="CommandButton.h">
-      <Filter>TabCtrl</Filter>
+      <Filter>Misc Files\TabCtrl</Filter>
     </ClInclude>
     <ClInclude Include="RemoteConsoleLoginDlg.h">
       <Filter>Remote Console</Filter>
@@ -256,82 +265,85 @@
     <ClInclude Include="RemoteConsoleDlg.h">
       <Filter>Remote Console</Filter>
     </ClInclude>
-    <ClInclude Include="BitmapEx.h">
-      <Filter>Misc Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CMulUOP.h">
-      <Filter>Misc Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Axis3.h">
-      <Filter>Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="Axis3Dlg.h">
-      <Filter>Dialogs</Filter>
-    </ClInclude>
     <ClInclude Include="ProfileDlg.h">
-      <Filter>Dialogs</Filter>
+      <Filter>Misc Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="SearchCritDlg.h">
-      <Filter>Dialogs</Filter>
+      <Filter>Misc Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="SettingEdit.h">
-      <Filter>Settings</Filter>
+      <Filter>Settings Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="Settings_Viewer.h">
-      <Filter>Settings</Filter>
+      <Filter>Settings Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="LangEdit.h">
-      <Filter>Settings</Filter>
+      <Filter>Settings Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="Settings_General.h">
-      <Filter>Settings</Filter>
+      <Filter>Settings Dialogs</Filter>
     </ClInclude>
     <ClInclude Include="hlp\HTMLDefines.h">
       <Filter>HTML Help Files</Filter>
     </ClInclude>
+    <ClInclude Include="BitmapEx.h">
+      <Filter>Misc Files\BitmapCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="Axis3.h">
+      <Filter>Main Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="Axis3Dlg.h">
+      <Filter>Main Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="BtnST.h">
+      <Filter>Misc Files\ButtonCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="CMulUOP.h">
+      <Filter>Misc Files\Mul UOP</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TabCtrl\TabCtrl.cpp">
-      <Filter>TabCtrl</Filter>
+      <Filter>Misc Files\TabCtrl</Filter>
     </ClCompile>
     <ClCompile Include="DialogPage.cpp">
-      <Filter>TabCtrl</Filter>
+      <Filter>Misc Files\TabCtrl</Filter>
     </ClCompile>
     <ClCompile Include="AccountTab.cpp">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClCompile>
     <ClCompile Include="CharTweakTab.cpp">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClCompile>
     <ClCompile Include="GeneralTab.cpp">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClCompile>
     <ClCompile Include="ItemsTab.cpp">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClCompile>
     <ClCompile Include="ItemsTweakTab.cpp">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClCompile>
     <ClCompile Include="LauncherTab.cpp">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClCompile>
     <ClCompile Include="MiscTab.cpp">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClCompile>
     <ClCompile Include="ReminderTab.cpp">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClCompile>
     <ClCompile Include="SpawnTab.cpp">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClCompile>
     <ClCompile Include="TravelTab.cpp">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClCompile>
     <ClCompile Include="CommandsTab.cpp">
-      <Filter>TabPages</Filter>
+      <Filter>Tab Pages</Filter>
     </ClCompile>
     <ClCompile Include="AboutDlg.cpp">
-      <Filter>Dialogs</Filter>
+      <Filter>Misc Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Misc Files</Filter>
@@ -340,19 +352,16 @@
       <Filter>Misc Files</Filter>
     </ClCompile>
     <ClCompile Include="CommandPage.cpp">
-      <Filter>TabCtrl</Filter>
+      <Filter>Misc Files\TabCtrl</Filter>
     </ClCompile>
     <ClCompile Include="SQLite.cpp">
-      <Filter>Database</Filter>
+      <Filter>SQLite Database</Filter>
     </ClCompile>
     <ClCompile Include="sqlite3.c">
-      <Filter>Database</Filter>
-    </ClCompile>
-    <ClCompile Include="BtnST.cpp">
-      <Filter>Misc Files</Filter>
+      <Filter>SQLite Database</Filter>
     </ClCompile>
     <ClCompile Include="CommandButton.cpp">
-      <Filter>TabCtrl</Filter>
+      <Filter>Misc Files\TabCtrl</Filter>
     </ClCompile>
     <ClCompile Include="RemoteConsoleLoginDlg.cpp">
       <Filter>Remote Console</Filter>
@@ -360,35 +369,38 @@
     <ClCompile Include="RemoteConsoleDlg.cpp">
       <Filter>Remote Console</Filter>
     </ClCompile>
-    <ClCompile Include="BitmapEx.cpp">
-      <Filter>Misc Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CMulUOP.cpp">
-      <Filter>Misc Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Axis3.cpp">
-      <Filter>Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="Axis3Dlg.cpp">
-      <Filter>Dialogs</Filter>
-    </ClCompile>
     <ClCompile Include="ProfileDlg.cpp">
-      <Filter>Dialogs</Filter>
+      <Filter>Misc Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="SearchCritDlg.cpp">
-      <Filter>Dialogs</Filter>
+      <Filter>Misc Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="SettingEdit.cpp">
-      <Filter>Settings</Filter>
+      <Filter>Settings Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="Settings_Viewer.cpp">
-      <Filter>Settings</Filter>
+      <Filter>Settings Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="LangEdit.cpp">
-      <Filter>Settings</Filter>
+      <Filter>Settings Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="Settings_General.cpp">
-      <Filter>Settings</Filter>
+      <Filter>Settings Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="BitmapEx.cpp">
+      <Filter>Misc Files\BitmapCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="Axis3.cpp">
+      <Filter>Main Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="Axis3Dlg.cpp">
+      <Filter>Main Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="BtnST.cpp">
+      <Filter>Misc Files\ButtonCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="CMulUOP.cpp">
+      <Filter>Misc Files\Mul UOP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

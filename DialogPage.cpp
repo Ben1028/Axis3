@@ -136,9 +136,10 @@ HBRUSH CDialogPage::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	switch (nCtlColor) 
 	{
 		case CTLCOLOR_EDIT:
-			return ::CreateSolidBrush(Main->crWhiteBkg);
+		case CTLCOLOR_LISTBOX:
+			return Main->hbWhite;
 		default:
-			return ::CreateSolidBrush(Main->crBlueBkg);
+			return Main->hbBlue;
 	}
 }
 
