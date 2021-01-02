@@ -38,15 +38,15 @@ BOOL CRemoteConsoleLoginDlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_REMOTE_CONSOLE_LOGIN")));
+	SetWindowText(CMsg(_T("Remote Console Login")));
 
-	GetDlgItem(IDC_SNAME)->SetWindowText(CMsg(_T("IDS_NAME")));
-	GetDlgItem(IDC_SIP)->SetWindowText(CMsg(_T("IDS_IP_ADDRESS")));
-	GetDlgItem(IDC_SACCT)->SetWindowText(CMsg(_T("IDS_ACCOUNT")));
-	GetDlgItem(IDC_SPASS)->SetWindowText(CMsg(_T("IDS_PASSWORD")));
-	GetDlgItem(IDC_SPORT)->SetWindowText(CMsg(_T("IDS_PORT")));
-	GetDlgItem(IDOK)->SetWindowText(CMsg(_T("IDS_OK")));
-	GetDlgItem(IDC_CANCEL)->SetWindowText(CMsg(_T("IDS_CANCEL")));
+	GetDlgItem(IDC_SNAME)->SetWindowText(CMsg(_T("Name")));
+	GetDlgItem(IDC_SIP)->SetWindowText(CMsg(_T("IP Address")));
+	GetDlgItem(IDC_SACCT)->SetWindowText(CMsg(_T("Account")));
+	GetDlgItem(IDC_SPASS)->SetWindowText(CMsg(_T("Password")));
+	GetDlgItem(IDC_SPORT)->SetWindowText(CMsg(_T("Port")));
+	GetDlgItem(IDOK)->SetWindowText(CMsg(_T("OK")));
+	GetDlgItem(IDC_CANCEL)->SetWindowText(CMsg(_T("Cancel")));
 	Axis->DBLng.CommitTransaction();
 
 	//Fill Combobox
@@ -80,11 +80,11 @@ void CRemoteConsoleLoginDlg::OnOK()
 	csPassword = GetEditString(m_cePassword);
 	csAccountName = GetEditString(m_ccbName);
 
-	Table TBRCAccount = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM RemoteConsole WHERE Name = '%1'"),csAccountName));
+	Table TBRCAccount = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM RemoteConsole WHERE Name = '%1'"),csAccountName));
 	if(TBRCAccount.GetRowCount() != 0)
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE RemoteConsole SET IPAddress = '%1!d!', Port = '%2', Account = '%3', Password = '%4' WHERE Name = '%5'"),dwAddress,csPort,csAccount,Encrypt(csPassword),csAccountName));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("UPDATE RemoteConsole SET IPAddress = '%1!d!', Port = '%2', Account = '%3', Password = '%4' WHERE Name = '%5'"),dwAddress,csPort,csAccount,Encrypt(csPassword),csAccountName));
 	else
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO RemoteConsole VALUES('%1','%2!d!','%3','%4','%5')"),csAccountName,dwAddress,csPort,csAccount,Encrypt(csPassword)));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("INSERT INTO RemoteConsole VALUES('%1','%2!d!','%3','%4','%5')"),csAccountName,dwAddress,csPort,csAccount,Encrypt(csPassword)));
 
 	SetSettingString(_T("LastRemoteLoginAccount"), csAccountName);
 
@@ -112,7 +112,7 @@ void CRemoteConsoleLoginDlg::OnSelchangeAcctname()
 	CString csAccountName;
 	m_ccbName.GetLBText(m_iSel, csAccountName);
 
-	Table TBRCAccount = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM RemoteConsole WHERE Name = '%1'"),csAccountName));
+	Table TBRCAccount = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM RemoteConsole WHERE Name = '%1'"),csAccountName));
 	m_ceAddress.SetAddress(_ttoi(TBRCAccount.GetValue(_T("IPAddress"))));
 	m_cePort.SetWindowText(TBRCAccount.GetValue(_T("Port")));
 	m_ceAccount.SetWindowText(TBRCAccount.GetValue(_T("Account")));

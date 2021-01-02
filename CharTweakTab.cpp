@@ -31,7 +31,7 @@ END_MESSAGE_MAP()
 
 BOOL CCharTweakTab::OnInitDialog() 
 {
-	SetWindowText(CMsg(_T("IDS_PLAYER_TWEAK")));
+	SetWindowText(CMsg(_T("Character Tweak")));
 	CDialogPage::OnInitDialog();
 
 	return TRUE;

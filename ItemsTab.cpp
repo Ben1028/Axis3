@@ -92,16 +92,16 @@ END_MESSAGE_MAP()
 BOOL CItemsTab::OnInitDialog() 
 {
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_ITEMS")));
+	SetWindowText(CMsg(_T("Items")));
 	CDialogPage::OnInitDialog();
 	SetLanguage();
 	Axis->DBLng.CommitTransaction();
 
-	m_clcItems.InsertColumn(0, CMsg(_T("IDS_ITEM_DESCRIPTION")), LVCFMT_LEFT, 150, -1);
-	m_clcItems.InsertColumn(1, CMsg(_T("IDS_DEFNAME")), LVCFMT_LEFT, 150, -1);
-	m_clcItems.InsertColumn(2, CMsg(_T("IDS_HUE")), LVCFMT_LEFT, 0, -1);
-	m_clcItems.InsertColumn(3, CMsg(_T("IDS_ID")), LVCFMT_LEFT, 0, -1);
-	m_clcItems.InsertColumn(4, CMsg(_T("IDS_TYPE")), LVCFMT_LEFT, 0, -1);
+	m_clcItems.InsertColumn(0, CMsg(_T("Item Description")), LVCFMT_LEFT, 150, -1);
+	m_clcItems.InsertColumn(1, CMsg(_T("Defname")), LVCFMT_LEFT, 150, -1);
+	m_clcItems.InsertColumn(2, CMsg(_T("Hue")), LVCFMT_LEFT, 0, -1);
+	m_clcItems.InsertColumn(3, CMsg(_T("ID")), LVCFMT_LEFT, 0, -1);
+	m_clcItems.InsertColumn(4, CMsg(_T("Type")), LVCFMT_LEFT, 0, -1);
 	FillCategory();
 	cMulDisplay.InitDisplay();
 
@@ -120,36 +120,36 @@ BOOL CItemsTab::OnInitDialog()
 
 void CItemsTab::SetLanguage()
 {
-	GetDlgItem(IDC_REMOVE)->SetWindowText(CMsg(_T("IDS_REMOVE")));
-	GetDlgItem(IDC_FLIP)->SetWindowText(CMsg(_T("IDS_FLIP")));
-	GetDlgItem(IDC_TILE)->SetWindowText(CMsg(_T("IDS_TILE")));
-	GetDlgItem(IDC_CREATE)->SetWindowText(CMsg(_T("IDS_CREATE")));
-	GetDlgItem(IDC_NUKE)->SetWindowText(CMsg(_T("IDS_NUKE")));
-	GetDlgItem(IDC_INIT)->SetWindowText(CMsg(_T("IDS_INIT")));
-	GetDlgItem(IDC_PLACE)->SetWindowText(CMsg(_T("IDS_PLACE")));
-	GetDlgItem(IDC_STATICCAT)->SetWindowText(CMsg(_T("IDS_CAT")));
-	GetDlgItem(IDC_STATICSUB)->SetWindowText(CMsg(_T("IDS_SUB")));
-	GetDlgItem(IDC_STATICMOVE)->SetWindowText(CMsg(_T("IDS_MOVE")));
-	GetDlgItem(IDC_STATICNUDGE)->SetWindowText(CMsg(_T("IDS_NUDGE")));
-	GetDlgItem(IDC_STATICMAXAMOUNT)->SetWindowText(CMsg(_T("IDS_MAX_AMOUNT")));
-	GetDlgItem(IDC_STATICMAXDIST)->SetWindowText(CMsg(_T("IDS_MAX_DIST")));
-	GetDlgItem(IDC_STATICMINTIME)->SetWindowText(CMsg(_T("IDS_MIN_TIME")));
-	GetDlgItem(IDC_STATICMAXTIME)->SetWindowText(CMsg(_T("IDS_MAX_TIME")));
-	GetDlgItem(IDC_STATICSPAWN)->SetWindowText(CMsg(_T("IDS_ITEM_SPAWN")));
-	GetDlgItem(IDC_STATICZ)->SetWindowText(CMsg(_T("IDS_Z")));
-	GetDlgItem(IDC_LOCKITEM)->SetWindowText(CMsg(_T("IDS_LOCK")));
+	GetDlgItem(IDC_REMOVE)->SetWindowText(CMsg(_T("Remove")));
+	GetDlgItem(IDC_FLIP)->SetWindowText(CMsg(_T("Flip")));
+	GetDlgItem(IDC_TILE)->SetWindowText(CMsg(_T("Tile")));
+	GetDlgItem(IDC_CREATE)->SetWindowText(CMsg(_T("Create")));
+	GetDlgItem(IDC_NUKE)->SetWindowText(CMsg(_T("Nuke")));
+	GetDlgItem(IDC_INIT)->SetWindowText(CMsg(_T("Init")));
+	GetDlgItem(IDC_PLACE)->SetWindowText(CMsg(_T("Place")));
+	GetDlgItem(IDC_STATICCAT)->SetWindowText(CMsg(_T("Cat")));
+	GetDlgItem(IDC_STATICSUB)->SetWindowText(CMsg(_T("Sub")));
+	GetDlgItem(IDC_STATICMOVE)->SetWindowText(CMsg(_T("Move")));
+	GetDlgItem(IDC_STATICNUDGE)->SetWindowText(CMsg(_T("Nudge")));
+	GetDlgItem(IDC_STATICMAXAMOUNT)->SetWindowText(CMsg(_T("Max Amount")));
+	GetDlgItem(IDC_STATICMAXDIST)->SetWindowText(CMsg(_T("Max Distance")));
+	GetDlgItem(IDC_STATICMINTIME)->SetWindowText(CMsg(_T("Min Time")));
+	GetDlgItem(IDC_STATICMAXTIME)->SetWindowText(CMsg(_T("Max Time")));
+	GetDlgItem(IDC_STATICSPAWN)->SetWindowText(CMsg(_T("Item Spawns")));
+	GetDlgItem(IDC_STATICZ)->SetWindowText(CMsg(_T("Z")));
+	GetDlgItem(IDC_LOCKITEM)->SetWindowText(CMsg(_T("Lock")));
 
-	m_cbNudgeDown.InitButton(IDI_ARROWDOWN, CMsg(_T("IDS_NUDGEDOWN")));
-	m_cbNudgeUp.InitButton(IDI_ARROWUP, CMsg(_T("IDS_NUDGEUP")));
-	m_cbMove1.InitButton(IDI_ARROWUP, CMsg(_T("IDS_UP")));
-	m_cbMove3.InitButton(IDI_ARROWRIGHT, CMsg(_T("IDS_RIGHT")));
-	m_cbMove5.InitButton(IDI_ARROWDOWN, CMsg(_T("IDS_DOWN")));
-	m_cbMove7.InitButton(IDI_ARROWLEFT, CMsg(_T("IDS_LEFT")));
-	m_cbMove2.InitButton(IDI_ARROWUPRIGHT, CMsg(_T("IDS_RIGHTUP")));
-	m_cbMove4.InitButton(IDI_ARROWDOWNRIGHT, CMsg(_T("IDS_DOWNRIGHT")));
-	m_cbMove6.InitButton(IDI_ARROWDOWNLEFT, CMsg(_T("IDS_LEFTDOWN")));
-	m_cbMove8.InitButton(IDI_ARROWUPLEFT, CMsg(_T("IDS_UPLEFT")));
-	m_cbfinditem.InitButton(IDI_FIND, CMsg(_T("IDS_FINDITEM")));
+	m_cbNudgeDown.InitButton(IDI_ARROWDOWN, CMsg(_T("Nudge Down")));
+	m_cbNudgeUp.InitButton(IDI_ARROWUP, CMsg(_T("Nudge Up")));
+	m_cbMove1.InitButton(IDI_ARROWUP, CMsg(_T("North")));
+	m_cbMove3.InitButton(IDI_ARROWRIGHT, CMsg(_T("East")));
+	m_cbMove5.InitButton(IDI_ARROWDOWN, CMsg(_T("South")));
+	m_cbMove7.InitButton(IDI_ARROWLEFT, CMsg(_T("West")));
+	m_cbMove2.InitButton(IDI_ARROWUPRIGHT, CMsg(_T("North East")));
+	m_cbMove4.InitButton(IDI_ARROWDOWNRIGHT, CMsg(_T("South East")));
+	m_cbMove6.InitButton(IDI_ARROWDOWNLEFT, CMsg(_T("South West")));
+	m_cbMove8.InitButton(IDI_ARROWUPLEFT, CMsg(_T("North West")));
+	m_cbfinditem.InitButton(IDI_FIND, CMsg(_T("Find Item")));
 }
 
 void CItemsTab::FillCategory()
@@ -182,7 +182,7 @@ void CItemsTab::OnSelchangeCat()
 
 	CString csCat;
 	m_ccbCategories.GetLBText(iSel, csCat);
-	Table TBSubs = Axis->DBData.QuerySQL(CSQL(_T("SELECT Cat,Sub FROM Item WHERE Cat = '%1' GROUP BY Sub ORDER BY Sub"), SQLStrip(csCat)));
+	Table TBSubs = Axis->DBData.QuerySQL(CFrmt(_T("SELECT Cat,Sub FROM Item WHERE Cat = '%1' GROUP BY Sub ORDER BY Sub"), SQLStrip(csCat)));
 	TBSubs.ResetRow();
 	while (TBSubs.GoNext())
 	{
@@ -208,8 +208,8 @@ void CItemsTab::OnSelchangeSub()
 	iSel = m_ccbSubsections.GetCurSel();
 	m_ccbSubsections.GetLBText(iSel, csSub);
 
-	Table TBDecs = Axis->DBData.QuerySQL(CSQL(_T("SELECT * FROM Item WHERE Cat = '%1' AND Sub = '%2' ORDER BY Desc"), SQLStrip(csCat), SQLStrip(csSub)));
-	csSortQuerry = CSQL(_T("SELECT * FROM Item WHERE Cat = '%1' AND Sub = '%2' ORDER BY"), SQLStrip(csCat), SQLStrip(csSub));
+	Table TBDecs = Axis->DBData.QuerySQL(CFrmt(_T("SELECT * FROM Item WHERE Cat = '%1' AND Sub = '%2' ORDER BY Desc"), SQLStrip(csCat), SQLStrip(csSub)));
+	csSortQuerry = CFrmt(_T("SELECT * FROM Item WHERE Cat = '%1' AND Sub = '%2' ORDER BY"), SQLStrip(csCat), SQLStrip(csSub));
 	TBDecs.ResetRow();
 	int iCount = 0;
 	while (TBDecs.GoNext())
@@ -250,13 +250,13 @@ void CItemsTab::OnItemchangedItems(NMHDR* pNMHDR, LRESULT* pResult)
 			}
 			if (bSearch)
 			{
-				Table TBInfo = Axis->DBData.QuerySQL(CSQL(_T("SELECT Cat,Sub FROM Item WHERE Def = '%1'"), m_clcItems.GetItemText(iSelIndex, 1)));
+				Table TBInfo = Axis->DBData.QuerySQL(CFrmt(_T("SELECT Cat,Sub FROM Item WHERE Def = '%1'"), m_clcItems.GetItemText(iSelIndex, 1)));
 				TBInfo.ResetRow();
 				if (TBInfo.GoNext())
 				{
 					CString csCat = TBInfo.GetValue(_T("Cat"));
 					m_ccbCategories.SelectString(0, csCat);
-					Table TBSubs = Axis->DBData.QuerySQL(CSQL(_T("SELECT Cat,Sub FROM Item WHERE Cat = '%1' GROUP BY Sub ORDER BY Sub"), SQLStrip(csCat)));
+					Table TBSubs = Axis->DBData.QuerySQL(CFrmt(_T("SELECT Cat,Sub FROM Item WHERE Cat = '%1' GROUP BY Sub ORDER BY Sub"), SQLStrip(csCat)));
 					TBSubs.ResetRow();
 					m_ccbSubsections.ResetContent();
 					while (TBSubs.GoNext())
@@ -280,7 +280,7 @@ void CItemsTab::OnCreate()
 
 	if (csValue == "")
 	{
-		AfxMessageBox(CMsg(_T("IDS_NO_ITEM_SELECTED")), MB_OK | MB_ICONEXCLAMATION);
+		AfxMessageBox(CMsg(_T("No Items Selected!")), MB_OK | MB_ICONEXCLAMATION);
 		return;
 	}
 	CString csCmd;
@@ -310,13 +310,13 @@ void CItemsTab::OnTile()
 	CString csID = GetEditString(m_csItemID);
 	if (csID == "")
 	{
-		AfxMessageBox(CMsg(_T("IDS_NO_ITEM_SELECTED")), MB_OK | MB_ICONEXCLAMATION);
+		AfxMessageBox(CMsg(_T("No Items Selected!")), MB_OK | MB_ICONEXCLAMATION);
 		return;
 	}
 	CString csValue = GetEditString(m_ceZTile);
 	if (csValue.SpanIncluding(_T("0123456789-")) != csValue)
 	{
-		AfxMessageBox(CMsg(_T("IDS_INVALID_Z")), MB_OK | MB_ICONEXCLAMATION);
+		AfxMessageBox(CMsg(_T("Invalid value in the z-level field.")), MB_OK | MB_ICONEXCLAMATION);
 		return;
 	}
 	if (csValue == "")
@@ -345,7 +345,7 @@ void CItemsTab::OnInitspawn()
 
 	if (csID == "")
 	{
-		AfxMessageBox(CMsg(_T("IDS_NO_ITEM_SELECTED")), MB_OK | MB_ICONEXCLAMATION);
+		AfxMessageBox(CMsg(_T("No Items Selected!")), MB_OK | MB_ICONEXCLAMATION);
 		return;
 	}
 
@@ -496,20 +496,20 @@ void CItemsTab::Find()
 	{
 		case 0:
 		{
-			TBSearch = Axis->DBData.QuerySQL(CSQL(_T("SELECT * FROM Item WHERE ID LIKE '%1' ORDER BY Desc"), csPattern));
-			csSortQuerry = CSQL(_T("SELECT * FROM Item WHERE ID LIKE '%1' ORDER BY"), csPattern);
+			TBSearch = Axis->DBData.QuerySQL(CFrmt(_T("SELECT * FROM Item WHERE ID LIKE '%1' ORDER BY Desc"), csPattern));
+			csSortQuerry = CFrmt(_T("SELECT * FROM Item WHERE ID LIKE '%1' ORDER BY"), csPattern);
 			break;
 		}
 		case 1:
 		{
-			TBSearch = Axis->DBData.QuerySQL(CSQL(_T("SELECT * FROM Item WHERE Def LIKE '%1' ORDER BY Desc"), csPattern));
-			csSortQuerry = CSQL(_T("SELECT * FROM Item WHERE Def LIKE '%1' ORDER BY"), csPattern);
+			TBSearch = Axis->DBData.QuerySQL(CFrmt(_T("SELECT * FROM Item WHERE Def LIKE '%1' ORDER BY Desc"), csPattern));
+			csSortQuerry = CFrmt(_T("SELECT * FROM Item WHERE Def LIKE '%1' ORDER BY"), csPattern);
 			break;
 		}
 		case 2:
 		{
-			TBSearch = Axis->DBData.QuerySQL(CSQL(_T("SELECT * FROM Item WHERE Desc LIKE '%1' ORDER BY Desc"), csPattern));
-			csSortQuerry = CSQL(_T("SELECT * FROM Item WHERE Desc LIKE '%1' ORDER BY"), csPattern);
+			TBSearch = Axis->DBData.QuerySQL(CFrmt(_T("SELECT * FROM Item WHERE Desc LIKE '%1' ORDER BY Desc"), csPattern));
+			csSortQuerry = CFrmt(_T("SELECT * FROM Item WHERE Desc LIKE '%1' ORDER BY"), csPattern);
 			break;
 		}
 	}
@@ -534,7 +534,7 @@ void CItemsTab::Find()
 	}
 	else 
 	{
-		AfxMessageBox(CMsg(_T("IDS_EMPTY_SEARCH")));
+		AfxMessageBox(CMsg(_T("No Items Found!")));
 	}
 }
 
@@ -561,7 +561,7 @@ void CItemsTab::OnColumnclickItems(NMHDR* pNMHDR, LRESULT* pResult)
 		csOrder = (bIDSort ? _T("DESC") : _T("ASC"));
 	}
 	Table TBSort;
-	TBSort = Axis->DBData.QuerySQL(CSQL(_T("%1 %2 %3"), csSortQuerry, csType, csOrder));
+	TBSort = Axis->DBData.QuerySQL(CFrmt(_T("%1 %2 %3"), csSortQuerry, csType, csOrder));
 	TBSort.ResetRow();
 
 	if (TBSort.GetRowCount())

@@ -42,14 +42,14 @@ BOOL CSettingViewer::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_SETTING_VIEWER")));
+	SetWindowText(CMsg(_T("Viewer Settings")));
 
-	GetDlgItem(IDC_RESET_ITEM_CACHE)->SetWindowText(CMsg(_T("IDS_RESET_ITEM_CACHE")));
-	GetDlgItem(IDC_RESET_MULTI_CACHE)->SetWindowText(CMsg(_T("IDS_RESET_MULTI_CACHE")));
-	GetDlgItem(IDC_RESET_MAP_CACHE)->SetWindowText(CMsg(_T("IDS_RESET_MAP_CACHE")));
-	GetDlgItem(IDC_ITEMVIEW_SCALE)->SetWindowText(CMsg(_T("IDS_ITEM_SCALE")));
-	GetDlgItem(IDC_MULTIVIEW_SCALE)->SetWindowText(CMsg(_T("IDS_MULTI_SCALE")));
-	GetDlgItem(IDC_VIEWERBGCOL)->SetWindowText(CMsg(_T("IDS_VIEWER_BGCOL")));
+	GetDlgItem(IDC_RESET_ITEM_CACHE)->SetWindowText(CMsg(_T("Reset Item Cache")));
+	GetDlgItem(IDC_RESET_MULTI_CACHE)->SetWindowText(CMsg(_T("Reset Multi Cache")));
+	GetDlgItem(IDC_RESET_MAP_CACHE)->SetWindowText(CMsg(_T("Reset Map Cache")));
+	GetDlgItem(IDC_ITEMVIEW_SCALE)->SetWindowText(CMsg(_T("Scale Items in Viewer")));
+	GetDlgItem(IDC_MULTIVIEW_SCALE)->SetWindowText(CMsg(_T("Scale Multis in Viewer")));
+	GetDlgItem(IDC_VIEWERBGCOL)->SetWindowText(CMsg(_T("Background Color")));
 	Axis->DBLng.CommitTransaction();
 	UpdateData(false);
 	return TRUE;
@@ -57,26 +57,23 @@ BOOL CSettingViewer::OnInitDialog()
 
 void CSettingViewer::OnResetItemCache()
 {
-	if ( AfxMessageBox(CMsg(_T("IDS_CONFIRM_ITEMCACHE")), MB_OKCANCEL | MB_ICONQUESTION) == IDCANCEL )
+	if ( AfxMessageBox(CMsg(_T("Are you sure you want to reset the Items cache?")), MB_OKCANCEL | MB_ICONQUESTION) == IDCANCEL )
 		return;
-	CString csPath = CMsg(_T("IDS_ART_FILENAME"));
-	ClearDirectory(csPath.Left(csPath.ReverseFind('/')));
+	ClearDirectory(_T("%1/Art/Static/"));
 }
 
 void CSettingViewer::OnResetMultiCache()
 {
-	if (AfxMessageBox(CMsg(_T("IDS_CONFIRM_MULTICACHE")), MB_OKCANCEL | MB_ICONQUESTION) == IDCANCEL)
+	if (AfxMessageBox(CMsg(_T("Are you sure you want to reset the Multis cache?")), MB_OKCANCEL | MB_ICONQUESTION) == IDCANCEL)
 		return;
-	CString csPath = CMsg(_T("IDS_MULTI_FILENAME"));
-	ClearDirectory(csPath.Left(csPath.ReverseFind('/')));
+	ClearDirectory(_T("%1/Art/Multi/"));
 }
 
 void CSettingViewer::OnResetMapCache()
 {
-	if (AfxMessageBox(CMsg(_T("IDS_CONFIRM_MAPCACHE")), MB_OKCANCEL | MB_ICONQUESTION) == IDCANCEL)
+	if (AfxMessageBox(CMsg(_T("Are you sure you want to reset the Maps cache?")), MB_OKCANCEL | MB_ICONQUESTION) == IDCANCEL)
 		return;
-	CString csPath = CMsg(_T("IDS_MAP_FILENAME"));
-	ClearDirectory(csPath.Left(csPath.ReverseFind('/')));
+	ClearDirectory(_T("%1/Art/Map/"));
 }
 
 void CSettingViewer::OnResetBGColor()

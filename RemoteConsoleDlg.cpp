@@ -58,8 +58,8 @@ END_MESSAGE_MAP()
 BOOL CRemoteConsoleDlg::OnInitDialog() 
 {
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_REMCONSOLE")));
-	GetDlgItem(IDC_RECONNECT)->SetWindowText(CMsg(_T("IDS_RECONNECT")));
+	SetWindowText(CMsg(_T("Remote Console")));
+	GetDlgItem(IDC_RECONNECT)->SetWindowText(CMsg(_T("ReConnect")));
 	Axis->DBLng.CommitTransaction();
 
 	m_hIcon = AfxGetApp()->LoadIcon(IDI_COMMANDS);
@@ -89,7 +89,7 @@ void CRemoteConsoleDlg::OnReconnect()
 	{
 		CWaitCursor hourglass;
 		m_bContinue = false;
-		m_cbReconnect.SetWindowText(CMsg(_T("IDS_RECONNECT")));
+		m_cbReconnect.SetWindowText(CMsg(_T("ReConnect")));
 	}
 	else
 	{
@@ -100,13 +100,13 @@ void CRemoteConsoleDlg::OnReconnect()
 		m_csPort = dlg.csPort;
 		if ((m_csAddress == "")||(m_csPort == ""))
 		{
-			AfxMessageBox(CMsg(_T("IDS_ERROR_NOIP")), MB_OK | MB_ICONEXCLAMATION);
+			AfxMessageBox(CMsg(_T("Couldn't determine the IP address for the remote server.")), MB_OK | MB_ICONEXCLAMATION);
 			return;
 		}
 		m_csAccount = dlg.csAccount;
 		m_csPassword = dlg.csPassword;
 
-		m_cbReconnect.SetWindowText(CMsg(_T("IDS_DISCONNECT")));
+		m_cbReconnect.SetWindowText(CMsg(_T("Disconnect")));
 		SetTimer(m_nIDTimer, 1000, NULL);	
 		AfxBeginThread(&ClientThread, this);
 	}
@@ -116,10 +116,10 @@ void CRemoteConsoleDlg::OnTimer(UINT nIDEvent)
 {
 	if (!m_bIsConnected)
 	{
-		m_cbReconnect.SetWindowText(CMsg(_T("IDS_RECONNECT")));
+		m_cbReconnect.SetWindowText(CMsg(_T("ReConnect")));
 		KillTimer(nIDEvent);
 	}
-	SetWindowText(CMsg(_T("IDS_REMOTE_CONSOLE_TITLE"),true, m_csAccount, m_bIsConnected ? CMsg(_T("IDS_CONNECTED")) : CMsg(_T("IDS_NOT_CONNECTED"))));
+	SetWindowText(CMsg(_T("Remote Console - %1 (%2)"),true, m_csAccount, m_bIsConnected ? CMsg(_T("Connected")) : CMsg(_T("Not connected"))));
 
 	CDialogEx::OnTimer(nIDEvent);
 }
@@ -190,7 +190,7 @@ void CRemoteConsoleDlg::OnSendcommand()
 
 	if ( m_csCommand.GetLength() > 76 )
 	{
-		AfxMessageBox(CMsg(_T("IDS_COMMAND_LONG")), MB_OK);
+		AfxMessageBox(CMsg(_T("Command too long.")), MB_OK);
 		return;
 	}
 	m_ceConsoleSend.SetWindowText(_T(""));
@@ -229,7 +229,7 @@ UINT ClientThread(LPVOID lpData)
 	sock.m_hSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (sock.m_hSocket == INVALID_SOCKET)
 	{
-		pConsole->OnConMessage(CMsg(_T("IDS_ERROR_NOSOCKET"),true, WSAGetLastError()));
+		pConsole->OnConMessage(CMsg(_T("Error creating socket: dwErr = %1!ld!"),true, WSAGetLastError()));
 		closesocket(sock.m_hSocket);
 		sock.m_hSocket = INVALID_SOCKET;
 		pConsole->m_bCommandPending = false;
@@ -237,7 +237,7 @@ UINT ClientThread(LPVOID lpData)
 	}
 	if (!sock.Connect(pConsole->m_csAddress, _ttoi(pConsole->m_csPort)))
 	{
-		pConsole->OnConMessage(CMsg(_T("IDS_ERROR_NOCONNECT"),true, ErrorString(GetLastError()) , pConsole->m_csAddress, pConsole->m_csPort));
+		pConsole->OnConMessage(CMsg(_T("Could not connect to the remote console --\r\nLast Error was '%1'\r\nHost = % 2, Port = % 3\r\nThis is usually because the Sphere server isn't running."),true, ErrorString(GetLastError()) , pConsole->m_csAddress, pConsole->m_csPort));
 		closesocket(sock.m_hSocket);
 		sock.m_hSocket = INVALID_SOCKET;
 		pConsole->m_bCommandPending = false;
@@ -248,7 +248,7 @@ UINT ClientThread(LPVOID lpData)
 	CString cSpace((char) 0x20);
 	if (!sock.Send(cSpace, 1))
 	{
-		pConsole->OnConMessage(CMsg(_T("IDS_ERROR_LOGIN"),true, GetLastError()));
+		pConsole->OnConMessage(CMsg(_T("Error while sending login info to the remote console: dwErr = %1!ld!\r\nIs the Sphere server running ?"),true, GetLastError()));
 		closesocket(sock.m_hSocket);
 		sock.m_hSocket = INVALID_SOCKET;
 		pConsole->m_bCommandPending = false;
@@ -270,7 +270,7 @@ UINT ClientThread(LPVOID lpData)
 		{
 			char szBuffer[MAX_BUFFER];
 			strerror_s(szBuffer,MAX_BUFFER,WSAGetLastError());
-			pConsole->OnConMessage(CMsg(_T("IDS_ERROR_SOCKETSELECT"),true, WSAGetLastError(), szBuffer));
+			pConsole->OnConMessage(CMsg(_T("Socket error on select(): %1!ld! - %2"),true, WSAGetLastError(), szBuffer));
 			closesocket(sock.m_hSocket);
 			sock.m_hSocket = INVALID_SOCKET;
 			pConsole->m_bCommandPending = false;
@@ -278,7 +278,7 @@ UINT ClientThread(LPVOID lpData)
 		}
 		if ( rc == 0 && i++ > pConsole->m_iReceiveTimeout )
 		{
-			pConsole->OnConMessage(CMsg(_T("IDS_ERROR_TIMEOUT")));
+			pConsole->OnConMessage(CMsg(_T("Timeout exceeded while receiving data from remote server.")));
 			closesocket(sock.m_hSocket);
 			sock.m_hSocket = INVALID_SOCKET;
 			pConsole->m_bCommandPending = false;
@@ -294,7 +294,7 @@ UINT ClientThread(LPVOID lpData)
 		CString csAcct = pConsole->m_csAccount + (char)0x0A;
 		if ( !sock.Send(csAcct, csAcct.GetLength()* sizeof(TCHAR)))
 		{
-			pConsole->OnConMessage(CMsg(_T("IDS_ERROR_SENDACCOUNT"),true, GetLastError()));
+			pConsole->OnConMessage(CMsg(_T("Error while sending account to the remote console: dwErr = %1!ld!\r\nIs the Sphere server still running ?"),true, GetLastError()));
 			closesocket(sock.m_hSocket);
 			sock.m_hSocket = INVALID_SOCKET;
 			pConsole->m_bCommandPending = false;
@@ -306,7 +306,7 @@ UINT ClientThread(LPVOID lpData)
 	CString csPass = pConsole->m_csPassword + (char)0x0A;
 	if ( !sock.Send(csPass, csPass.GetLength()* sizeof(TCHAR)))
 	{
-		pConsole->OnConMessage(CMsg(_T("IDS_ERROR_SENDPASSWORD"),true, GetLastError()));
+		pConsole->OnConMessage(CMsg(_T("Error while sending password to the remote console: dwErr = %1!ld!\r\nIs the Sphere server still running ?"),true, GetLastError()));
 		closesocket(sock.m_hSocket);
 		sock.m_hSocket = INVALID_SOCKET;
 		pConsole->m_bCommandPending = false;
@@ -330,7 +330,7 @@ UINT ClientThread(LPVOID lpData)
 			int nBytes = sock.Receive(&szBuffer[0], sizeof(szBuffer));
 			if (nBytes <= 0)
 			{
-				pConsole->OnConMessage(CMsg(_T("IDS_ERROR_CONNECTIONLOST")));
+				pConsole->OnConMessage(CMsg(_T("Connection lost.")));
 				break;
 			}
 			CString csText(szBuffer);
@@ -338,7 +338,7 @@ UINT ClientThread(LPVOID lpData)
 		}
 		if (rc < 0)
 		{
-			pConsole->OnConMessage(CMsg(_T("IDS_ERROR_CONNECTIONLOST")));
+			pConsole->OnConMessage(CMsg(_T("Connection lost.")));
 			break;
 		}
 		if (pConsole->m_bCommandPending)
@@ -351,7 +351,7 @@ UINT ClientThread(LPVOID lpData)
 
 	// Disconnect the socket
 	if ( !pConsole->m_bContinue)
-		pConsole->OnConMessage(CMsg(_T("IDS_CONSOLE_DISCONECT")));
+		pConsole->OnConMessage(CMsg(_T("Disconnecting from remote server...")));
 
 	closesocket(sock.m_hSocket);
 	sock.m_hSocket = INVALID_SOCKET;

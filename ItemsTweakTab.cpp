@@ -31,7 +31,7 @@ END_MESSAGE_MAP()
 
 BOOL CItemTweakTab::OnInitDialog() 
 {
-	SetWindowText(CMsg(_T("IDS_ITEM_TWEAK")));
+	SetWindowText(CMsg(_T("Item Tweak")));
 	CDialogPage::OnInitDialog();
 
 	return TRUE;

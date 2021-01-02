@@ -54,25 +54,26 @@ BOOL CSettingsGeneral::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_SETTING_GENERAL")));
+	SetWindowText(CMsg(_T("General Settings")));
 
-	GetDlgItem(IDC_SYSCLOSE)->SetWindowText(CMsg(_T("IDS_SYSCLOSE")));
-	GetDlgItem(IDC_ALWAYS_ONTOP)->SetWindowText(CMsg(_T("IDS_ONTOP")));
-	GetDlgItem(IDC_STATIC_PREFIX)->SetWindowText(CMsg(_T("IDS_CMD_PREFIX")));
-	GetDlgItem(IDC_STATIC_LANG)->SetWindowText(CMsg(_T("IDS_INTERFACE_LANG")));
-	GetDlgItem(IDC_STATIC_DEFCLIENT)->SetWindowText(CMsg(_T("IDS_DEF_CLIENT")));
-	GetDlgItem(IDC_STATIC_CLIENTTITLE)->SetWindowText(CMsg(_T("IDS_CUSTOM_CLIENT")));
-	GetDlgItem(IDC_STATIC_MULPATH)->SetWindowText(CMsg(_T("IDS_MULPATH")));
-	GetDlgItem(IDC_AS_USESAMEPATHASCLIENT)->SetWindowText(CMsg(_T("IDS_MUL_SAME_CLIENT")));
-	GetDlgItem(IDC_RESETSTING)->SetWindowText(CMsg(_T("IDS_RESET_ALL_SETTINGS")));
-	GetDlgItem(IDC_CLIENTBROWSE)->SetWindowText(CMsg(_T("IDS_BROWSE")));
-	GetDlgItem(IDC_MULBROWSE)->SetWindowText(CMsg(_T("IDS_BROWSE")));
-	GetDlgItem(IDC_DEVMODE)->SetWindowText(CMsg(_T("IDS_DEVMODE")));
+	GetDlgItem(IDC_SYSCLOSE)->SetWindowText(CMsg(_T("Allow Close from system menu")));
+	GetDlgItem(IDC_ALWAYS_ONTOP)->SetWindowText(CMsg(_T("Always on top")));
+	GetDlgItem(IDC_STATIC_PREFIX)->SetWindowText(CMsg(_T("Command Prefix")));
+	GetDlgItem(IDC_STATIC_LANG)->SetWindowText(CMsg(_T("Interface Language")));
+	GetDlgItem(IDC_STATIC_DEFCLIENT)->SetWindowText(CMsg(_T("Default Ultima Online Client")));
+	GetDlgItem(IDC_STATIC_CLIENTTITLE)->SetWindowText(CMsg(_T("Custom Client Title")));
+	GetDlgItem(IDC_STATIC_MULPATH)->SetWindowText(CMsg(_T("Default Mulfile Path")));
+	GetDlgItem(IDC_AS_USESAMEPATHASCLIENT)->SetWindowText(CMsg(_T("Use same path as default client")));
+	GetDlgItem(IDC_RESETSTING)->SetWindowText(CMsg(_T("Reset All Settings")));
+	GetDlgItem(IDC_CLIENTBROWSE)->SetWindowText(CMsg(_T("Browse")));
+	GetDlgItem(IDC_MULBROWSE)->SetWindowText(CMsg(_T("Browse")));
+	GetDlgItem(IDC_DEVMODE)->SetWindowText(CMsg(_T("Dev Mode")));
 	Axis->DBLng.CommitTransaction();
 	
 	Table TBData = Axis->DBLng.QuerySQL(_T("SELECT * FROM LangList ORDER BY Name"));
 	TBData.ResetRow();
-	CString csCurLang;
+	CString csCurLang = _T("English");
+	m_ccbLang.AddString(_T("English"));
 	while (TBData.GoNext())
 	{
 		m_ccbLang.AddString(TBData.GetValue(_T("Name")));
@@ -158,18 +159,31 @@ void CSettingsGeneral::OnSameAsClient()
 	DetectMapFormat();
 }
 
-void CSettingsGeneral::OnSelchangeLang() 
+void CSettingsGeneral::OnSelchangeLang()
 {
 	UpdateData();
 	CString csLang;
-	m_ccbLang.GetWindowText(csLang);
-	Table TBData = Axis->DBLng.QuerySQL(CSQL(_T("SELECT * FROM LangList WHERE Name = %1"),true, csLang));
-	TBData.ResetRow();
-	if (TBData.GoNext())
+	int iSel = m_ccbLang.GetCurSel();
+	if (iSel == -1)
 	{
-		SetSettingString(_T("LangCode"), TBData.GetValue(_T("Code")));
+		UpdateData(FALSE);
+		return;
 	}
-	AfxMessageBox(CMsg(_T("IDS_EFFECT_RESTART")));
+	m_ccbLang.GetLBText(iSel, csLang);
+	if (csLang == _T("English"))
+	{
+		SetSettingString(_T("LangCode"), _T("ENU"));
+	}
+	else
+	{
+		Table TBData = Axis->DBLng.QuerySQL(CFrmt(_T("SELECT * FROM LangList WHERE Name = '%1'"), csLang));
+		TBData.ResetRow();
+		if (TBData.GoNext())
+		{
+			SetSettingString(_T("LangCode"), TBData.GetValue(_T("Code")));
+		}
+	}
+	AfxMessageBox(CMsg(_T("You must restart Axis3 for the changes to take effect.")));
 }
 
 void CSettingsGeneral::OnChangePrefix()
@@ -188,11 +202,11 @@ void CSettingsGeneral::OnChangeUOTitle()
 
 void CSettingsGeneral::OnResetSettings()
 {
-	if (AfxMessageBox(CMsg(_T("IDS_CONFIRM_RESET_ALL")), MB_OKCANCEL | MB_ICONQUESTION) == IDCANCEL)
+	if (AfxMessageBox(CMsg(_T("Are you sure you want to reset all settings to default?")), MB_OKCANCEL | MB_ICONQUESTION) == IDCANCEL)
 		return;
 
-	Axis->DBSettings.ExecuteSQL(CSQL(_T("DELETE FROM Settings_Profile_%1 WHERE ID != 'UOClient' AND ID != 'MulPath' AND ID != 'MulSameAsClient'"), true, Axis->csProfile));
-	AfxMessageBox(CMsg(_T("IDS_EFFECT_RESTART")));
+	Axis->DBSettings.ExecuteSQL(CFrmt(_T("DELETE FROM Settings_Profile_%1 WHERE ID != 'UOClient' AND ID != 'MulPath' AND ID != 'MulSameAsClient'"), true, Axis->csProfile));
+	AfxMessageBox(CMsg(_T("You must restart Axis3 for the changes to take effect.")));
 }
 
 void CSettingsGeneral::OnClientbrowse()

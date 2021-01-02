@@ -71,7 +71,7 @@ END_MESSAGE_MAP()
 BOOL CAccountTab::OnInitDialog() 
 {
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_ACCOUNT")));
+	SetWindowText(CMsg(_T("Account")));
 	CDialogPage::OnInitDialog();
 	SetLanguage();
 	Axis->DBLng.CommitTransaction();
@@ -83,44 +83,44 @@ BOOL CAccountTab::OnInitDialog()
 
 void CAccountTab::SetLanguage()
 {
-	GetDlgItem(IDC_GR_PLEVEL)->SetWindowText(CMsg(_T("IDS_PLEVEL")));
-	GetDlgItem(IDC_PLV_0)->SetWindowText(CMsg(_T("IDS_GUEST")));
-	GetDlgItem(IDC_PLV_1)->SetWindowText(CMsg(_T("IDS_PLAYERNPC")));
-	GetDlgItem(IDC_PLV_2)->SetWindowText(CMsg(_T("IDS_SEER")));
-	GetDlgItem(IDC_PLV_3)->SetWindowText(CMsg(_T("IDS_COUNSELOR")));
-	GetDlgItem(IDC_PLV_4)->SetWindowText(CMsg(_T("IDS_GAMEMASTER")));
-	GetDlgItem(IDC_PLV_5)->SetWindowText(CMsg(_T("IDS_DEVELOPER")));
-	GetDlgItem(IDC_PLV_6)->SetWindowText(CMsg(_T("IDS_ADMINISTRATOR")));
-	GetDlgItem(IDC_PLV_7)->SetWindowText(CMsg(_T("IDS_OWNER")));
-	GetDlgItem(IDC_SET_PLV)->SetWindowText(CMsg(_T("IDS_SET_PLVL")));
+	GetDlgItem(IDC_GR_PLEVEL)->SetWindowText(CMsg(_T("Plevel")));
+	GetDlgItem(IDC_PLV_0)->SetWindowText(CMsg(_T("Guest")));
+	GetDlgItem(IDC_PLV_1)->SetWindowText(CMsg(_T("Player/NPC")));
+	GetDlgItem(IDC_PLV_2)->SetWindowText(CMsg(_T("Seer")));
+	GetDlgItem(IDC_PLV_3)->SetWindowText(CMsg(_T("Counselor")));
+	GetDlgItem(IDC_PLV_4)->SetWindowText(CMsg(_T("GM")));
+	GetDlgItem(IDC_PLV_5)->SetWindowText(CMsg(_T("Developer")));
+	GetDlgItem(IDC_PLV_6)->SetWindowText(CMsg(_T("Administrator")));
+	GetDlgItem(IDC_PLV_7)->SetWindowText(CMsg(_T("Owner")));
+	GetDlgItem(IDC_SET_PLV)->SetWindowText(CMsg(_T("Set Plevel")));
 
-	GetDlgItem(IDC_GR_RESDISP)->SetWindowText(CMsg(_T("IDS_RESDISP")));
-	GetDlgItem(IDC_RDSP_0)->SetWindowText(CMsg(_T("IDS_PRET2A")));
-	GetDlgItem(IDC_RDSP_1)->SetWindowText(CMsg(_T("IDS_T2A")));
-	GetDlgItem(IDC_RDSP_2)->SetWindowText(CMsg(_T("IDS_LBR")));
-	GetDlgItem(IDC_RDSP_3)->SetWindowText(CMsg(_T("IDS_AOS")));
-	GetDlgItem(IDC_RDSP_4)->SetWindowText(CMsg(_T("IDS_SE")));
-	GetDlgItem(IDC_RDSP_5)->SetWindowText(CMsg(_T("IDS_ML")));
-	GetDlgItem(IDC_RDSP_6)->SetWindowText(CMsg(_T("IDS_KR")));
-	GetDlgItem(IDC_RDSP_7)->SetWindowText(CMsg(_T("IDS_SA")));
-	GetDlgItem(IDC_RDSP_8)->SetWindowText(CMsg(_T("IDS_HS")));
-	GetDlgItem(IDC_RDSP_9)->SetWindowText(CMsg(_T("IDS_TOL")));
-	GetDlgItem(IDC_SET_RESDISP)->SetWindowText(CMsg(_T("IDS_SET_RESDISP")));
+	GetDlgItem(IDC_GR_RESDISP)->SetWindowText(CMsg(_T("Resdisp")));
+	GetDlgItem(IDC_RDSP_0)->SetWindowText(CMsg(_T("Pre-T2A")));
+	GetDlgItem(IDC_RDSP_1)->SetWindowText(CMsg(_T("The 2nd Age")));
+	GetDlgItem(IDC_RDSP_2)->SetWindowText(CMsg(_T("Lord Blackthorn's Revenge")));
+	GetDlgItem(IDC_RDSP_3)->SetWindowText(CMsg(_T("Age Of Shadows")));
+	GetDlgItem(IDC_RDSP_4)->SetWindowText(CMsg(_T("Samurai Empire")));
+	GetDlgItem(IDC_RDSP_5)->SetWindowText(CMsg(_T("Mondain's Legacy")));
+	GetDlgItem(IDC_RDSP_6)->SetWindowText(CMsg(_T("Kingdom Reborn")));
+	GetDlgItem(IDC_RDSP_7)->SetWindowText(CMsg(_T("Stygian Abyss")));
+	GetDlgItem(IDC_RDSP_8)->SetWindowText(CMsg(_T("High Seas")));
+	GetDlgItem(IDC_RDSP_9)->SetWindowText(CMsg(_T("Time of Legends")));
+	GetDlgItem(IDC_SET_RESDISP)->SetWindowText(CMsg(_T("Set Resdisp")));
 
-	GetDlgItem(IDC_GR_PRIVS)->SetWindowText(CMsg(_T("IDS_PRIVFLAGS")));
-	GetDlgItem(IDC_PRIV02)->SetWindowText(CMsg(_T("IDS_PRIV02")));
-	GetDlgItem(IDC_PRIV08)->SetWindowText(CMsg(_T("IDS_PRIV08")));
-	GetDlgItem(IDC_PRIV010)->SetWindowText(CMsg(_T("IDS_PRIV010")));
-	GetDlgItem(IDC_PRIV020)->SetWindowText(CMsg(_T("IDS_PRIV020")));
-	GetDlgItem(IDC_PRIV040)->SetWindowText(CMsg(_T("IDS_PRIV040")));
-	GetDlgItem(IDC_PRIV080)->SetWindowText(CMsg(_T("IDS_PRIV080")));
-	GetDlgItem(IDC_PRIV0200)->SetWindowText(CMsg(_T("IDS_PRIV0200")));
-	GetDlgItem(IDC_PRIV0400)->SetWindowText(CMsg(_T("IDS_PRIV0400")));
-	GetDlgItem(IDC_PRIV0800)->SetWindowText(CMsg(_T("IDS_PRIV0800")));
-	GetDlgItem(IDC_PRIV02000)->SetWindowText(CMsg(_T("IDS_PRIV02000")));
-	GetDlgItem(IDC_PRIV04000)->SetWindowText(CMsg(_T("IDS_PRIV04000")));
-	GetDlgItem(IDC_RESET_PRIVS)->SetWindowText(CMsg(_T("IDS_RESET_PRIVS")));
-	GetDlgItem(IDC_SET_PRIVS)->SetWindowText(CMsg(_T("IDS_SET_PRIVS")));
+	GetDlgItem(IDC_GR_PRIVS)->SetWindowText(CMsg(_T("Priv Flags")));
+	GetDlgItem(IDC_PRIV02)->SetWindowText(CMsg(_T("Act as a GM")));
+	GetDlgItem(IDC_PRIV08)->SetWindowText(CMsg(_T("Listen to GM Pages")));
+	GetDlgItem(IDC_PRIV010)->SetWindowText(CMsg(_T("Hearall")));
+	GetDlgItem(IDC_PRIV020)->SetWindowText(CMsg(_T("Allmove")));
+	GetDlgItem(IDC_PRIV040)->SetWindowText(CMsg(_T("Show Combat Details")));
+	GetDlgItem(IDC_PRIV080)->SetWindowText(CMsg(_T("Debug Mode")));
+	GetDlgItem(IDC_PRIV0200)->SetWindowText(CMsg(_T("Show GM Privileges")));
+	GetDlgItem(IDC_PRIV0400)->SetWindowText(CMsg(_T("Telnet Modificator")));
+	GetDlgItem(IDC_PRIV0800)->SetWindowText(CMsg(_T("Jailed")));
+	GetDlgItem(IDC_PRIV02000)->SetWindowText(CMsg(_T("Blocked/Banned")));
+	GetDlgItem(IDC_PRIV04000)->SetWindowText(CMsg(_T("Allshow")));
+	GetDlgItem(IDC_RESET_PRIVS)->SetWindowText(CMsg(_T("Reset Privs")));
+	GetDlgItem(IDC_SET_PRIVS)->SetWindowText(CMsg(_T("Set Privs")));
 }
 
 void CAccountTab::OnSetPLV() 
@@ -229,7 +229,7 @@ void CAccountTab::OnPriv02()
 		dwPrivs ^= 0x02;
 	else
 		dwPrivs |= 0x02;
-	m_csPrivValue.SetWindowText(CMsg(_T("%1!05x!"),true, dwPrivs));
+	m_csPrivValue.SetWindowText(CFrmt(_T("%1!05x!"), dwPrivs));
 }
 
 void CAccountTab::OnPriv08()
@@ -238,7 +238,7 @@ void CAccountTab::OnPriv08()
 		dwPrivs ^= 0x08;
 	else
 		dwPrivs |= 0x08;
-	m_csPrivValue.SetWindowText(CMsg(_T("%1!05x!"),true, dwPrivs));
+	m_csPrivValue.SetWindowText(CFrmt(_T("%1!05x!"), dwPrivs));
 }
 
 void CAccountTab::OnPriv010()
@@ -247,7 +247,7 @@ void CAccountTab::OnPriv010()
 		dwPrivs ^= 0x010;
 	else
 		dwPrivs |= 0x010;
-	m_csPrivValue.SetWindowText(CMsg(_T("%1!05x!"),true, dwPrivs));
+	m_csPrivValue.SetWindowText(CFrmt(_T("%1!05x!"), dwPrivs));
 }
 
 void CAccountTab::OnPriv020()
@@ -256,7 +256,7 @@ void CAccountTab::OnPriv020()
 		dwPrivs ^= 0x020;
 	else
 		dwPrivs |= 0x020;
-	m_csPrivValue.SetWindowText(CMsg(_T("%1!05x!"),true, dwPrivs));
+	m_csPrivValue.SetWindowText(CFrmt(_T("%1!05x!"), dwPrivs));
 }
 
 void CAccountTab::OnPriv040()
@@ -265,7 +265,7 @@ void CAccountTab::OnPriv040()
 		dwPrivs ^= 0x040;
 	else
 		dwPrivs |= 0x040;
-	m_csPrivValue.SetWindowText(CMsg(_T("%1!05x!"),true, dwPrivs));
+	m_csPrivValue.SetWindowText(CFrmt(_T("%1!05x!"), dwPrivs));
 }
 
 void CAccountTab::OnPriv080()
@@ -274,7 +274,7 @@ void CAccountTab::OnPriv080()
 		dwPrivs ^= 0x080;
 	else
 		dwPrivs |= 0x080;
-	m_csPrivValue.SetWindowText(CMsg(_T("%1!05x!"),true, dwPrivs));
+	m_csPrivValue.SetWindowText(CFrmt(_T("%1!05x!"), dwPrivs));
 }
 
 void CAccountTab::OnPriv0200()
@@ -283,7 +283,7 @@ void CAccountTab::OnPriv0200()
 		dwPrivs ^= 0x0200;
 	else
 		dwPrivs |= 0x0200;
-	m_csPrivValue.SetWindowText(CMsg(_T("%1!05x!"),true, dwPrivs));
+	m_csPrivValue.SetWindowText(CFrmt(_T("%1!05x!"), dwPrivs));
 }
 
 void CAccountTab::OnPriv0400()
@@ -292,7 +292,7 @@ void CAccountTab::OnPriv0400()
 		dwPrivs ^= 0x0400;
 	else
 		dwPrivs |= 0x0400;
-	m_csPrivValue.SetWindowText(CMsg(_T("%1!05x!"),true, dwPrivs));
+	m_csPrivValue.SetWindowText(CFrmt(_T("%1!05x!"), dwPrivs));
 }
 
 void CAccountTab::OnPriv0800()
@@ -301,7 +301,7 @@ void CAccountTab::OnPriv0800()
 		dwPrivs ^= 0x0800;
 	else
 		dwPrivs |= 0x0800;
-	m_csPrivValue.SetWindowText(CMsg(_T("%1!05x!"),true, dwPrivs));
+	m_csPrivValue.SetWindowText(CFrmt(_T("%1!05x!"), dwPrivs));
 }
 
 void CAccountTab::OnPriv02000()
@@ -310,7 +310,7 @@ void CAccountTab::OnPriv02000()
 		dwPrivs ^= 0x02000;
 	else
 		dwPrivs |= 0x02000;
-	m_csPrivValue.SetWindowText(CMsg(_T("%1!05x!"),true, dwPrivs));
+	m_csPrivValue.SetWindowText(CFrmt(_T("%1!05x!"), dwPrivs));
 }
 
 void CAccountTab::OnPriv04000()
@@ -319,7 +319,7 @@ void CAccountTab::OnPriv04000()
 		dwPrivs ^= 0x04000;
 	else
 		dwPrivs |= 0x04000;
-	m_csPrivValue.SetWindowText(CMsg(_T("%1!05x!"),true, dwPrivs));
+	m_csPrivValue.SetWindowText(CFrmt(_T("%1!05x!"), dwPrivs));
 }
 
 void CAccountTab::OnSetprivs()

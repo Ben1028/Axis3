@@ -87,7 +87,7 @@ END_MESSAGE_MAP()
 BOOL CGeneralTab::OnInitDialog() 
 {
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_GENERAL")));
+	SetWindowText(CMsg(_T("General")));
 	CDialogPage::OnInitDialog();
 	SetLanguage();
 	Axis->DBLng.CommitTransaction();
@@ -102,80 +102,80 @@ BOOL CGeneralTab::OnInitDialog()
 
 void CGeneralTab::SetLanguage()
 {
-	GetDlgItem(IDC_GR_INFORMATION)->SetWindowText(CMsg(_T("IDS_INFORMATION")));
-	GetDlgItem(IDC_GR_MISC)->SetWindowText(CMsg(_T("IDS_MISC")));
-	GetDlgItem(IDC_GR_VENDOR)->SetWindowText(CMsg(_T("IDS_VENDORS")));
-	GetDlgItem(IDC_GR_WEATHER)->SetWindowText(CMsg(_T("IDS_WEATHER")));
-	GetDlgItem(IDC_GR_SELF)->SetWindowText(CMsg(_T("IDS_SELF")));
-	GetDlgItem(IDC_GR_DISCIPLINE)->SetWindowText(CMsg(_T("IDS_DISCIPLINE")));
-	GetDlgItem(IDC_GR_GMPAGE)->SetWindowText(CMsg(_T("IDS_GMPAGE")));
+	GetDlgItem(IDC_GR_INFORMATION)->SetWindowText(CMsg(_T("Information")));
+	GetDlgItem(IDC_GR_MISC)->SetWindowText(CMsg(_T("Misc")));
+	GetDlgItem(IDC_GR_VENDOR)->SetWindowText(CMsg(_T("Vendors")));
+	GetDlgItem(IDC_GR_WEATHER)->SetWindowText(CMsg(_T("Weather")));
+	GetDlgItem(IDC_GR_SELF)->SetWindowText(CMsg(_T("Self")));
+	GetDlgItem(IDC_GR_DISCIPLINE)->SetWindowText(CMsg(_T("Discipline")));
+	GetDlgItem(IDC_GR_GMPAGE)->SetWindowText(CMsg(_T("GM Page")));
 
-	GetDlgItem(IDC_ADMIN)->SetWindowText(CMsg(_T("IDS_ADMIN")));
-	GetDlgItem(IDC_INFO)->SetWindowText(CMsg(_T("IDS_INFO")));
-	GetDlgItem(IDC_EDIT)->SetWindowText(CMsg(_T("IDS_EDIT")));
-	GetDlgItem(IDC_CLIENTS)->SetWindowText(CMsg(_T("IDS_CLIENT")));
-	GetDlgItem(IDC_SERVINFO)->SetWindowText(CMsg(_T("IDS_SERV_INFO")));
-	GetDlgItem(IDC_VERSION)->SetWindowText(CMsg(_T("IDS_VERSION")));
+	GetDlgItem(IDC_ADMIN)->SetWindowText(CMsg(_T("Admin")));
+	GetDlgItem(IDC_INFO)->SetWindowText(CMsg(_T("Info")));
+	GetDlgItem(IDC_EDIT)->SetWindowText(CMsg(_T("Edit")));
+	GetDlgItem(IDC_CLIENTS)->SetWindowText(CMsg(_T("Clients")));
+	GetDlgItem(IDC_SERVINFO)->SetWindowText(CMsg(_T("Serv Info")));
+	GetDlgItem(IDC_VERSION)->SetWindowText(CMsg(_T("Version")));
 
-	GetDlgItem(IDC_LINK)->SetWindowText(CMsg(_T("IDS_LINK")));
-	GetDlgItem(IDC_FLIP)->SetWindowText(CMsg(_T("IDS_FLIP")));
-	GetDlgItem(IDC_SHRINK)->SetWindowText(CMsg(_T("IDS_SHRINK")));
-	GetDlgItem(IDC_DUPE)->SetWindowText(CMsg(_T("IDS_DUPE")));
-	GetDlgItem(IDC_REMOVE)->SetWindowText(CMsg(_T("IDS_REMOVE")));
-	GetDlgItem(IDC_NUKE)->SetWindowText(CMsg(_T("IDS_NUKE")));
+	GetDlgItem(IDC_LINK)->SetWindowText(CMsg(_T("Link")));
+	GetDlgItem(IDC_FLIP)->SetWindowText(CMsg(_T("Flip")));
+	GetDlgItem(IDC_SHRINK)->SetWindowText(CMsg(_T("Shrink")));
+	GetDlgItem(IDC_DUPE)->SetWindowText(CMsg(_T("Dupe")));
+	GetDlgItem(IDC_REMOVE)->SetWindowText(CMsg(_T("Remove")));
+	GetDlgItem(IDC_NUKE)->SetWindowText(CMsg(_T("Nuke")));
 
-	GetDlgItem(IDC_BUY)->SetWindowText(CMsg(_T("IDS_BUY")));
-	GetDlgItem(IDC_SELL)->SetWindowText(CMsg(_T("IDS_SELL")));
-	GetDlgItem(IDC_INVENTORY)->SetWindowText(CMsg(_T("IDS_INVENTORY")));
-	GetDlgItem(IDC_PURCHASES)->SetWindowText(CMsg(_T("IDS_PURCHASES")));
-	GetDlgItem(IDC_SAMPLES)->SetWindowText(CMsg(_T("IDS_SAMPLES")));
-	GetDlgItem(IDC_RESTOCK)->SetWindowText(CMsg(_T("IDS_RESTOCK")));
+	GetDlgItem(IDC_BUY)->SetWindowText(CMsg(_T("Buy")));
+	GetDlgItem(IDC_SELL)->SetWindowText(CMsg(_T("Sell")));
+	GetDlgItem(IDC_INVENTORY)->SetWindowText(CMsg(_T("Inventory")));
+	GetDlgItem(IDC_PURCHASES)->SetWindowText(CMsg(_T("Purchases")));
+	GetDlgItem(IDC_SAMPLES)->SetWindowText(CMsg(_T("Samples")));
+	GetDlgItem(IDC_RESTOCK)->SetWindowText(CMsg(_T("Restock")));
 
-	GetDlgItem(IDC_SNOW)->SetWindowText(CMsg(_T("IDS_SNOW")));
-	GetDlgItem(IDC_RAIN)->SetWindowText(CMsg(_T("IDS_RAIN")));
-	GetDlgItem(IDC_DRY)->SetWindowText(CMsg(_T("IDS_DRY")));
-	GetDlgItem(IDC_LIGHTLEVEL)->SetWindowText(CMsg(_T("IDS_LIGHT_LVL")));
+	GetDlgItem(IDC_SNOW)->SetWindowText(CMsg(_T("Snow")));
+	GetDlgItem(IDC_RAIN)->SetWindowText(CMsg(_T("Rain")));
+	GetDlgItem(IDC_DRY)->SetWindowText(CMsg(_T("Dry")));
+	GetDlgItem(IDC_LIGHTLEVEL)->SetWindowText(CMsg(_T("Light Level")));
 
-	GetDlgItem(IDC_INVUL)->SetWindowText(CMsg(_T("IDS_INVUL")));
-	GetDlgItem(IDC_ALLMOVE)->SetWindowText(CMsg(_T("IDS_ALLMOVE")));
-	GetDlgItem(IDC_INVISIBLE)->SetWindowText(CMsg(_T("IDS_INVIS")));
-	GetDlgItem(IDC_FIX)->SetWindowText(CMsg(_T("IDS_FIX")));
-	GetDlgItem(IDC_TELE)->SetWindowText(CMsg(_T("IDS_TELE")));
-	GetDlgItem(IDC_HEARALL)->SetWindowText(CMsg(_T("IDS_HEARALL")));
-	GetDlgItem(IDC_GMTOGGLE)->SetWindowText(CMsg(_T("IDS_GM")));
-	GetDlgItem(IDC_DETAIL)->SetWindowText(CMsg(_T("IDS_DETAIL")));
-	GetDlgItem(IDC_NIGHTSIGHT)->SetWindowText(CMsg(_T("IDS_NIGHTSIGHT")));
-	GetDlgItem(IDC_DEBUG)->SetWindowText(CMsg(_T("IDS_DEBUG")));
+	GetDlgItem(IDC_INVUL)->SetWindowText(CMsg(_T("Invul")));
+	GetDlgItem(IDC_ALLMOVE)->SetWindowText(CMsg(_T("Allmove")));
+	GetDlgItem(IDC_INVISIBLE)->SetWindowText(CMsg(_T("Invisible")));
+	GetDlgItem(IDC_FIX)->SetWindowText(CMsg(_T("Fix")));
+	GetDlgItem(IDC_TELE)->SetWindowText(CMsg(_T("Tele")));
+	GetDlgItem(IDC_HEARALL)->SetWindowText(CMsg(_T("Hear All")));
+	GetDlgItem(IDC_GMTOGGLE)->SetWindowText(CMsg(_T("GM Toggle")));
+	GetDlgItem(IDC_DETAIL)->SetWindowText(CMsg(_T("Detail")));
+	GetDlgItem(IDC_NIGHTSIGHT)->SetWindowText(CMsg(_T("NightSight")));
+	GetDlgItem(IDC_DEBUG)->SetWindowText(CMsg(_T("Debug")));
 
-	GetDlgItem(IDC_JAIL)->SetWindowText(CMsg(_T("IDS_JAIL")));
-	GetDlgItem(IDC_FORGIVE)->SetWindowText(CMsg(_T("IDS_FORGIVE")));
-	GetDlgItem(IDC_KILL)->SetWindowText(CMsg(_T("IDS_KILL")));
-	GetDlgItem(IDC_DISCONNECT)->SetWindowText(CMsg(_T("IDS_DISCONNECT")));
-	GetDlgItem(IDC_RESURRECT)->SetWindowText(CMsg(_T("IDS_RESURRECT")));
+	GetDlgItem(IDC_JAIL)->SetWindowText(CMsg(_T("Jail")));
+	GetDlgItem(IDC_FORGIVE)->SetWindowText(CMsg(_T("Forgive")));
+	GetDlgItem(IDC_KILL)->SetWindowText(CMsg(_T("Kill")));
+	GetDlgItem(IDC_DISCONNECT)->SetWindowText(CMsg(_T("Disconnect")));
+	GetDlgItem(IDC_RESURRECT)->SetWindowText(CMsg(_T("Resurrect")));
 
-	GetDlgItem(IDC_PAGEON)->SetWindowText(CMsg(_T("IDS_ON")));
-	GetDlgItem(IDC_PAGELIST)->SetWindowText(CMsg(_T("IDS_LIST")));
-	GetDlgItem(IDC_PAGEGOPLAYER)->SetWindowText(CMsg(_T("IDS_GO_PLAYER")));
-	GetDlgItem(IDC_PAGEDISCONNECT)->SetWindowText(CMsg(_T("IDS_DISCONNECT")));
-	GetDlgItem(IDC_PAGEBAN)->SetWindowText(CMsg(_T("IDS_BAN")));
-	GetDlgItem(IDC_PAGEOFF)->SetWindowText(CMsg(_T("IDS_OFF")));
-	GetDlgItem(IDC_PAGEQUEUE)->SetWindowText(CMsg(_T("IDS_QUEUE")));
-	GetDlgItem(IDC_PAGEGOORIGIN)->SetWindowText(CMsg(_T("IDS_GO_ORIGIN")));
-	GetDlgItem(IDC_PAGEJAIL)->SetWindowText(CMsg(_T("IDS_JAIL")));
-	GetDlgItem(IDC_PAGEDELETE)->SetWindowText(CMsg(_T("IDS_DELETE")));
+	GetDlgItem(IDC_PAGEON)->SetWindowText(CMsg(_T("On")));
+	GetDlgItem(IDC_PAGELIST)->SetWindowText(CMsg(_T("List")));
+	GetDlgItem(IDC_PAGEGOPLAYER)->SetWindowText(CMsg(_T("Go Player")));
+	GetDlgItem(IDC_PAGEDISCONNECT)->SetWindowText(CMsg(_T("Disconnect")));
+	GetDlgItem(IDC_PAGEBAN)->SetWindowText(CMsg(_T("Ban")));
+	GetDlgItem(IDC_PAGEOFF)->SetWindowText(CMsg(_T("Off")));
+	GetDlgItem(IDC_PAGEQUEUE)->SetWindowText(CMsg(_T("Queue")));
+	GetDlgItem(IDC_PAGEGOORIGIN)->SetWindowText(CMsg(_T("Go Origin")));
+	GetDlgItem(IDC_PAGEJAIL)->SetWindowText(CMsg(_T("Jail")));
+	GetDlgItem(IDC_PAGEDELETE)->SetWindowText(CMsg(_T("Delete")));
 
-	GetDlgItem(IDC_WORLDSAVE)->SetWindowText(CMsg(_T("IDS_WORLDSAVE")));
-	GetDlgItem(IDC_SAVESTATICS)->SetWindowText(CMsg(_T("IDS_SAVESTATICS")));
-	GetDlgItem(IDC_RESYNC)->SetWindowText(CMsg(_T("IDS_RESYNC")));
-	GetDlgItem(IDC_RESTOCKALL)->SetWindowText(CMsg(_T("IDS_RESTOCKALL")));
-	GetDlgItem(IDC_REMCONSOLE)->SetWindowText(CMsg(_T("IDS_REMCONSOLE")));
+	GetDlgItem(IDC_WORLDSAVE)->SetWindowText(CMsg(_T("Save World")));
+	GetDlgItem(IDC_SAVESTATICS)->SetWindowText(CMsg(_T("Save Statics")));
+	GetDlgItem(IDC_RESYNC)->SetWindowText(CMsg(_T("Resync")));
+	GetDlgItem(IDC_RESTOCKALL)->SetWindowText(CMsg(_T("Restock All NPC")));
+	GetDlgItem(IDC_REMCONSOLE)->SetWindowText(CMsg(_T("Remote Console")));
 }
 
 void CGeneralTab::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) 
 {
 	if (pScrollBar->m_hWnd == m_cscSlider.m_hWnd)
 	{
-		m_csSliderValue.SetWindowText(CMsg(_T("%1!02ld!"),true,m_cscSlider.GetPos()));
+		m_csSliderValue.SetWindowText(CFrmt(_T("%1!02ld!"),m_cscSlider.GetPos()));
 		return;
 	}
 	CDialogEx::OnHScroll(nSBCode, nPos, pScrollBar);
@@ -187,13 +187,13 @@ void CGeneralTab::OnRconsole()
 	{
 		// Hide it
 		m_rcDlg.ShowWindow(SW_HIDE);
-		m_cbRemoteConsole.SetWindowText(CMsg(_T("IDS_SHOW_CONSOLE")));
+		m_cbRemoteConsole.SetWindowText(CMsg(_T("Show Console")));
 	}
 	else
 	{
 		// Show it
 		m_rcDlg.ShowWindow(SW_SHOW);
-		m_cbRemoteConsole.SetWindowText(CMsg(_T("IDS_HIDE_CONSOLE")));
+		m_cbRemoteConsole.SetWindowText(CMsg(_T("Hide Console")));
 	}
 }
 
@@ -440,14 +440,14 @@ void CGeneralTab::OnBnClickedPagegoplayer()
 
 void CGeneralTab::OnBnClickedPagedisconnect()
 {
-	if(AfxMessageBox(CMsg(_T("IDS_WARNING_DISCONNECT")), MB_OKCANCEL | MB_ICONQUESTION) == IDOK)
+	if(AfxMessageBox(CMsg(_T("Are you sure you wish to disconnect the client that sent this page?")), MB_OKCANCEL | MB_ICONQUESTION) == IDOK)
 		SendToUO(CCmd(_T("page disconnect")));
 }
 
 
 void CGeneralTab::OnBnClickedPageban()
 {
-	if(AfxMessageBox(CMsg(_T("IDS_WARNING_BAN")), MB_OKCANCEL | MB_ICONQUESTION) == IDOK)
+	if(AfxMessageBox(CMsg(_T("Are you sure you wish to BAN the client that sent this page?")), MB_OKCANCEL | MB_ICONQUESTION) == IDOK)
 		SendToUO(CCmd(_T("page ban")));
 }
 
@@ -472,7 +472,7 @@ void CGeneralTab::OnBnClickedPagegoorigin()
 
 void CGeneralTab::OnBnClickedPagejail()
 {
-	if(AfxMessageBox(CMsg(_T("IDS_WARNING_JAIL")), MB_OKCANCEL | MB_ICONQUESTION) == IDOK)
+	if(AfxMessageBox(CMsg(_T("Are you sure you wish to jail the client that sent this page?")), MB_OKCANCEL | MB_ICONQUESTION) == IDOK)
 		SendToUO(CCmd(_T("page jail")));
 }
 

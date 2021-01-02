@@ -23,7 +23,12 @@ class CMsg : public CString
 {
 public :
   CMsg(LPCTSTR pszFormatstr, bool bFormat = false,...);
-  CMsg(UINT nFormatID, bool bFormat = false,...);
+};
+
+class CFrmt : public CString
+{
+public:
+	CFrmt(LPCTSTR pszFormatstr, ...);
 };
 
 class CCmd : public CString
@@ -36,12 +41,6 @@ class CSpk : public CString
 {
 public:
 	CSpk(LPCTSTR pszFormatstr, bool bFormat = false, ...);
-};
-
-class CSQL : public CString  
-{
-public :
-  CSQL(LPCTSTR pszFormatstr,...);
 };
 
 //*****************

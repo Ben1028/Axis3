@@ -126,8 +126,10 @@ class CMulUOP : public CWnd
 public :
 	CMulUOP();
 	~CMulUOP();
+	CByteArray m_Mapdata;
 	CBitmapEx Drawbmp;
 	CBitmapEx Objbmp;
+	CBitmapEx Centerbmp;
 	CBitmapEx DrawError();
 	CBitmapEx GetArtBMP(CFile &fData, ArtIdx indexRec, DWORD dwArtIndex, WORD wAppliedColor);
 	COLORREF crBKG;
@@ -135,17 +137,20 @@ public :
 	void DrawMulti(DWORD dwArtIndex);
 	void DrawAnim(DWORD dwAnimIndex, WORD wAppliedColor = 0, int wFrame = -1);
 	void DrawMap(int iMap = 0);
-	//void DisplayObj(int x = 0, int y = 0, bool bAlfa = true, bool bReset = true);
 	void DisplayObj();
-	void InitDisplay();
+	void InitDisplay(bool bMap = false);
 
-	//void SetScale(float flScale = 1);
+	void SetScale(float flScale = 1);
 	void SetAutoScale(bool bScale = true);
 	float GetScale();
 	void SetCenterX(int x);
 	int GetCenterX();
 	void SetCenterY(int y);
 	int GetCenterY();
+	CHAR GetMapHeight(int x, int y);
+	bool bIsMap;
+	int idispcenterX;
+	int idispcenterY;
 
 protected:
 	bool bAutoScale;

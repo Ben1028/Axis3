@@ -35,7 +35,7 @@ BOOL CCommandPage::OnInitDialog()
 	SetDlgCtrlID(Main->iDlgCtrlID);
 	Main->iDlgCtrlID++;
 
-	Table TB = Main->m_DlgCommands->DB.QuerySQL(CMsg(_T("SELECT * FROM %1"),true,csTabText));
+	Table TB = Main->m_DlgCommands->DB.QuerySQL(CFrmt(_T("SELECT * FROM %1"),csTabText));
 	TB.ResetRow();
 	while(TB.GoNext())
 		CreateButton(TB.GetValue(_T("Name")),TB.GetValue(_T("Command")));
@@ -60,8 +60,8 @@ void CCommandPage::OnRButtonDown(UINT /*nFlags*/, CPoint point)
 	HMENU hMenu = ::CreatePopupMenu();
 	if (NULL != hMenu)
 	{
-		::AppendMenu(hMenu, MF_STRING, 1, CMsg(_T("IDS_TABEDIT")));
-		::AppendMenu(hMenu, MF_STRING, 2, CMsg(_T("IDS_TABREMOVE")));
+		::AppendMenu(hMenu, MF_STRING, 1, CMsg(_T("Edit Tab")));
+		::AppendMenu(hMenu, MF_STRING, 2, CMsg(_T("Remove Tab")));
 
 		int sel = ::TrackPopupMenuEx(hMenu, 
 				TPM_CENTERALIGN | TPM_RETURNCMD,
@@ -150,13 +150,13 @@ void CCommandPage::SortDB()
 {
 	INT_PTR iCount = GetButtonCount();
 	Main->m_DlgCommands->DB.BeginTransaction();
-	Main->m_DlgCommands->DB.ExecuteSQL(CSQL(_T("DELETE FROM %1"),csTabText));
+	Main->m_DlgCommands->DB.ExecuteSQL(CFrmt(_T("DELETE FROM %1"),csTabText));
 	for(INT_PTR i=0; i<iCount; i++)
 	{
 		CComButton* pItem = ptrButtonArray.GetAt(i);
 		CString csName;
 		pItem->GetWindowText(csName);
-		Main->m_DlgCommands->DB.ExecuteSQL(CSQL(_T("INSERT INTO %1 VALUES('%2','%3')"),csTabText,csName,pItem->csCommand));
+		Main->m_DlgCommands->DB.ExecuteSQL(CFrmt(_T("INSERT INTO %1 VALUES('%2','%3')"),csTabText,csName,pItem->csCommand));
 	}
 	Main->m_DlgCommands->DB.CommitTransaction();
 
@@ -204,7 +204,7 @@ void CCommandPage::RemoveButton(int nID)
 		{
 			CString csKey;
 			pItem->GetWindowText(csKey);
-			Main->m_DlgCommands->DB.ExecuteSQL(CSQL(_T("DELETE FROM %1 WHERE Name = '%2'"),csTabText,csKey));
+			Main->m_DlgCommands->DB.ExecuteSQL(CFrmt(_T("DELETE FROM %1 WHERE Name = '%2'"),csTabText,csKey));
 			pItem->DestroyWindow();
 			delete pItem;
 			pItem = NULL;

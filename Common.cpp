@@ -14,10 +14,8 @@ CString ErrorString(DWORD err)
 	LPTSTR s;
 	if(::FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM, NULL, err, 0, (LPTSTR)&s, 0, NULL) == 0)
 	{ /* failed */
-		CString fmt;
 		CString t;
-		fmt.LoadString(IDS_UNKNOWN_ERROR);
-		t.Format(fmt, err, LOWORD(err));
+		t.Format(_T("Unknown error 0x%08x (%d)"), err, LOWORD(err));
 		Error = t;
 	}else
 	{ /* success */
@@ -69,37 +67,6 @@ BOOL CALLBACK FindUOClient(HWND hWnd, LPARAM lParam)
 }
 
 //******************
-//Format from string table
-CMsg::CMsg(UINT nFormatID, bool bFormat,...)
-{
-	CString strFormat;
-	if (!strFormat.LoadString(nFormatID))
-	{
-		TRACE(_T("Unknown resource string id : %d\n"),nFormatID);
-		ASSERT(false);
-		CString::operator=(_T("Error!"));
-	}
-	else if(bFormat)
-	{
-		  va_list argList;
-		  va_start(argList, bFormat);
-		  LPTSTR lpszTemp;
-		  if (::FormatMessage(FORMAT_MESSAGE_FROM_STRING|FORMAT_MESSAGE_ALLOCATE_BUFFER,
-								strFormat, 0, 0, (LPTSTR)&lpszTemp, 0, &argList) == 0 ||
-				lpszTemp == NULL)
-		  {
-			  AfxThrowMemoryException();
-		  }
-		  CString::operator=(lpszTemp);
-
-		  LocalFree(lpszTemp);
-		  va_end(argList);
-	}else{
-		LoadString(nFormatID);
-	}
-}
-
-//******************
 //Format from language file or plain text
 CMsg::CMsg(LPCTSTR lpszFormat, bool bFormat,...)
 {
@@ -124,6 +91,27 @@ CMsg::CMsg(LPCTSTR lpszFormat, bool bFormat,...)
 	}
 	else
 		CString::operator=(sLangString);
+}
+
+//******************
+//Format from plain text
+CFrmt::CFrmt(LPCTSTR lpszFormat, ...)
+{
+	va_list argList;
+	va_start(argList, lpszFormat);
+	LPTSTR lpszTemp;
+
+	if (::FormatMessage(FORMAT_MESSAGE_FROM_STRING | FORMAT_MESSAGE_ALLOCATE_BUFFER,
+		lpszFormat, 0, 0, (LPTSTR)&lpszTemp, 0, &argList) == 0 ||
+		lpszTemp == NULL)
+	{
+		AfxThrowMemoryException();
+	}
+
+	CString::operator=(lpszTemp);
+
+	LocalFree(lpszTemp);
+	va_end(argList);
 }
 
 //******************
@@ -183,36 +171,11 @@ CSpk::CSpk(LPCTSTR lpszFormat, bool bFormat, ...)
 }
 
 //******************
-//Send a command to UO Client
-bool CommandToUO(LPCTSTR Cmd)
-{
-	SendToUO(CMsg(_T("%1%2"), true, GetSettingString(_T("CommandPrefix")), Cmd));
-	return true;
-}
-
-//******************
 //SQL Formated Strings
 CString SQLStrip(CString csString)
 {
 	csString.Replace(_T("'"), _T("''"));
 	return csString;
-}
-
-CSQL::CSQL(LPCTSTR lpszFormat,...)
-{
-		va_list argList;
-		va_start(argList, lpszFormat);
-		LPTSTR lpszTemp;
-		if (::FormatMessage(FORMAT_MESSAGE_FROM_STRING|FORMAT_MESSAGE_ALLOCATE_BUFFER,
-			lpszFormat, 0, 0, (LPTSTR)&lpszTemp, 0, &argList) == 0 ||
-			lpszTemp == NULL)
-		{
-			AfxThrowMemoryException();
-		}
-		CString::operator=(lpszTemp);
-
-		LocalFree(lpszTemp);
-		va_end(argList);
 }
 
 //******************
@@ -238,24 +201,29 @@ void CenterWindowEx(HWND h_wind)
 CString LoadLang(LPCTSTR sLangID)
 {	
 	//Check Chosen Language
-	Table TBLang = Axis->DBLng.QuerySQL(CSQL(_T("SELECT * FROM %1 WHERE ID = '%2'"),Axis->csLangCode,sLangID));
-	if(TBLang.GetRowCount() != 0)
-		return TBLang.GetValue(_T("String"));
-	//Default to English if not found
-	TBLang = Axis->DBLng.QuerySQL(CSQL(_T("SELECT * FROM ENU WHERE ID = '%1'"),sLangID));
-	if(TBLang.GetRowCount() != 0)
-		return TBLang.GetValue(_T("String"));
-	//String not found!
+	if (Axis->csLangCode != _T("ENU"))
+	{
+		Table TBLang = Axis->DBLng.QuerySQL(CFrmt(_T("SELECT * FROM %1 WHERE ID = '%2'"), Axis->csLangCode, SQLStrip(sLangID)));
+		if (TBLang.GetRowCount() != 0)
+			return TBLang.GetValue(_T("String"));
+	}
+
+	//Default to English and save String in list if not found
+	Table TBLang = Axis->DBLng.QuerySQL(CFrmt(_T("SELECT * FROM IDList WHERE ID = '%1'"), SQLStrip(sLangID)));
+	if (!TBLang.GetRowCount())
+		Axis->DBLng.ExecuteSQL(CFrmt(_T("INSERT INTO IDList VALUES('%1')"), SQLStrip(sLangID)));
 	return sLangID;
 }
 
 CString LoadCMD(LPCTSTR sCMDID)
 {
-	//Check Chosen Language
-	Table TBCMD = Axis->DBLng.QuerySQL(CSQL(_T("SELECT * FROM CMD WHERE ID = '%1'"), sCMDID));
+	//Check Chosen Command
+	Table TBCMD = Axis->DBLng.QuerySQL(CFrmt(_T("SELECT * FROM CMD WHERE ID = '%1'"), SQLStrip(sCMDID)));
 	if (TBCMD.GetRowCount() != 0)
 		return TBCMD.GetValue(_T("String"));
-	//String not found!
+
+	//Command not found, save it!
+	Axis->DBLng.ExecuteSQL(CFrmt(_T("INSERT INTO CMD VALUES('%1','%1')"), SQLStrip(sCMDID)));
 	return sCMDID;
 }
 
@@ -264,7 +232,7 @@ CString LoadCMD(LPCTSTR sCMDID)
 CString GetSettingString(LPCTSTR sKey)
 {
 	//Check Profile's Saved Settings
-	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings_Profile_%2 WHERE ID = '%1'"),sKey,Axis->csProfile));
+	Table TBSettings = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM Settings_Profile_%2 WHERE ID = '%1'"),sKey,Axis->csProfile));
 	if (TBSettings.GetRowCount() != 0)
 	{
 		return TBSettings.GetValue(_T("Value"));
@@ -282,27 +250,27 @@ int GetSettingNum(LPCTSTR sKey)
 //Set Setting String/Num
 void SetSettingString(LPCTSTR sKey, LPCTSTR sValue)
 {
-	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings_Profile_%2 WHERE ID = '%1'"),sKey,Axis->csProfile));
+	Table TBSettings = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM Settings_Profile_%2 WHERE ID = '%1'"),sKey,Axis->csProfile));
 	if (TBSettings.GetRowCount() != 0)
 	{
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE Settings_Profile_%3 SET Value = '%1' WHERE ID = '%2'"), sValue, sKey, Axis->csProfile));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("UPDATE Settings_Profile_%3 SET Value = '%1' WHERE ID = '%2'"), sValue, sKey, Axis->csProfile));
 	}
 	else
 	{
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Settings_Profile_%3 VALUES('%1','%2')"), sKey, sValue, Axis->csProfile));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("INSERT INTO Settings_Profile_%3 VALUES('%1','%2')"), sKey, sValue, Axis->csProfile));
 	}
 }
 
 void SetSettingNum(LPCTSTR sKey, int iValue)
 {
-	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings_Profile_%2 WHERE ID = '%1'"), sKey, Axis->csProfile));
+	Table TBSettings = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM Settings_Profile_%2 WHERE ID = '%1'"), sKey, Axis->csProfile));
 	if (TBSettings.GetRowCount() != 0)
 	{
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE Settings_Profile_%3 SET Value = '%1!d!' WHERE ID = '%2'"), iValue, sKey, Axis->csProfile));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("UPDATE Settings_Profile_%3 SET Value = '%1!d!' WHERE ID = '%2'"), iValue, sKey, Axis->csProfile));
 	}
 	else
 	{
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Settings_Profile_%3 VALUES('%1','%2!d!')"), sKey, iValue, Axis->csProfile));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("INSERT INTO Settings_Profile_%3 VALUES('%1','%2!d!')"), sKey, iValue, Axis->csProfile));
 	}
 }
 
@@ -311,7 +279,7 @@ void SetSettingNum(LPCTSTR sKey, int iValue)
 CString GetDefaultString(LPCTSTR sKey)
 {
 	//Get Default setting
-	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings WHERE ID = '%1'"),sKey));
+	Table TBSettings = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM Settings WHERE ID = '%1'"),sKey));
 	if (TBSettings.GetRowCount() != 0)
 	{
 		return TBSettings.GetValue(_T("Value"));
@@ -329,27 +297,27 @@ int GetDefaultNum(LPCTSTR sKey)
 //Set Default Setting String/Num
 void SetDefaultString(LPCTSTR sKey, LPCTSTR sValue)
 {
-	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings WHERE ID = '%1'"),sKey));
+	Table TBSettings = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM Settings WHERE ID = '%1'"),sKey));
 	if (TBSettings.GetRowCount() != 0)
 	{
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE Settings SET Value = '%1' WHERE ID = '%2'"), sValue, sKey));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("UPDATE Settings SET Value = '%1' WHERE ID = '%2'"), sValue, sKey));
 	}
 	else
 	{
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Settings VALUES('%1','%2')"), sKey, sValue));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("INSERT INTO Settings VALUES('%1','%2')"), sKey, sValue));
 	}
 }
 
 void SetDefaultNum(LPCTSTR sKey, int iValue)
 {
-	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings WHERE ID = '%1'"), sKey));
+	Table TBSettings = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM Settings WHERE ID = '%1'"), sKey));
 	if (TBSettings.GetRowCount() != 0)
 	{
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE Settings SET Value = '%1!d!' WHERE ID = '%2'"), iValue, sKey));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("UPDATE Settings SET Value = '%1!d!' WHERE ID = '%2'"), iValue, sKey));
 	}
 	else
 	{
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Settings VALUES('%1','%2!d!')"), sKey, iValue));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("INSERT INTO Settings VALUES('%1','%2!d!')"), sKey, iValue));
 	}
 }
 
@@ -358,13 +326,13 @@ void SetDefaultNum(LPCTSTR sKey, int iValue)
 CString GetMulPath(LPCTSTR sKey)
 {
 	//Check Saved Settings
-	Table TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Settings_Profile_%2 WHERE ID = '%1'"),sKey,Axis->csProfile));
+	Table TBSettings = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM Settings_Profile_%2 WHERE ID = '%1'"),sKey,Axis->csProfile));
 	if(TBSettings.GetRowCount() != 0)
 		return TBSettings.GetValue(_T("Value"));
 	//Get Default setting if not found
-	TBSettings = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM MulPath WHERE Name = '%1'"),sKey));
+	TBSettings = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM MulPath WHERE Name = '%1'"),sKey));
 	if(TBSettings.GetRowCount() != 0)
-		return CMsg(_T("%1%2"),true,GetSettingString(_T("MulPath")),TBSettings.GetValue(_T("File")));
+		return CFrmt(_T("%1%2"),GetSettingString(_T("MulPath")),TBSettings.GetValue(_T("File")));
 	//Setting not found!
 	return _T("GetPath Error");
 }
@@ -374,7 +342,7 @@ CString GetMulPath(LPCTSTR sKey)
 void ClearSetting(LPCTSTR sKey)
 {
 	//Removing saved setting will reset it to default
-	Axis->DBSettings.QuerySQL(CSQL(_T("DELETE FROM Settings_Profile_%2 WHERE ID = '%1'"), sKey, Axis->csProfile));
+	Axis->DBSettings.QuerySQL(CFrmt(_T("DELETE FROM Settings_Profile_%2 WHERE ID = '%1'"), sKey, Axis->csProfile));
 }
 
 //******************
@@ -474,8 +442,8 @@ UINT LoadUOPArtData(LPVOID pParam)
 	CFile cfArtMul;
 	if ( cfArtMul.Open(csMulFile, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone) )
 	{
-		Log(CMsg(_T("IDS_ART_UOP_DETECTED")));
-		Log(CMsg(_T("IDS_LOAD_FILE"), true, csMulFile));
+		Log(CFrmt(_T("UOP Art format detected!")));
+		Log(CFrmt(_T("Loading file: %1"), csMulFile));
 		Axis->IsArtUOP = true;
 		DWORD dwUOPHashLo, dwUOPHashHi, dwCompressedSize, dwHeaderLenght;
 		DWORD dwFilesInBlock, dwTotalFiles;
@@ -542,7 +510,7 @@ UINT LoadHues(LPVOID pParam)
 	CString csHueFile = GetMulPath(_T("Hues"));
 	if ( cfHues.Open( csHueFile, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone ) )
 	{
-		Log(CMsg(_T("IDS_LOAD_FILE"), true, csHueFile));
+		Log(CFrmt(_T("Loading file: %1"), csHueFile));
 		int iBytesRead = 1;
 		while ( iBytesRead )
 		{
@@ -560,7 +528,7 @@ UINT LoadHues(LPVOID pParam)
 	}
 	else
 	{
-		Log(CMsg(_T("IDS_ERROR_LOAD_FILE"), true, csHueFile));
+		Log(CFrmt(_T("ERROR: Failed to load file: %1"), csHueFile));
 		return 1;
 	}
 	return 0;
@@ -584,7 +552,7 @@ UINT LoadBodyDef(LPVOID pParam)
 
 	if (csfInput.Open(csPath, CFile::modeRead | CFile::shareDenyNone))
 	{
-		Log(CMsg(_T("IDS_LOAD_FILE"), true, csPath));
+		Log(CFrmt(_T("Loading file: %1"), csPath));
 		BOOL bStatus = TRUE;
 		while (bStatus)
 		{
@@ -611,7 +579,7 @@ UINT LoadBodyDef(LPVOID pParam)
 	}
 	else
 	{
-		Log(CMsg(_T("IDS_ERROR_LOAD_FILE"), true, csPath));
+		Log(CFrmt(_T("ERROR: Failed to load file: %1"), csPath));
 		return 1;
 	}
 	return 0;
@@ -634,7 +602,7 @@ UINT LoadBodyConvert(LPVOID pParam)
 
 	if (csfInput.Open(csPath, CFile::modeRead | CFile::shareDenyNone))
 	{
-		Log(CMsg(_T("IDS_LOAD_FILE"), true, csPath));
+		Log(CFrmt(_T("Loading file: %1"), csPath));
 		BOOL bStatus = TRUE;
 		while (bStatus)
 		{
@@ -683,7 +651,7 @@ UINT LoadBodyConvert(LPVOID pParam)
 	}
 	else
 	{
-		Log(CMsg(_T("IDS_ERROR_LOAD_FILE"), true, csPath));
+		Log(CFrmt(_T("ERROR: Failed to load file: %1"), csPath));
 		return 1;
 	}
 	return 0;
@@ -706,7 +674,7 @@ UINT LoadRadarcol(LPVOID pParam)
 	memset(&Axis->m_dwColorMap[0], 0, sizeof(Axis->m_dwColorMap));
 	if (cfRadarFile.Open(csRadarFileName, CFile::modeRead | CFile::shareDenyNone))
 	{
-		Log(CMsg(_T("IDS_LOAD_FILE"), true, csRadarFileName));
+		Log(CFrmt(_T("Loading file: %1"), csRadarFileName));
 		WORD wColorArray[65536];
 		memset(&wColorArray, 0x00, sizeof(wColorArray));
 		cfRadarFile.Read(&wColorArray[0], sizeof(wColorArray));
@@ -716,7 +684,7 @@ UINT LoadRadarcol(LPVOID pParam)
 	}
 	else
 	{
-		Log(CMsg(_T("IDS_ERROR_LOAD_FILE"), true, csRadarFileName));
+		Log(CFrmt(_T("ERROR: Failed to load file: %1"), csRadarFileName));
 		return 1;
 	}
 	return 0;
@@ -728,7 +696,7 @@ UINT LoadTiledata(LPVOID pParam)
 	CString csFile = GetMulPath(_T("Tiledata"));
 	if (cfTiledata.Open(csFile, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone))
 	{
-		Log(CMsg(_T("IDS_LOAD_FILE"), true, csFile));
+		Log(CFrmt(_T("Loading file: %1"), csFile));
 		//Land data not needed at the moment
 		//Axis->m_landdata.SetSize(0x78800);
 		//cfTiledata.Read(Axis->m_landdata.GetData(), Axis->m_landdata.GetSize());
@@ -739,12 +707,12 @@ UINT LoadTiledata(LPVOID pParam)
 		if (Axis->m_staticdata.GetSize() == 0x292000)
 		{
 			Axis->IsArtPostHS = true;
-			Log(CMsg(_T("IDS_ART_HS_DETECTED")));
+			Log(CFrmt(_T("HS Art format detected!")));
 		}
 	}
 	else
 	{
-		Log(CMsg(_T("IDS_ERROR_LOAD_FILE"),true,csFile));
+		Log(CFrmt(_T("ERROR: Failed to load file: %1"),csFile));
 	}
 	return 0;
 }
@@ -757,8 +725,8 @@ void DetectMapFormat()
 
 	if (fData.Open(csMapFileName, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone))
 	{
-		Log(CMsg(_T("IDS_MAP_UOP_DETECTED")));
-		Log(CMsg(_T("IDS_MAP_ML_DETECTED")));
+		Log(CFrmt(_T("UOP Map format detected!")));
+		Log(CFrmt(_T("ML Map format detected!")));
 		Axis->IsMapUOP = true;
 		Axis->IsMapML = true;
 		fData.Close();
@@ -770,7 +738,7 @@ void DetectMapFormat()
 	{
 		if (fData.GetLength() > 89915000)
 		{
-			Log(CMsg(_T("IDS_MAP_ML_DETECTED")));
+			Log(CFrmt(_T("ML Map format detected!")));
 			Axis->IsMapML = true;
 		}
 		fData.Close();
@@ -889,7 +857,7 @@ void Log(CString csData)
 {
 	if (Axis->logFile.m_hFile != CFile::hFileNull)
 	{
-		Axis->logFile.WriteString(CMsg(_T("%1 \r\n"),true,csData));
+		Axis->logFile.WriteString(CFrmt(_T("%1 \r\n"),csData));
 	}
 }
 
@@ -916,10 +884,10 @@ void ClearDirectory(CString csPath)
 {
 	WIN32_FIND_DATA info;
 	HANDLE hp;
-	hp = FindFirstFile(CMsg(_T("%1/*.*"),true, csPath), &info);
+	hp = FindFirstFile(CFrmt(_T("%1/*.*"), csPath), &info);
 	do
 	{
-		DeleteFile(CMsg(_T("%1/%2"), true, csPath, info.cFileName));
+		DeleteFile(CFrmt(_T("%1/%2"), csPath, info.cFileName));
 
 	} while (FindNextFile(hp, &info));
 	FindClose(hp);

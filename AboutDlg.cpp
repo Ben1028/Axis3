@@ -30,7 +30,7 @@ BOOL CAboutDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 	/*SetWindowText(CMsg("IDS_ABOUTBOX"));
-	cb_ok.SetWindowText(CMsg("IDS_OK"));*/
+	cb_ok.SetWindowText(CMsg("OK"));*/
 
 	/*CString lf, lf2;
 	lf.Format("%c%c", 0x0d, 0x0a);

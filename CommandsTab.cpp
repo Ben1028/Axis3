@@ -51,13 +51,13 @@ END_MESSAGE_MAP()
 BOOL CCommandsTab::OnInitDialog() 
 {
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_COMMANDS")));
+	SetWindowText(CMsg(_T("Commands")));
 	CDialogPage::OnInitDialog();
 
 	ModifyStyle(0,WS_CLIPCHILDREN);
 	m_ComTabCtrl.Create(this,WS_CHILD | WS_VISIBLE,CRect(0,0,0,0),3001);
 
-	DB.Open(CMsg(_T("%1Command"), true, Axis->m_csRootDirectory));
+	DB.Open(CFrmt(_T("%1Command"), Axis->m_csRootDirectory));
 	LoadTabs();
 	SetTabsPosition();
 	m_ComTabCtrl.SetBehavior(TAB_BEHAVIOR_SCALE);
@@ -66,13 +66,13 @@ BOOL CCommandsTab::OnInitDialog()
 	m_ComTabCtrl.Update();
 	m_ComTabCtrl.SetSel(m_ComTabCtrl.GetFirstEnableTab());
 
-	GetDlgItem(IDC_COM_MACRO)->SetWindowText(CMsg(_T("IDS_COMMACRO")));
-	GetDlgItem(IDC_ADDBUTTON)->SetWindowText(CMsg(_T("IDS_ADDBUTTON")));
-	GetDlgItem(IDC_ADDTAB)->SetWindowText(CMsg(_T("IDS_ADDTAB")));
-	cbCancelTab.InitButton(IDI_CANCEL,CMsg(_T("IDS_CANCEL")));
-	cbTabOk.InitButton(IDI_OK,CMsg(_T("IDS_OK")));
-	cbCancelButton.InitButton(IDI_CANCEL,CMsg(_T("IDS_CANCEL")));
-	cbButtonOk.InitButton(IDI_OK,CMsg(_T("IDS_OK")));
+	GetDlgItem(IDC_COM_MACRO)->SetWindowText(CMsg(_T("Command / Macro")));
+	GetDlgItem(IDC_ADDBUTTON)->SetWindowText(CMsg(_T("Add Button")));
+	GetDlgItem(IDC_ADDTAB)->SetWindowText(CMsg(_T("Add Tab")));
+	cbCancelTab.InitButton(IDI_CANCEL,CMsg(_T("Cancel")));
+	cbTabOk.InitButton(IDI_OK,CMsg(_T("OK")));
+	cbCancelButton.InitButton(IDI_CANCEL,CMsg(_T("Cancel")));
+	cbButtonOk.InitButton(IDI_OK,CMsg(_T("OK")));
 	Axis->DBLng.CommitTransaction();
 
 	m_ComTabCtrl.GetWindowRect(crComTabCtrl);
@@ -125,28 +125,28 @@ void CCommandsTab::OnBnClickedAddbutton()
 
 	if (csLabel == "")
 	{
-		AfxMessageBox(CMsg(_T("IDS_MISSINGLABEL")), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("You must enter a Label")), MB_ICONSTOP);
 		return;
 	}
 
-	Table TB = DB.QuerySQL(CSQL(_T("SELECT * FROM %1 WHERE Name LIKE '%2'"),m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel()),csLabel));
+	Table TB = DB.QuerySQL(CFrmt(_T("SELECT * FROM %1 WHERE Name LIKE '%2'"),m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel()),csLabel));
 	if(TB.GetRowCount()>0)
 	{
-		AfxMessageBox(CMsg(_T("IDS_BUTTONEXIST"),true,csLabel), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("Button '%1' already exists"),true,csLabel), MB_ICONSTOP);
 		return;
 	}
 
 	if (csCommand == "")
 	{
-		AfxMessageBox(CMsg(_T("IDS_MISSINGCOMMAND")), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("You must enter a command")), MB_ICONSTOP);
 		return;
 	}
 
 	CCommandPage * pComPage = p_DlgTabs.GetAt(m_ComTabCtrl.GetIndex(m_ComTabCtrl.GetSel()));
 	if(pComPage->CreateButton(csLabel,csCommand))
-		DB.ExecuteSQL(CSQL(_T("INSERT INTO %1 VALUES('%2','%3')"),m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel()),csLabel,csCommand));
+		DB.ExecuteSQL(CFrmt(_T("INSERT INTO %1 VALUES('%2','%3')"),m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel()),csLabel,csCommand));
 	else
-		AfxMessageBox(CMsg(_T("IDS_TABFULL"),true,m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel())), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("Tab '%1' is full!"),true,m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel())), MB_ICONSTOP);
 }
 
 
@@ -158,19 +158,19 @@ void CCommandsTab::OnBnClickedAddtab()
 
 	if (csLabel == "")
 	{
-		AfxMessageBox(CMsg(_T("IDS_MISSINGLABEL")), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("You must enter a Label")), MB_ICONSTOP);
 		return;
 	}
 
-	Table TB = DB.QuerySQL(CSQL(_T("SELECT * FROM TABSLIST WHERE TabName LIKE '%1'"),csLabel));
+	Table TB = DB.QuerySQL(CFrmt(_T("SELECT * FROM TABSLIST WHERE TabName LIKE '%1'"),csLabel));
 	if(TB.GetRowCount()>0)
 	{
-		AfxMessageBox(CMsg(_T("IDS_TABEXIST"),true,csLabel), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("Tab '%1' already exists"),true,csLabel), MB_ICONSTOP);
 		return;
 	}
 
-	DB.ExecuteSQL(CSQL(_T("CREATE TABLE '%1' (Name TEXT, Command TEXT)"),csLabel));
-	DB.ExecuteSQL(CSQL(_T("INSERT INTO TABSLIST VALUES('%1')"),csLabel));
+	DB.ExecuteSQL(CFrmt(_T("CREATE TABLE '%1' (Name TEXT, Command TEXT)"),csLabel));
+	DB.ExecuteSQL(CFrmt(_T("INSERT INTO TABSLIST VALUES('%1')"),csLabel));
 
 	CCommandPage * m_DlgTab = new CCommandPage;
 	m_DlgTab->csTabText = csLabel;
@@ -203,8 +203,8 @@ void CCommandsTab::RemoveTab()
 	{
 		INT_PTR pID = m_ComTabCtrl.GetIndex(m_ComTabCtrl.GetSel());
 		CCommandPage * pComPage = p_DlgTabs.GetAt(pID);
-		DB.ExecuteSQL(CSQL(_T("DELETE FROM TABSLIST WHERE TabName = '%1'"),m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel())));
-		DB.ExecuteSQL(CSQL(_T("DROP TABLE %1"),m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel())));
+		DB.ExecuteSQL(CFrmt(_T("DELETE FROM TABSLIST WHERE TabName = '%1'"),m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel())));
+		DB.ExecuteSQL(CFrmt(_T("DROP TABLE %1"),m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel())));
 		pComPage->DestroyWindow();
 		delete pComPage;
 		pComPage = NULL;
@@ -213,7 +213,7 @@ void CCommandsTab::RemoveTab()
 		m_ComTabCtrl.Update();
 	}else
 	{
-		AfxMessageBox(CMsg(_T("IDS_TABLAST")), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("Can't delete the last tab")), MB_ICONSTOP);
 	}
 }
 
@@ -234,7 +234,7 @@ void CCommandsTab::OnBnClickedtabOK()
 
 	if (csLabel == "")
 	{
-		AfxMessageBox(CMsg(_T("IDS_MISSINGLABEL")), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("You must enter a Label")), MB_ICONSTOP);
 		return;
 	}
 
@@ -244,14 +244,14 @@ void CCommandsTab::OnBnClickedtabOK()
 		return;
 	}
 
-	Table TB = DB.QuerySQL(CSQL(_T("SELECT * FROM TABSLIST WHERE TabName LIKE '%1'"),csLabel));
+	Table TB = DB.QuerySQL(CFrmt(_T("SELECT * FROM TABSLIST WHERE TabName LIKE '%1'"),csLabel));
 	if(TB.GetRowCount()>0)
 	{
-		AfxMessageBox(CMsg(_T("IDS_TABEXIST"),true,csLabel), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("Tab '%1' already exists"),true,csLabel), MB_ICONSTOP);
 		return;
 	}
-	DB.ExecuteSQL(CSQL(_T("UPDATE TABSLIST SET TabName = '%1' WHERE TabName = '%2'"),csLabel,pComPage->csTabText));
-	DB.ExecuteSQL(CSQL(_T("ALTER TABLE '%1' RENAME TO '%2'"),pComPage->csTabText,csLabel));
+	DB.ExecuteSQL(CFrmt(_T("UPDATE TABSLIST SET TabName = '%1' WHERE TabName = '%2'"),csLabel,pComPage->csTabText));
+	DB.ExecuteSQL(CFrmt(_T("ALTER TABLE '%1' RENAME TO '%2'"),pComPage->csTabText,csLabel));
 	
 	pComPage->csTabText = csLabel;
 	m_ComTabCtrl.SetTabText(m_ComTabCtrl.GetSel(),csLabel);
@@ -294,7 +294,7 @@ void CCommandsTab::OnBnClickedbuttonOK()
 	CString csCommand = GetEditString(creButtonCommand);
 	if (csLabel == "")
 	{
-		AfxMessageBox(CMsg(_T("IDS_MISSINGLABEL")), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("You must enter a Label")), MB_ICONSTOP);
 		return;
 	}
 
@@ -304,20 +304,20 @@ void CCommandsTab::OnBnClickedbuttonOK()
 		return;
 	}
 
-	Table TB = DB.QuerySQL(CSQL(_T("SELECT * FROM %1 WHERE Name LIKE '%2'"),m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel()),csLabel));
+	Table TB = DB.QuerySQL(CFrmt(_T("SELECT * FROM %1 WHERE Name LIKE '%2'"),m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel()),csLabel));
 	if((TB.GetRowCount()>0)&&(csLabel!=csTitle))
 	{
-		AfxMessageBox(CMsg(_T("IDS_BUTTONEXIST"),true,csLabel), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("Button '%1' already exists"),true,csLabel), MB_ICONSTOP);
 		return;
 	}
 
 	if (csCommand == "")
 	{
-		AfxMessageBox(CMsg(_T("IDS_MISSINGCOMMAND")), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("You must enter a command")), MB_ICONSTOP);
 		return;
 	}
 
-	DB.ExecuteSQL(CSQL(_T("UPDATE %1 SET Name = '%2',Command = '%3' WHERE Name = '%4'"),m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel()),csLabel,csCommand,csTitle));
+	DB.ExecuteSQL(CFrmt(_T("UPDATE %1 SET Name = '%2',Command = '%3' WHERE Name = '%4'"),m_ComTabCtrl.GetTabText(m_ComTabCtrl.GetSel()),csLabel,csCommand,csTitle));
 
 	pEditButton->SetWindowText(csLabel);
 	pEditButton->csCommand = csCommand;

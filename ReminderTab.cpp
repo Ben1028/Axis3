@@ -65,7 +65,7 @@ END_MESSAGE_MAP()
 BOOL CReminderTab::OnInitDialog() 
 {
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_REMINDER")));
+	SetWindowText(CMsg(_T("Reminder")));
 	CDialogPage::OnInitDialog();
 	SetLanguage();
 	Axis->DBLng.CommitTransaction();
@@ -79,8 +79,8 @@ BOOL CReminderTab::OnInitDialog()
 	CTime tMax(2100,1,1,0,0,0);
 	m_cdtpDatePicker.SetRange(&tNow, &tMax);
 
-	m_clcList.InsertColumn(0, CMsg(_T("IDS_TITLE")), LVCFMT_LEFT, 100, -1);
-	m_clcList.InsertColumn(1,CMsg( _T("IDS_TYPE")), LVCFMT_LEFT, 66, -1);
+	m_clcList.InsertColumn(0, CMsg(_T("Title")), LVCFMT_LEFT, 100, -1);
+	m_clcList.InsertColumn(1,CMsg( _T("Type")), LVCFMT_LEFT, 66, -1);
 	LoadReminders();
 
 	initialized = TRUE;
@@ -91,31 +91,31 @@ BOOL CReminderTab::OnInitDialog()
 void CReminderTab::SetLanguage()
 {
 	m_ccbWeekday.ResetContent();
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY1")));
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY2")));
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY3")));
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY4")));
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY5")));
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY6")));
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY7")));
+	m_ccbWeekday.AddString(CMsg(_T("Sunday")));
+	m_ccbWeekday.AddString(CMsg(_T("Monday")));
+	m_ccbWeekday.AddString(CMsg(_T("Tuesday")));
+	m_ccbWeekday.AddString(CMsg(_T("Wednesday")));
+	m_ccbWeekday.AddString(CMsg(_T("Thursday")));
+	m_ccbWeekday.AddString(CMsg(_T("Friday")));
+	m_ccbWeekday.AddString(CMsg(_T("Saturday")));
 
-	GetDlgItem(IDC_GR_REMIND)->SetWindowText(CMsg(_T("IDS_REMIND_ME")));
-	GetDlgItem(IDC_GR_TIME)->SetWindowText(CMsg(_T("IDS_TIME")));
-	GetDlgItem(IDC_ST_TITLE)->SetWindowText(CMsg(_T("IDS_TITLE")));
+	GetDlgItem(IDC_GR_REMIND)->SetWindowText(CMsg(_T("Remind Me")));
+	GetDlgItem(IDC_GR_TIME)->SetWindowText(CMsg(_T("Time")));
+	GetDlgItem(IDC_ST_TITLE)->SetWindowText(CMsg(_T("Title")));
 
-	GetDlgItem(IDC_ADD)->SetWindowText(CMsg(_T("IDS_ADD")));
-	GetDlgItem(IDC_EDIT)->SetWindowText(CMsg(_T("IDS_EDIT")));
-	GetDlgItem(IDC_DELETE)->SetWindowText(CMsg(_T("IDS_DELETE")));
-	GetDlgItem(IDC_SAVE)->SetWindowText(CMsg(_T("IDS_SAVE")));
-	GetDlgItem(IDC_CANCEL)->SetWindowText(CMsg(_T("IDS_CANCEL")));
+	GetDlgItem(IDC_ADD)->SetWindowText(CMsg(_T("Add")));
+	GetDlgItem(IDC_EDIT)->SetWindowText(CMsg(_T("Edit")));
+	GetDlgItem(IDC_DELETE)->SetWindowText(CMsg(_T("Delete")));
+	GetDlgItem(IDC_SAVE)->SetWindowText(CMsg(_T("Save")));
+	GetDlgItem(IDC_CANCEL)->SetWindowText(CMsg(_T("Cancel")));
 
-	GetDlgItem(IDC_STARTUP)->SetWindowText(CMsg(_T("IDS_REM_STARTUP")));
+	GetDlgItem(IDC_STARTUP)->SetWindowText(CMsg(_T("On Startup")));
 
-	GetDlgItem(IDC_MONTHLY)->SetWindowText(CMsg(_T("IDS_MONTHLY")));
-	GetDlgItem(IDC_WEEKLY)->SetWindowText(CMsg(_T("IDS_WEEKLY")));
-	GetDlgItem(IDC_DAILY)->SetWindowText(CMsg(_T("IDS_DAILY")));
-	GetDlgItem(IDC_ONCE)->SetWindowText(CMsg(_T("IDS_ONCE")));
-	GetDlgItem(IDC_NEVER)->SetWindowText(CMsg(_T("IDS_NEVER")));
+	GetDlgItem(IDC_MONTHLY)->SetWindowText(CMsg(_T("Monthly")));
+	GetDlgItem(IDC_WEEKLY)->SetWindowText(CMsg(_T("Weekly")));
+	GetDlgItem(IDC_DAILY)->SetWindowText(CMsg(_T("Daily")));
+	GetDlgItem(IDC_ONCE)->SetWindowText(CMsg(_T("Once")));
+	GetDlgItem(IDC_NEVER)->SetWindowText(CMsg(_T("Never")));
 }
 
 void CReminderTab::OnMonthly()
@@ -127,7 +127,7 @@ void CReminderTab::OnMonthly()
 	m_ccbWeekday.ResetContent();
 
 	for (int i = 1; i <= 31; i++)
-		m_ccbWeekday.AddString(CMsg(_T("IDS_DECIMAL"),true,i));
+		m_ccbWeekday.AddString(CFrmt(_T("%1!d!"),i));
 
 	m_ccbWeekday.SetCurSel(tNow.GetDay()-1);
 	m_cdtpDatePicker.EnableWindow(false);
@@ -140,13 +140,13 @@ void CReminderTab::OnWeekly()
 	m_cdtpTimePicker.EnableWindow(m_bStartup ? false : true);
 	m_ccbWeekday.EnableWindow(true);
 	m_ccbWeekday.ResetContent();
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY1")));
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY2")));
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY3")));
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY4")));
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY5")));
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY6")));
-	m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY7")));
+	m_ccbWeekday.AddString(CMsg(_T("Sunday")));
+	m_ccbWeekday.AddString(CMsg(_T("Monday")));
+	m_ccbWeekday.AddString(CMsg(_T("Tuesday")));
+	m_ccbWeekday.AddString(CMsg(_T("Wednesday")));
+	m_ccbWeekday.AddString(CMsg(_T("Thursday")));
+	m_ccbWeekday.AddString(CMsg(_T("Friday")));
+	m_ccbWeekday.AddString(CMsg(_T("Saturday")));
 	m_ccbWeekday.SetCurSel(tNow.GetDayOfWeek()-1);
 	m_cdtpDatePicker.EnableWindow(false);
 }
@@ -260,7 +260,7 @@ void CReminderTab::OnDelete()
 {
 	int iIndex = m_clcList.GetSelectionMark();
 	CString csTitle = m_clcList.GetItemText(iIndex,0);
-	Axis->DBSettings.ExecuteSQL(CSQL(_T("DELETE FROM Reminders WHERE Title = '%1'"),csTitle));
+	Axis->DBSettings.ExecuteSQL(CFrmt(_T("DELETE FROM Reminders WHERE Title = '%1'"),csTitle));
 	m_clcList.DeleteItem(iIndex);
 	m_cbEdit.EnableWindow(false);
 	m_cbDelete.EnableWindow(false);
@@ -278,23 +278,23 @@ void CReminderTab::OnSave()
 
 	if(csTitle == "")
 	{
-		AfxMessageBox(CMsg(_T("IDS_REM_TITLE_EMPTY")), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("Title field empty")), MB_ICONSTOP);
 		return;
 	}
 	if(csText == "")
 	{
-		AfxMessageBox(CMsg(_T("IDS_REM_TEXT_EMPTY")), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("Text empty")), MB_ICONSTOP);
 		return;
 	}
 
 	if (bEditor)
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("DELETE FROM Reminders WHERE Title = '%1'"),m_clcList.GetItemText(m_clcList.GetSelectionMark(),0)));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("DELETE FROM Reminders WHERE Title = '%1'"),m_clcList.GetItemText(m_clcList.GetSelectionMark(),0)));
 
-	Table TBReminders = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Reminders WHERE Title = '%1'"),csTitle));
+	Table TBReminders = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM Reminders WHERE Title = '%1'"),csTitle));
 	if(TBReminders.GetRowCount() != 0)
 	{
 		//This Reminder already exists, stop here.
-		AfxMessageBox(CMsg(_T("IDS_REM_EXISTS"),true,csTitle), MB_ICONSTOP);
+		AfxMessageBox(CMsg(_T("Reminder '%1' already exists"),true,csTitle), MB_ICONSTOP);
 		return;
 	}
 
@@ -324,25 +324,25 @@ void CReminderTab::OnSave()
 		}
 	}
 
-	Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Reminders VALUES('%1','%2','%3!d!','%4!d!','%5!d!','%6!d!','%7!d!')"),csTitle,csText,iReminder,iStartup,iDate,iHour,iMin));
+	Axis->DBSettings.ExecuteSQL(CFrmt(_T("INSERT INTO Reminders VALUES('%1','%2','%3!d!','%4!d!','%5!d!','%6!d!','%7!d!')"),csTitle,csText,iReminder,iStartup,iDate,iHour,iMin));
 
 	CString csType;
 	switch(iReminder)
 	{
 	case 0:
-		csType = CMsg(_T("IDS_NEVER"));
+		csType = CMsg(_T("Never"));
 		break;
 	case 1:
-		csType = CMsg(_T("IDS_ONCE"));
+		csType = CMsg(_T("Once"));
 		break;
 	case 2:
-		csType = CMsg(_T("IDS_DAILY"));
+		csType = CMsg(_T("Daily"));
 		break;
 	case 3:
-		csType = CMsg(_T("IDS_WEEKLY"));
+		csType = CMsg(_T("Weekly"));
 		break;
 	case 4:
-		csType = CMsg(_T("IDS_MONTHLY"));
+		csType = CMsg(_T("Monthly"));
 		break;
 	}
 
@@ -414,19 +414,19 @@ void CReminderTab::LoadReminders()
 		switch(_ttoi(TBReminders.GetValue(_T("Type"))))
 		{
 			case 0:
-				csType = CMsg(_T("IDS_NEVER"));
+				csType = CMsg(_T("Never"));
 				break;
 			case 1:
-				csType = CMsg(_T("IDS_ONCE"));
+				csType = CMsg(_T("Once"));
 				break;
 			case 2:
-				csType = CMsg(_T("IDS_DAILY"));
+				csType = CMsg(_T("Daily"));
 				break;
 			case 3:
-				csType = CMsg(_T("IDS_WEEKLY"));
+				csType = CMsg(_T("Weekly"));
 				break;
 			case 4:
-				csType = CMsg(_T("IDS_MONTHLY"));
+				csType = CMsg(_T("Monthly"));
 				break;
 		}
 		m_clcList.InsertItem(iIndex, TBReminders.GetValue(_T("Title")), 0);
@@ -452,18 +452,18 @@ void CReminderTab::OnListChange(NMHDR* pNMHDR, LRESULT* pResult)
 		m_cdtpTimePicker.SetTime(&tNow);
 		m_cdtpDatePicker.SetTime(&tNow);
 		m_ccbWeekday.ResetContent();
-		m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY1")));
-		m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY2")));
-		m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY3")));
-		m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY4")));
-		m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY5")));
-		m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY6")));
-		m_ccbWeekday.AddString(CMsg(_T("IDS_WEEKDAY7")));
+		m_ccbWeekday.AddString(CMsg(_T("Sunday")));
+		m_ccbWeekday.AddString(CMsg(_T("Monday")));
+		m_ccbWeekday.AddString(CMsg(_T("Tuesday")));
+		m_ccbWeekday.AddString(CMsg(_T("Wednesday")));
+		m_ccbWeekday.AddString(CMsg(_T("Thursday")));
+		m_ccbWeekday.AddString(CMsg(_T("Friday")));
+		m_ccbWeekday.AddString(CMsg(_T("Saturday")));
 		m_ccbWeekday.SetCurSel(tNow.GetDayOfWeek()-1);
 
 		CString csTitle, csText;
 		csTitle = m_clcList.GetItemText(iSelIndex,0);
-		Table TBReminders = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Reminders WHERE Title = '%1'"),csTitle));
+		Table TBReminders = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM Reminders WHERE Title = '%1'"),csTitle));
 		if(TBReminders.GetRowCount() == 0)
 			return;
 
@@ -525,7 +525,7 @@ void CReminderTab::OnListChange(NMHDR* pNMHDR, LRESULT* pResult)
 				m_crMonthly.SetCheck(1);
 				m_ccbWeekday.ResetContent();
 				for (int i = 1; i <= 31; i++)
-					m_ccbWeekday.AddString(CMsg(_T("IDS_DECIMAL"),true,i));
+					m_ccbWeekday.AddString(CFrmt(_T("%1!d!"),i));
 				m_ccbWeekday.SetCurSel(iDate-1);
 			}
 			break;

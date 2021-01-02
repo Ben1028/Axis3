@@ -33,23 +33,23 @@ BOOL CSearchCritDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_SEARCHCRITERIA")));
+	SetWindowText(CMsg(_T("Search Criteria")));
 
-	GetDlgItem(IDC_STATICSEARCH)->SetWindowText(CMsg(_T("IDS_SEARCHBY")));
-	GetDlgItem(IDC_ID_SEARCH)->SetWindowText(CMsg(_T("IDS_ID")));
-	GetDlgItem(IDC_DEF_SEARCH)->SetWindowText(CMsg(_T("IDS_DEFNAME")));
-	GetDlgItem(IDC_DESC_SEARCH)->SetWindowText(CMsg(_T("IDS_DESCRIPTION")));
-	GetDlgItem(IDC_STATICVALUE)->SetWindowText(CMsg(_T("IDS_PATTERN")));
-	GetDlgItem(IDC_STATICINFO)->SetWindowText(CMsg(_T("IDS_SEARCHINFO")));
-	GetDlgItem(IDOK)->SetWindowText(CMsg(_T("IDS_OK")));
+	GetDlgItem(IDC_STATICSEARCH)->SetWindowText(CMsg(_T("Search by")));
+	GetDlgItem(IDC_DEF_SEARCH)->SetWindowText(CMsg(_T("Defname")));
+	GetDlgItem(IDC_DESC_SEARCH)->SetWindowText(CMsg(_T("Description")));
+	GetDlgItem(IDC_STATICVALUE)->SetWindowText(CMsg(_T("Pattern")));
+	GetDlgItem(IDC_STATICINFO)->SetWindowText(CMsg(_T("Pattern search:\r\n% = Any amount of characters or none\r\n_ = Any 1 character")));
+	GetDlgItem(IDOK)->SetWindowText(CMsg(_T("OK")));
 
 	if (bArea)
 	{
-		GetDlgItem(IDC_ID_SEARCH)->SetWindowText(CMsg(_T("IDS_COORDINATE")));
+		GetDlgItem(IDC_ID_SEARCH)->SetWindowText(CMsg(_T("Coordinate")));
 		m_ceValue.SetWindowText(GetSettingString(_T("SearchAreaPattern")));
 	}
 	else
 	{
+		GetDlgItem(IDC_ID_SEARCH)->SetWindowText(CMsg(_T("ID")));
 		m_ceValue.SetWindowText(GetSettingString(_T("SearchObjectPattern")));
 	}
 

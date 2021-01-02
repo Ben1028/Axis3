@@ -37,7 +37,6 @@ protected:
 	afx_msg void OnBnClickedDelData();
 	afx_msg void OnBnClickedDelLang();
 	afx_msg void OnBnClickedAddLang();
-	afx_msg void OnEditchangeID();
 
 	void FillData();
 

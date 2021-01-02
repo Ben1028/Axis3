@@ -64,8 +64,8 @@ using namespace SQLite;
 
 
 /*
-	AfxMessageBox(CMsg(_T("IDS_DECIMAL"),true,iCount));
-	AfxMessageBox(CMsg(_T("%1!d! - %2!d!"),true,,));
+	AfxMessageBox(CFrmt(_T("%1!d!"),iCount));
+	AfxMessageBox(CFrmt(_T("%1!d! - %2!d!"),,));
 	AfxMessageBox(_T("true"));
 
 	CFileException ex;

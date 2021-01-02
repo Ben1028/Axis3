@@ -51,16 +51,16 @@ BOOL CAxis3App::InitInstance()
 
 	if (!AfxSocketInit())
 	{
-		AfxMessageBox(IDP_SOCKETS_INIT_FAILED);
+		AfxMessageBox(_T("Windows sockets initialization failed."));
 		return FALSE;
 	}
 
 	//Open Log file
-	if (logFile.Open(CMsg(_T("AxisLogs/Axislog-%1.txt"), true, CTime::GetCurrentTime().Format("%Y%m%d")), CFile::modeWrite | CFile::modeCreate | CFile::modeNoTruncate | CFile::shareDenyNone))
+	if (logFile.Open(CFrmt(_T("AxisLogs/Axislog-%1.txt"), CTime::GetCurrentTime().Format("%Y%m%d")), CFile::modeWrite | CFile::modeCreate | CFile::modeNoTruncate | CFile::shareDenyNone))
 	{
 		logFile.SeekToEnd();
 	}
-	Log(CMsg(_T("Axis3 Launched: %1"), true, CTime::GetCurrentTime().Format("%H:%M:%S")));
+	Log(CFrmt(_T("Axis3 Launched: %1"), CTime::GetCurrentTime().Format("%H:%M:%S")));
 
 	// Set Application Root Path
 	TCHAR str[MAX_PATH];
@@ -69,18 +69,18 @@ BOOL CAxis3App::InitInstance()
 	m_csRootDirectory = strDir.Left(strDir.ReverseFind(_T('\\'))+1);
 
 	//Load Default Settings File
-	CString csPath = CMsg(_T("%1Settings"), true, m_csRootDirectory);
-	Log(CMsg(_T("Return %2!d! - Opening Default Settings: %1"), true, csPath, DBSettings.Open(csPath)));
+	CString csPath = CFrmt(_T("%1Settings"), m_csRootDirectory);
+	Log(CFrmt(_T("Return %2!d! - Opening Default Settings: %1"), csPath, DBSettings.Open(csPath)));
 
 	//Load Profile
 	csProfile = GetDefaultString(_T("Profile"));
-	csPath = CMsg(_T("%1/Data.db"), true, csProfile);
-	Log(CMsg(_T("Return %2!d! - Opening Profile Data: %1"), true, csPath, DBData.Open(csPath)));
+	csPath = CFrmt(_T("%1/Data.db"), csProfile);
+	Log(CFrmt(_T("Return %2!d! - Opening Profile Data: %1"), csPath, DBData.Open(csPath)));
 
 	//Load Language File
 	csLangCode = GetSettingString(_T("LangCode"));
-	csPath = CMsg(_T("%1Lang"), true, m_csRootDirectory);
-	Log(CMsg(_T("Return %2!d! - Opening Lang File: %1"), true, csPath, DBLng.Open(csPath)));
+	csPath = CFrmt(_T("%1Lang"), m_csRootDirectory);
+	Log(CFrmt(_T("Return %2!d! - Opening Lang File: %1"), csPath, DBLng.Open(csPath)));
 
 	//Check if first time running
 	if ((GetSettingString(_T("MulPath")) == _T("")) || (GetSettingString(_T("UOClient")) == _T("")))
@@ -90,12 +90,12 @@ BOOL CAxis3App::InitInstance()
 		//Not allowed to run without a mulpath set
 		if (GetSettingString(_T("MulPath")) == _T(""))
 		{
-			AfxMessageBox(CMsg(_T("IDS_ERROR_MULPATH")), MB_ICONERROR);
+			AfxMessageBox(CMsg(_T("A MulPath must be set to continue!")), MB_ICONERROR);
 			return FALSE;
 		}
 		if (GetSettingString(_T("UOClient")) == _T(""))
 		{
-			AfxMessageBox(CMsg(_T("IDS_ERROR_CLIENT")), MB_ICONERROR);
+			AfxMessageBox(CMsg(_T("A Client Path must be set to continue!")), MB_ICONERROR);
 			return FALSE;
 		}
 		SetDefaultString(_T("MulPath"), GetSettingString(_T("MulPath")));
@@ -141,20 +141,20 @@ CString CAxis3App::GetVersionTitle()
 	unsigned int iDataSize = 80;
 	LPVOID pData;
 	VerQueryValue(pBuffer, _T("\\StringFileInfo\\040904b0\\ProductVersion"), &pData, &iDataSize);
-	CString csVersionInfo = CMsg(_T("%1"),true,pData);
+	CString csVersionInfo = CFrmt(_T("%1"),pData);
 
 	delete [] pBuffer;
 	
 	csVersionInfo.Replace(_T(","), _T("."));
 	csVersionInfo.Replace(_T(" "), _T(""));
 
-	return CMsg(_T("IDS_AXIS_VERSION"),true,csVersionInfo);
+	return CMsg(_T("Axis3 version %1"),true,csVersionInfo);
 }
 
 
 CString CAxis3App::GetBuildTimestamp()
 {
-	return CMsg(_T("%1 %2"), __DATE__, __TIME__);
+	return CFrmt(_T("%1 %2"), __DATE__, __TIME__);
 }
 
 CAxis3App::~CAxis3App()

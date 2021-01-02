@@ -67,11 +67,11 @@
 #define IDC_VERSION                     1002
 #define IDC_AS_MULBROWSE                1002
 #define IDC_MULBROWSE                   1002
+#define IDC_SPFREEZE                    1002
 #define IDC_SERVINFO                    1003
 #define IDC_CLIENTS                     1004
 #define IDC_EDIT                        1005
 #define IDC_INFO                        1006
-#define IDC_TRACK                       1006
 #define IDC_ADMIN                       1007
 #define IDC_NUKE                        1008
 #define IDC_DEFAULTCLIENT               1008
@@ -132,6 +132,7 @@
 #define IDC_DISCONNECT                  1046
 #define IDC_COM_MACRO                   1046
 #define IDC_KILL                        1047
+#define IDC_FRAME_SELECT                1047
 #define IDC_FORGIVE                     1048
 #define IDC_JAIL                        1049
 #define IDC_BUTTONCANCEL                1050
@@ -149,10 +150,15 @@
 #define IDC_RECONNECT                   1058
 #define IDC_IPADDRESS                   1059
 #define IDC_MAPPLANE                    1059
+#define IDC_COORDM                      1059
+#define IDC_HOMEDIST                    1059
 #define IDC_ACCT                        1060
+#define IDC_COORDZ                      1060
 #define IDC_PORT                        1061
 #define IDC_SEARCH_VALUE                1061
+#define IDC_COORDX                      1061
 #define IDC_ACCTNAME                    1062
+#define IDC_COORDY                      1062
 #define IDC_PWD                         1063
 #define IDC_PREFIX                      1063
 #define IDC_SPORT                       1064
@@ -268,7 +274,6 @@
 #define IDC_BUTTON4                     1133
 #define IDC_BUTTON5                     1134
 #define IDC_FINDITEM                    1134
-#define IDC_LOCATE                      1134
 #define IDC_EDIT2                       1135
 #define IDC_AMOUNT                      1135
 #define IDC_ID                          1135
@@ -339,13 +344,18 @@
 #define IDC_STATICZ                     1179
 #define IDC_STATICSEARCH                1180
 #define IDC_STATICVALUE                 1181
+#define IDC_SETHOME                     1181
 #define IDC_STATICINFO                  1182
+#define IDC_SETHOMEDIST                 1182
 #define IDC_LOCAL                       1184
 #define IDC_SPHERETABLE                 1185
-#define IDC_COORDS                      1227
+#define IDC_LOCATIONS                   1186
+#define IDC_STATICMAP                   1187
+#define IDC_STATICX                     1188
+#define IDC_STATICY                     1189
+#define IDC_STATICM                     1190
 #define IDC_ZOOMOUT                     1379
 #define IDC_ZOOMIN                      1380
-#define IDC_WORLD                       1383
 #define ID_SETTINGS_GENERAL             32771
 #define ID_SETTINGS_TRAVEL              32772
 #define ID_PROFILE_OPTOINS              32773
@@ -369,9 +379,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        179
+#define _APS_NEXT_RESOURCE_VALUE        180
 #define _APS_NEXT_COMMAND_VALUE         32784
-#define _APS_NEXT_CONTROL_VALUE         1186
+#define _APS_NEXT_CONTROL_VALUE         1191
 #define _APS_NEXT_SYMED_VALUE           105
 #endif
 #endif

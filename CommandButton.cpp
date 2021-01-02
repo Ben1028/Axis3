@@ -34,8 +34,8 @@ void CComButton::OnRButtonDown(UINT /*nFlags*/, CPoint point)
 	HMENU hMenu = ::CreatePopupMenu();
 	if (NULL != hMenu)
 	{
-		::AppendMenu(hMenu, MF_STRING, 2, CMsg(_T("IDS_BUTTONEDIT")));
-		::AppendMenu(hMenu, MF_STRING, 1, CMsg(_T("IDS_BUTTONREMOVE")));
+		::AppendMenu(hMenu, MF_STRING, 2, CMsg(_T("Edit Button")));
+		::AppendMenu(hMenu, MF_STRING, 1, CMsg(_T("Remove Button")));
 
 		int sel = ::TrackPopupMenuEx(hMenu, 
 				TPM_CENTERALIGN | TPM_RETURNCMD,

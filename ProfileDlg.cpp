@@ -48,16 +48,16 @@ BOOL CProfileDlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_PROFILE_SETTINGS")));
+	SetWindowText(CMsg(_T("Profile Settings")));
 
-	GetDlgItem(IDC_SNAME)->SetWindowText(CMsg(_T("IDS_NAME")));
-	GetDlgItem(IDC_SIP)->SetWindowText(CMsg(_T("IDS_IP_ADDRESS")));
-	GetDlgItem(IDC_SACCT)->SetWindowText(CMsg(_T("IDS_ACCOUNT")));
-	GetDlgItem(IDC_SPASS)->SetWindowText(CMsg(_T("IDS_PASSWORD")));
-	GetDlgItem(IDC_SPORT)->SetWindowText(CMsg(_T("IDS_PORT")));
-	GetDlgItem(IDOK)->SetWindowText(CMsg(_T("IDS_LOAD")));
-	GetDlgItem(IDC_CANCEL)->SetWindowText(CMsg(_T("IDS_DELETE")));
-	GetDlgItem(IDC_SELECT)->SetWindowText(CMsg(_T("IDS_SELECT")));
+	GetDlgItem(IDC_SNAME)->SetWindowText(CMsg(_T("Name")));
+	GetDlgItem(IDC_SIP)->SetWindowText(CMsg(_T("IP Address")));
+	GetDlgItem(IDC_SACCT)->SetWindowText(CMsg(_T("Account")));
+	GetDlgItem(IDC_SPASS)->SetWindowText(CMsg(_T("Password")));
+	GetDlgItem(IDC_SPORT)->SetWindowText(CMsg(_T("Port")));
+	GetDlgItem(IDOK)->SetWindowText(CMsg(_T("Load")));
+	GetDlgItem(IDC_CANCEL)->SetWindowText(CMsg(_T("Delete")));
+	GetDlgItem(IDC_SELECT)->SetWindowText(CMsg(_T("Select")));
 	Axis->DBLng.CommitTransaction();
 
 	//Fill Combobox
@@ -94,15 +94,15 @@ void CProfileDlg::OnOK()
 	csAccountName = GetEditString(m_ccbName);
 	csPath = GetEditString(m_csSphereTables);
 
-	Table TBRCAccount = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Profiles WHERE Name = '%1'"), csAccountName));
+	Table TBRCAccount = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM Profiles WHERE Name = '%1'"), csAccountName));
 	if(TBRCAccount.GetRowCount() != 0)
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("UPDATE Profiles SET IPAddress = '%1!d!', Port = '%2', Account = '%3', Password = '%4', Path = '%5', Type = '%6!d!' WHERE Name = '%7'"),dwAddress,csPort,csAccount,csPassword,csPath,m_bLocal,csAccountName));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("UPDATE Profiles SET IPAddress = '%1!d!', Port = '%2', Account = '%3', Password = '%4', Path = '%5', Type = '%6!d!' WHERE Name = '%7'"),dwAddress,csPort,csAccount,csPassword,csPath,m_bLocal,csAccountName));
 	else
-		Axis->DBSettings.ExecuteSQL(CSQL(_T("INSERT INTO Profiles VALUES('%1','%2!d!','%3','%4','%5','%6','%7!d!')"), csAccountName,dwAddress,csPort,csAccount,csPassword, csPath, m_bLocal));
+		Axis->DBSettings.ExecuteSQL(CFrmt(_T("INSERT INTO Profiles VALUES('%1','%2!d!','%3','%4','%5','%6','%7!d!')"), csAccountName,dwAddress,csPort,csAccount,csPassword, csPath, m_bLocal));
 
 	SetDefaultString(_T("Profile"), csAccountName);
 	Axis->csProfile = csAccountName;
-	Axis->DBSettings.ExecuteSQL(CSQL(_T("CREATE TABLE IF NOT EXISTS 'Settings_Profile_%1' (ID TEXT, Value TEXT)"),csAccountName));
+	Axis->DBSettings.ExecuteSQL(CFrmt(_T("CREATE TABLE IF NOT EXISTS 'Settings_Profile_%1' (ID TEXT, Value TEXT)"),csAccountName));
 
 	CreateDirectoryTree(csAccountName);
 
@@ -115,15 +115,15 @@ void CProfileDlg::OnSelectProfile()
 	SetDefaultString(_T("Profile"), csAccountName);
 	Axis->csProfile = csAccountName;
 	Axis->DBData.Close();
-	Axis->DBData.Open(CMsg(_T("%1/Data.db"),true,csAccountName));
+	Axis->DBData.Open(CFrmt(_T("%1/Data.db"),csAccountName));
 	m_bSelect = true;
 	CDialogEx::OnCancel();
 }
 
 void CProfileDlg::OnDelete()
 {
-	Axis->DBSettings.ExecuteSQL(CSQL(_T("DELETE FROM Profiles WHERE Name = '%1'"),csAccountName));
-	Axis->DBSettings.ExecuteSQL(CSQL(_T("DROP TABLE Settings_Profile_%1"),csAccountName));
+	Axis->DBSettings.ExecuteSQL(CFrmt(_T("DELETE FROM Profiles WHERE Name = '%1'"),csAccountName));
+	Axis->DBSettings.ExecuteSQL(CFrmt(_T("DROP TABLE Settings_Profile_%1"),csAccountName));
 	DeleteDirectoryTree(csAccountName);
 	CDialogEx::OnCancel();
 }
@@ -145,7 +145,7 @@ void CProfileDlg::OnSelchangeAcctname()
 	}
 	m_ccbName.GetLBText(m_iSel, csAccountName);
 
-	Table TBRCAccount = Axis->DBSettings.QuerySQL(CSQL(_T("SELECT * FROM Profiles WHERE Name = '%1'"), csAccountName));
+	Table TBRCAccount = Axis->DBSettings.QuerySQL(CFrmt(_T("SELECT * FROM Profiles WHERE Name = '%1'"), csAccountName));
 	m_ceAddress.SetAddress(_ttoi(TBRCAccount.GetValue(_T("IPAddress"))));
 	m_cePort.SetWindowText(TBRCAccount.GetValue(_T("Port")));
 	m_ceAccount.SetWindowText(TBRCAccount.GetValue(_T("Account")));
@@ -162,15 +162,15 @@ void CProfileDlg::OnSelchangeAcctname()
 	}
 
 	CFile fData;
-	if ( fData.Open(CMsg(_T("%1/Data.db"),true,csAccountName), CFile::modeRead | CFile::shareDenyNone) )
+	if ( fData.Open(CFrmt(_T("%1/Data.db"),csAccountName), CFile::modeRead | CFile::shareDenyNone) )
 	{
 		fData.Close();
-		GetDlgItem(IDOK)->SetWindowText(CMsg(_T("IDS_RELOAD")));
+		GetDlgItem(IDOK)->SetWindowText(CMsg(_T("ReLoad")));
 		m_cbSelect.EnableWindow(true);
 	}
 	else
 	{
-		GetDlgItem(IDOK)->SetWindowText(CMsg(_T("IDS_LOAD")));
+		GetDlgItem(IDOK)->SetWindowText(CMsg(_T("Load")));
 		m_cbSelect.EnableWindow(false);
 	}
 	if (m_bLocal)
@@ -212,7 +212,7 @@ void CProfileDlg::OnEditchangeAcctname()
 	m_iSel = -1;
 	csAccountName = " ";
 	m_cbSelect.EnableWindow(false);
-	GetDlgItem(IDOK)->SetWindowText(CMsg(_T("IDS_LOAD")));
+	GetDlgItem(IDOK)->SetWindowText(CMsg(_T("Load")));
 	m_cbDelete.EnableWindow(false);
 }
 

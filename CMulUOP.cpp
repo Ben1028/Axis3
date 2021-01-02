@@ -15,22 +15,40 @@ END_MESSAGE_MAP()
 
 CMulUOP::CMulUOP()
 {
-	//SetScale();
+	SetScale();
 	bAutoScale = false;
+	bIsMap = false;
 }
 
 CMulUOP::~CMulUOP()
 {
+	m_Mapdata.RemoveAll();
 	CleanHashArray(m_aMapHash);
 	CleanHashArray(m_aStaticHash);
 }
 
-void CMulUOP::InitDisplay()
+void CMulUOP::InitDisplay(bool bMap)
 {
+	bIsMap = bMap;
 	CRect rcBounds;
 	GetClientRect(&rcBounds);
 	Drawbmp.Create(rcBounds.Width(), rcBounds.Height());
 	Drawbmp.Clear(GetColorRef(GetSettingNum(_T("ViewerBGColor"))));
+
+	if (bIsMap)
+	{
+		//create crosshair for map dispplay
+		Centerbmp.Create(5, 5);
+		Centerbmp.Clear(RGB(0, 0, 0));
+		for (int x = 0; x < 5; x++)
+		{
+			Centerbmp.SetPixel(x, 2, RGB(255, 255, 255));
+		}
+		for (int y = 0; y < 5; y++)
+		{
+			Centerbmp.SetPixel(2, y, RGB(255, 255, 255));
+		}
+	}
 }
 
 void CMulUOP::OnSize(UINT nType, int cx, int cy)
@@ -65,61 +83,64 @@ void CMulUOP::OnPaint()
 void CMulUOP::DisplayObj()
 {
 	Drawbmp.Clear(GetColorRef(GetSettingNum(_T("ViewerBGColor"))));
-	int diWidth, diHeight, siWidth, siHeight;
+	int diWidth, diHeight, siWidth, siHeight, dx, dy;
 	int sx = 0;
 	int sy = 0;
 
-	if (bAutoScale)
+	if (bIsMap)
 	{
-		diWidth = Drawbmp.GetWidth();
-		diHeight = Drawbmp.GetHeight();
-		siWidth = Objbmp.GetWidth();
-		siHeight = Objbmp.GetHeight();
+		sx = max(iCenterX,(Drawbmp.GetWidth()/2)*flArtScale);
+		sx = min(sx,((Objbmp.GetWidth()/flArtScale) - (Drawbmp.GetWidth()/2))*flArtScale);
+		sx = max(sx - ((Drawbmp.GetWidth()/2)*flArtScale),0);
+
+		sy = max(iCenterY,(Drawbmp.GetHeight()/2)*flArtScale);
+		sy = min(sy,((Objbmp.GetHeight()/flArtScale) - (Drawbmp.GetHeight()/2))*flArtScale);
+		sy = max(sy - ((Drawbmp.GetHeight()/2)*flArtScale),0);
+
+		diWidth = min(Objbmp.GetWidth() / flArtScale, Drawbmp.GetWidth());
+		diHeight = min(Objbmp.GetHeight() / flArtScale, Drawbmp.GetHeight());
+		siWidth = diWidth * flArtScale;
+		siHeight = diHeight * flArtScale;
+
+		dx = (Drawbmp.GetWidth() - diWidth) / 2;
+		dy = (Drawbmp.GetHeight() - diHeight) / 2;
+
+		Drawbmp.Draw(dx, dy, diWidth, diHeight, Objbmp, sx, sy, siWidth, siHeight);
+
+		idispcenterX = (iCenterX / flArtScale) + (dx - (sx / flArtScale)) - 2;
+		idispcenterY = (iCenterY / flArtScale) + (dy - (sy / flArtScale)) - 2;
+
+		Drawbmp.DrawTransparent(idispcenterX, idispcenterY, 5, 5, Centerbmp, 0, 0, RGB(0, 0, 0));
 	}
 	else
 	{
-		sx = max(sx, (Objbmp.GetWidth() - Drawbmp.GetWidth()) / 2);
-		sy = max(sy, (Objbmp.GetHeight() - Drawbmp.GetHeight()) / 2);
-		siWidth = diWidth = min(Objbmp.GetWidth(), Drawbmp.GetWidth());
-		siHeight = diHeight = min(Objbmp.GetHeight(), Drawbmp.GetHeight());
+		if (bAutoScale)
+		{
+			diWidth = Drawbmp.GetWidth();
+			diHeight = Drawbmp.GetHeight();
+			siWidth = Objbmp.GetWidth();
+			siHeight = Objbmp.GetHeight();
+		}
+		else
+		{
+			sx = max(sx, (Objbmp.GetWidth() - Drawbmp.GetWidth()) / 2);
+			sy = max(sy, (Objbmp.GetHeight() - Drawbmp.GetHeight()) / 2);
+			siWidth = diWidth = min(Objbmp.GetWidth(), Drawbmp.GetWidth());
+			siHeight = diHeight = min(Objbmp.GetHeight(), Drawbmp.GetHeight());
+		}
+		dx = (Drawbmp.GetWidth() - diWidth) / 2;
+		dy = (Drawbmp.GetHeight() - diHeight) / 2;
+
+		Drawbmp.DrawTransparent(dx, dy, diWidth, diHeight, Objbmp, sx, sy, siWidth, siHeight, RGB(0, 0, 0));
 	}
-
-	int dx = (Drawbmp.GetWidth() - diWidth) / 2;
-	int dy = (Drawbmp.GetHeight() - diHeight) / 2;
-
-	Drawbmp.DrawTransparent(dx, dy, diWidth, diHeight, Objbmp, sx, sy, siWidth, siHeight, RGB(0, 0, 0));
-
 	SetInvalid();
 }
-//void CMulUOP::DisplayObj(int sx, int sy, bool bAlfa, bool bReset)
-//{
-//	sx = max(sx,(Drawbmp.GetWidth()/2)*flArtScale);
-//	sx = min(sx,((Objbmp.GetWidth()/flArtScale) - (Drawbmp.GetWidth()/2))*flArtScale);
-//	sx = max(sx - ((Drawbmp.GetWidth()/2)*flArtScale),0);
-//	sy = max(sx,(Drawbmp.GetHeight()/2)*flArtScale);
-//	sy = min(sy,((Objbmp.GetHeight()/flArtScale) - (Drawbmp.GetHeight()/2))*flArtScale);
-//	sy = max(sy - ((Drawbmp.GetHeight()/2)*flArtScale),0);
-//
-//	int iWidth = min((Objbmp.GetWidth()/flArtScale),Drawbmp.GetWidth());
-//	int iHeight = min((Objbmp.GetHeight()/flArtScale),Drawbmp.GetHeight());
-//
-//	int dx = (Drawbmp.GetWidth()-iWidth)/2;
-//	int dy = (Drawbmp.GetHeight()-iHeight)/2;
-//
-//	if (bReset)
-//		Drawbmp.Clear(GetColorRef(GetSettingNum(_T("ViewerBGColor"))));
-//
-//	if (bAlfa)
-//		Drawbmp.DrawTransparent(dx, dy, iWidth, iHeight, Objbmp, sx, sy, iWidth, iHeight, RGB(0,0,0));
-//	else
-//		Drawbmp.Draw(dx, dy, iWidth, iHeight, Objbmp, sx, sy, iWidth, iHeight);
-//	SetInvalid();
-//}
 
-//void CMulUOP::SetScale(float flScale)
-//{
-//	flArtScale = max(flScale,0.01);
-//}
+void CMulUOP::SetScale(float flScale)
+{
+	flArtScale = max(flScale,0.125);
+	flArtScale = min(flArtScale, 8);
+}
 
 void CMulUOP::SetAutoScale(bool bScale)
 {
@@ -134,7 +155,7 @@ float CMulUOP::GetScale()
 void CMulUOP::SetCenterX(int x)
 {
 	iCenterX = max(x,0);
-	iCenterX = min(x,Objbmp.GetWidth());
+	iCenterX = min(iCenterX,Objbmp.GetWidth()-1);
 }
 
 int CMulUOP::GetCenterX()
@@ -145,12 +166,17 @@ int CMulUOP::GetCenterX()
 void CMulUOP::SetCenterY(int y)
 {
 	iCenterY = max(y,0);
-	iCenterY = min(y,Objbmp.GetHeight());
+	iCenterY = min(iCenterY,Objbmp.GetHeight()-1);
 }
 
 int CMulUOP::GetCenterY()
 {
 	return iCenterY;
+}
+
+CHAR CMulUOP::GetMapHeight(int x, int y)
+{
+	return m_Mapdata.GetAt((x * Objbmp.GetHeight()) + y);
 }
 
 CBitmapEx CMulUOP::DrawError()
@@ -248,7 +274,7 @@ CBitmapEx CMulUOP::GetArtBMP(CFile &fData, ArtIdx indexRec, DWORD dwArtIndex, WO
 void CMulUOP::DrawArt(DWORD dwArtIndex, WORD wAppliedColor)
 {
 	//Check if we have a cache that matches
-	if (Objbmp.Load(CMsg(_T("IDS_ART_FILENAME"), true, Axis->csProfile, dwArtIndex, wAppliedColor)))
+	if (Objbmp.Load(CFrmt(_T("%1/Art/Static/0%2!X!_0%3!X!.bmp"), Axis->csProfile, dwArtIndex, wAppliedColor)))
 		return;
 
 	dwArtIndex += 0x4000;
@@ -290,7 +316,7 @@ void CMulUOP::DrawArt(DWORD dwArtIndex, WORD wAppliedColor)
 	{
 		Objbmp.Create(GetArtBMP(fData, indexRec, dwArtIndex, wAppliedColor));
 		//Cache Image for later use
-		Objbmp.Save(CMsg(_T("IDS_ART_FILENAME"), true, Axis->csProfile, dwArtIndex, wAppliedColor));
+		Objbmp.Save(CFrmt(_T("%1/Art/Static/0%2!X!_0%3!X!.bmp"), Axis->csProfile, dwArtIndex, wAppliedColor));
 	}
 	else
 	{
@@ -301,7 +327,7 @@ void CMulUOP::DrawArt(DWORD dwArtIndex, WORD wAppliedColor)
 void CMulUOP::DrawMulti(DWORD dwArtIndex)
 {
 	//Check if we have a cache that matches
-	if (Objbmp.Load(CMsg(_T("IDS_MULTI_FILENAME"), true, Axis->csProfile, dwArtIndex)))
+	if (Objbmp.Load(CFrmt(_T("%1/Art/Multi/0%2!X!.bmp"), Axis->csProfile, dwArtIndex)))
 		return;
 
 	CString csDataFile, csIndexFile;
@@ -514,7 +540,7 @@ void CMulUOP::DrawMulti(DWORD dwArtIndex)
 			delete[] grid;
 			Objbmp.Crop(MinX, MinY, MaxX - MinX, MaxY - MinY);
 			//Cache Image for later use
-			Objbmp.Save(CMsg(_T("IDS_MULTI_FILENAME"), true, Axis->csProfile, dwArtIndex));
+			Objbmp.Save(CFrmt(_T("%1/Art/Multi/0%2!X!.bmp"), Axis->csProfile, dwArtIndex));
 		}
 		catch (...)
 		{
@@ -713,17 +739,28 @@ void CMulUOP::DrawMap(int iMap)
 	bool bDrawStaticDifs = (bDrawMapDifs && bDrawStatics);
 
 	//Check if we have a cache that matches the settings
-	if (Objbmp.Load(CMsg(_T("IDS_MAP_FILENAME"), true, Axis->csProfile, iMap, bDrawStatics, bDrawMapDifs, bDrawStaticDifs)))
-		return;
+	if (Objbmp.Load(CFrmt(_T("%1/Art/Map/%2!d!_s%3!d!_md%4!d!_sd%5!d!.bmp"), Axis->csProfile, iMap, bDrawStatics, bDrawMapDifs, bDrawStaticDifs)))
+	{
+		CFile fMapHeights;
+		if (fMapHeights.Open(CFrmt(_T("%1/Art/Map/%2!d!_s%3!d!_md%4!d!_sd%5!d!.mfd"), Axis->csProfile, iMap, bDrawStatics, bDrawMapDifs, bDrawStaticDifs), CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone))
+		{
+			m_Mapdata.RemoveAll();
+			m_Mapdata.SetSize(static_cast<INT_PTR>(fMapHeights.GetLength()));
+			fMapHeights.SeekToBegin();
+			fMapHeights.Read(m_Mapdata.GetData(), m_Mapdata.GetSize());
+			fMapHeights.Close();
+			return;
+		}
+	}
 
 	//Check if we can draw the Map
 	CFile fData, fStatic, fStaidx;
 	CFile fMapDifl, fMapDif, fStaDifl, fStaDifi, fStaDif;
 	CString csMapFileName;
 	if (Axis->IsMapUOP)
-		csMapFileName = GetMulPath(CMsg(_T("Map%1!d!UOP"),true,iMap));
+		csMapFileName = GetMulPath(CFrmt(_T("Map%1!d!UOP"),iMap));
 	else
-		csMapFileName = GetMulPath(CMsg(_T("Map%1!d!Mul"),true,iMap));
+		csMapFileName = GetMulPath(CFrmt(_T("Map%1!d!Mul"),iMap));
 
 	if ( !fData.Open(csMapFileName, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone) )
 	{
@@ -738,8 +775,8 @@ void CMulUOP::DrawMap(int iMap)
 	//Check if we want and can draw map statics
 	if (bDrawStatics)
 	{
-		CString csStaticIdxName = GetMulPath(CMsg(_T("Staidx%1!d!"),true,iMap));
-		CString csStaticFileName = GetMulPath(CMsg(_T("Statics%1!d!"),true,iMap));
+		CString csStaticIdxName = GetMulPath(CFrmt(_T("Staidx%1!d!"),iMap));
+		CString csStaticFileName = GetMulPath(CFrmt(_T("Statics%1!d!"),iMap));
 		if ( !fStatic.Open(csStaticFileName, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone) )
 			bDrawStatics = false;
 		else
@@ -755,8 +792,8 @@ void CMulUOP::DrawMap(int iMap)
 	//Check if we want and can draw Map Difs
 	if (bDrawMapDifs)
 	{
-		CString csMapDifFileName = GetMulPath(CMsg(_T("MapDif%1!d!"),true,iMap));
-		CString csMapDiflFileName = GetMulPath(CMsg(_T("MapDifL%1!d!"),true,iMap));
+		CString csMapDifFileName = GetMulPath(CFrmt(_T("MapDif%1!d!"),iMap));
+		CString csMapDiflFileName = GetMulPath(CFrmt(_T("MapDifL%1!d!"),iMap));
 		if ( !fMapDif.Open(csMapDifFileName, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone) )
 			bDrawMapDifs = false;
 		else
@@ -777,9 +814,9 @@ void CMulUOP::DrawMap(int iMap)
 	//Check if we want and can draw Statics Difs
 	if (bDrawStaticDifs)
 	{
-		CString csStaDifName = GetMulPath(CMsg(_T("Stadif%1!d!"),true,iMap));
-		CString csStaDifiName = GetMulPath(CMsg(_T("StadifI%1!d!"),true,iMap));
-		CString csStaDiflName = GetMulPath(CMsg(_T("StadifL%1!d!"),true,iMap));
+		CString csStaDifName = GetMulPath(CFrmt(_T("Stadif%1!d!"),iMap));
+		CString csStaDifiName = GetMulPath(CFrmt(_T("StadifI%1!d!"),iMap));
+		CString csStaDiflName = GetMulPath(CFrmt(_T("StadifL%1!d!"),iMap));
 		if ( !fStaDif.Open(csStaDifName, CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone) )
 			bDrawStaticDifs = false;
 		else
@@ -807,8 +844,19 @@ void CMulUOP::DrawMap(int iMap)
 	}
 
 	//Check if we have a cache that matches the new info
-	if (Objbmp.Load(CMsg(_T("IDS_MAP_FILENAME"), true, Axis->csProfile, iMap, bDrawStatics, bDrawMapDifs, bDrawStaticDifs)))
-		return;
+	if (Objbmp.Load(CFrmt(_T("%1/Art/Map/%2!d!_s%3!d!_md%4!d!_sd%5!d!.bmp"), Axis->csProfile, iMap, bDrawStatics, bDrawMapDifs, bDrawStaticDifs)))
+	{
+		CFile fMapHeights;
+		if (fMapHeights.Open(CFrmt(_T("%1/Art/Map/%2!d!_s%3!d!_md%4!d!_sd%5!d!.mfd"), Axis->csProfile, iMap, bDrawStatics, bDrawMapDifs, bDrawStaticDifs), CFile::modeRead | CFile::typeBinary | CFile::shareDenyNone))
+		{
+			m_Mapdata.RemoveAll();
+			m_Mapdata.SetSize(static_cast<INT_PTR>(fMapHeights.GetLength()));
+			fMapHeights.SeekToBegin();
+			fMapHeights.Read(m_Mapdata.GetData(), m_Mapdata.GetSize());
+			fMapHeights.Close();
+			return;
+		}
+	}
 
 	//Get Map Size
 	int width = 6144;
@@ -837,6 +885,9 @@ void CMulUOP::DrawMap(int iMap)
 		width = 1280;
 		break;
 	}
+
+	m_Mapdata.RemoveAll();
+	m_Mapdata.SetSize(static_cast<INT_PTR>((width*height)*sizeof(CHAR)));
 
 	//Get UOP Map Data
 	if (Axis->IsMapUOP)
@@ -887,7 +938,7 @@ void CMulUOP::DrawMap(int iMap)
 				CString csFile;
 				for (unsigned int x = 0; x < dwLoop; x++)
 				{
-					if (HashFileName(CMsg(_T("IDS_MAPUOP_FILE"),true,csMapPattern,x)) == qwHash)
+					if (HashFileName(CFrmt(_T("build/%1/%2!08d!.dat"),csMapPattern,x)) == qwHash)
 					{
 						pMapAddress->dwFirstBlock = x*4096;
 						pMapAddress->dwLastBlock = (x*4096)+(dwCompressedSize / 196)-1;
@@ -1004,9 +1055,13 @@ void CMulUOP::DrawMap(int iMap)
 						int Y = (by*8)+cy;
 						int iCellIndex = (cy * 8) + cx;
 						WORD wColor = ((WORD(bData.cells[iCellIndex].bColorHi)) << 8) | (WORD(bData.cells[iCellIndex].bColorLo));
+						CHAR cheight = bData.cells[iCellIndex].bAltitude;
 
-						if ((bDrawStatics) && (statCells[iCellIndex].bJunk1 == 0xFF) && (statCells[iCellIndex].bAlt >= bData.cells[iCellIndex].bAltitude) )
+						if ((bDrawStatics) && (statCells[iCellIndex].bJunk1 == 0xFF) && (statCells[iCellIndex].bAlt >= bData.cells[iCellIndex].bAltitude))
+						{
 							wColor = (((WORD(statCells[iCellIndex].bColorHi)) << 8) | (WORD(statCells[iCellIndex].bColorLo))) + 0x4000;
+							cheight = statCells[iCellIndex].bAlt;
+						}
 
 						DWORD dwColor = Axis->m_dwColorMap[wColor];
 
@@ -1015,6 +1070,7 @@ void CMulUOP::DrawMap(int iMap)
 						g = (BYTE) ((dwColor >> 8) & 0xFF);
 						r = (BYTE) ((dwColor) & 0xFF);
 						Objbmp.SetPixel( X, Y, _RGB(r,g,b));
+						m_Mapdata.SetAt(((X * height) + Y)*sizeof(CHAR), cheight);
 					}
 				}
 			}
@@ -1041,8 +1097,14 @@ void CMulUOP::DrawMap(int iMap)
 		fStaDif.Close();
 	}
 
-	//Save Map for future uses
-	Objbmp.Save(CMsg(_T("IDS_MAP_FILENAME"),true,Axis->csProfile,iMap,bDrawStatics,bDrawMapDifs,bDrawStaticDifs));
+	//Save Map and Data for future uses
+	CFile fMapHeights;
+	if (fMapHeights.Open(CFrmt(_T("%1/Art/Map/%2!d!_s%3!d!_md%4!d!_sd%5!d!.mfd"), Axis->csProfile, iMap, bDrawStatics, bDrawMapDifs, bDrawStaticDifs), CFile::modeCreate | CFile::modeWrite | CFile::typeBinary | CFile::shareDenyNone))
+	{
+		fMapHeights.Write(m_Mapdata.GetData(), m_Mapdata.GetSize());
+		fMapHeights.Close();
+	}
+	Objbmp.Save(CFrmt(_T("%1/Art/Map/%2!d!_s%3!d!_md%4!d!_sd%5!d!.bmp"),Axis->csProfile,iMap,bDrawStatics,bDrawMapDifs,bDrawStaticDifs));
 }
 
 //*************
@@ -1082,8 +1144,8 @@ ArtAddress CMulUOP::FindArtEntry(DWORD dwIndex)
 	csArtPattern = csArtPattern.Mid(csArtPattern.ReverseFind('\\')+1);
 	csArtPattern = csArtPattern.SpanExcluding(_T("."));
 	csArtPattern.MakeLower();
-	DWORD64 qwFileHash = HashFileName(CMsg(_T("IDS_ARTUOP_FILE"),true,csArtPattern,dwIndex));
-	DWORD64 qwNullFileHash = HashFileName(CMsg(_T("IDS_ARTUOP_FILE"),true,csArtPattern,0x4000));
+	DWORD64 qwFileHash = HashFileName(CFrmt(_T("build/%1/%2!08d!.tga"),csArtPattern,dwIndex));
+	DWORD64 qwNullFileHash = HashFileName(CFrmt(_T("build/%1/%2!08d!.tga"),csArtPattern,0x4000));
 	ArtAddress* pArtNull = NULL;
 	for ( int i = 0; i < Axis->m_aUopAddress.GetSize(); i++ )
 	{

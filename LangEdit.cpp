@@ -10,7 +10,7 @@ CLangEditDlg::CLangEditDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CLangEditDlg::IDD, pParent)
 {
 	iSelIndex = -1;
-	csTable = _T("ENU");
+	csTable = _T("CMD");
 }
 
 
@@ -34,7 +34,6 @@ BEGIN_MESSAGE_MAP(CLangEditDlg, CDialogEx)
 	ON_WM_GETMINMAXINFO()
 	ON_NOTIFY(LVN_ITEMCHANGED, IDC_LLIST, OnItemchangedItems)
 	ON_CBN_SELCHANGE(IDC_LANGSELECT, OnSelchangeLang)
-	ON_EN_CHANGE(IDC_LID, OnEditchangeID)
 	ON_BN_CLICKED(IDC_LADDEDIT, OnBnClickedAddEdit)
 	ON_BN_CLICKED(IDC_ADDLANG, OnBnClickedAddLang)
 	ON_BN_CLICKED(IDC_DELDATA, OnBnClickedDelData)
@@ -49,32 +48,32 @@ BOOL CLangEditDlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_LANG_EDITOR")));
+	SetWindowText(CMsg(_T("Language Editor")));
 
-	GetDlgItem(IDC_STATICLANG)->SetWindowText(CMsg(_T("IDS_LANG")));
-	GetDlgItem(IDC_STATICNAME)->SetWindowText(CMsg(_T("IDS_NAME")));
-	GetDlgItem(IDC_STATICCODE)->SetWindowText(CMsg(_T("IDS_LANGCODE")));
-	GetDlgItem(IDC_LADDEDIT)->SetWindowText(CMsg(_T("IDS_ADDEDIT")));
-	GetDlgItem(IDC_ADDLANG)->SetWindowText(CMsg(_T("IDS_ADDLANG")));
-	GetDlgItem(IDC_DELLANG)->SetWindowText(CMsg(_T("IDS_DELETE")));
-	GetDlgItem(IDC_DELDATA)->SetWindowText(CMsg(_T("IDS_DELETE")));
+	GetDlgItem(IDC_STATICLANG)->SetWindowText(CMsg(_T("Language")));
+	GetDlgItem(IDC_STATICNAME)->SetWindowText(CMsg(_T("Name")));
+	GetDlgItem(IDC_STATICCODE)->SetWindowText(CMsg(_T("Code")));
+	GetDlgItem(IDC_LADDEDIT)->SetWindowText(CMsg(_T("Edit Value")));
+	GetDlgItem(IDC_ADDLANG)->SetWindowText(CMsg(_T("Add Lang")));
+	GetDlgItem(IDC_DELLANG)->SetWindowText(CMsg(_T("Delete")));
+	GetDlgItem(IDC_DELDATA)->SetWindowText(CMsg(_T("Delete")));
 	Axis->DBLng.CommitTransaction();
 
 	m_ceCode.SetLimitText(3);
 
-	CString csPath = CMsg(_T("%1Lang"), true, Axis->m_csRootDirectory);
+	CString csPath = CFrmt(_T("%1Lang"), Axis->m_csRootDirectory);
 	dDatabase.Open(csPath);
 
 	m_clcData.InsertColumn(0, _T("ID"), LVCFMT_LEFT, 200, -1);
 	m_clcData.InsertColumn(1, _T("String"), LVCFMT_LEFT, 400, -1);
 
+	m_ccbLang.AddString(_T("Commands"));
 	Table TBData = dDatabase.QuerySQL(_T("SELECT * FROM LangList ORDER BY Name"));
 	TBData.ResetRow();
 	while (TBData.GoNext())
 	{
 		m_ccbLang.AddString(TBData.GetValue(0));
 	}
-	m_ccbLang.AddString(_T("Commands"));
 	m_ccbLang.SetCurSel(0);
 
 	OnSelchangeLang();
@@ -83,22 +82,6 @@ BOOL CLangEditDlg::OnInitDialog()
 
 	return TRUE;
 
-}
-
-void CLangEditDlg::FillData()
-{
-	m_clcData.SetHotItem(-1);
-	m_clcData.DeleteAllItems();
-
-	Table TBData = dDatabase.QuerySQL(CSQL(_T("SELECT * FROM %1 ORDER BY ID"), csTable));
-	TBData.ResetRow();
-	int iCount = 0;
-	while (TBData.GoNext())
-	{
-		m_clcData.InsertItem(iCount, TBData.GetValue(0), iCount);
-		m_clcData.SetItemText(iCount, 1, TBData.GetValue(1));
-		iCount++;
-	}
 }
 
 void CLangEditDlg::OnSelchangeLang()
@@ -119,20 +102,52 @@ void CLangEditDlg::OnSelchangeLang()
 		csTable = _T("CMD");
 		m_cbDelLang.EnableWindow(false);
 	}
-	else if (csLang == _T("English"))
-	{
-		csTable = _T("ENU");
-		m_cbDelLang.EnableWindow(false);
-	}
 	else
 	{
-		Table TBCode = dDatabase.QuerySQL(CSQL(_T("SELECT * FROM LangList WHERE Name = '%1'"), csLang));
+		Table TBCode = dDatabase.QuerySQL(CFrmt(_T("SELECT * FROM LangList WHERE Name = '%1'"), csLang));
 		csTable = TBCode.GetValue(1);
 		m_cbDelLang.EnableWindow();
 	}
+	m_ceID.SetWindowText(_T(""));
+	m_ceValue.SetWindowText(_T(""));
+	m_cbDelData.EnableWindow(false);
+	m_cbAddEdit.EnableWindow(false);
 	FillData();
 
 	UpdateData(FALSE);
+}
+
+void CLangEditDlg::FillData()
+{
+	m_clcData.SetHotItem(-1);
+	m_clcData.DeleteAllItems();
+
+	if (csTable == _T("CMD"))
+	{
+		Table TBData = dDatabase.QuerySQL(_T("SELECT * FROM CMD ORDER BY ID"));
+		TBData.ResetRow();
+		int iCount = 0;
+		while (TBData.GoNext())
+		{
+			m_clcData.InsertItem(iCount, TBData.GetValue(0), iCount);
+			m_clcData.SetItemText(iCount, 1, TBData.GetValue(1));
+			iCount++;
+		}
+	}
+	else
+	{
+		Table TBData = dDatabase.QuerySQL(_T("SELECT * FROM IDList ORDER BY ID"));
+		TBData.ResetRow();
+		int iCount = 0;
+		while (TBData.GoNext())
+		{
+			m_clcData.InsertItem(iCount, TBData.GetValue(0), iCount);
+			Table TBValue = dDatabase.QuerySQL(CFrmt(_T("SELECT * FROM %1 WHERE ID = '%2'"), csTable, TBData.GetValue(0)));
+			if (TBValue.GetValue(1))
+				m_clcData.SetItemText(iCount, 1, TBValue.GetValue(1));
+			iCount++;
+		}
+	}
 }
 
 void CLangEditDlg::OnItemchangedItems(NMHDR* pNMHDR, LRESULT* pResult)
@@ -147,13 +162,16 @@ void CLangEditDlg::OnItemchangedItems(NMHDR* pNMHDR, LRESULT* pResult)
 			m_clcData.SetHotItem(iSelIndex);
 			m_ceID.SetWindowText(m_clcData.GetItemText(iSelIndex, 0));
 			m_ceValue.SetWindowText(m_clcData.GetItemText(iSelIndex, 1));
-			m_cbDelData.EnableWindow();
+			if (csTable != _T("CMD"))
+				m_cbDelData.EnableWindow();
+			m_cbAddEdit.EnableWindow();
 			return;
 		}
 	}
 	m_ceID.SetWindowText(_T(""));
 	m_ceValue.SetWindowText(_T(""));
 	m_cbDelData.EnableWindow(false);
+	m_cbAddEdit.EnableWindow(false);
 	iSelIndex = -1;
 
 	*pResult = 0;
@@ -161,21 +179,12 @@ void CLangEditDlg::OnItemchangedItems(NMHDR* pNMHDR, LRESULT* pResult)
 
 void CLangEditDlg::OnBnClickedAddEdit()
 {
-	// Save Info
 	CString csID, csValue;
 	csID = GetEditString(m_ceID);
 	csValue = SQLStrip(GetEditString(m_ceValue));
-	if (csID != "")
+	if (csValue != "")
 	{
-		Table TBData = dDatabase.QuerySQL(CSQL(_T("SELECT * FROM %1 WHERE ID = '%2'"), csTable, csID));
-		if (TBData.GetRowCount() != 0)
-		{
-			dDatabase.ExecuteSQL(CSQL(_T("UPDATE %1 SET String = '%2' WHERE ID = '%3'"), csTable, csValue, csID));
-		}
-		else
-		{
-			dDatabase.ExecuteSQL(CSQL(_T("INSERT INTO %1 VALUES('%2','%3')"), csTable, csID, csValue));
-		}
+		dDatabase.ExecuteSQL(CFrmt(_T("INSERT OR REPLACE INTO %1 VALUES('%2','%3')"), csTable, csID, csValue));
 
 		FillData();
 		m_clcData.SetHotItem(iSelIndex);
@@ -183,15 +192,17 @@ void CLangEditDlg::OnBnClickedAddEdit()
 		m_ceID.SetWindowText(_T(""));
 		m_ceValue.SetWindowText(_T(""));
 		m_cbDelData.EnableWindow(false);
+		m_cbAddEdit.EnableWindow(false);
 	}
 }
 
 void CLangEditDlg::OnBnClickedDelData()
 {
-	dDatabase.ExecuteSQL(CSQL(_T("DELETE FROM %1 WHERE ID = '%2'"), csTable, GetEditString(m_ceID)));
+	dDatabase.ExecuteSQL(CFrmt(_T("DELETE FROM %1 WHERE ID = '%2'"), csTable, GetEditString(m_ceID)));
 	m_ceID.SetWindowText(_T(""));
 	m_ceValue.SetWindowText(_T(""));
 	m_cbDelData.EnableWindow(false);
+	m_cbAddEdit.EnableWindow(false);
 	FillData();
 }
 
@@ -199,8 +210,8 @@ void CLangEditDlg::OnBnClickedDelLang()
 {
 	CString csLang;
 	m_ccbLang.GetLBText(m_ccbLang.GetCurSel(), csLang);
-	dDatabase.ExecuteSQL(CSQL(_T("DROP TABLE %1"), csTable));
-	dDatabase.ExecuteSQL(CSQL(_T("DELETE FROM LangList WHERE Name = '%1'"), csLang));
+	dDatabase.ExecuteSQL(CFrmt(_T("DROP TABLE %1"), csTable));
+	dDatabase.ExecuteSQL(CFrmt(_T("DELETE FROM LangList WHERE Name = '%1'"), csLang));
 	m_ccbLang.DeleteString(m_ccbLang.GetCurSel());
 	m_ccbLang.SetCurSel(0);
 	OnSelchangeLang();
@@ -215,25 +226,12 @@ void CLangEditDlg::OnBnClickedAddLang()
 	if ((csLang != "") && (csCode != ""))
 	{
 		dDatabase.BeginTransaction();
-		dDatabase.ExecuteSQL(CSQL(_T("INSERT INTO LangList VALUES('%1','%2')"), csLang, csCode));
-		dDatabase.ExecuteSQL(CSQL(_T("CREATE TABLE IF NOT EXISTS '%1' (ID TEXT, String TEXT)"), csCode));
-
-		Table TBData = dDatabase.QuerySQL(_T("SELECT ID FROM ENU ORDER BY ID"));
-		TBData.ResetRow();
-		while (TBData.GoNext())
-		{
-			dDatabase.ExecuteSQL(CSQL(_T("INSERT INTO %1 VALUES('%2','')"), csCode, TBData.GetValue(0)));
-		}
+		dDatabase.ExecuteSQL(CFrmt(_T("INSERT INTO LangList VALUES('%1','%2')"), csLang, csCode));
+		dDatabase.ExecuteSQL(CFrmt(_T("CREATE TABLE IF NOT EXISTS '%1' (ID TEXT PRIMARY KEY NOT NULL, String TEXT)"), csCode));
 		dDatabase.CommitTransaction();
 		m_ccbLang.SetCurSel(m_ccbLang.AddString(csLang));
 		OnSelchangeLang();
 	}
-}
-
-void CLangEditDlg::OnEditchangeID()
-{
-	m_cbDelData.EnableWindow(false);
-	UpdateData(FALSE);
 }
 
 void CLangEditDlg::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI)

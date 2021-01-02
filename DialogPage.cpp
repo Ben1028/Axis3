@@ -72,9 +72,9 @@ void CDialogPage::OnRButtonDown(UINT /*nFlags*/, CPoint point)
 	{
 		DWORD dwCurStyle = ::GetWindowLong(GetSafeHwnd(), GWL_STYLE);
 		if (dwCurStyle & WS_CHILD)
-			::AppendMenu(hMenu, MF_STRING, 1, CMsg(_T("IDS_UNDOCK")));
+			::AppendMenu(hMenu, MF_STRING, 1, CMsg(_T("Undock Tab")));
 		else
-			::AppendMenu(hMenu, MF_STRING, 2, CMsg(_T("IDS_DOCK")));
+			::AppendMenu(hMenu, MF_STRING, 2, CMsg(_T("Dock Tab")));
 		int sel = ::TrackPopupMenuEx(hMenu, 
 				TPM_CENTERALIGN | TPM_RETURNCMD,
 				point.x,

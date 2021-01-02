@@ -111,15 +111,8 @@ BOOL CAxis3Dlg::OnInitDialog()
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
 	if (pSysMenu != NULL)
 	{
-		BOOL bNameValid;
-		CString strAboutMenu;
-		bNameValid = strAboutMenu.LoadString(IDS_ABOUTBOX);
-		ASSERT(bNameValid);
-		if (!strAboutMenu.IsEmpty())
-		{
-			pSysMenu->AppendMenu(MF_SEPARATOR);
-			pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
-		}
+		pSysMenu->AppendMenu(MF_SEPARATOR);
+		pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, CMsg(_T("&About Axis3")));
 	}
 
 	SetIcon(m_hIcon, TRUE);
@@ -140,13 +133,33 @@ BOOL CAxis3Dlg::OnInitDialog()
     ScreenToClient(&TabSize);
     initialized = TRUE;
 
+	CMenu* pMenu = AfxGetMainWnd()->GetMenu();
+	pMenu->ModifyMenu(0, MF_BYPOSITION | MF_STRING, 0, CMsg(_T("&Settings")));
+		CMenu* pSub = pMenu->GetSubMenu(0);
+		pSub->ModifyMenu(ID_SETTINGS_PROFILE, MF_STRING, ID_SETTINGS_PROFILE, CMsg(_T("&Profile")));
+		pSub->ModifyMenu(ID_SETTINGS_GENERAL, MF_STRING, ID_SETTINGS_GENERAL, CMsg(_T("&General")));
+		pSub->ModifyMenu(ID_SETTINGS_VIEWER, MF_STRING, ID_SETTINGS_VIEWER, CMsg(_T("&Viewer")));
+
+	pMenu->ModifyMenu(1, MF_BYPOSITION | MF_STRING, 0, CMsg(_T("Data &Edit")));
+		pSub = pMenu->GetSubMenu(1);
+		pSub->ModifyMenu(ID_DATAEDIT_DEFAULTSETTINGS, MF_STRING, ID_DATAEDIT_DEFAULTSETTINGS, CMsg(_T("De&fault Settings")));
+		pSub->ModifyMenu(ID_DATAEDIT_LANGUAGE, MF_STRING, ID_DATAEDIT_LANGUAGE, CMsg(_T("&Language")));
+
+	pMenu->ModifyMenu(2, MF_BYPOSITION | MF_STRING, 0, CMsg(_T("&Help")));
+		pSub = pMenu->GetSubMenu(2);
+		pSub->ModifyMenu(ID_HELP_ABOUTAxis3, MF_STRING, ID_HELP_ABOUTAxis3, CMsg(_T("&About Axis3")));
+		pSub->ModifyMenu(ID_HELP_DOCUMENTATION, MF_STRING, ID_HELP_DOCUMENTATION, CMsg(_T("&Documentation")));
+
+	pMenu->ModifyMenu(3, MF_BYPOSITION | MF_STRING, 0, CMsg(_T("E&xit")));
+		pSub = pMenu->GetSubMenu(3);
+		pSub->ModifyMenu(ID_EXIT_CLOSEAXIS, MF_STRING, ID_EXIT_CLOSEAXIS, CMsg(_T("Close A&xis3")));
+
 	if (GetSettingNum(_T("DevMode")) != 1)
 	{
-		CMenu *pMenu = AfxGetMainWnd()->GetMenu();
 		pMenu->EnableMenuItem(1, MF_BYPOSITION | MF_GRAYED);
-		AfxGetMainWnd()->DrawMenuBar();
 	}
-	
+	AfxGetMainWnd()->DrawMenuBar();
+
 	SetWindowPos(GetSettingNum(_T("AlwaysOnTop")) ? &CWnd::wndTopMost : &CWnd::wndNoTopMost, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 
 	return TRUE;
@@ -202,7 +215,7 @@ void CAxis3Dlg::OnProfile()
 			m_csPath = dlg.csPath;
 			if (m_csPath == "")
 			{
-				AfxMessageBox(CMsg(_T("IDS_NO_SPHERETABLE")), MB_OK | MB_ICONEXCLAMATION);
+				AfxMessageBox(CMsg(_T("Spheretable.scp not found!")), MB_OK | MB_ICONEXCLAMATION);
 				return;
 			}
 			AfxBeginThread(&ProfileLocalThread, this);
@@ -213,7 +226,7 @@ void CAxis3Dlg::OnProfile()
 			m_csPort = dlg.csPort;
 			if ((m_csAddress == "") || (m_csPort == ""))
 			{
-				AfxMessageBox(CMsg(_T("IDS_ERROR_NOIP")), MB_OK | MB_ICONEXCLAMATION);
+				AfxMessageBox(CMsg(_T("Couldn't determine the IP address for the remote server.")), MB_OK | MB_ICONEXCLAMATION);
 				return;
 			}
 			m_csAccount = dlg.csAccount;
@@ -374,12 +387,12 @@ UINT ProfileLocalThread(LPVOID lpData)
 
 	if (!CreateProcess(NULL, szCmdline, NULL, NULL, FALSE, CREATE_NEW_PROCESS_GROUP|CREATE_NO_WINDOW, NULL, Axis->m_csRootDirectory, &si, &pi))
 	{
-		AfxMessageBox(CMsg(_T("IDS_ERROR_STARTAPP"), true, GetLastError(), szCmdline));
+		AfxMessageBox(CMsg(_T("ERROR (%1!d!) Failed Starting Application %2"), true, GetLastError(), szCmdline));
 	}
 	WaitForSingleObject(pi.hProcess, INFINITE);
 	CloseHandle(pi.hProcess);
 	CloseHandle(pi.hThread);
-	Axis->DBData.Open(CMsg(_T("%1/Data.db"), true, Axis->csProfile));
+	Axis->DBData.Open(CFrmt(_T("%1/Data.db"), Axis->csProfile));
 	pMain->m_DlgITems->FillCategory();
 	return 0;
 }
@@ -394,14 +407,14 @@ UINT ProfileThread(LPVOID lpData)
 	sock.m_hSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (sock.m_hSocket == INVALID_SOCKET)
 	{
-		AfxMessageBox(CMsg(_T("IDS_ERROR_NOSOCKET"),true, WSAGetLastError()));
+		AfxMessageBox(CMsg(_T("Error creating socket: dwErr = %1!ld!"),true, WSAGetLastError()));
 		closesocket(sock.m_hSocket);
 		sock.m_hSocket = INVALID_SOCKET;
 		return 1;
 	}
 	if (!sock.Connect(pMain->m_csAddress, _ttoi(pMain->m_csPort)))
 	{
-		AfxMessageBox(CMsg(_T("IDS_ERROR_NOCONNECT"),true, ErrorString(GetLastError()) , pMain->m_csAddress, pMain->m_csPort));
+		AfxMessageBox(CMsg(_T("Could not connect to the remote console --\r\nLast Error was '%1'\r\nHost = % 2, Port = % 3\r\nThis is usually because the Sphere server isn't running."),true, ErrorString(GetLastError()) , pMain->m_csAddress, pMain->m_csPort));
 		closesocket(sock.m_hSocket);
 		sock.m_hSocket = INVALID_SOCKET;
 		return 2;
@@ -411,7 +424,7 @@ UINT ProfileThread(LPVOID lpData)
 	CString cAt((char) 0x40);
 	if (!sock.Send(cAt, 1))
 	{
-		AfxMessageBox(CMsg(_T("IDS_ERROR_LOGIN"),true, GetLastError()));
+		AfxMessageBox(CMsg(_T("Error while sending login info to the remote console: dwErr = %1!ld!\r\nIs the Sphere server running ?"),true, GetLastError()));
 		closesocket(sock.m_hSocket);
 		sock.m_hSocket = INVALID_SOCKET;
 		return 3;
@@ -432,14 +445,14 @@ UINT ProfileThread(LPVOID lpData)
 		{
 			char szErrBuffer[MAX_BUFFER];
 			strerror_s(szErrBuffer,MAX_BUFFER,WSAGetLastError());
-			AfxMessageBox(CMsg(_T("IDS_ERROR_SOCKETSELECT"),true, WSAGetLastError(), szErrBuffer));
+			AfxMessageBox(CMsg(_T("Socket error on select(): %1!ld! - %2"),true, WSAGetLastError(), szErrBuffer));
 			closesocket(sock.m_hSocket);
 			sock.m_hSocket = INVALID_SOCKET;
 			return 4;
 		}
 		if ( rc == 0 && i++ > pMain->m_iReceiveTimeout )
 		{
-			AfxMessageBox(CMsg(_T("IDS_ERROR_TIMEOUT")));
+			AfxMessageBox(CMsg(_T("Timeout exceeded while receiving data from remote server.")));
 			closesocket(sock.m_hSocket);
 			sock.m_hSocket = INVALID_SOCKET;
 			return 5;
@@ -460,7 +473,7 @@ UINT ProfileThread(LPVOID lpData)
 		CString csAcct = pMain->m_csAccount + (char)0x0A;
 		if ( !sock.Send(csAcct, csAcct.GetLength()* sizeof(TCHAR)))
 		{
-			AfxMessageBox(CMsg(_T("IDS_ERROR_SENDACCOUNT"),true, GetLastError()));
+			AfxMessageBox(CMsg(_T("Error while sending account to the remote console: dwErr = %1!ld!\r\nIs the Sphere server still running ?"),true, GetLastError()));
 			closesocket(sock.m_hSocket);
 			sock.m_hSocket = INVALID_SOCKET;
 			return 6;
@@ -471,14 +484,14 @@ UINT ProfileThread(LPVOID lpData)
 	CString csPass = pMain->m_csPassword + (char)0x0A;
 	if ( !sock.Send(csPass, csPass.GetLength()* sizeof(TCHAR)))
 	{
-		AfxMessageBox(CMsg(_T("IDS_ERROR_SENDPASSWORD"),true, GetLastError()));
+		AfxMessageBox(CMsg(_T("Error while sending password to the remote console: dwErr = %1!ld!\r\nIs the Sphere server still running ?"),true, GetLastError()));
 		closesocket(sock.m_hSocket);
 		sock.m_hSocket = INVALID_SOCKET;
 		return 7;
 	}
 
 	LPCTSTR pFileName = _T("temp.db");
-	LPCTSTR pDBName = CMsg(_T("%1/Data.db"),true,Axis->csProfile);
+	LPCTSTR pDBName = CFrmt(_T("%1/Data.db"),Axis->csProfile);
 
 	CFile fData;
 	if ( !fData.Open(pFileName, CFile::modeCreate | CFile::modeWrite | CFile::typeBinary | CFile::shareDenyNone) )
@@ -557,7 +570,7 @@ UINT ProfileThread(LPVOID lpData)
 		}
 		if (rc < 0)
 		{
-			AfxMessageBox(CMsg(_T("IDS_ERROR_CONNECTIONLOST")));
+			AfxMessageBox(CMsg(_T("Connection lost.")));
 			break;
 		}
 	}

@@ -31,7 +31,7 @@ END_MESSAGE_MAP()
 
 BOOL CMiscTab::OnInitDialog() 
 {
-	SetWindowText(CMsg(_T("IDS_MISC")));
+	SetWindowText(CMsg(_T("Misc")));
 	CDialogPage::OnInitDialog();
 
 	return TRUE;

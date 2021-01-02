@@ -43,14 +43,14 @@ BOOL CSettingEditDlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	Axis->DBLng.BeginTransaction();
-	SetWindowText(CMsg(_T("IDS_SETTING_EDITOR")));
+	SetWindowText(CMsg(_T("Settings Editor")));
 
-	GetDlgItem(IDC_STATICSETTYPE)->SetWindowText(CMsg(_T("IDS_SETTING_TYPE")));
-	GetDlgItem(IDC_ADDEDIT)->SetWindowText(CMsg(_T("IDS_ADDEDIT")));
-	GetDlgItem(IDC_DELSETDATA)->SetWindowText(CMsg(_T("IDS_DELETE")));
+	GetDlgItem(IDC_STATICSETTYPE)->SetWindowText(CMsg(_T("Setting Type")));
+	GetDlgItem(IDC_ADDEDIT)->SetWindowText(CMsg(_T("Add / Edit Value")));
+	GetDlgItem(IDC_DELSETDATA)->SetWindowText(CMsg(_T("Delete")));
 	Axis->DBLng.CommitTransaction();
 
-	CString csPath = CMsg(_T("%1Settings"), true, Axis->m_csRootDirectory);
+	CString csPath = CFrmt(_T("%1Settings"), Axis->m_csRootDirectory);
 	dDatabase.Open(csPath);
 
 	m_clcData.InsertColumn(0, _T("Setting"), LVCFMT_LEFT, 150, -1);
@@ -78,7 +78,7 @@ void CSettingEditDlg::FillData()
 	m_clcData.SetHotItem(-1);
 	m_clcData.DeleteAllItems();
 
-	Table TBData = dDatabase.QuerySQL(CSQL(_T("SELECT * FROM %1 ORDER BY 1"), csTable));
+	Table TBData = dDatabase.QuerySQL(CFrmt(_T("SELECT * FROM %1 ORDER BY 1"), csTable));
 	TBData.ResetRow();
 	int iCount = 0;
 	while (TBData.GoNext())
@@ -145,14 +145,14 @@ void CSettingEditDlg::OnBnClickedAddEdit()
 
 	if (csID != "")
 	{
-		Table TBData = dDatabase.QuerySQL(CSQL(_T("SELECT * FROM %1 WHERE %3 = '%2'"), csTable, csID, csCol));
+		Table TBData = dDatabase.QuerySQL(CFrmt(_T("SELECT * FROM %1 WHERE %3 = '%2'"), csTable, csID, csCol));
 		if (TBData.GetRowCount() != 0)
 		{
-			dDatabase.ExecuteSQL(CSQL(_T("UPDATE %1 SET Value = '%2' WHERE %4 = '%3'"), csTable, csValue, csID, csCol));
+			dDatabase.ExecuteSQL(CFrmt(_T("UPDATE %1 SET Value = '%2' WHERE %4 = '%3'"), csTable, csValue, csID, csCol));
 		}
 		else
 		{
-			dDatabase.ExecuteSQL(CSQL(_T("INSERT INTO %1 VALUES('%2','%3')"), csTable, csID, csValue));
+			dDatabase.ExecuteSQL(CFrmt(_T("INSERT INTO %1 VALUES('%2','%3')"), csTable, csID, csValue));
 		}
 
 		FillData();
@@ -171,7 +171,7 @@ void CSettingEditDlg::OnBnClickedDelData()
 	{
 		csCol = _T("Name");
 	}
-	dDatabase.ExecuteSQL(CSQL(_T("DELETE FROM %1 WHERE %3 = '%2'"), csTable, GetEditString(m_ceID), csCol));
+	dDatabase.ExecuteSQL(CFrmt(_T("DELETE FROM %1 WHERE %3 = '%2'"), csTable, GetEditString(m_ceID), csCol));
 	m_ceID.SetWindowText(_T(""));
 	m_ceValue.SetWindowText(_T(""));
 	m_cbDelData.EnableWindow(false);

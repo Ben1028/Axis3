@@ -31,7 +31,7 @@ END_MESSAGE_MAP()
 
 BOOL CLauncherTab::OnInitDialog() 
 {
-	SetWindowText(CMsg(_T("IDS_LAUNCHER")));
+	SetWindowText(CMsg(_T("Launcher")));
 	CDialogPage::OnInitDialog();
 
 	return TRUE;
